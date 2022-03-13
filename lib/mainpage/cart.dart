@@ -30,7 +30,7 @@ class _cartState extends State<cart> {
                 child: TextField(
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.symmetric(vertical: 8),
-                      labelText: "Username",
+                      labelText: "Usere",
                       border: myinputborder(),
                       enabledBorder: myinputborder(),
                       focusedBorder: myfocusborder(),
