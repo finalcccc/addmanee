@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled1/celement/elements.dart';
@@ -12,8 +11,6 @@ class menou extends StatefulWidget {
 }
 
 class _menouState extends State<menou> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,22 +31,17 @@ class _menouState extends State<menou> {
       body: Container(
         color: Colors.grey[300],
         child: GridView(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2, mainAxisSpacing: 10),
           children: [
             element.butn(
                 context, rout.prodc, Icons.shop, element.main, element.p1),
-            element.butn(
-                context, rout.profl, Icons.airplay, element.Indigo, element.p2),
-            element.butn(
-                context, rout.m_orders, Icons.border_color, element.ocean, element.p3),
-            element.butn(
-                context, rout.win_order, Icons.article_rounded, element.sky, element.p4),
-            element.butn(
-                context, rout.prodc, Icons.shop, element.main, element.p1),
-            element.butn(
-                context, rout.profl, Icons.airplay, element.Indigo, element.p2),
-
+            element.butn(context, rout.register, Icons.airplay, element.Indigo,
+                element.p2),
+            element.butn(context, rout.m_orders, Icons.border_color,
+                element.ocean, element.p3),
+            element.butn(context, rout.win_order, Icons.article_rounded,
+                element.sky, element.p4),
           ],
         ),
       ),
@@ -71,12 +63,10 @@ class _menouState extends State<menou> {
               style: TextStyle(fontSize: 26, color: Colors.white),
             ),
           ),
-
           buildListTile(element.p1, rout.prodc),
-          buildListTile(element.p2, rout.profl),
+          buildListTile(element.p2, rout.register),
           buildListTile(element.p3, rout.m_orders),
           buildListTile(element.p4, rout.win_order),
-
         ],
       ),
     );

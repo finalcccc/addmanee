@@ -12,21 +12,21 @@ class element {
   //tiltal
   static String titall = "ຮ້ານເເອັດມານີ";
   static String p1 = "ຮັບອໍເດິ";
-  static String p2 = "ຂໍ້ມູນສ່ວນຕົວ";
+  static String p2 = "ລົງທະບຽນຂອລພະນັກງານ";
   static String p3 = "ຈັດການອໍເດິ";
   static String p4 = "ອໍເດິທີສຳເລັດ";
 
   // option
   static butn(BuildContext context, String rout, var icons, Color colors, txt) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10, left: 10, right: 10 ,bottom: 10),
+      padding: const EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
       child: InkWell(
         borderRadius: BorderRadius.circular(10),
         splashColor: colors, // Splash color
         onTap: () {
           Navigator.pushNamed(context, rout);
         },
-        child: Container (
+        child: Container(
           decoration: BoxDecoration(
               color: colors,
               borderRadius: BorderRadius.circular(25),
@@ -37,9 +37,9 @@ class element {
                   blurRadius: 15,
                   spreadRadius: 1,
                 ),
-                BoxShadow (
+                const BoxShadow(
                   color: Colors.white,
-                  offset:Offset(-4.0, -4.0),
+                  offset: Offset(-4.0, -4.0),
                   blurRadius: 15,
                   spreadRadius: 1,
                 )
@@ -54,7 +54,7 @@ class element {
                   color: Colors.white,
                 ),
                 Text(txt,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 20,
                         color: Colors.white,
                         fontWeight: FontWeight.bold)),
