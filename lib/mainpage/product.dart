@@ -1,5 +1,8 @@
+import 'dart:io';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:untitled1/celement/elements.dart';
+import 'package:image_picker/image_picker.dart';
 
 class product extends StatefulWidget {
   const product({Key? key}) : super(key: key);
@@ -9,28 +12,69 @@ class product extends StatefulWidget {
 }
 
 class _productState extends State<product> {
+  File? imagep;
+
+  Future pickimage() async {
+    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (image == null) return;
+    var imageTemporary = File(image.path);
+    setState(() {
+      this.imagep = imageTemporary;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-        appBar: AppBar(
-          backgroundColor: element.main,
-          leading: element.backpage(context),
-        ),
-        body: ListView(
-          children: [
-            Container(
-              margin: const EdgeInsets.all(24),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  const SizedBox(height: 40),
-                  _inputFields(context)
-                ],
-              ),
+      appBar: AppBar(
+        backgroundColor: element.main,
+        leading: element.backpage(context),
+      ),
+      body:  SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 32,
             ),
+            Center(
+              child: GestureDetector(
+                onTap: () {
+                     pickimage();
+                },
+                child: CircleAvatar(
+                  radius: 55,
+                  backgroundColor: Color(0xffFDCF09),
+                  child: imagep != null
+                      ? ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.file(
+                      imagep!,
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.fitHeight,
+                    ),
+                  )
+                      : Container(
+                    decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        borderRadius: BorderRadius.circular(50)),
+                    width: 100,
+                    height: 100,
+                    child: Icon(
+                      Icons.camera_alt,
+                      color: Colors.grey[800],
+                    ),
+                  ),
+                ),
+              ),
+
+            ),
+          SizedBox(height: 20,),
+          _inputFields(context)
           ],
+
         ),
+      ),
     );
   }
 }
@@ -40,10 +84,10 @@ _inputFields(context) {
     children: [
       TextField(
         decoration: InputDecoration(
-          hintText: "ຊື່",
+          hintText: "ຊື່ສິນຄ້າ",
           fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
           filled: true,
-          prefixIcon: const Icon(Icons.person),
+          prefixIcon: const Icon(Icons.shopping_cart_outlined),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(18),
             borderSide: BorderSide.none,
@@ -53,10 +97,10 @@ _inputFields(context) {
       const SizedBox(height: 10),
       TextField(
         decoration: InputDecoration(
-          hintText: "Email",
+          hintText: "ລາຍລະອຽດ",
           fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
           filled: true,
-          prefixIcon: const Icon(Icons.email_outlined),
+          prefixIcon: const Icon(Icons.description_sharp),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(18),
             borderSide: BorderSide.none,
@@ -66,10 +110,10 @@ _inputFields(context) {
       const SizedBox(height: 10),
       TextField(
         decoration: InputDecoration(
-          hintText: "ລະຫັດຜ່ານ",
+          hintText: "ລາຄາ",
           fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
           filled: true,
-          prefixIcon: const Icon(Icons.password_outlined),
+          prefixIcon: const Icon(Icons.price_change_sharp),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(18),
             borderSide: BorderSide.none,
@@ -80,10 +124,10 @@ _inputFields(context) {
       const SizedBox(height: 10),
       TextField(
         decoration: InputDecoration(
-          hintText: "ຍືນຍັນລະຫັດຜ່ານ",
+          hintText: "ລາຄາທືນ",
           fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
           filled: true,
-          prefixIcon: const Icon(Icons.password_outlined),
+          prefixIcon: const Icon(Icons.price_change),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(18),
             borderSide: BorderSide.none,
@@ -94,32 +138,33 @@ _inputFields(context) {
       const SizedBox(height: 10),
       TextField(
         decoration: InputDecoration(
-          hintText: "ວັນ ເດືອນ ປີ ເກີດ",
+          hintText: "ຈຳນວນ",
           fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
           filled: true,
-          prefixIcon: const Icon(Icons.person),
+          prefixIcon: const Icon(Icons.add),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(18),
             borderSide: BorderSide.none,
           ),
         ),
+        obscureText: true,
       ),
       const SizedBox(height: 10),
       TextField(
         decoration: InputDecoration(
-          hintText: "ທີ່ຢູ່",
+          hintText: "ປະເພດສິນຄ້າ",
           fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
           filled: true,
-          prefixIcon: const Icon(Icons.home_filled),
+          prefixIcon: const Icon(Icons.category),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(18),
             borderSide: BorderSide.none,
           ),
         ),
+        obscureText: true,
       ),
       const SizedBox(height: 20),
       ElevatedButton(
-
         onPressed: () {
           // Navigator.pushReplacement(
           //   context,
@@ -138,3 +183,4 @@ _inputFields(context) {
     ],
   );
 }
+
