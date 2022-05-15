@@ -18,8 +18,9 @@ class _loginState extends State<login> {
       body: Container(
         width: double.infinity,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _logo(),
+            //_logo(),
             SizedBox(
               height: 20,
             ),

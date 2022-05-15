@@ -26,7 +26,7 @@ class splatscreenState extends State<splatscreen> {
              child: Column(
                mainAxisAlignment: MainAxisAlignment.center,
                children: const [
-                 Text('ຮ້ານເເອັດມານີ້',style: TextStyle(
+                 Text('ຮ້ານເເອັດມານີ',style: TextStyle(
                       color: Colors.white,fontSize: 44,fontWeight: FontWeight.bold
                  ),),
                  SizedBox(height: 20,)

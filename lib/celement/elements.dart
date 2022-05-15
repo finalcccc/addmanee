@@ -12,9 +12,9 @@ class element {
   //tiltal
   static String titall = "ຮ້ານເເອັດມານີ";
   static String p1 = "ຮັບອໍເດິ";
-  static String p2 = "ລົງທະບຽນຂອລພະນັກງານ";
+  static String p2 = "ລົງທະບຽນພະນັກງານ";
   static String p3 = "ຈັດການອໍເດິ";
-  static String p4 = "ອໍເດິທີສຳເລັດ";
+  static String p4 = "ເພີ່ມສິນຄ້າ";
 
   // option
   static butn(BuildContext context, String rout, var icons, Color colors, txt) {

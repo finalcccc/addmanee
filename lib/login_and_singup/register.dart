@@ -14,6 +14,7 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: element.main,
         leading: element.backpage(context),
       ),
       body: ListView(
@@ -38,14 +39,14 @@ class _RegisterState extends State<Register> {
     return Column(
       children: const [
         Text(
-          "Great Account",
+          "ລົງທະບຽນ",
           style: TextStyle(
             fontSize: 40,
             fontWeight: FontWeight.bold,
           ),
         ),
         Text(
-          "Enter detail to get started ",
+          "ຮ້ານເເອັດມານີ",
         ),
       ],
     );
@@ -57,7 +58,7 @@ class _RegisterState extends State<Register> {
       children: [
         TextField(
           decoration: InputDecoration(
-            hintText: "Username",
+            hintText: "ຊື່",
             fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
             filled: true,
             prefixIcon: const Icon(Icons.person),
@@ -83,7 +84,7 @@ class _RegisterState extends State<Register> {
         const SizedBox(height: 10),
         TextField(
           decoration: InputDecoration(
-            hintText: "Password",
+            hintText: "ລະຫັດຜ່ານ",
             fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
             filled: true,
             prefixIcon: const Icon(Icons.password_outlined),
@@ -97,7 +98,7 @@ class _RegisterState extends State<Register> {
         const SizedBox(height: 10),
         TextField(
           decoration: InputDecoration(
-            hintText: "Confirm Password",
+            hintText: "ຍືນຍັນລະຫັດຜ່ານ",
             fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
             filled: true,
             prefixIcon: const Icon(Icons.password_outlined),
@@ -111,7 +112,7 @@ class _RegisterState extends State<Register> {
         const SizedBox(height: 10),
         TextField(
           decoration: InputDecoration(
-            hintText: "Birth of date",
+            hintText: "ວັນ ເດືອນ ປີ ເກີດ",
             fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
             filled: true,
             prefixIcon: const Icon(Icons.person),
@@ -124,7 +125,7 @@ class _RegisterState extends State<Register> {
         const SizedBox(height: 10),
         TextField(
           decoration: InputDecoration(
-            hintText: "Address",
+            hintText: "ທີ່ຢູ່",
             fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
             filled: true,
             prefixIcon: const Icon(Icons.home_filled),
@@ -136,17 +137,19 @@ class _RegisterState extends State<Register> {
         ),
         const SizedBox(height: 20),
         ElevatedButton(
+
           onPressed: () {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const login()),
-            );
+            // Navigator.pushReplacement(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => const login()),
+           //  );
           },
           child: const Text(
-            "Sing Up",
+            "ບັນທືກ",
             style: TextStyle(fontSize: 20),
           ),
           style: ElevatedButton.styleFrom(
+              primary: element.main,
               shape: const StadiumBorder(),
               padding: const EdgeInsets.symmetric(vertical: 16)),
         ),
