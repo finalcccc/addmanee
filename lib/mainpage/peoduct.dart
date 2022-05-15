@@ -12,11 +12,10 @@ class _veiwproductState extends State<veiwproduct> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: element.backpage(context),
-      ),
-      body: buildCenter()
-    );
+        appBar: AppBar(
+          leading: element.backpage(context),
+        ),
+        body: buildCenter());
   }
 }
 
@@ -30,15 +29,15 @@ Widget buildCenter() {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               color: element.gray,
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   color: Colors.grey,
                   blurRadius: 1,
                 ),
               ]),
         ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
+        const Padding(
+          padding: EdgeInsets.all(8.0),
           child: Text("dd"),
         )
       ],

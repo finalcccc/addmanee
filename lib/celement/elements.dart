@@ -15,6 +15,7 @@ class element {
   static String p2 = "ລົງທະບຽນພະນັກງານ";
   static String p3 = "ຈັດການອໍເດິ";
   static String p4 = "ເພີ່ມສິນຄ້າ";
+  static String p5 = "ຜູ້ສະໜອງ";
 
   // option
   static butn(BuildContext context, String rout, var icons, Color colors, txt) {
@@ -33,7 +34,7 @@ class element {
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.shade500,
-                  offset: Offset(4.0, 4.0),
+                  offset: const Offset(4.0, 4.0),
                   blurRadius: 15,
                   spreadRadius: 1,
                 ),

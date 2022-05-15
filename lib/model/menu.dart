@@ -1,16 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/celement/router.dart';
 
-class menou extends StatefulWidget {
-  const menou({Key? key}) : super(key: key);
+class Menu extends StatefulWidget {
+  const Menu({Key? key}) : super(key: key);
 
   @override
-  State<menou> createState() => _menouState();
+  State<Menu> createState() => _MenuState();
 }
 
-class _menouState extends State<menou> {
+class _MenuState extends State<Menu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,14 +17,14 @@ class _menouState extends State<menou> {
       appBar: AppBar(
         backgroundColor: element.main,
         shadowColor: Colors.grey[300],
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         title: Center(
           child: Text(
             element.titall,
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
-        actions: [element.cartbuton(context, rout.charts)],
+        actions: [element.cartbuton(context, route.charts)],
       ),
       drawer: buildDrawer(),
       body: Container(
@@ -35,13 +34,15 @@ class _menouState extends State<menou> {
               crossAxisCount: 2, mainAxisSpacing: 10),
           children: [
             element.butn(
-                context, rout.prodc, Icons.shop, element.main, element.p1),
-            element.butn(context, rout.register, Icons.airplay, element.Indigo,
+                context, route.prodc, Icons.shop, element.main, element.p1),
+            element.butn(context, route.register, Icons.airplay, element.Indigo,
                 element.p2),
-            element.butn(context, rout.m_orders, Icons.border_color,
+            element.butn(context, route.m_orders, Icons.border_color,
                 element.ocean, element.p3),
-            element.butn(context, rout.win_order, Icons.article_rounded,
+            element.butn(context, route.win_order, Icons.article_rounded,
                 element.sky, element.p4),
+            element.butn(context, route.suppliyer, Icons.article_rounded,
+                element.sky, element.p5),
           ],
         ),
       ),
@@ -63,10 +64,11 @@ class _menouState extends State<menou> {
               style: TextStyle(fontSize: 26, color: Colors.white),
             ),
           ),
-          buildListTile(element.p1, rout.prodc),
-          buildListTile(element.p2, rout.register),
-          buildListTile(element.p3, rout.m_orders),
-          buildListTile(element.p4, rout.win_order),
+          buildListTile(element.p1, route.prodc),
+          buildListTile(element.p2, route.register),
+          buildListTile(element.p3, route.m_orders),
+          buildListTile(element.p4, route.win_order),
+          buildListTile(element.p5, route.suppliyer),
         ],
       ),
     );

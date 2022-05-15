@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/celement/elements.dart';
 
-class Register extends StatefulWidget {
-  const Register({Key? key}) : super(key: key);
+class Suppliyer extends StatefulWidget {
+  const Suppliyer({Key? key}) : super(key: key);
 
   @override
-  State<Register> createState() => _RegisterState();
+  State<Suppliyer> createState() => _SuppliyerState();
 }
 
-class _RegisterState extends State<Register> {
+class _SuppliyerState extends State<Suppliyer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +38,7 @@ class _RegisterState extends State<Register> {
     return Column(
       children: const [
         Text(
-          "ລົງທະບຽນຂໍ້ມູນພະນັກງານ",
+          "ຂໍ້ມູນຜູ້ສະໜອງ",
           style: TextStyle(
             fontSize: 30,
             fontWeight: FontWeight.bold,
@@ -87,34 +87,6 @@ class _RegisterState extends State<Register> {
         const SizedBox(height: 10),
         TextField(
           decoration: InputDecoration(
-            hintText: "ລະຫັດຜ່ານ",
-            fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
-            filled: true,
-            prefixIcon: const Icon(Icons.password_outlined),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(18),
-              borderSide: BorderSide.none,
-            ),
-          ),
-          obscureText: true,
-        ),
-        const SizedBox(height: 10),
-        TextField(
-          decoration: InputDecoration(
-            hintText: "ຍືນຍັນລະຫັດຜ່ານ",
-            fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
-            filled: true,
-            prefixIcon: const Icon(Icons.password_outlined),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(18),
-              borderSide: BorderSide.none,
-            ),
-          ),
-          obscureText: true,
-        ),
-        const SizedBox(height: 10),
-        TextField(
-          decoration: InputDecoration(
             hintText: "ເບີໂທລະສັບ",
             fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
             filled: true,
@@ -129,19 +101,6 @@ class _RegisterState extends State<Register> {
         const SizedBox(height: 10),
         TextField(
           decoration: InputDecoration(
-            hintText: "ວັນ ເດືອນ ປີ ເກີດ",
-            fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
-            filled: true,
-            prefixIcon: const Icon(Icons.person),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(18),
-              borderSide: BorderSide.none,
-            ),
-          ),
-        ),
-        const SizedBox(height: 10),
-        TextField(
-          decoration: InputDecoration(
             hintText: "ທີ່ຢູ່",
             fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
             filled: true,
@@ -151,34 +110,20 @@ class _RegisterState extends State<Register> {
               borderSide: BorderSide.none,
             ),
           ),
-        ),
-        const SizedBox(height: 10),
-        TextField(
-          decoration: InputDecoration(
-            hintText: "ສະຖານະ",
-            fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
-            filled: true,
-            prefixIcon: const Icon(Icons.signal_wifi_statusbar_4_bar_sharp),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(18),
-              borderSide: BorderSide.none,
-            ),
-          ),
           obscureText: true,
         ),
         const SizedBox(height: 10),
         TextField(
           decoration: InputDecoration(
-            hintText: "ຕຳແໜ່ງ",
+            hintText: "ສິນຄ້າຜູ້ສະໜອງ",
             fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
             filled: true,
-            prefixIcon: const Icon(Icons.signal_wifi_statusbar_4_bar_sharp),
+            prefixIcon: const Icon(Icons.production_quantity_limits),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(18),
               borderSide: BorderSide.none,
             ),
           ),
-          obscureText: true,
         ),
         const SizedBox(height: 20),
         ElevatedButton(

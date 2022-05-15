@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:untitled1/model/menou.dart';
+import 'package:untitled1/model/menu.dart';
 
 class login extends StatefulWidget {
   const login({Key? key}) : super(key: key);
@@ -151,9 +151,8 @@ Widget _loginBtn(BuildContext context) {
           ),
         ]),
     child: FlatButton(
-      onPressed: () => {
-        Navigator.push(context, CupertinoPageRoute(builder: (_) => menou()))
-      },
+      onPressed: () =>
+          {Navigator.push(context, CupertinoPageRoute(builder: (_) => Menu()))},
       padding: EdgeInsets.symmetric(vertical: 25),
       child: Text(
         "SIGN IN",
