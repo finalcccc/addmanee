@@ -151,8 +151,9 @@ Widget _loginBtn(BuildContext context) {
           ),
         ]),
     child: FlatButton(
-      onPressed: () =>
-          {Navigator.push(context, CupertinoPageRoute(builder: (_) => Menu()))},
+      onPressed: () => {
+        Navigator.push(context, CupertinoPageRoute(builder: (_) => Menu()))
+      },
       padding: EdgeInsets.symmetric(vertical: 25),
       child: Text(
         "SIGN IN",

@@ -153,26 +153,26 @@ class _RegisterState extends State<Register> {
           ),
         ),
         const SizedBox(height: 10),
-        TextField(
-          decoration: InputDecoration(
-            hintText: "ສະຖານະ",
-            fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
-            filled: true,
-            prefixIcon: const Icon(Icons.signal_wifi_statusbar_4_bar_sharp),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(18),
-              borderSide: BorderSide.none,
-            ),
-          ),
-          obscureText: true,
-        ),
+        // TextField(
+        //   decoration: InputDecoration(
+        //     hintText: "ສະຖານະ",
+        //     fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
+        //     filled: true,
+        //     prefixIcon: const Icon(Icons.signal_wifi_statusbar_4_bar_sharp),
+        //     border: OutlineInputBorder(
+        //       borderRadius: BorderRadius.circular(18),
+        //       borderSide: BorderSide.none,
+        //     ),
+        //   ),
+        //   obscureText: true,
+        // ),
         const SizedBox(height: 10),
         TextField(
           decoration: InputDecoration(
             hintText: "ຕຳແໜ່ງ",
             fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
             filled: true,
-            prefixIcon: const Icon(Icons.signal_wifi_statusbar_4_bar_sharp),
+            prefixIcon: const Icon(Icons.work_outline),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(18),
               borderSide: BorderSide.none,

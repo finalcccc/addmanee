@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/celement/elements.dart';
 
-class win_dorders extends StatefulWidget {
-  const win_dorders({Key? key}) : super(key: key);
+class product extends StatefulWidget {
+  const product({Key? key}) : super(key: key);
 
   @override
-  State<win_dorders> createState() => _win_dordersState();
+  State<product> createState() => _productState();
 }
 
-class _win_dordersState extends State<win_dorders> {
+class _productState extends State<product> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

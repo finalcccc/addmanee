@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:untitled1/common/cart.dart';
 import 'package:untitled1/mainpage/m_order.dart';
 import 'package:untitled1/mainpage/peoduct.dart';
-import 'package:untitled1/mainpage/supplyer.dart';
-import 'package:untitled1/mainpage/win_orders.dart';
+import 'package:untitled1/mainpage/product.dart';
 import 'package:untitled1/celement/router.dart';
 import 'package:untitled1/model/screen.dart';
 
@@ -26,10 +24,8 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         route.prodc: (BuildContext context) => const veiwproduct(),
         route.register: (BuildContext context) => const Register(),
-        route.win_order: (BuildContext context) => const win_dorders(),
+        route.product: (BuildContext context) => const product(),
         route.m_orders: (BuildContext context) => const m_order(),
-        route.charts: (BuildContext context) => const Cart(),
-        route.suppliyer: (BuildContext context) => const Suppliyer(),
       },
     );
   }
