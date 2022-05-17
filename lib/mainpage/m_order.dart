@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -13,30 +15,31 @@ class _m_orderState extends State<m_order> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: firebase,
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Scaffold(
-              appBar: AppBar(
-                title: const Text("eror"),
-              ),
-              body: Center(
-                child: Text("${snapshot.error}"),
-              ),
-            );
-          }
-          if (snapshot.connectionState == ConnectionState.done) {
-            return Scaffold(
-              body: Center(
-                child: Text('${snapshot.connectionState}'),
-              ),
-            );
-          }
-          return const Scaffold(
+      future: firebase,
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return Scaffold(
+            appBar: AppBar(
+              title: const Text("error"),
+            ),
             body: Center(
-              child: CircularProgressIndicator(),
+              child: Text("${snapshot.error}"),
             ),
           );
-        });
+        }
+        if (snapshot.connectionState == ConnectionState.done) {
+          return Scaffold(
+            body: Center(
+              child: Text('${snapshot.connectionState}'),
+            ),
+          );
+        }
+        return const Scaffold(
+          body: Center(
+            child: CircularProgressIndicator(),
+          ),
+        );
+      },
+    );
   }
 }

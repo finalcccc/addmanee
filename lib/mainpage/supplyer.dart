@@ -133,14 +133,17 @@ class _SuppliyerState extends State<Suppliyer> {
             //   MaterialPageRoute(builder: (context) => const login()),
             //  );
           },
-          child: const Text(
-            "ບັນທືກ",
-            style: TextStyle(fontSize: 20),
-          ),
           style: ElevatedButton.styleFrom(
               primary: element.main,
               shape: const StadiumBorder(),
               padding: const EdgeInsets.symmetric(vertical: 16)),
+          child: const Text(
+            "ບັນທືກ",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
       ],
     );

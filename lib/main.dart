@@ -3,9 +3,8 @@ import 'package:untitled1/mainpage/m_order.dart';
 import 'package:untitled1/mainpage/peoduct.dart';
 import 'package:untitled1/mainpage/product.dart';
 import 'package:untitled1/celement/router.dart';
-import 'package:untitled1/model/screen.dart';
-
-import 'login_and_singup/register.dart';
+import 'screen/register.dart';
+import 'screen/screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +23,7 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         route.prodc: (BuildContext context) => const veiwproduct(),
         route.register: (BuildContext context) => const Register(),
-        route.product: (BuildContext context) => const product(),
+        route.product: (BuildContext context) => const Product(),
         route.m_orders: (BuildContext context) => const m_order(),
       },
     );

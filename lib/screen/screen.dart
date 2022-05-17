@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled1/login_and_singup/login.dart';
 import 'dart:async';
+
+import 'login.dart';
 
 class SplatScreen extends StatefulWidget {
   const SplatScreen({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class SplatScreenState extends State<SplatScreen> {
         () => Navigator.push(
             context,
             CupertinoPageRoute(
-              builder: (_) => const login(),
+              builder: (_) => const Login(),
             )));
     super.initState();
   }

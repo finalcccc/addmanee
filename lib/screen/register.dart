@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/model/profile.dart';
@@ -139,53 +139,56 @@ class _RegisterState extends State<Register> {
           ),
           const SizedBox(height: 10),
           TextFormField(
-              decoration: InputDecoration(
-                hintText: "ລະຫັດຜ່ານ",
-                fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
-                filled: true,
-                prefixIcon: const Icon(Icons.lock),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(18),
-                  borderSide: BorderSide.none,
-                ),
+            decoration: InputDecoration(
+              hintText: "ລະຫັດຜ່ານ",
+              fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
+              filled: true,
+              prefixIcon: const Icon(Icons.lock),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(18),
+                borderSide: BorderSide.none,
               ),
-              keyboardType: TextInputType.number,
-              obscureText: true,
-              onSaved: (String? password) {
-                profile.password = password;
-              },
-              validator: (String? password) {
-                if (password!.isEmpty) {
-                  return "ກະລຸນາປ້ອນລະຫັດຜ່ານ";
-                } else if (password.length < 6) {
-                  return "ລະຫັດຜ່ານມັນສັ້ນເກີນໄປ";
-                }
-                return null;
-              }),
+            ),
+            keyboardType: TextInputType.number,
+            obscureText: true,
+            onSaved: (String? password) {
+              profile.password = password;
+            },
+            validator: (String? password) {
+              if (password!.isEmpty) {
+                return "ກະລຸນາປ້ອນລະຫັດຜ່ານ";
+              } else if (password.length < 6) {
+                return "ລະຫັດຜ່ານມັນສັ້ນເກີນໄປ";
+              }
+              return null;
+            },
+          ),
           const SizedBox(height: 10),
           TextFormField(
-              decoration: InputDecoration(
-                hintText: "ຍືນຍັນລະຫັດຜ່ານ",
-                fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
-                filled: true,
-                prefixIcon: const Icon(Icons.lock),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(18),
-                  borderSide: BorderSide.none,
-                ),
+            decoration: InputDecoration(
+              hintText: "ຍືນຍັນລະຫັດຜ່ານ",
+              fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
+              filled: true,
+              prefixIcon: const Icon(Icons.lock),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(18),
+                borderSide: BorderSide.none,
               ),
-              obscureText: true,
-              keyboardType: TextInputType.number,
-              onSaved: (String? confirmPassword) {
-                profile.confirmPassword = confirmPassword;
-              },
-              validator: (String? confirmPassword) {
-                if (profile.confirmPassword == profile.password) {
-                  return null;
-                } else if (profile.confirmPassword != profile.password) {
-                  return "ລະຫັດ ແລະ ຄອນເຟີມລະຫັດມັນບໍ່ເທົ່າກັນ";
-                }
-              }),
+            ),
+            obscureText: true,
+            keyboardType: TextInputType.number,
+            onSaved: (String? confirmPassword) {
+              profile.confirmPassword = confirmPassword;
+            },
+            validator: (String? confirmPassword) {
+              if (profile.confirmPassword == profile.password) {
+                return null;
+              } else if (profile.confirmPassword != profile.password) {
+                return "ລະຫັດ ແລະ ຄອນເຟີມລະຫັດມັນບໍ່ເທົ່າກັນ";
+              }
+              return null;
+            },
+          ),
           const SizedBox(height: 10),
           TextFormField(
               decoration: InputDecoration(
@@ -279,10 +282,6 @@ class _RegisterState extends State<Register> {
           ),
           const SizedBox(height: 20),
           ElevatedButton(
-            child: const Text(
-              "ບັນທືກ",
-              style: TextStyle(fontSize: 20),
-            ),
             style: ElevatedButton.styleFrom(
               primary: element.main,
               shape: const StadiumBorder(),
@@ -301,12 +300,28 @@ class _RegisterState extends State<Register> {
                     email: profile.email!,
                     password: profile.password!,
                   );
+                  Fluttertoast.showToast(
+                    msg: "ລົງທະບຽນຮຽບຮ້ອຍແລ້ວ",
+                    gravity: ToastGravity.CENTER,
+                  );
                   formKey.currentState!.reset();
                 } on FirebaseAuthException catch (e) {
-                  print(e.message);
+                  // print(e.message);
+                  // print(e.code);
+                  Fluttertoast.showToast(
+                    msg: e.message!,
+                    gravity: ToastGravity.CENTER,
+                  );
                 }
               }
             },
+            child: const Text(
+              "ບັນທືກ",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
         ],
       ),
