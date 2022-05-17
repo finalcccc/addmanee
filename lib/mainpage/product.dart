@@ -30,54 +30,55 @@ class _productState extends State<product> {
         backgroundColor: element.main,
         leading: element.backpage(context),
       ),
-      body:  SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            SizedBox(
+            const SizedBox(
               height: 32,
             ),
             Center(
               child: GestureDetector(
                 onTap: () {
-                     pickimage();
+                  pickimage();
                 },
                 child: CircleAvatar(
                   radius: 55,
-                  backgroundColor: Color(0xffFDCF09),
+                  backgroundColor: const Color(0xffFDCF09),
                   child: imagep != null
                       ? ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.file(
-                      imagep!,
-                      width: 100,
-                      height: 100,
-                      fit: BoxFit.fitHeight,
-                    ),
-                  )
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.file(
+                            imagep!,
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.fitHeight,
+                          ),
+                        )
                       : Container(
-                    decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        borderRadius: BorderRadius.circular(50)),
-                    width: 100,
-                    height: 100,
-                    child: Icon(
-                      Icons.camera_alt,
-                      color: Colors.grey[800],
-                    ),
-                  ),
+                          decoration: BoxDecoration(
+                              color: Colors.grey[200],
+                              borderRadius: BorderRadius.circular(50)),
+                          width: 100,
+                          height: 100,
+                          child: Icon(
+                            Icons.camera_alt,
+                            color: Colors.grey[800],
+                          ),
+                        ),
                 ),
               ),
-
             ),
-          SizedBox(height: 20,),
-          _inputFields(context)
+            const SizedBox(
+              height: 20,
+            ),
+            _inputFields(context)
           ],
-
         ),
       ),
     );
   }
 }
+
 _inputFields(context) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -119,7 +120,6 @@ _inputFields(context) {
             borderSide: BorderSide.none,
           ),
         ),
-        obscureText: true,
       ),
       const SizedBox(height: 10),
       TextField(
@@ -133,7 +133,6 @@ _inputFields(context) {
             borderSide: BorderSide.none,
           ),
         ),
-        obscureText: true,
       ),
       const SizedBox(height: 10),
       TextField(
@@ -147,7 +146,6 @@ _inputFields(context) {
             borderSide: BorderSide.none,
           ),
         ),
-        obscureText: true,
       ),
       const SizedBox(height: 10),
       TextField(
@@ -161,7 +159,6 @@ _inputFields(context) {
             borderSide: BorderSide.none,
           ),
         ),
-        obscureText: true,
       ),
       const SizedBox(height: 20),
       ElevatedButton(
@@ -183,4 +180,3 @@ _inputFields(context) {
     ],
   );
 }
-

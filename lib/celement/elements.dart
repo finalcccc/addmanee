@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class element {
   //color
-  static var main = Color(0xff0031CA);
-  static var Indigo = Color(0xff281E5D);
-  static var ocean = Color(0xff016064);
-  static var sky = Color(0xff63c5da);
-  static var wht = Color(0xffFAFAFA);
-  static var gray = Color(0xffF7F7F7);
+  static var main = const Color(0xff0031CA);
+  static var Indigo = const Color(0xff281E5D);
+  static var ocean = const Color(0xff016064);
+  static var sky = const Color(0xff63c5da);
+  static var wht = const Color(0xffFAFAFA);
+  static var gray = const Color(0xffF7F7F7);
 
   //tiltal
   static String titall = "ຮ້ານເເອັດມານີ";
