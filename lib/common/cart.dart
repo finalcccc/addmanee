@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:untitled1/celement/elements.dart';
 
@@ -30,9 +32,9 @@ class _CartState extends State<Cart> {
                   decoration: InputDecoration(
                 contentPadding: const EdgeInsets.symmetric(vertical: 8),
                 labelText: "Search Products:",
-                border: myinputborder(),
-                enabledBorder: myinputborder(),
-                focusedBorder: myfocusborder(),
+                border: MyinputBorder(),
+                enabledBorder: MyinputBorder(),
+                focusedBorder: MyfocusBorder(),
               )),
             ),
             Padding(
@@ -47,13 +49,14 @@ class _CartState extends State<Cart> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
-                      child: Text(
-                    "ຄົ້ນຫາ",
-                    style: TextStyle(
-                        color: element.wht,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold),
-                  )),
+                    child: Text(
+                      "ຄົ້ນຫາ",
+                      style: TextStyle(
+                          color: element.wht,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -64,9 +67,9 @@ class _CartState extends State<Cart> {
   }
 }
 
-OutlineInputBorder myinputborder() {
+OutlineInputBorder MyinputBorder() {
   //return type is OutlineInputBorder
-  return OutlineInputBorder(
+  return const OutlineInputBorder(
       //Outline border type for TextFeild
       borderRadius: BorderRadius.all(Radius.circular(20)),
       borderSide: BorderSide(
@@ -75,11 +78,12 @@ OutlineInputBorder myinputborder() {
       ));
 }
 
-OutlineInputBorder myfocusborder() {
-  return OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(20)),
-      borderSide: BorderSide(
-        color: Colors.greenAccent,
-        width: 3,
-      ));
+OutlineInputBorder MyfocusBorder() {
+  return const OutlineInputBorder(
+    borderRadius: BorderRadius.all(Radius.circular(20)),
+    borderSide: BorderSide(
+      color: Colors.greenAccent,
+      width: 3,
+    ),
+  );
 }

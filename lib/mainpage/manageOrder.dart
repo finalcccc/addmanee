@@ -1,16 +1,14 @@
-// ignore_for_file: camel_case_types
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-class m_order extends StatefulWidget {
-  const m_order({Key? key}) : super(key: key);
+class ManageOrder extends StatefulWidget {
+  const ManageOrder({Key? key}) : super(key: key);
 
   @override
-  State<m_order> createState() => _m_orderState();
+  State<ManageOrder> createState() => _ManageOrderState();
 }
 
-class _m_orderState extends State<m_order> {
+class _ManageOrderState extends State<ManageOrder> {
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
   @override
   Widget build(BuildContext context) {

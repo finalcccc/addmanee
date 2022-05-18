@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, camel_case_types
+
 class route {
   static String prodc = '/viewproduct';
   static String register = '/Register';

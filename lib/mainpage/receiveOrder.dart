@@ -1,16 +1,14 @@
-// ignore_for_file: camel_case_types
-
 import 'package:flutter/material.dart';
 import 'package:untitled1/celement/elements.dart';
 
-class veiwproduct extends StatefulWidget {
-  const veiwproduct({Key? key}) : super(key: key);
+class ReceiveOrder extends StatefulWidget {
+  const ReceiveOrder({Key? key}) : super(key: key);
 
   @override
-  State<veiwproduct> createState() => _veiwproductState();
+  State<ReceiveOrder> createState() => _ReceiveOrderState();
 }
 
-class _veiwproductState extends State<veiwproduct> {
+class _ReceiveOrderState extends State<ReceiveOrder> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,6 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/model/profile.dart';
@@ -16,6 +15,8 @@ class Register extends StatefulWidget {
 final formKey = GlobalKey<FormState>();
 Profile profile = Profile();
 final Future<FirebaseApp> firebase = Firebase.initializeApp();
+CollectionReference employeeCollection =
+    FirebaseFirestore.instance.collection("employee");
 
 class _RegisterState extends State<Register> {
   @override
@@ -44,7 +45,6 @@ class _RegisterState extends State<Register> {
                 Container(
                   margin: const EdgeInsets.all(24),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       _header(context),
                       const SizedBox(height: 40),
@@ -94,7 +94,7 @@ class _RegisterState extends State<Register> {
         children: [
           TextFormField(
               decoration: InputDecoration(
-                hintText: "ຊື່",
+                hintText: "ຊື່ ແລະ ນາມສະກຸນ",
                 fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
                 filled: true,
                 prefixIcon: const Icon(Icons.person),
@@ -295,24 +295,36 @@ class _RegisterState extends State<Register> {
 
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
-                try {
-                  await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                    email: profile.email!,
-                    password: profile.password!,
-                  );
-                  Fluttertoast.showToast(
-                    msg: "ລົງທະບຽນຮຽບຮ້ອຍແລ້ວ",
-                    gravity: ToastGravity.CENTER,
-                  );
-                  formKey.currentState!.reset();
-                } on FirebaseAuthException catch (e) {
-                  // print(e.message);
-                  // print(e.code);
-                  Fluttertoast.showToast(
-                    msg: e.message!,
-                    gravity: ToastGravity.CENTER,
-                  );
-                }
+                await employeeCollection.add({
+                  "name": profile.name,
+                  "email": profile.email,
+                  "password": profile.password,
+                  "confirmPassword": profile.confirmPassword,
+                  "tel": profile.tel,
+                  "date": profile.date,
+                  "address": profile.address,
+                  "position": profile.position,
+                });
+                formKey.currentState?.reset();
+                // email and passwor authencation
+                // try {
+                //   await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                //     email: profile.email!,
+                //     password: profile.password!,
+                //   );
+                //   Fluttertoast.showToast(
+                //     msg: "ລົງທະບຽນຮຽບຮ້ອຍແລ້ວ",
+                //     gravity: ToastGravity.CENTER,
+                //   );
+                //   formKey.currentState!.reset();
+                // } on FirebaseAuthException catch (e) {
+                //   // print(e.message);
+                //   // print(e.code);
+                //   Fluttertoast.showToast(
+                //     msg: e.message!,
+                //     gravity: ToastGravity.CENTER,
+                //   );
+                // }
               }
             },
             child: const Text(

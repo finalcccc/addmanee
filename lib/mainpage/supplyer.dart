@@ -61,7 +61,7 @@ class _SuppliyerState extends State<Suppliyer> {
       children: [
         TextField(
           decoration: InputDecoration(
-            hintText: "ຊື່",
+            hintText: "ຊື່ ແລະ ນາມສະກຸນ",
             fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
             filled: true,
             prefixIcon: const Icon(Icons.person),
@@ -125,7 +125,7 @@ class _SuppliyerState extends State<Suppliyer> {
             ),
           ),
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 40),
         ElevatedButton(
           onPressed: () {
             // Navigator.pushReplacement(

@@ -4,14 +4,14 @@ import 'dart:async';
 
 import 'login.dart';
 
-class SplatScreen extends StatefulWidget {
-  const SplatScreen({Key? key}) : super(key: key);
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
-  State<SplatScreen> createState() => SplatScreenState();
+  State<SplashScreen> createState() => SplashScreenState();
 }
 
-class SplatScreenState extends State<SplatScreen> {
+class SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Timer(
@@ -45,7 +45,7 @@ class SplatScreenState extends State<SplatScreen> {
             ),
             CircularProgressIndicator(
               color: Colors.white,
-            )
+            ),
           ],
         )),
       ),
