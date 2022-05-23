@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/model/supplier_data.dart';
@@ -89,9 +90,7 @@ class _SupplierState extends State<Supplier> {
   _inputFields(context) {
     return Form(
       key: formKey,
-      child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
+      child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         TextFormField(
           decoration: InputDecoration(
             hintText: "ຊື່ ແລະ ນາມສະກຸນ",
@@ -216,6 +215,13 @@ class _SupplierState extends State<Supplier> {
                 "supplierProduct": supplierData.supplyProduct,
               });
               formKey.currentState!.reset();
+              Fluttertoast.showToast(
+                msg: "ໄດ້ເພີ່ມຂໍ້ມູນຜູ້ສະໜອງແລ້ວ",
+                fontSize: 20,
+                gravity: ToastGravity.CENTER,
+                backgroundColor: Colors.white,
+                textColor: Colors.black,
+              );
             }
           },
           child: const Text(

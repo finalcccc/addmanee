@@ -21,8 +21,6 @@ final formKey = GlobalKey<FormState>();
 
 String? name, email, password, confirmPassword, tel, date, address, position;
 final Future<FirebaseApp> firebase = Firebase.initializeApp();
-// CollectionReference employeeCollection =
-//     FirebaseFirestore.instance.collection("employee");
 
 class _RegisterState extends State<Register> {
   @override
@@ -109,9 +107,6 @@ class _RegisterState extends State<Register> {
                   borderSide: BorderSide.none,
                 ),
               ),
-              // onSaved: (String? value) {
-              //   name = value;
-              // },
               onChanged: (value) => name = value.trim(),
               validator: (String? name) {
                 if (name!.isEmpty) {
@@ -134,9 +129,6 @@ class _RegisterState extends State<Register> {
               ),
             ),
             keyboardType: TextInputType.emailAddress,
-            // onSaved: (String? value) {
-            // email = value;
-            // },
             onChanged: (value) => email = value.trim(),
             validator: MultiValidator(
               [
@@ -159,9 +151,6 @@ class _RegisterState extends State<Register> {
             ),
             keyboardType: TextInputType.number,
             obscureText: true,
-            // onSaved: (String? value) {
-            //  password = value;
-            // },
             onChanged: (value) => password = value.trim(),
             validator: (String? password) {
               if (password!.isEmpty) {
@@ -186,9 +175,6 @@ class _RegisterState extends State<Register> {
             ),
             obscureText: true,
             keyboardType: TextInputType.number,
-            // onSaved: (String? value) {
-            //  confirmPassword = value;
-            // },
             onChanged: (value) => confirmPassword = value.trim(),
             validator: (String? confirmPassword) {
               if (confirmPassword == password) {
@@ -212,9 +198,6 @@ class _RegisterState extends State<Register> {
                 ),
               ),
               keyboardType: TextInputType.number,
-              // onSaved: (String? value) {
-              //   tel = value;
-              // },
               onChanged: (value) => tel = value.trim(),
               validator: (String? tel) {
                 if (tel!.isEmpty) {
@@ -237,9 +220,6 @@ class _RegisterState extends State<Register> {
               ),
             ),
             keyboardType: TextInputType.number,
-            // onSaved: (String? value) {
-            //   date = value;
-            // },
             onChanged: (value) => date = value.trim(),
             validator:
                 RequiredValidator(errorText: "ກະລຸນາປ້ອນ ວັນ ເດືອນ ປີ ເກີດ"),
@@ -256,26 +236,9 @@ class _RegisterState extends State<Register> {
                 borderSide: BorderSide.none,
               ),
             ),
-            // onSaved: (String? value) {
-            //  address = value;
-            // },
             onChanged: (value) => address = value.trim(),
             validator: RequiredValidator(errorText: "ກະລຸນາປ້ອນທີ່ຢູ່"),
           ),
-          const SizedBox(height: 10),
-          // TextField(
-          //   decoration: InputDecoration(
-          //     hintText: "ສະຖານະ",
-          //     fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
-          //     filled: true,
-          //     prefixIcon: const Icon(Icons.signal_wifi_statusbar_4_bar_sharp),
-          //     border: OutlineInputBorder(
-          //       borderRadius: BorderRadius.circular(18),
-          //       borderSide: BorderSide.none,
-          //     ),
-          //   ),
-          //   obscureText: true,
-          // ),
           const SizedBox(height: 10),
           TextFormField(
             decoration: InputDecoration(
@@ -288,9 +251,6 @@ class _RegisterState extends State<Register> {
                 borderSide: BorderSide.none,
               ),
             ),
-            // onSaved: (String? value) {
-            //   position = value;
-            // },
             onChanged: (value) => position = value.trim(),
             validator: RequiredValidator(errorText: "ກະລຸນາປ້ອນຕຳແໜ່ງ"),
           ),
@@ -330,7 +290,7 @@ class _RegisterState extends State<Register> {
                       position: position!,
                       date: date!,
                     );
-                   final  Map<String, dynamic>? data = employeeData.toMap();
+                    final Map<String, dynamic>? data = employeeData.toMap();
                     await FirebaseFirestore.instance
                         .collection("employees")
                         .doc(uid)
@@ -350,25 +310,6 @@ class _RegisterState extends State<Register> {
                   );
                 }
               }
-
-              // if (formKey.currentState!.validate()) {
-              //   formKey.currentState!.save();
-              //   await employeeCollection.add({
-              //     "name": profile.name,
-              //     "email": profile.email,
-              //     "password": profile.password,
-              //     "confirmPassword": profile.confirmPassword,
-              //     "tel": profile.tel,
-              //     "date": profile.date,
-              //     "address": profile.address,
-              //     "position": profile.position,
-              //   });
-              //   formKey.currentState?.reset();
-              //  // Navigator.pushReplacement(
-              //                 context,
-              //                MaterialPageRoute(builder: (context) => const login()),
-              //                );
-              // }
             },
             child: const Text(
               "ບັນທືກ",

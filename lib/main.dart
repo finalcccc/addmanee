@@ -3,7 +3,7 @@ import 'package:untitled1/mainpage/manageOrder.dart';
 import 'package:untitled1/mainpage/receiveOrder.dart';
 import 'package:untitled1/mainpage/appProduct.dart';
 import 'package:untitled1/celement/router.dart';
-import 'package:untitled1/mainpage/supplier.dart';
+import 'package:untitled1/screen/supplier.dart';
 import 'screen/register.dart';
 import 'screen/splashScreen .dart';
 

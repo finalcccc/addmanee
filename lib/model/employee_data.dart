@@ -1,21 +1,21 @@
 class EmployeeData {
-  final String name;
-  final String email;
-  final String password;
-  final String confirmPassword;
-  final String tel;
-  final String date;
-  final String address;
-  final String position;
+  String? name;
+  String? email;
+  String? password;
+  String? confirmPassword;
+  String? tel;
+  String? date;
+  String? address;
+  String? position;
   EmployeeData({
-    required this.email,
-    required this.password,
-    required this.name,
-    required this.date,
-    required this.address,
-    required this.confirmPassword,
-    required this.position,
-    required this.tel,
+    this.email,
+    this.password,
+    this.name,
+    this.date,
+    this.address,
+    this.confirmPassword,
+    this.position,
+    this.tel,
   });
 
   Map<String, dynamic>? toMap() {

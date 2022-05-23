@@ -10,7 +10,7 @@ class AddProduct extends StatefulWidget {
   @override
   State<AddProduct> createState() => _AddProductState();
 }
-
+String? name, email, password, confirmPassword, tel, date, address, position;
 class _AddProductState extends State<AddProduct> {
   File? image;
 
@@ -48,12 +48,12 @@ class _AddProductState extends State<AddProduct> {
                   backgroundColor: const Color(0xffFDCF09),
                   child: image != null
                       ? ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(50),
                           child: Image.file(
                             image!,
                             width: 100,
                             height: 100,
-                            fit: BoxFit.fitHeight,
+                            fit: BoxFit.cover,
                           ),
                         )
                       : Container(
@@ -124,6 +124,7 @@ _inputFields(context) {
               borderSide: BorderSide.none,
             ),
           ),
+          keyboardType: TextInputType.number,
         ),
         const SizedBox(height: 10),
         TextField(
@@ -137,6 +138,7 @@ _inputFields(context) {
               borderSide: BorderSide.none,
             ),
           ),
+          keyboardType: TextInputType.number,
         ),
         const SizedBox(height: 10),
         TextField(
@@ -150,6 +152,7 @@ _inputFields(context) {
               borderSide: BorderSide.none,
             ),
           ),
+          keyboardType: TextInputType.number,
         ),
         const SizedBox(height: 10),
         TextField(
@@ -166,16 +169,11 @@ _inputFields(context) {
         ),
         const SizedBox(height: 40),
         ElevatedButton(
-          onPressed: () {
-            // Navigator.pushReplacement(
-            //   context,
-            //   MaterialPageRoute(builder: (context) => const login()),
-            //  );
-          },
           style: ElevatedButton.styleFrom(
               primary: element.main,
               shape: const StadiumBorder(),
               padding: const EdgeInsets.symmetric(vertical: 16)),
+          onPressed: () {},
           child: const Text(
             "ບັນທືກ",
             style: TextStyle(fontSize: 20),
