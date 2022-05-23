@@ -51,9 +51,10 @@ class _Login extends State<Login> {
                 ),
               ),
               keyboardType: TextInputType.emailAddress,
-              onSaved: (String? email) {
-                profile.email = email;
-              },
+              // onSaved: (String? email) {
+              //   profile.email = email;
+              // },
+              onChanged: (value)=> email = value.trim(),
               validator: MultiValidator(
                 [
                   RequiredValidator(errorText: "ກະລຸນາປ້ອນອີເມວ"),
@@ -75,9 +76,10 @@ class _Login extends State<Login> {
               ),
               keyboardType: TextInputType.number,
               obscureText: true,
-              onSaved: (String? password) {
-                profile.password = password;
-              },
+              // onSaved: (String? password) {
+              //   profile.password = password;
+              // },
+              onChanged: (value)=> password = value.trim(),
               validator: (String? password) {
                 if (password!.isEmpty) {
                   return "ກະລຸນາປ້ອນລະຫັດຜ່ານ";

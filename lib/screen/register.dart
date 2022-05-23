@@ -1,9 +1,14 @@
+// ignore_for_file: avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:untitled1/celement/elements.dart';
-import 'package:untitled1/model/profile.dart';
 import 'package:firebase_core/firebase_core.dart';
+
+import '../model/employee_data.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -13,10 +18,11 @@ class Register extends StatefulWidget {
 }
 
 final formKey = GlobalKey<FormState>();
-Profile profile = Profile();
+
+String? name, email, password, confirmPassword, tel, date, address, position;
 final Future<FirebaseApp> firebase = Firebase.initializeApp();
-CollectionReference employeeCollection =
-    FirebaseFirestore.instance.collection("employee");
+// CollectionReference employeeCollection =
+//     FirebaseFirestore.instance.collection("employee");
 
 class _RegisterState extends State<Register> {
   @override
@@ -103,9 +109,10 @@ class _RegisterState extends State<Register> {
                   borderSide: BorderSide.none,
                 ),
               ),
-              onSaved: (String? name) {
-                profile.name = name;
-              },
+              // onSaved: (String? value) {
+              //   name = value;
+              // },
+              onChanged: (value) => name = value.trim(),
               validator: (String? name) {
                 if (name!.isEmpty) {
                   return "ກະລຸນາປ້ອນຊື່ ແລະ ນາມສະກຸນ";
@@ -127,9 +134,10 @@ class _RegisterState extends State<Register> {
               ),
             ),
             keyboardType: TextInputType.emailAddress,
-            onSaved: (String? email) {
-              profile.email = email;
-            },
+            // onSaved: (String? value) {
+            // email = value;
+            // },
+            onChanged: (value) => email = value.trim(),
             validator: MultiValidator(
               [
                 RequiredValidator(errorText: "ກະລຸນາປ້ອນອີເມວ"),
@@ -151,9 +159,10 @@ class _RegisterState extends State<Register> {
             ),
             keyboardType: TextInputType.number,
             obscureText: true,
-            onSaved: (String? password) {
-              profile.password = password;
-            },
+            // onSaved: (String? value) {
+            //  password = value;
+            // },
+            onChanged: (value) => password = value.trim(),
             validator: (String? password) {
               if (password!.isEmpty) {
                 return "ກະລຸນາປ້ອນລະຫັດຜ່ານ";
@@ -177,13 +186,14 @@ class _RegisterState extends State<Register> {
             ),
             obscureText: true,
             keyboardType: TextInputType.number,
-            onSaved: (String? confirmPassword) {
-              profile.confirmPassword = confirmPassword;
-            },
+            // onSaved: (String? value) {
+            //  confirmPassword = value;
+            // },
+            onChanged: (value) => confirmPassword = value.trim(),
             validator: (String? confirmPassword) {
-              if (profile.confirmPassword == profile.password) {
+              if (confirmPassword == password) {
                 return null;
-              } else if (profile.confirmPassword != profile.password) {
+              } else if (confirmPassword != password) {
                 return "ລະຫັດ ແລະ ຄອນເຟີມລະຫັດມັນບໍ່ເທົ່າກັນ";
               }
               return null;
@@ -202,9 +212,10 @@ class _RegisterState extends State<Register> {
                 ),
               ),
               keyboardType: TextInputType.number,
-              onSaved: (String? tel) {
-                profile.tel = tel;
-              },
+              // onSaved: (String? value) {
+              //   tel = value;
+              // },
+              onChanged: (value) => tel = value.trim(),
               validator: (String? tel) {
                 if (tel!.isEmpty) {
                   return "ກະລຸນາປ້ອນເບີໂທລະສັບ";
@@ -226,9 +237,10 @@ class _RegisterState extends State<Register> {
               ),
             ),
             keyboardType: TextInputType.number,
-            onSaved: (String? date) {
-              profile.date = date;
-            },
+            // onSaved: (String? value) {
+            //   date = value;
+            // },
+            onChanged: (value) => date = value.trim(),
             validator:
                 RequiredValidator(errorText: "ກະລຸນາປ້ອນ ວັນ ເດືອນ ປີ ເກີດ"),
           ),
@@ -244,9 +256,10 @@ class _RegisterState extends State<Register> {
                 borderSide: BorderSide.none,
               ),
             ),
-            onSaved: (String? address) {
-              profile.address = address;
-            },
+            // onSaved: (String? value) {
+            //  address = value;
+            // },
+            onChanged: (value) => address = value.trim(),
             validator: RequiredValidator(errorText: "ກະລຸນາປ້ອນທີ່ຢູ່"),
           ),
           const SizedBox(height: 10),
@@ -275,9 +288,10 @@ class _RegisterState extends State<Register> {
                 borderSide: BorderSide.none,
               ),
             ),
-            onSaved: (String? position) {
-              profile.position = position;
-            },
+            // onSaved: (String? value) {
+            //   position = value;
+            // },
+            onChanged: (value) => position = value.trim(),
             validator: RequiredValidator(errorText: "ກະລຸນາປ້ອນຕຳແໜ່ງ"),
           ),
           const SizedBox(height: 20),
@@ -288,44 +302,73 @@ class _RegisterState extends State<Register> {
               padding: const EdgeInsets.symmetric(vertical: 16),
             ),
             onPressed: () async {
-              // Navigator.pushReplacement(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => const login()),
-              //  );
-
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
-                await employeeCollection.add({
-                  "name": profile.name,
-                  "email": profile.email,
-                  "password": profile.password,
-                  "confirmPassword": profile.confirmPassword,
-                  "tel": profile.tel,
-                  "date": profile.date,
-                  "address": profile.address,
-                  "position": profile.position,
-                });
-                formKey.currentState?.reset();
-                // email and passwor authencation
-                // try {
-                //   await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                //     email: profile.email!,
-                //     password: profile.password!,
-                //   );
-                //   Fluttertoast.showToast(
-                //     msg: "ລົງທະບຽນຮຽບຮ້ອຍແລ້ວ",
-                //     gravity: ToastGravity.CENTER,
-                //   );
-                //   formKey.currentState!.reset();
-                // } on FirebaseAuthException catch (e) {
-                //   // print(e.message);
-                //   // print(e.code);
-                //   Fluttertoast.showToast(
-                //     msg: e.message!,
-                //     gravity: ToastGravity.CENTER,
-                //   );
-                // }
+                try {
+                  await FirebaseAuth.instance
+                      .createUserWithEmailAndPassword(
+                          email: email!, password: password!)
+                      .then((value) async {
+                    formKey.currentState!.reset();
+                    Fluttertoast.showToast(
+                      msg: "ລົງທະບຽນໄດ້ແລ້ວ",
+                      fontSize: 20,
+                      gravity: ToastGravity.CENTER,
+                      backgroundColor: Colors.white,
+                      textColor: Colors.black,
+                    );
+                    String uid = value.user!.uid;
+                    print("uid = $uid");
+
+                    EmployeeData employeeData = EmployeeData(
+                      name: name!,
+                      email: email!,
+                      password: password!,
+                      confirmPassword: confirmPassword!,
+                      tel: tel!,
+                      address: address!,
+                      position: position!,
+                      date: date!,
+                    );
+                   final  Map<String, dynamic>? data = employeeData.toMap();
+                    await FirebaseFirestore.instance
+                        .collection("employees")
+                        .doc(uid)
+                        .set(data!)
+                        .then(
+                          (value) =>
+                              print('Insert value in to firestore success'),
+                        );
+                  });
+                } on FirebaseAuthException catch (e) {
+                  // print(e.message);
+                  // print(e.code);
+                  Fluttertoast.showToast(
+                    msg: e.message!,
+                    gravity: ToastGravity.CENTER,
+                    backgroundColor: Colors.blue,
+                  );
+                }
               }
+
+              // if (formKey.currentState!.validate()) {
+              //   formKey.currentState!.save();
+              //   await employeeCollection.add({
+              //     "name": profile.name,
+              //     "email": profile.email,
+              //     "password": profile.password,
+              //     "confirmPassword": profile.confirmPassword,
+              //     "tel": profile.tel,
+              //     "date": profile.date,
+              //     "address": profile.address,
+              //     "position": profile.position,
+              //   });
+              //   formKey.currentState?.reset();
+              //  // Navigator.pushReplacement(
+              //                 context,
+              //                MaterialPageRoute(builder: (context) => const login()),
+              //                );
+              // }
             },
             child: const Text(
               "ບັນທືກ",

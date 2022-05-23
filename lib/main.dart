@@ -3,7 +3,7 @@ import 'package:untitled1/mainpage/manageOrder.dart';
 import 'package:untitled1/mainpage/receiveOrder.dart';
 import 'package:untitled1/mainpage/appProduct.dart';
 import 'package:untitled1/celement/router.dart';
-import 'package:untitled1/mainpage/supplyer.dart';
+import 'package:untitled1/mainpage/supplier.dart';
 import 'screen/register.dart';
 import 'screen/splashScreen .dart';
 
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         route.register: (BuildContext context) => const Register(),
         route.product: (BuildContext context) => const AddProduct(),
         route.m_orders: (BuildContext context) => const ManageOrder(),
-        route.suppliyer: (BuildContext context) => const Suppliyer(),
+        route.suppliyer: (BuildContext context) => const Supplier(),
       },
     );
   }
