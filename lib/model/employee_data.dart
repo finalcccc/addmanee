@@ -2,7 +2,7 @@ class EmployeeData {
   String? name;
   String? email;
   String? password;
-  String? confirmPassword;
+ // String? confirmPassword;
   String? tel;
   String? date;
   String? address;
@@ -13,17 +13,17 @@ class EmployeeData {
     this.name,
     this.date,
     this.address,
-    this.confirmPassword,
+   // this.confirmPassword,
     this.position,
     this.tel,
   });
+  static List<String> positoin = ['Addmin', 'Sale'];
 
   Map<String, dynamic>? toMap() {
     return {
       'name': name,
       'email': email,
       'password': password,
-      "confirmPassword": confirmPassword,
       'date': date,
       'address': address,
       'tel': tel,
