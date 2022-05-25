@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_print
 
 import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -21,21 +20,71 @@ class Register extends StatefulWidget {
 
 final formKey = GlobalKey<FormState>();
 
-String? name,
-    email,
-    password,
-    confirmPassword,
-    tel,
-    date,
-    address,
-    position;
+String? name, email, password, confirmPassword, tel, date, address, position;
 bool set = false;
 
 final Future<FirebaseApp> firebase = Firebase.initializeApp();
 
 class _RegisterState extends State<Register> {
+
+  ceck() async {  //up to database
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
+      try {
+        await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(email: email!, password: password!)
+            .then((value) async {
+          formKey.currentState!.reset();
+          Fluttertoast.showToast(
+            msg: "ລົງທະບຽນໄດ້ແລ້ວ",
+            fontSize: 20,
+            gravity: ToastGravity.CENTER,
+            backgroundColor: Colors.white,
+            textColor: Colors.black,
+          );
+          String uid = value.user!.uid;
+          print("uid = $uid");
+
+          EmployeeData employeeData = EmployeeData(
+            name: name!,
+            email: email!,
+            password: password!,
+            tel: tel!,
+            address: address!,
+            position: position!,
+            date: date!,
+          );
+          final Map<String, dynamic>? data = employeeData.toMap();
+          await FirebaseFirestore.instance
+              .collection("employees")
+              .doc(uid)
+              .set(data!)
+              .then(
+                (value) {
+              print('Insert value in to firestore success');
+                setState(() {
+                  position = null;
+                });
+
+            },
+          );
+        });
+
+
+      } on FirebaseAuthException catch (e) {
+        // print(e.message);
+        // print(e.code);
+        Fluttertoast.showToast(
+          msg: e.message!,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.blue,
+        );
+      }
+    }
+  }
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context ) {
     return FutureBuilder(
       future: firebase,
       builder: (context, snapshot) {
@@ -262,6 +311,7 @@ class _RegisterState extends State<Register> {
             onPressed: () async {
               setState(() {
                 ceck();
+
               });
             },
             child: const Text(
@@ -293,7 +343,6 @@ class _RegisterState extends State<Register> {
           Icons.keyboard_arrow_down,
           size: 50,
         ),
-
         borderRadius: BorderRadius.circular(50),
         value: position,
         isExpanded: true,
@@ -319,53 +368,3 @@ class _RegisterState extends State<Register> {
   }
 }
 
-
-ceck() async {
-  if (formKey.currentState!.validate()) {
-    formKey.currentState!.save();
-    try {
-      await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email!, password: password!)
-          .then((value) async {
-        formKey.currentState!.reset();
-        Fluttertoast.showToast(
-          msg: "ລົງທະບຽນໄດ້ແລ້ວ",
-          fontSize: 20,
-          gravity: ToastGravity.CENTER,
-          backgroundColor: Colors.white,
-          textColor: Colors.black,
-        );
-        String uid = value.user!.uid;
-        print("uid = $uid");
-
-        EmployeeData employeeData = EmployeeData(
-          name: name!,
-          email: email!,
-          password: password!,
-          tel: tel!,
-          address: address!,
-          position: position!,
-          date: date!,
-        );
-        final Map<String, dynamic>? data = employeeData.toMap();
-        await FirebaseFirestore.instance
-            .collection("employees")
-            .doc(uid)
-            .set(data!)
-            .then(
-
-              (value) => print('Insert value in to firestore success'),
-            );
-      });
-
-    } on FirebaseAuthException catch (e) {
-      // print(e.message);
-      // print(e.code);
-      Fluttertoast.showToast(
-        msg: e.message!,
-        gravity: ToastGravity.CENTER,
-        backgroundColor: Colors.blue,
-      );
-    }
-  }
-}
