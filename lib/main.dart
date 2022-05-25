@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:untitled1/mainpage/manageOrder.dart';
-import 'package:untitled1/mainpage/receiveOrder.dart';
-import 'package:untitled1/mainpage/appProduct.dart';
+import 'package:untitled1/screen/manageOrder.dart';
+import 'package:untitled1/screen/receiveOrder.dart';
+import 'package:untitled1/screen/appProduct.dart';
 import 'package:untitled1/celement/router.dart';
 import 'package:untitled1/screen/supplier.dart';
 import 'screen/register.dart';

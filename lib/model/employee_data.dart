@@ -17,7 +17,7 @@ class EmployeeData {
     this.position,
     this.tel,
   });
-  static List<String> positoin = ['Addmin', 'Sale'];
+  static List<String> positoin = ['Admin', 'Sale'];
 
   Map<String, dynamic>? toMap() {
     return {

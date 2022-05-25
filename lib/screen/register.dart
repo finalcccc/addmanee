@@ -289,7 +289,7 @@ class _RegisterState extends State<Register> {
 
   DropdownButton<String> dropdownButton() {
     return DropdownButton(
-        icon: Icon(
+        icon: const Icon(
           Icons.keyboard_arrow_down,
           size: 50,
         ),
@@ -298,8 +298,8 @@ class _RegisterState extends State<Register> {
         value: position,
         isExpanded: true,
         underline: Container(),
-        hint: Padding(
-          padding: const EdgeInsets.only(left: 50),
+        hint: const Padding(
+          padding: EdgeInsets.only(left: 50),
           child: Text("ເລືອກຕຳເເໜ່່ງ"),
         ),
         // icon: const Icon(Icons.keyboard_arrow_down),
