@@ -6,8 +6,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:untitled1/api/aip.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:firebase_core/firebase_core.dart';
+
 
 import '../model/employee_data.dart';
 
@@ -174,7 +176,7 @@ class _RegisterState extends State<Register> {
                 } else if (name.length < 6) {
                   return "ຊື່ ແລະ ນາມສະກຸນມັນສັ້ນເກີນໄປ";
                 }
-                return null;
+                return name = name.toString();
               }),
           const SizedBox(height: 10),
           TextFormField(
@@ -267,7 +269,7 @@ class _RegisterState extends State<Register> {
                 } else if (tel.length < 10) {
                   return "ເບີໂທລະສັບບໍ່ຖືກຕ້ອງ";
                 }
-                return null;
+                //return ;
               }),
           const SizedBox(height: 10),
           TextFormField(
@@ -311,7 +313,7 @@ class _RegisterState extends State<Register> {
             onPressed: () async {
               setState(() {
                 ceck();
-
+                addimgae(name);
               });
             },
             child: const Text(
