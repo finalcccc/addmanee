@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io' as io;
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:untitled1/model/product_data.dart';
 
 Future uploadProduct() async {
   FirebaseFirestore.instance.collection("products").add(<String, dynamic>{
@@ -22,15 +23,17 @@ Future<void> uptostorge(XFile? file,String name) async {
   try {
     UploadTask uploadTask;
      int random = Random().nextInt(10000000);
-    Reference ref = FirebaseStorage.instance.ref().child("image/${name}${random}");
+    Reference ref = await FirebaseStorage.instance.ref().child("image/${name}${random}");
 
     final metadata = SettableMetadata(
       contentType: 'image/png',
       customMetadata: {'picked-file-path': file!.path},
     );
 
-    uploadTask = ref.putFile(io.File(file.path), metadata);
-    print("upload");
+    await ref.putFile(io.File(file.path), metadata);
+   String url = await ref.getDownloadURL();
+   Product_data product = Product_data(url);
+   print(product.image);
   } catch (e) {
     return print(e.toString());
   }
