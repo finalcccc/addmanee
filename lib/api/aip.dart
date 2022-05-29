@@ -8,32 +8,43 @@ import 'dart:io' as io;
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:untitled1/model/product_data.dart';
 
+XFile? image;
+
 Future uploadProduct() async {
   FirebaseFirestore.instance.collection("products").add(<String, dynamic>{
     'xxx': 'xxx',
   }).then((value) => print('upload'));
 }
 
-Future addimgae(String? name) async {
-  XFile? image = await ImagePicker().pickImage(source: ImageSource.gallery);
-  uptostorge(image!,name!);
+Future addimgae() async {
+  image = await ImagePicker().pickImage(source: ImageSource.gallery);
 }
 
-Future<void> uptostorge(XFile? file,String name) async {
+Future<void> uptostorge( String? nameProduct,
+    String? desciption, int? price, cost, amount, String? category) async {
   try {
     UploadTask uploadTask;
-     int random = Random().nextInt(10000000);
-    Reference ref = await FirebaseStorage.instance.ref().child("image/${name}${random}");
+    int random = Random().nextInt(10000000);
+    Reference ref =
+        await FirebaseStorage.instance.ref().child("image/${random}");
 
     final metadata = SettableMetadata(
       contentType: 'image/png',
-      customMetadata: {'picked-file-path': file!.path},
+      customMetadata: {'picked-file-path': image!.path},
     );
 
-    await ref.putFile(io.File(file.path), metadata);
-   String url = await ref.getDownloadURL();
-   Product_data product = Product_data(url);
-   print(product.image);
+    await ref.putFile(io.File(image!.path), metadata);
+    String url = await ref.getDownloadURL();
+    Product_data product = Product_data();
+    product.image = await url;
+    product.nameProduct = nameProduct;
+    product.category = category;
+    product.price =price;
+    product.cost=cost;
+    product.amount =amount;
+    product.category = desciption;
+    FirebaseFirestore.instance.collection("products").add(product.toMap()).then((value) => print('upload'));
+
   } catch (e) {
     return print(e.toString());
   }

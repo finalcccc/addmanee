@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:untitled1/api/aip.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:untitled1/model/product_data.dart';
 
 class AddProduct extends StatefulWidget {
   const AddProduct({Key? key}) : super(key: key);
@@ -10,20 +12,8 @@ class AddProduct extends StatefulWidget {
   @override
   State<AddProduct> createState() => _AddProductState();
 }
-String? name, email, password, confirmPassword, tel, date, address, position;
 class _AddProductState extends State<AddProduct> {
-  File? image;
-
-  Future pickimage() async {
-    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (image == null) return;
-    var imageTemporary = File(image.path);
-    setState(
-      () {
-        this.image = imageTemporary;
-      },
-    );
-  }
+  Product_data Product = Product_data();
 
   @override
   Widget build(BuildContext context) {
@@ -41,16 +31,16 @@ class _AddProductState extends State<AddProduct> {
             Center(
               child: GestureDetector(
                 onTap: () {
-                  pickimage();
+                  addimgae();
                 },
                 child: CircleAvatar(
                   radius: 55,
                   backgroundColor: const Color(0xffFDCF09),
-                  child: image != null
+                  child: Product.image != null
                       ? ClipRRect(
                           borderRadius: BorderRadius.circular(50),
-                          child: Image.file(
-                            image!,
+                          child: Image.network(
+                            Product.image!,
                             width: 100,
                             height: 100,
                             fit: BoxFit.cover,
@@ -173,7 +163,9 @@ _inputFields(context) {
               primary: element.main,
               shape: const StadiumBorder(),
               padding: const EdgeInsets.symmetric(vertical: 16)),
-          onPressed: () {},
+          onPressed: () {
+            uptostorge( 'dddd',' desciption', 10, 10, 10, 'category');
+          },
           child: const Text(
             "ບັນທືກ",
             style: TextStyle(fontSize: 20),
