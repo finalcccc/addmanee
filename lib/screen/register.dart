@@ -314,7 +314,7 @@ class _RegisterState extends State<Register> {
             onPressed: () async {
               setState(() {
                 ceck();
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Viewproduct(),));
+              //  Navigator.push(context, MaterialPageRoute(builder: (context) => Viewproduct(),));
               });
             },
             child: const Text(

@@ -25,8 +25,8 @@ Future<void> uptostorge( String? nameProduct,
   try {
     UploadTask uploadTask;
     int random = Random().nextInt(10000000);
-    Reference ref =
-        await FirebaseStorage.instance.ref().child("image/${random}");
+    Reference ref = await FirebaseStorage.instance.ref().child("image/${random}");
+    CollectionReference reference = FirebaseFirestore.instance.collection('products');
 
     final metadata = SettableMetadata(
       contentType: 'image/png',
@@ -43,8 +43,11 @@ Future<void> uptostorge( String? nameProduct,
     product.cost=cost;
     product.amount =amount;
     product.category = desciption;
-    FirebaseFirestore.instance.collection("products").add(product.toMap()).then((value) => print('upload'));
-
+    product.desciption = desciption;
+    DocumentReference docid = await reference.add(product.toMap());
+     product.id = docid.id;
+    print(product.id);
+    docid.set(product.toMap());
   } catch (e) {
     return print(e.toString());
   }
