@@ -13,7 +13,7 @@ class _ViewproductState extends State<Viewproduct> {
   Widget build(BuildContext context) {
     return Scaffold(
       body:Center(
-
+     child: Image.network(Product_data().product[1].image!),
     ),
 
     );

@@ -1,5 +1,6 @@
-import 'dart:math';
 
+import 'dart:math';
+import 'dart:async';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
@@ -21,12 +22,14 @@ Future addimgae() async {
 }
 
 Future<void> uptostorge( String? nameProduct,
-    String? desciption, int? price, cost, amount, String? category) async {
+    String? desciption, int? prices, cost, amount, String? category) async {
+  Product_data product = Product_data();
   try {
     UploadTask uploadTask;
     int random = Random().nextInt(10000000);
     Reference ref = await FirebaseStorage.instance.ref().child("image/${random}");
     CollectionReference reference = FirebaseFirestore.instance.collection('products');
+     FirebaseFirestore rfn = FirebaseFirestore.instance;
 
     final metadata = SettableMetadata(
       contentType: 'image/png',
@@ -34,12 +37,11 @@ Future<void> uptostorge( String? nameProduct,
     );
 
     await ref.putFile(io.File(image!.path), metadata);
-    String url = await ref.getDownloadURL();
-    Product_data product = Product_data();
-    product.image = await url;
+   String url = await ref.getDownloadURL();
+  product.image = await url;
     product.nameProduct = nameProduct;
     product.category = category;
-    product.price =price;
+    product.price =prices;
     product.cost=cost;
     product.amount =amount;
     product.category = desciption;
@@ -47,7 +49,17 @@ Future<void> uptostorge( String? nameProduct,
     DocumentReference docid = await reference.add(product.toMap());
      product.id = docid.id;
     print(product.id);
+    print(product.image);
+    int i =0;
     docid.set(product.toMap());
+    QuerySnapshot<Map<String,dynamic>> querySnapshot = await FirebaseFirestore.instance.collection("products").get();
+    querySnapshot.docs.map((e){
+     Product_data s = Product_data.getProdct(e.data());
+     product.product.add(s);
+     print('${product.product[i].nameProduct} ${i}');
+     i++;
+    }).toList();
+
   } catch (e) {
     return print(e.toString());
   }
