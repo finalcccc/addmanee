@@ -5,6 +5,9 @@ import 'package:untitled1/api/aip.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:untitled1/model/product_data.dart';
+import 'package:untitled1/screen/registerEmployee.dart';
+
+import '../model/employee_data.dart';
 
 class AddProduct extends StatefulWidget {
   const AddProduct({Key? key}) : super(key: key);
@@ -16,13 +19,15 @@ class _AddProductState extends State<AddProduct> {
   Product_data Product = Product_data();
   XFile? images;
   double neenear = 55;
+  String? position;
 void set(){
   setState(() {
     images = image;
   });
   
 }
- 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +56,7 @@ void set(){
                   backgroundColor: element.main,
                   child: images != null
                       ? ClipRRect(
-                          borderRadius: BorderRadius.circular(50),
+                          borderRadius: BorderRadius.circular(10),
                           child: Image.file(
                             File(images!.path),
                             width: 200,
@@ -88,6 +93,7 @@ void set(){
       ),
     );
   }
+
 }
 
 _inputFields(context) {
@@ -164,18 +170,7 @@ _inputFields(context) {
           keyboardType: TextInputType.number,
         ),
         const SizedBox(height: 10),
-        TextField(
-          decoration: InputDecoration(
-            hintText: "ປະເພດສິນຄ້າ",
-            fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
-            filled: true,
-            prefixIcon: const Icon(Icons.category),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(18),
-              borderSide: BorderSide.none,
-            ),
-          ),
-        ),
+      comboboxcontainer(context),
         const SizedBox(height: 40),
         ElevatedButton(
           style: ElevatedButton.styleFrom(
@@ -193,4 +188,42 @@ _inputFields(context) {
       ],
     ),
   );
+}
+Container comboboxcontainer(context) {
+  return Container(
+      decoration: BoxDecoration(
+          color: Theme.of(context).primaryColor.withOpacity(0.1),
+          borderRadius: BorderRadius.circular(18)),
+      child: Column(
+        children: [dropdownButton()],
+      ));
+}
+
+DropdownButton<String> dropdownButton() {
+  return DropdownButton(
+      icon: const Icon(
+        Icons.keyboard_arrow_down,
+        size: 50,
+      ),
+      borderRadius: BorderRadius.circular(50),
+      value: position,
+      isExpanded: true,
+      underline: Container(),
+      hint: const Padding(
+        padding: EdgeInsets.only(left: 50),
+        child: Text("ເລືອກຕຳເເໜ່່ງ"),
+      ),
+      // icon: const Icon(Icons.keyboard_arrow_down),
+      items: EmployeeData.positoin
+          .map((e) =>
+          DropdownMenuItem(
+              value: e,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 20.0),
+                child: Text(e),
+              )))
+          .toList(),
+      onChanged: (String? v) {
+        position = v;
+      });
 }
