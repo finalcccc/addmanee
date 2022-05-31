@@ -24,7 +24,7 @@ Future<void> uptostorge( String? nameProduct,
   try {
     UploadTask uploadTask;
     int random = Random().nextInt(1000);
-    Reference ref = await FirebaseStorage.instance.ref().child("image/${random}");
+    Reference ref = await FirebaseStorage.instance.ref().child("image/${nameProduct}${random}");
     CollectionReference reference = FirebaseFirestore.instance.collection('products');
      FirebaseFirestore rfn = FirebaseFirestore.instance;
 
