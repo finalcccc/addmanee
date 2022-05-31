@@ -10,6 +10,8 @@ import 'screen/registerEmployee.dart';
 import 'screen/splashScreen .dart';
 
 void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp().then((value) =>print('connect'));
   runApp(
 MyApp(),
 

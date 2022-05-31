@@ -15,6 +15,7 @@ class AddProduct extends StatefulWidget {
 class _AddProductState extends State<AddProduct> {
   Product_data Product = Product_data();
   XFile? images;
+  double neenear = 55;
 void set(){
   setState(() {
     images = image;
@@ -43,18 +44,18 @@ void set(){
                     Duration(seconds: 2),
                       ()=>set()
                   );
-
+                  neenear = 100;
                 },
                 child: CircleAvatar(
-                  radius: 55,
-                  backgroundColor: const Color(0xffFDCF09),
+                  radius: neenear ,
+                  backgroundColor: element.main,
                   child: images != null
                       ? ClipRRect(
                           borderRadius: BorderRadius.circular(50),
                           child: Image.file(
                             File(images!.path),
-                            width: 100,
-                            height: 100,
+                            width: 200,
+                            height: 200,
                             fit: BoxFit.cover,
                           ),
                         )
@@ -62,11 +63,17 @@ void set(){
                           decoration: BoxDecoration(
                               color: Colors.grey[200],
                               borderRadius: BorderRadius.circular(50)),
-                          width: 100,
-                          height: 100,
-                          child: Icon(
-                            Icons.camera_alt,
-                            color: Colors.grey[800],
+                          width: 102,
+                          height: 102,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.camera_alt,
+                                color: Colors.grey[800],
+                              ),
+                              Text('ຮູບພາບ',style: TextStyle(color: Colors.grey[800],)),
+                            ],
                           ),
                         ),
                 ),
