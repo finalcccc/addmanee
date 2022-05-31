@@ -1,15 +1,16 @@
 
+import 'dart:io';
 import 'dart:math';
 import 'dart:async';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io' as io;
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:untitled1/model/product_data.dart';
 
+
 XFile? image;
+
 
 Future uploadProduct() async {
   FirebaseFirestore.instance.collection("products").add(<String, dynamic>{
@@ -19,6 +20,7 @@ Future uploadProduct() async {
 
 Future addimgae() async {
   image = await ImagePicker().pickImage(source: ImageSource.gallery);
+
 }
 
 Future<void> uptostorge( String? nameProduct,
@@ -26,7 +28,7 @@ Future<void> uptostorge( String? nameProduct,
   Product_data product = Product_data();
   try {
     UploadTask uploadTask;
-    int random = Random().nextInt(10000000);
+    int random = Random().nextInt(1000);
     Reference ref = await FirebaseStorage.instance.ref().child("image/${random}");
     CollectionReference reference = FirebaseFirestore.instance.collection('products');
      FirebaseFirestore rfn = FirebaseFirestore.instance;
@@ -52,15 +54,19 @@ Future<void> uptostorge( String? nameProduct,
     print(product.image);
     int i =0;
     docid.set(product.toMap());
-    QuerySnapshot<Map<String,dynamic>> querySnapshot = await FirebaseFirestore.instance.collection("products").get();
-    querySnapshot.docs.map((e){
-     Product_data s = Product_data.getProdct(e.data());
-     product.product.add(s);
-     print('${product.product[i].nameProduct} ${i}');
-     i++;
-    }).toList();
+;
 
   } catch (e) {
     return print(e.toString());
   }
+}
+ Future getproduct()async{
+  QuerySnapshot<Map<String,dynamic>> querySnapshot = await FirebaseFirestore.instance.collection("products").get();
+  List<Product_data> _product = [];
+  querySnapshot.docs.map((e){
+    Product_data products = Product_data.getProdct(e.data());
+    _product.add(products);
+    print("${_product.length}");
+  });
+ // productnotifire.productlist = _product;
 }

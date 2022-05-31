@@ -14,7 +14,14 @@ class AddProduct extends StatefulWidget {
 }
 class _AddProductState extends State<AddProduct> {
   Product_data Product = Product_data();
-
+  XFile? images;
+void set(){
+  setState(() {
+    images = image;
+  });
+  
+}
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,15 +39,20 @@ class _AddProductState extends State<AddProduct> {
               child: GestureDetector(
                 onTap: () {
                   addimgae();
+                  Timer(
+                    Duration(seconds: 2),
+                      ()=>set()
+                  );
+
                 },
                 child: CircleAvatar(
                   radius: 55,
                   backgroundColor: const Color(0xffFDCF09),
-                  child: Product.image != null
+                  child: images != null
                       ? ClipRRect(
                           borderRadius: BorderRadius.circular(50),
-                          child: Image.network(
-                            Product.image!,
+                          child: Image.file(
+                            File(images!.path),
                             width: 100,
                             height: 100,
                             fit: BoxFit.cover,
@@ -164,7 +176,7 @@ _inputFields(context) {
               shape: const StadiumBorder(),
               padding: const EdgeInsets.symmetric(vertical: 16)),
           onPressed: () {
-            uptostorge( 'dddd',' desciption', 10, 10, 10, 'category');
+            uptostorge( 'dddd','desciption', 10, 10, 10, 'category');
           },
           child: const Text(
             "ບັນທືກ",

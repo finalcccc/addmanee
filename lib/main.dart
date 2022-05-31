@@ -1,14 +1,19 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled1/notifire/product_notifire.dart';
 import 'package:untitled1/screen/manageOrder.dart';
 import 'package:untitled1/screen/receiveOrder.dart';
 import 'package:untitled1/screen/appProduct.dart';
 import 'package:untitled1/celement/router.dart';
 import 'package:untitled1/screen/supplier.dart';
-import 'screen/register.dart';
+import 'screen/registerEmployee.dart';
 import 'screen/splashScreen .dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async{
+  runApp(
+MyApp(),
+
+  );
 }
 
 class MyApp extends StatelessWidget {
