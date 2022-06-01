@@ -7,4 +7,5 @@ class route {
   static String m_orders = '/m_order';
   static String charts = '/chart';
   static String suppliyer = '/Suppliyer';
+  static String product_type = '/product_type';
 }

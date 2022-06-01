@@ -9,10 +9,10 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:untitled1/api/aip.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'Viewproduct.dart';
+import '../Viewproduct.dart';
 
 
-import '../model/employee_data.dart';
+import '../../model/employee_data.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);

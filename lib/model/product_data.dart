@@ -5,6 +5,7 @@ class Product_data {
   String? desciption;
   int? price, cost, amount;
   String? category;
+
   Product_data();
 
   Product_data.getProdct(Map<String, dynamic> value) {
@@ -30,6 +31,4 @@ class Product_data {
       'category': category
     };
   }
-
-  List<Product_data> product = [];
 }

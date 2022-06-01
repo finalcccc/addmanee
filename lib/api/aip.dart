@@ -7,26 +7,23 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io' as io;
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:untitled1/model/product_data.dart';
+import 'package:untitled1/screen/product_add/product_type_add.dart';
+
+import '../model/product_type_data.dart';
 
 
 XFile? image;
-
-
-
 Future addimgae() async {
   image = await ImagePicker().pickImage(source: ImageSource.gallery);
-
 }
 
-Future<void> uptostorge( String? nameProduct,
-    String? desciption, int? prices, cost, amount, String? category) async {
+Future<void> uploadproducts( {String? nameProduct,
+    String? desciption, int? prices, cost, amount, String? category}) async {
   Product_data product = Product_data();
   try {
-    UploadTask uploadTask;
     int random = Random().nextInt(1000);
     Reference ref = await FirebaseStorage.instance.ref().child("image/${nameProduct}${random}");
     CollectionReference reference = FirebaseFirestore.instance.collection('products');
-     FirebaseFirestore rfn = FirebaseFirestore.instance;
 
     final metadata = SettableMetadata(
       contentType: 'image/png',
@@ -42,12 +39,11 @@ Future<void> uptostorge( String? nameProduct,
     product.cost=cost;
     product.amount =amount;
     product.category = desciption;
-    product.desciption = desciption;
+    product.desciption = category;
     DocumentReference docid = await reference.add(product.toMap());
      product.id = docid.id;
     print(product.id);
     print(product.image);
-    int i =0;
     docid.set(product.toMap());
 ;
 
@@ -64,4 +60,19 @@ Future<void> uptostorge( String? nameProduct,
     print("${_product.length}");
   });
  // productnotifire.productlist = _product;
+}
+
+addproducttype({String? categorys})async{
+  Product_type_data category = Product_type_data();
+  try {
+    CollectionReference reference = FirebaseFirestore.instance.collection('categorys');
+    category.category = categorys;
+    //DocumentReference docid = await reference.add(category.toMap());
+    //category.id = docid.id;
+    //docid.set(category.toMap());
+    print(category.category);
+  } catch (e) {
+    print(e);
+  }
+
 }

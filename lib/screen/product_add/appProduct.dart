@@ -7,9 +7,9 @@ import 'package:untitled1/api/aip.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:untitled1/model/product_data.dart';
-import 'package:untitled1/screen/registerEmployee.dart';
+import 'package:untitled1/screen/product_add/registerEmployee.dart';
 
-import '../model/employee_data.dart';
+import '../../model/employee_data.dart';
 
 class AddProduct extends StatefulWidget {
   const AddProduct({Key? key}) : super(key: key);
@@ -19,6 +19,7 @@ class AddProduct extends StatefulWidget {
 }
 
 class _AddProductState extends State<AddProduct> {
+  element elements = element();
   GlobalKey<FormState> Key = GlobalKey<FormState>();
   Product_data Product = Product_data();
   XFile? images;
@@ -30,32 +31,8 @@ class _AddProductState extends State<AddProduct> {
     });
   }
 
-  check() {
-    if (Key.currentState!.validate()) {
-      Key.currentState!.save();
-    }
-  }
 
-  elevatedButton() {
-    return Container(
-      margin: const EdgeInsets.only(right: 15, left: 15),
-      width: 390,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-            primary: element.main,
-            shape: const StadiumBorder(),
-            padding: const EdgeInsets.symmetric(vertical: 16)),
-        onPressed: () {
-          uptostorge('dddd', 'description', 10, 10, 10, 'category');
-          check();
-        },
-        child: const Text(
-          "ບັນທືກ",
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
-    );
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -127,40 +104,40 @@ class _AddProductState extends State<AddProduct> {
           key: Key,
           child: Column(
             children: [
-              element.inputFields(
-                context,
+              elements.inputFields(
+                context:context,
                 trye: 'nameProduct',
                 hint: 'ຊື່ສິນຄ້າ',
                 icons: Icons.production_quantity_limits,
                 Keybordtye: TextInputType.text,
               ),
               const SizedBox(height: 10),
-              element.inputFields(
-                context,
+              elements.inputFields(
+                context:context,
                 hint: 'ລາຄາຕົ້ນທືນ',
                 icons: Icons.price_check,
                 Keybordtye: TextInputType.number,
                 trye: 'cost',
               ),
               const SizedBox(height: 10),
-              element.inputFields(
-                context,
+              elements.inputFields(
+                context:context,
                 hint: 'ລາຄາ',
                 icons: Icons.price_check,
                 Keybordtye: TextInputType.number,
                 trye: 'price',
               ),
               const SizedBox(height: 10),
-              element.inputFields(
-                context,
+              elements.inputFields(
+                context:context,
                 hint: 'ລາລະອຽດ',
-                icons: Icons.production_quantity_limits,
+                icons: Icons.edit,
                 Keybordtye: TextInputType.text,
                 trye: 'description',
               ),
               const SizedBox(height: 10),
-              element.inputFields(
-                context,
+              elements.inputFields(
+                context:context,
                 hint: 'ຈຳນວນ',
                 icons: Icons.qr_code,
                 Keybordtye: TextInputType.number,
@@ -169,7 +146,7 @@ class _AddProductState extends State<AddProduct> {
               const SizedBox(height: 10),
               comboboxcontainer(context),
               const SizedBox(height: 20),
-              elevatedButton(),
+              elements.elevatedButton(Key,'addproduct'),
             ],
           ),
         ),
@@ -203,7 +180,7 @@ DropdownButton<String> dropdownButton() {
       underline: Container(),
       hint: const Padding(
         padding: EdgeInsets.only(left: 50),
-        child: Text("ເລືອກຕຳເເໜ່່ງ"),
+        child: Text("ເລືອກປະເພດສິນຄ້າ"),
       ),
       // icon: const Icon(Icons.keyboard_arrow_down),
       items: EmployeeData.positoin
