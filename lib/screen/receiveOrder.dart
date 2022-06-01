@@ -13,7 +13,7 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          leading: element.backpage(context),
+          leading: element.BackPage(context),
         ),
         body: buildCenter());
   }

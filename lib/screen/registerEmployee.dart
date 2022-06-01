@@ -105,7 +105,7 @@ class _RegisterState extends State<Register> {
           return Scaffold(
             appBar: AppBar(
               backgroundColor: element.main,
-              leading: element.backpage(context),
+              leading: element.BackPage(context),
             ),
             body: ListView(
               children: [

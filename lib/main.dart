@@ -9,12 +9,13 @@ import 'package:untitled1/screen/supplier.dart';
 import 'screen/registerEmployee.dart';
 import 'screen/splashScreen .dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp().then((value) =>print('connect'));
+  await Firebase.initializeApp().then(
+    (value) => print('connect'),
+  );
   runApp(
-MyApp(),
-
+    const MyApp(),
   );
 }
 

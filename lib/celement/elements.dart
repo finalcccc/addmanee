@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, camel_case_types
+
 import 'package:flutter/material.dart';
 
 class element {
@@ -9,8 +11,8 @@ class element {
   static var wht = const Color(0xffFAFAFA);
   static var gray = const Color(0xffF7F7F7);
 
-  //tiltal
-  static String titall = "ຮ້ານເເອັດມານີ";
+  //title
+  static String title = "ຮ້ານເເອັດມານີ";
   static String p1 = "ຮັບອໍເດິ";
   static String p2 = "ລົງທະບຽນພະນັກງານ";
   static String p3 = "ຈັດການອໍເດິ";
@@ -18,7 +20,7 @@ class element {
   static String p5 = "ຜູ້ສະໜອງ";
 
   // option
-  static butn(BuildContext context, String rout, var icons, Color colors, txt) {
+  static MenuButton(BuildContext context, String rout, var icons, Color colors, txt) {
     return Padding(
       padding: const EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
       child: InkWell(
@@ -67,8 +69,8 @@ class element {
     );
   }
 
-//bage page
-  static backpage(BuildContext context) {
+//BackPage
+  static BackPage(BuildContext context) {
     return IconButton(
       icon: const Icon(Icons.arrow_back_ios),
       onPressed: () {
@@ -77,12 +79,69 @@ class element {
     );
   }
 
-  //rout ກະຕ້າເຄື່ອງ
-  static cartbuton(BuildContext context, rout) {
+  //CartButton
+  static CartButton(BuildContext context, route) {
     return IconButton(
         onPressed: () {
-          Navigator.pushNamed(context, rout);
+          Navigator.pushNamed(context, route);
         },
-        icon: Icon(Icons.shopping_cart_outlined));
+        icon: const Icon(Icons.shopping_cart_outlined));
+  }
+
+  // textformfile
+   static inputFields(context,
+      {String? trye, TextInputType? Keybordtye, String? hint, IconData? icons}) {
+    return Container(
+      margin: const EdgeInsets.only(right: 15,left: 15),
+      child: TextFormField(
+        decoration: InputDecoration(
+          hintText: hint,
+          fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
+          filled: true,
+          prefixIcon: Icon(icons),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(18),
+            borderSide: BorderSide.none,
+          ),
+        ),
+        keyboardType: Keybordtye,
+        validator: (v) {
+          var tye = trye;
+          if (v!.isEmpty) {
+            return 'ກະລຸນາໃສ່ຂໍ້ມູນ';
+          } else if (v.length < 3) {
+            return 'ຂໍ້ມູນມັນສິ້ນເກີນໄປ';
+          }
+          switch (tye) {
+            case "Name":
+              {
+                if (v.isEmpty) {
+
+                } else {
+
+                }
+              }
+              break;
+            case "price":
+              {}
+              break;
+
+            case "C":
+              {}
+              break;
+
+            case "D":
+              {}
+              break;
+
+            default:
+              {}
+              break;
+          }
+          return null;
+        },
+        onTap: () {},
+      ),
+    );
   }
 }

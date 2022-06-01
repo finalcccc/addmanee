@@ -20,11 +20,11 @@ class _MenuState extends State<Menu> {
         iconTheme: const IconThemeData(color: Colors.white),
         title: Center(
           child: Text(
-            element.titall,
+            element.title,
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
-        actions: [element.cartbuton(context, route.charts)],
+        actions: [element.CartButton(context, route.charts)],
       ),
       drawer: buildDrawer(),
       body: Container(
@@ -33,15 +33,15 @@ class _MenuState extends State<Menu> {
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2, mainAxisSpacing: 10),
           children: [
-            element.butn(
+            element.MenuButton(
                 context, route.prodc, Icons.shop, element.main, element.p1),
-            element.butn(context, route.register, Icons.airplay, element.Indigo,
+            element.MenuButton(context, route.register, Icons.airplay, element.Indigo,
                 element.p2),
-            element.butn(context, route.m_orders, Icons.border_color,
+            element.MenuButton(context, route.m_orders, Icons.border_color,
                 element.ocean, element.p3),
-            element.butn(context, route.product, Icons.article_rounded,
+            element.MenuButton(context, route.product, Icons.article_rounded,
                 element.sky, element.p4),
-            element.butn(context, route.suppliyer, Icons.article_rounded,
+            element.MenuButton(context, route.suppliyer, Icons.article_rounded,
                 element.sky, element.p5),
           ],
         ),

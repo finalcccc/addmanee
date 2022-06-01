@@ -22,7 +22,7 @@ class _CartState extends State<Cart> {
               padding: const EdgeInsets.only(top: 13.0, bottom: 20),
               child: Column(
                 children: [
-                  element.backpage(context),
+                  element.BackPage(context),
                 ],
               ),
             ),

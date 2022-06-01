@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:io';
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -20,8 +22,7 @@ class _AddProductState extends State<AddProduct> {
   GlobalKey<FormState> Key = GlobalKey<FormState>();
   Product_data Product = Product_data();
   XFile? images;
-  double neenear = 55;
-  String? position;
+  double area = 55;
 
   void set() {
     setState(() {
@@ -29,7 +30,7 @@ class _AddProductState extends State<AddProduct> {
     });
   }
 
-  ceck() {
+  check() {
     if (Key.currentState!.validate()) {
       Key.currentState!.save();
     }
@@ -37,6 +38,7 @@ class _AddProductState extends State<AddProduct> {
 
   elevatedButton() {
     return Container(
+      margin: const EdgeInsets.only(right: 15, left: 15),
       width: 390,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
@@ -44,8 +46,8 @@ class _AddProductState extends State<AddProduct> {
             shape: const StadiumBorder(),
             padding: const EdgeInsets.symmetric(vertical: 16)),
         onPressed: () {
-          uptostorge('dddd', 'desciption', 10, 10, 10, 'category');
-          ceck();
+          uptostorge('dddd', 'description', 10, 10, 10, 'category');
+          check();
         },
         child: const Text(
           "ບັນທືກ",
@@ -60,7 +62,7 @@ class _AddProductState extends State<AddProduct> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: element.main,
-        leading: element.backpage(context),
+        leading: element.BackPage(context),
       ),
       body: SingleChildScrollView(
         child: buildColumn(context),
@@ -78,11 +80,14 @@ class _AddProductState extends State<AddProduct> {
           child: GestureDetector(
             onTap: () {
               addimgae();
-              Timer(Duration(seconds: 2), () => set());
-              neenear = 100;
+              Timer(
+                const Duration(seconds: 2),
+                () => set(),
+              );
+              area = 100;
             },
             child: CircleAvatar(
-              radius: neenear,
+              radius: area,
               backgroundColor: element.main,
               child: images != null
                   ? ClipRRect(
@@ -122,40 +127,48 @@ class _AddProductState extends State<AddProduct> {
           key: Key,
           child: Column(
             children: [
-              _inputFields(
-                  context,
-                  trye: 'Name',
-                  Keybordtye: TextInputType.text,
-                  hint: 'ຊື່ສິນຄ້າ',
-                  icons: Icons.production_quantity_limits,
-              ),
-              SizedBox(height: 10),
-              _inputFields(
+              element.inputFields(
                 context,
-                trye: 'Name',
-                Keybordtye: TextInputType.text,
+                trye: 'nameProduct',
                 hint: 'ຊື່ສິນຄ້າ',
                 icons: Icons.production_quantity_limits,
-              ),
-              SizedBox(height: 10),
-              _inputFields(
-                context,
-                trye: 'Name',
                 Keybordtye: TextInputType.text,
-                hint: 'ຊື່ສິນຄ້າ',
-                icons: Icons.production_quantity_limits,
               ),
-              SizedBox(height: 10),
-              _inputFields(
+              const SizedBox(height: 10),
+              element.inputFields(
                 context,
-                trye: 'Name',
-                Keybordtye: TextInputType.text,
-                hint: 'ຊື່ສິນຄ້າ',
-                icons: Icons.production_quantity_limits,
+                hint: 'ລາຄາຕົ້ນທືນ',
+                icons: Icons.price_check,
+                Keybordtye: TextInputType.number,
+                trye: 'cost',
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
+              element.inputFields(
+                context,
+                hint: 'ລາຄາ',
+                icons: Icons.price_check,
+                Keybordtye: TextInputType.number,
+                trye: 'price',
+              ),
+              const SizedBox(height: 10),
+              element.inputFields(
+                context,
+                hint: 'ລາລະອຽດ',
+                icons: Icons.production_quantity_limits,
+                Keybordtye: TextInputType.text,
+                trye: 'description',
+              ),
+              const SizedBox(height: 10),
+              element.inputFields(
+                context,
+                hint: 'ຈຳນວນ',
+                icons: Icons.qr_code,
+                Keybordtye: TextInputType.number,
+                trye: 'amount',
+              ),
+              const SizedBox(height: 10),
               comboboxcontainer(context),
-              SizedBox(height: 10),
+              const SizedBox(height: 20),
               elevatedButton(),
             ],
           ),
@@ -165,58 +178,9 @@ class _AddProductState extends State<AddProduct> {
   }
 }
 
-_inputFields(context, {String? trye, TextInputType? Keybordtye, String? hint,IconData? icons }) {
-  return TextFormField(
-    decoration: InputDecoration(
-      hintText: hint,
-      fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
-      filled: true,
-      prefixIcon: Icon(icons),
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(18),
-        borderSide: BorderSide.none,
-      ),
-    ),
-    keyboardType: Keybordtye,
-    validator: (v) {
-      var tye = trye;
-       if(v!.isEmpty){return 'ກະລຸໃສ່້ຂໍມູນ';}else if(v.length<3){return 'ຊື່ສິນຄ້າສັ້ນໄປ';}
-      switch (tye) {
-        case "Name":
-          {
-
-          }
-          break;
-        case "B":
-          {
-
-          }
-          break;
-
-        case "C":
-          {
-
-          }
-          break;
-
-        case "D":
-          {
-
-          }
-          break;
-
-        default:
-          {
-          }
-          break;
-      }
-    },
-    onTap: () {},
-  );
-}
-
 Container comboboxcontainer(context) {
   return Container(
+      margin: const EdgeInsets.only(right: 15, left: 15),
       decoration: BoxDecoration(
           color: Theme.of(context).primaryColor.withOpacity(0.1),
           borderRadius: BorderRadius.circular(18)),
