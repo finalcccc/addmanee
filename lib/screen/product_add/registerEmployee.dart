@@ -30,7 +30,7 @@ final Future<FirebaseApp> firebase = Firebase.initializeApp();
 
 class _RegisterState extends State<Register> {
 
-  ceck() async {  //up to database
+  check() async {  //up to database
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
       try {
@@ -270,6 +270,7 @@ class _RegisterState extends State<Register> {
                 } else if (tel.length < 10) {
                   return "ເບີໂທລະສັບບໍ່ຖືກຕ້ອງ";
                 }
+                return null;
                 //return ;
               }),
           const SizedBox(height: 10),

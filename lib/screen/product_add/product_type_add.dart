@@ -24,16 +24,19 @@ class _product_typeState extends State<product_type> {
           key: Key,
           child: Column(
             children: [
-              SizedBox(height: 20),
-              element().inputFields(icons: Icons.category,hint: 'ປະເພດສິນຄ້າ',Keybordtye: TextInputType.text,trye: 'Products_type',context: context),
-              SizedBox(height: 20),
-              element().elevatedButton(Key,'addproduct_type'),
+              const SizedBox(height: 20),
+              element().inputFields(
+                  icons: Icons.category,
+                  hint: 'ປະເພດສິນຄ້າ',
+                  Keybordtye: TextInputType.text,
+                  trye: 'Products_type',
+                  context: context),
+              const SizedBox(height: 20),
+              element().elevatedButton(Key, 'addproduct_type'),
             ],
-
           ),
         ),
       ),
     );
   }
-  }
-
+}
