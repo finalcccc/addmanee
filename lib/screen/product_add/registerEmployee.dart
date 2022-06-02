@@ -8,9 +8,31 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:untitled1/api/aip.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:untitled1/screen/product_add/appProduct.dart';
+import 'package:untitled1/screen/product_add/category.dart';
 
 
 import '../../model/employee_data.dart';
+class employeetapbar extends StatefulWidget {
+  const employeetapbar({Key? key}) : super(key: key);
+
+  @override
+  State<employeetapbar> createState() => _employeetapbarState();
+}
+
+class _employeetapbarState extends State<employeetapbar> {
+
+  @override
+  Widget build(BuildContext context) {
+    return element().tabbarpage(label1: 'v',icos1: Icons.feed,icos2: Icons.feed ,label2: 'g',tap1: Register(),tap2: AddProduct());
+  }
+}
+
+
+
+
+
+
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);

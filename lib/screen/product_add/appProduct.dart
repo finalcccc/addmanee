@@ -7,10 +7,25 @@ import 'package:untitled1/api/aip.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:untitled1/model/product_data.dart';
+import 'package:untitled1/screen/product_add/category.dart';
 import 'package:untitled1/screen/product_add/registerEmployee.dart';
 
 import '../../model/employee_data.dart';
 
+class ProductaddTapbar extends StatefulWidget {
+  const ProductaddTapbar({Key? key}) : super(key: key);
+
+  @override
+  State<ProductaddTapbar> createState() => _ProductaddTapbarState();
+}
+
+class _ProductaddTapbarState extends State<ProductaddTapbar> {
+
+  @override
+  Widget build(BuildContext context) {
+    return element().tabbarpage(label1: 'v',icos1: Icons.feed,icos2: Icons.feed ,label2: 'g',tap1: AddProduct(),tap2: AddProduct());
+  }
+}
 class AddProduct extends StatefulWidget {
   const AddProduct({Key? key}) : super(key: key);
 
@@ -147,6 +162,7 @@ class _AddProductState extends State<AddProduct> {
               comboboxcontainer(context),
               const SizedBox(height: 20),
               elements.elevatedButton(Key,'addproduct'),
+              const SizedBox(height: 20),
             ],
           ),
         ),

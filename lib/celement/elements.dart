@@ -1,15 +1,15 @@
-
-
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
+import 'package:untitled1/screen/product_add/category.dart';
 import '../api/aip.dart';
 import '../notifire/product_notifire.dart';
+import '../screen/product_add/appProduct.dart';
 
-class element{
+class element {
   String? category;
-  String? name,des,productpye;
-  int? prie,cost,amout;
+  String? name, des, productpye;
+  int? prie, cost, amout;
 
 
   //color
@@ -33,12 +33,17 @@ class element{
   checks(GlobalKey<FormState> key) {
     if (key.currentState!.validate()) {
       key.currentState!.save();
-      uploadproducts(nameProduct: name, desciption: des,prices: prie, cost: cost, amount: amout, category: 'category');
+      uploadproducts(
+          nameProduct: name,
+          desciption: des,
+          prices: prie,
+          cost: cost,
+          amount: amout,
+          category: 'category');
     }
   }
 
-
-elevatedButton(GlobalKey<FormState> key,String? type) {
+  elevatedButton(GlobalKey<FormState> key, String? type) {
     return Container(
       margin: const EdgeInsets.only(right: 15, left: 15),
       width: 390,
@@ -57,7 +62,6 @@ elevatedButton(GlobalKey<FormState> key,String? type) {
             case "addproduct_type":
               {
                 checkformcategory(key);
-
               }
               break;
           }
@@ -71,7 +75,8 @@ elevatedButton(GlobalKey<FormState> key,String? type) {
   }
 
   // option
-  static MenuButton(BuildContext context, String rout, var icons, Color colors, txt) {
+  static MenuButton(
+      BuildContext context, String rout, var icons, Color colors, txt) {
     return Padding(
       padding: const EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
       child: InkWell(
@@ -138,10 +143,16 @@ elevatedButton(GlobalKey<FormState> key,String? type) {
         },
         icon: const Icon(Icons.shopping_cart_outlined));
   }
+
   // textformfile
-    inputFields({context,String? trye, TextInputType? Keybordtye, String? hint, IconData? icons}) {
+  inputFields(
+      {context,
+      String? trye,
+      TextInputType? Keybordtye,
+      String? hint,
+      IconData? icons}) {
     return Container(
-      margin: const EdgeInsets.only(right: 15,left: 15),
+      margin: const EdgeInsets.only(right: 15, left: 15),
       child: TextFormField(
         decoration: InputDecoration(
           hintText: hint,
@@ -164,26 +175,24 @@ elevatedButton(GlobalKey<FormState> key,String? type) {
           switch (tye) {
             case "nameProduct":
               {
-                  name = v;
-
+                name = v;
               }
               break;
             case "cost":
               {
-                   cost = int.parse(v);
+                cost = int.parse(v);
               }
               break;
 
             case "price":
               {
-                   prie = int.parse(v);
+                prie = int.parse(v);
               }
               break;
 
             case "description":
               {
-               des = v;
-
+                des = v;
               }
               break;
             case "amount":
@@ -193,8 +202,8 @@ elevatedButton(GlobalKey<FormState> key,String? type) {
               break;
             case "Products_type":
               {
-                if(v.length <3) return 'ຊື່ປະເພດສິ້ນຄ້າສັ້ນເກີນໄປ';
-                  cate(v);
+                if (v.length < 3) return 'ຊື່ປະເພດສິ້ນຄ້າສັ້ນເກີນໄປ';
+                cate(v);
               }
               break;
           }
@@ -203,28 +212,57 @@ elevatedButton(GlobalKey<FormState> key,String? type) {
     );
   }
 
-  checkformcategory(GlobalKey<FormState> key) async{
+  checkformcategory(GlobalKey<FormState> key) async {
     if (key.currentState!.validate()) {
-       key.currentState!.save();
-         addproducttype();
+      key.currentState!.save();
+      addproducttype();
     }
   }
-  void showdialog(BuildContext context, {String? title ,String? content}){
-    showDialog(context: context, builder:(context)=>AlertDialog(
-      title: Text( title!),
-      content: Text(content!),
-      actions: [
-        TextButton(onPressed: (){
-          //Navigator.of(context).pop;
 
-        },
-            child: Text("")
-        )
-      ],
-    )
-
-    );
-
+  void showdialog(BuildContext context, {String? title, String? content}) {
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: Text(title!),
+              content: Text(content!),
+              actions: [
+                TextButton(
+                    onPressed: () {
+                      //Navigator.of(context).pop;
+                    },
+                    child: Text(""))
+              ],
+            ));
   }
 
+
+  tabbarpage({String? label1,String? label2 ,IconData?icos1,IconData?icos2, required var tap1, required var tap2}){
+    return CupertinoTabScaffold(
+      tabBar: CupertinoTabBar(
+        backgroundColor: element.main,
+        activeColor: Colors.white,
+        inactiveColor: Colors.white70,
+        items: [
+          BottomNavigationBarItem(
+            label: label1,
+            icon: Icon(icos1),
+          ),
+          BottomNavigationBarItem(
+            label: label2,
+            icon: Icon(icos2),
+          ),
+        ],
+      ),
+      tabBuilder: (context ,index) {
+        switch(index){
+          case 0:
+            return tap1;
+          case 1:
+          default:
+            return tap2;
+        }
+
+      }
+    );
+  }
 }

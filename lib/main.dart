@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled1/notifire/product_notifire.dart';
 import 'package:untitled1/screen/manageOrder.dart';
-import 'package:untitled1/screen/product_add/product_type_add.dart';
+import 'package:untitled1/screen/product_add/category.dart';
 import 'package:untitled1/screen/receiveOrder.dart';
 import 'package:untitled1/screen/product_add/appProduct.dart';
 import 'package:untitled1/celement/router.dart';
@@ -36,11 +36,11 @@ class MyApp extends StatelessWidget {
       home: const SplashScreen(),
       routes: <String, WidgetBuilder>{
         route.prodc: (BuildContext context) => const ReceiveOrder(),
-        route.register: (BuildContext context) => const Register(),
-        route.product: (BuildContext context) => const AddProduct(),
+        route.register: (BuildContext context) => const employeetapbar(),
+        route.product: (BuildContext context) => const ProductaddTapbar(),
         route.m_orders: (BuildContext context) => const ManageOrder(),
-        route.suppliyer: (BuildContext context) => const Supplier(),
-        route.product_type: (BuildContext context) => const product_type(),
+        route.suppliyer: (BuildContext context) => const supplier_tapbar(),
+        route.product_type: (BuildContext context) => const product_type_tapbar(),
       },
     );
   }
