@@ -6,7 +6,7 @@ import 'package:path/path.dart';
 import '../api/aip.dart';
 import '../notifire/product_notifire.dart';
 
-class element extends StatefulWidget{
+class element{
   String? category;
   String? name,des,productpye;
   int? prie,cost,amout;
@@ -23,7 +23,7 @@ class element extends StatefulWidget{
   //title
   static String title = "ຮ້ານເເອັດມານີ";
   static String p1 = "ຮັບອໍເດິ";
-  static String p2 = "ລົງທະບຽນພະນັກງານ";
+  static String p2 = "ລົງທະບຽນ\nພະນັກງານ";
   static String p3 = "ຈັດການອໍເດິ";
   static String p4 = "ເພີ່ມສິນຄ້າ";
   static String p5 = "ຜູ້ສະໜອງ";
@@ -209,11 +209,22 @@ elevatedButton(GlobalKey<FormState> key,String? type) {
          addproducttype();
     }
   }
+  void showdialog(BuildContext context, {String? title ,String? content}){
+    showDialog(context: context, builder:(context)=>AlertDialog(
+      title: Text( title!),
+      content: Text(content!),
+      actions: [
+        TextButton(onPressed: (){
+          //Navigator.of(context).pop;
 
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
+        },
+            child: Text("")
+        )
+      ],
+    )
+
+    );
+
   }
 
 }

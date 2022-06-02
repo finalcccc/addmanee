@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_print
 
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -9,7 +8,6 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:untitled1/api/aip.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:firebase_core/firebase_core.dart';
-import '../Viewproduct.dart';
 
 
 import '../../model/employee_data.dart';
@@ -29,60 +27,67 @@ bool set = false;
 final Future<FirebaseApp> firebase = Firebase.initializeApp();
 
 class _RegisterState extends State<Register> {
+  element elemnts = element();
 
   check() async {  //up to database
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
-      try {
-        await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(email: email!, password: password!)
-            .then((value) async {
-          formKey.currentState!.reset();
-          Fluttertoast.showToast(
-            msg: "ລົງທະບຽນໄດ້ແລ້ວ",
-            fontSize: 20,
-            gravity: ToastGravity.CENTER,
-            backgroundColor: Colors.white,
-            textColor: Colors.black,
-          );
-          String uid = value.user!.uid;
-          print("uid = $uid");
+      if(position!= null){
+        try {
+          await FirebaseAuth.instance
+              .createUserWithEmailAndPassword(email: email!, password: password!)
+              .then((value) async {
+            formKey.currentState!.reset();
+            Fluttertoast.showToast(
+              msg: "ລົງທະບຽນໄດ້ແລ້ວ",
+              fontSize: 20,
+              gravity: ToastGravity.CENTER,
+              backgroundColor: Colors.white,
+              textColor: Colors.black,
+            );
+            String uid = value.user!.uid;
+            print("uid = $uid");
 
-          EmployeeData employeeData = EmployeeData(
-            name: name!,
-            email: email!,
-            password: password!,
-            tel: tel!,
-            address: address!,
-            position: position!,
-            date: date!,
-          );
-          final Map<String, dynamic>? data = employeeData.toMap();
-          await FirebaseFirestore.instance
-              .collection("employees")
-              .doc(uid)
-              .set(data!)
-              .then(
-                (value) {
-              print('Insert value in to firestore success');
+            EmployeeData employeeData = EmployeeData(
+              name: name!,
+              email: email!,
+              password: password!,
+              tel: tel!,
+              address: address!,
+              position: position!,
+              date: date!,
+            );
+            final Map<String, dynamic>? data = employeeData.toMap();
+            await FirebaseFirestore.instance
+                .collection("employees")
+                .doc(uid)
+                .set(data!)
+                .then(
+                  (value) {
+                print('Insert value in to firestore success');
                 setState(() {
                   position = null;
                 });
+              },
+            );
+          });
 
-            },
+
+        } on FirebaseAuthException catch (e) {
+          // print(e.message);
+          // print(e.code);
+          Fluttertoast.showToast(
+            msg: e.message!,
+            gravity: ToastGravity.CENTER,
+            backgroundColor: Colors.blue,
           );
-        });
+        }
 
-
-      } on FirebaseAuthException catch (e) {
-        // print(e.message);
-        // print(e.code);
-        Fluttertoast.showToast(
-          msg: e.message!,
-          gravity: ToastGravity.CENTER,
-          backgroundColor: Colors.blue,
-        );
+      }else{
+        return  elemnts.showdialog(context,title: 'ຍັງບໍ່ທັນໄດ້ເລືອກຕຳເເໜ່ງ',content: 'ກະລຸນາເລືອກຕຳເເໜ່ງ');
       }
+
+
     }
   }
 
@@ -172,12 +177,13 @@ class _RegisterState extends State<Register> {
               ),
               onChanged: (value) => name = value.trim(),
               validator: (String? name) {
+
                 if (name!.isEmpty) {
                   return "ກະລຸນາປ້ອນຊື່ ແລະ ນາມສະກຸນ";
-                } else if (name.length < 6) {
+                } else if (name.length < 3) {
                   return "ຊື່ ແລະ ນາມສະກຸນມັນສັ້ນເກີນໄປ";
                 }
-                return name = name.toString();
+                name = name.toString();
               }),
           const SizedBox(height: 10),
           TextFormField(
@@ -288,7 +294,7 @@ class _RegisterState extends State<Register> {
             keyboardType: TextInputType.number,
             onChanged: (value) => date = value.trim(),
             validator:
-                RequiredValidator(errorText: "ກະລຸນາປ້ອນ ວັນ ເດືອນ ປີ ເກີດ"),
+            RequiredValidator(errorText: "ກະລຸນາປ້ອນ ວັນ ເດືອນ ປີ ເກີດ"),
           ),
           const SizedBox(height: 10),
           TextFormField(
@@ -314,10 +320,8 @@ class _RegisterState extends State<Register> {
             ),
             onPressed: () async {
               setState(() {
-                //ceck();
-                getproduct();
-                print('g');
-               // Navigator.push(context, MaterialPageRoute(builder: (context) => Viewproduct(),));
+                check();
+                // Navigator.push(context, MaterialPageRoute(builder: (context) => Viewproduct(),));
               });
             },
             child: const Text(
@@ -360,11 +364,11 @@ class _RegisterState extends State<Register> {
         // icon: const Icon(Icons.keyboard_arrow_down),
         items: EmployeeData.positoin
             .map((e) => DropdownMenuItem(
-                value: e,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: Text(e),
-                )))
+            value: e,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20.0),
+              child: Text(e),
+            )))
             .toList(),
         onChanged: (String? v) {
           setState(() {
