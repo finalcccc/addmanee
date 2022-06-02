@@ -43,6 +43,7 @@ dependencies:
   fluttertoast: ^8.0.9
   firebase_storage: ^10.2.17
   path: ^1.8.1
+  provider: ^6.0.3
 
 
 

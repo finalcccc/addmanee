@@ -1,4 +1,9 @@
-class EmployeeData {
+
+import 'package:provider/provider.dart';
+import 'package:untitled1/notifire/product_notifire.dart';
+
+class EmployeeData{
+
   String? name;
   String? email;
   String? password;

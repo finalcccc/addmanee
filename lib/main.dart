@@ -9,14 +9,18 @@ import 'package:untitled1/celement/router.dart';
 import 'package:untitled1/screen/product_add/supplier_add.dart';
 import 'screen/product_add/registerEmployee.dart';
 import 'screen/splashScreen .dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp().then(
-    (value) => print('connect'),
-  );
+  await Firebase.initializeApp().then((value) => print('connect'),);
   runApp(
-    const MyApp(),
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => notifiere()),
+        ],
+        child: const MyApp(),
+      )
   );
 }
 

@@ -61,15 +61,19 @@ Future<void> uploadproducts( {String? nameProduct,
   });
  // productnotifire.productlist = _product;
 }
+String? categorys;
+ cate(v){
+categorys = v;
+}
 
-addproducttype({String? categorys})async{
+addproducttype()async{
   Product_type_data category = Product_type_data();
   try {
     CollectionReference reference = FirebaseFirestore.instance.collection('categorys');
     category.category = categorys;
-    //DocumentReference docid = await reference.add(category.toMap());
-    //category.id = docid.id;
-    //docid.set(category.toMap());
+    DocumentReference docid = await reference.add(category.toMap());
+    category.id = docid.id;
+    docid.set(category.toMap());
     print(category.category);
   } catch (e) {
     print(e);

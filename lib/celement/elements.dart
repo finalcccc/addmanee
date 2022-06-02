@@ -1,13 +1,16 @@
-// ignore_for_file: non_constant_identifier_names, camel_case_types
+
+
 
 import 'package:flutter/material.dart';
-import 'package:untitled1/model/product_type_data.dart';
+import 'package:path/path.dart';
 import '../api/aip.dart';
+import '../notifire/product_notifire.dart';
 
-class element {
+class element extends StatefulWidget{
   String? category;
   String? name,des,productpye;
   int? prie,cost,amout;
+
 
   //color
   static var main = const Color(0xff0031CA);
@@ -180,6 +183,7 @@ elevatedButton(GlobalKey<FormState> key,String? type) {
             case "description":
               {
                des = v;
+
               }
               break;
             case "amount":
@@ -190,7 +194,7 @@ elevatedButton(GlobalKey<FormState> key,String? type) {
             case "Products_type":
               {
                 if(v.length <3) return 'ຊື່ປະເພດສິ້ນຄ້າສັ້ນເກີນໄປ';
-                  category = v;
+                  cate(v);
               }
               break;
           }
@@ -198,13 +202,18 @@ elevatedButton(GlobalKey<FormState> key,String? type) {
       ),
     );
   }
+
   checkformcategory(GlobalKey<FormState> key) async{
     if (key.currentState!.validate()) {
        key.currentState!.save();
-       if(category != null){
-         addproducttype(categorys:category);
-       }
+         addproducttype();
     }
+  }
+
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    throw UnimplementedError();
   }
 
 }
