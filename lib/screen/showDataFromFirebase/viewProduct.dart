@@ -15,7 +15,7 @@ class ViewProduct extends StatefulWidget {
 class _ViewProductState extends State<ViewProduct> {
   @override
 
-  catagory_data  cate = catagory_data();
+  category_data  cate = category_data();
 
   @override
   Widget build(BuildContext context) {

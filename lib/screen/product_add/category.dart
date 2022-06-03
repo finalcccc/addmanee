@@ -21,7 +21,7 @@ class _ProductTypeTapbarState extends State<ProductTypeTapbar> {
         icos2: Icons.feed,
         label2: 'g',
         tap1: const Category(),
-        tap2: const ViewCategory());
+        tap2:  ViewCategory());
   }
 }
 

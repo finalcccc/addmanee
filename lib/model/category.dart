@@ -1,14 +1,12 @@
-class catagory_data {
+class category_data {
   String? id;
   String? category;
+category_data();
+ category_data.frommap(Map<String, dynamic> value) {
 
-  catagory_data({this.id, this.category});
+        id =value['id'];
+        category =value['category'];
 
-  factory catagory_data.frommap(Map<String, dynamic> value) {
-    return catagory_data(
-        id : value['id'],
-        category : value['category'],
-    );
   }
 
   Map<String, dynamic> toMap() {

@@ -58,7 +58,7 @@ categorys = v;
 }
 
 addproducttype()async{
-  catagory_data category = catagory_data();
+  category_data category = category_data();
   try {
     CollectionReference reference = FirebaseFirestore.instance.collection('categorys');
     category.category = categorys;

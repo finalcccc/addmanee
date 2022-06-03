@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:untitled1/api/aip_getdata.dart';
 import 'package:untitled1/notifire/product_notifire.dart';
 import 'package:untitled1/screen/manageOrder.dart';
@@ -16,7 +17,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp().then((value) => print('connect'),);
   runApp(
-    MyApp()
+    MultiProvider(providers: [
+      ChangeNotifierProvider(create: (_)=>categorynotifiere()),
+    ],
+    child: MyApp() ,)
+
 
   );
 }
