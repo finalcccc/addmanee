@@ -1,11 +1,15 @@
+import 'dart:collection';
+
 import 'package:flutter/foundation.dart';
+import 'package:untitled1/model/product_data.dart';
 
-class notifiere with ChangeNotifier {
+class Productnotifiere with ChangeNotifier {
 
-  String? category;
-
-  categorys(String? category){
-    category = category;
+ List<Product_data>product=[];
+ Product_data? curanProduct;
+ UnmodifiableListView<Product_data> get  productlist =>UnmodifiableListView(product);
+  Product(List<Product_data>?productlists){
+    product  = productlists??[];
     notifyListeners();
   }
 

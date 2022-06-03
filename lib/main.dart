@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled1/api/aip_getdata.dart';
 import 'package:untitled1/notifire/product_notifire.dart';
 import 'package:untitled1/screen/manageOrder.dart';
 import 'package:untitled1/screen/product_add/category.dart';
@@ -9,18 +10,14 @@ import 'package:untitled1/route/router.dart';
 import 'package:untitled1/screen/supplier_add.dart';
 import 'screen/registerEmployee.dart';
 import 'screen/splashScreen .dart';
-import 'package:provider/provider.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp().then((value) => print('connect'),);
   runApp(
-      MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (_) => notifiere()),
-        ],
-        child: const MyApp(),
-      )
+    MyApp()
+
   );
 }
 

@@ -1,10 +1,10 @@
-class Product_type_data{
+class catagory_data{
   String? id;
   String? category;
 
-  Product_type_data();
+  catagory_data();
 
-  Product_type_data.getProdcttype(Map<String, dynamic> value) {
+  catagory_data.getcategory(Map<String, dynamic> value) {
     id = value['id'];
     category= value['category'];
   }

@@ -1,5 +1,5 @@
 
-import 'dart:io';
+
 import 'dart:math';
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -7,7 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io' as io;
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:untitled1/model/product_data.dart';
-import 'package:untitled1/screen/product_add/category.dart';
+
 
 import '../model/category.dart';
 
@@ -51,23 +51,14 @@ Future<void> uploadproducts( {String? nameProduct,
     return print(e.toString());
   }
 }
- Future getproduct()async{
-  QuerySnapshot<Map<String,dynamic>> querySnapshot = await FirebaseFirestore.instance.collection("products").get();
-  List<Product_data> _product = [];
-  querySnapshot.docs.map((e){
-    Product_data products = Product_data.getProdct(e.data());
-    _product.add(products);
-    print("${_product.length}");
-  });
- // productnotifire.productlist = _product;
-}
+
 String? categorys;
  cate(v){
 categorys = v;
 }
 
 addproducttype()async{
-  Product_type_data category = Product_type_data();
+  catagory_data category = catagory_data();
   try {
     CollectionReference reference = FirebaseFirestore.instance.collection('categorys');
     category.category = categorys;
