@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/screen/product_add/appProduct.dart';
+import 'package:untitled1/screen/showDataFromFirebase/viewCategory.dart';
 
 class ProductTypeTapbar extends StatefulWidget {
   const ProductTypeTapbar({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class _ProductTypeTapbarState extends State<ProductTypeTapbar> {
         icos2: Icons.feed,
         label2: 'g',
         tap1: const Category(),
-        tap2: const AddProduct());
+        tap2: const ViewCategory());
   }
 }
 

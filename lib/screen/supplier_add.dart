@@ -6,6 +6,7 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/model/supplier_data.dart';
 import 'package:untitled1/screen/product_add/appProduct.dart';
+import 'package:untitled1/screen/showDataFromFirebase/viewSupplier.dart';
 
 class SupplierTapbar extends StatefulWidget {
   const SupplierTapbar({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class _SupplierTapbarState extends State<SupplierTapbar> {
         icos2: Icons.feed,
         label2: 'g',
         tap1: const Supplier(),
-        tap2: const AddProduct());
+        tap2: const ViewSupplier());
   }
 }
 

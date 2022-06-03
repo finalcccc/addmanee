@@ -8,6 +8,7 @@ import 'package:untitled1/celement/elements.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:untitled1/model/product_data.dart';
 import 'package:untitled1/screen/registerEmployee.dart';
+import 'package:untitled1/screen/showDataFromFirebase/viewProduct.dart';
 
 import '../../model/employee_data.dart';
 
@@ -27,7 +28,7 @@ class _ProductAddTapbarState extends State<ProductAddTapbar> {
         icos2: Icons.feed,
         label2: 'g',
         tap1: const AddProduct(),
-        tap2: const AddProduct());
+        tap2: const ViewProduct());
   }
 }
 

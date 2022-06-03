@@ -9,6 +9,7 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:untitled1/screen/product_add/appProduct.dart';
+import 'package:untitled1/screen/showDataFromFirebase/viewEmployee.dart';
 
 import '../model/employee_data.dart';
 
@@ -28,7 +29,7 @@ class _EmployeeTapbarState extends State<EmployeeTapbar> {
         icos2: Icons.feed,
         label2: 'g',
         tap1: const Register(),
-        tap2: const AddProduct());
+        tap2: const ViewEmployee());
   }
 }
 
