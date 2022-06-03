@@ -16,8 +16,12 @@ class _ViewCategoryState extends State<ViewCategory> {
   @override
   void initState() {
     super.initState();
+<<<<<<< HEAD
     dos();
 
+=======
+    GetCategorydata();
+>>>>>>> 629c0d81c2f32575034f0fc6bc752dbeca5cfcdf
   }
   Future dos()async{
     categorynotifiere category = Provider.of<categorynotifiere>(context,listen: false);

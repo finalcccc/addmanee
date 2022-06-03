@@ -74,7 +74,7 @@ class _AddProductState extends State<AddProduct> {
         Center(
           child: GestureDetector(
             onTap: () {
-              addimgae();
+              AddImage();
               Timer(
                 const Duration(seconds: 2),
                 () => set(),
