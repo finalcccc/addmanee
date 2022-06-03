@@ -1,19 +1,14 @@
+// ignore_for_file: non_constant_identifier_names, avoid_function_literals_in_foreach_calls, avoid_print, unused_local_variable
 
-
-import 'dart:math';
-import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:image_picker/image_picker.dart';
-import 'dart:io' as io;
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:untitled1/model/category.dart';
-import 'package:untitled1/model/product_data.dart';
 
-getProduct_data()async{
- catagory_data cate = catagory_data();
-  QuerySnapshot<Map<String ,dynamic>> querySnapshot = await FirebaseFirestore.instance.collection("categorys").get();
+GetCategorydata() async {
+  catagory_data cate = catagory_data();
+  QuerySnapshot<Map<String, dynamic>> querySnapshot =
+      await FirebaseFirestore.instance.collection("categorys").get();
   querySnapshot.docs.forEach((element) {
-   catagory_data j = catagory_data.frommap(element.data());
-   print('${j.category}\n${j.id}');
+    catagory_data j = catagory_data.frommap(element.data());
+    print('${j.category}\n${j.id}');
   });
 }

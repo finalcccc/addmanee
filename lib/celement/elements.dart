@@ -33,9 +33,9 @@ class element {
   checks(GlobalKey<FormState> key) {
     if (key.currentState!.validate()) {
       key.currentState!.save();
-      uploadproducts(
+      UploadProducts(
           nameProduct: name,
-          desciption: des,
+          Description: des,
           prices: prie,
           cost: cost,
           amount: amout,
@@ -215,7 +215,7 @@ class element {
   checkformcategory(GlobalKey<FormState> key) async {
     if (key.currentState!.validate()) {
       key.currentState!.save();
-      addproducttype();
+      AddProductType();
     }
   }
 

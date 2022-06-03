@@ -13,7 +13,7 @@ class _ViewCategoryState extends State<ViewCategory> {
   @override
   void initState() {
     super.initState();
-    getProduct_data();
+    GetCategorydata();
   }
   @override
   Widget build(BuildContext context) {
