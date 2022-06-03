@@ -19,13 +19,7 @@ class _ViewProductState extends State<ViewProduct> {
     getProduct_data();
   }
   catagory_data  cate = catagory_data();
-  getProduct_data()async{
 
-    QuerySnapshot<Map<String ,dynamic>> querySnapshot = await FirebaseFirestore.instance.collection("categorys").get();
-      querySnapshot.docs.forEach((element) {
-
-      });
-  }
   @override
   Widget build(BuildContext context) {
   // Productnotifiere product = Provider.of<Productnotifiere>(context);
