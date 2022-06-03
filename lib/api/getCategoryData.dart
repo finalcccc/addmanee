@@ -1,23 +1,19 @@
-import 'dart:math';
-import 'dart:async';
+// ignore_for_file: avoid_function_literals_in_foreach_calls, non_constant_identifier_names, unused_local_variable
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'dart:io';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:untitled1/model/category.dart';
-import 'package:untitled1/model/product_data.dart';
 import '../notifire/product_notifire.dart';
 
-getProduct_data(categorynotifiere cate) async {
+GetCategoryData(categorynotifiere cate) async {
   int i = 0;
-  List<category_data> category = [];
+  List<CategoryData> category = [];
   QuerySnapshot<Map<String, dynamic>> rfn =
       await FirebaseFirestore.instance.collection('categorys').get();
   rfn.docs.forEach((e) {
-    category_data f = category_data.frommap(e.data());
+    CategoryData f = CategoryData.frommap(e.data());
     category.add(f);
     i++;
   });
-   cate.category=category;
-
+  cate.category = category;
 }

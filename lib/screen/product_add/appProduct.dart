@@ -22,7 +22,7 @@ class ProductAddTapbar extends StatefulWidget {
 class _ProductAddTapbarState extends State<ProductAddTapbar> {
   @override
   Widget build(BuildContext context) {
-    return element().tabbarpage(
+    return element().TabbarPage(
         label1: 'v',
         icos1: Icons.feed,
         icos2: Icons.feed,

@@ -23,7 +23,7 @@ class EmployeeTapbar extends StatefulWidget {
 class _EmployeeTapbarState extends State<EmployeeTapbar> {
   @override
   Widget build(BuildContext context) {
-    return element().tabbarpage(
+    return element().TabbarPage(
         label1: 'v',
         icos1: Icons.feed,
         icos2: Icons.feed,

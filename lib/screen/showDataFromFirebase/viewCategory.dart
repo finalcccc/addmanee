@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/notifire/product_notifire.dart';
 
-import '../../api/aip_getdata.dart';
-import '../../model/category.dart';
+import '../../api/getCategoryData.dart';
 
 class ViewCategory extends StatefulWidget {
   const ViewCategory({Key? key}) : super(key: key);
@@ -20,7 +19,7 @@ class _ViewCategoryState extends State<ViewCategory> {
   }
   Future dos()async{
     categorynotifiere category = Provider.of<categorynotifiere>(context,listen: false);
-   await getProduct_data(category);
+   await GetCategoryData(category);
 }
   @override
   Widget build(BuildContext context) {
@@ -35,7 +34,7 @@ class _ViewCategoryState extends State<ViewCategory> {
         );
       },
           separatorBuilder: (contxt,index){
-          return Divider(
+          return const Divider(
             color: Colors.black,
           );
           }, itemCount: category.categorylist.length ),

@@ -18,7 +18,7 @@ class SupplierTapbar extends StatefulWidget {
 class _SupplierTapbarState extends State<SupplierTapbar> {
   @override
   Widget build(BuildContext context) {
-    return element().tabbarpage(
+    return element().TabbarPage(
         label1: 'v',
         icos1: Icons.feed,
         icos2: Icons.feed,

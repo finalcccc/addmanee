@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled1/api/aip.dart';
-import 'package:untitled1/api/aip_getdata.dart';
+import 'package:untitled1/api/getCategoryData.dart';
 import 'package:untitled1/model/category.dart';
 import 'package:untitled1/notifire/product_notifire.dart';
 
@@ -15,7 +15,7 @@ class ViewProduct extends StatefulWidget {
 class _ViewProductState extends State<ViewProduct> {
   @override
 
-  category_data  cate = category_data();
+  CategoryData  cate = CategoryData();
 
   @override
   Widget build(BuildContext context) {

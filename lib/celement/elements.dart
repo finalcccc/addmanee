@@ -1,15 +1,15 @@
+// ignore_for_file: non_constant_identifier_names, prefer_is_empty, camel_case_types
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
-import 'package:untitled1/screen/product_add/category.dart';
+
 import '../api/aip.dart';
-import '../notifire/product_notifire.dart';
-import '../screen/product_add/appProduct.dart';
+
 
 class element {
   String? category;
-  String? name, des, productpye;
-  int? prie, cost, amout;
+  String? name, des, productType;
+  int? price, cost, amount;
 
 
   //color
@@ -29,16 +29,16 @@ class element {
   static String p5 = "ຜູ້ສະໜອງ";
   static String p6 = "ປະເພດສິນຄ້າ";
 
-// key khrng class form addproduct
+// key khrong class form addproduct
   checks(GlobalKey<FormState> key) {
     if (key.currentState!.validate()) {
       key.currentState!.save();
       UploadProducts(
           nameProduct: name,
           Description: des,
-          prices: prie,
+          prices: price,
           cost: cost,
-          amount: amout,
+          amount: amount,
           category: 'category');
     }
   }
@@ -186,7 +186,7 @@ class element {
 
             case "price":
               {
-                prie = int.parse(v);
+                price = int.parse(v);
               }
               break;
 
@@ -197,7 +197,7 @@ class element {
               break;
             case "amount":
               {
-                amout = int.parse(v);
+                amount = int.parse(v);
               }
               break;
             case "Products_type":
@@ -207,6 +207,7 @@ class element {
               }
               break;
           }
+          return null;
         },
       ),
     );
@@ -230,13 +231,13 @@ class element {
                     onPressed: () {
                       //Navigator.of(context).pop;
                     },
-                    child: Text(""))
+                    child: const Text(""))
               ],
             ));
   }
 
 
-  tabbarpage({String? label1,String? label2 ,IconData?icos1,IconData?icos2, required var tap1, required var tap2}){
+  TabbarPage({String? label1,String? label2 ,IconData?icos1,IconData?icos2, required var tap1, required var tap2}){
     return CupertinoTabScaffold(
       tabBar: CupertinoTabBar(
         backgroundColor: element.main,

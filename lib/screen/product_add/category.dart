@@ -15,7 +15,7 @@ class ProductTypeTapbar extends StatefulWidget {
 class _ProductTypeTapbarState extends State<ProductTypeTapbar> {
   @override
   Widget build(BuildContext context) {
-    return element().tabbarpage(
+    return element().TabbarPage(
         label1: 'v',
         icos1: Icons.feed,
         icos2: Icons.feed,
