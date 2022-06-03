@@ -14,6 +14,6 @@ getProduct_data()async{
   QuerySnapshot<Map<String ,dynamic>> querySnapshot = await FirebaseFirestore.instance.collection("categorys").get();
   querySnapshot.docs.forEach((element) {
    catagory_data j = catagory_data.frommap(element.data());
-   print(j.category);
+   print('${j.category}\n${j.id}');
   });
 }
