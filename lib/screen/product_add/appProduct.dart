@@ -7,25 +7,30 @@ import 'package:untitled1/api/aip.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:untitled1/model/product_data.dart';
-import 'package:untitled1/screen/product_add/category.dart';
-import 'package:untitled1/screen/product_add/registerEmployee.dart';
+import 'package:untitled1/screen/registerEmployee.dart';
 
 import '../../model/employee_data.dart';
 
-class ProductaddTapbar extends StatefulWidget {
-  const ProductaddTapbar({Key? key}) : super(key: key);
+class ProductAddTapbar extends StatefulWidget {
+  const ProductAddTapbar({Key? key}) : super(key: key);
 
   @override
-  State<ProductaddTapbar> createState() => _ProductaddTapbarState();
+  State<ProductAddTapbar> createState() => _ProductAddTapbarState();
 }
 
-class _ProductaddTapbarState extends State<ProductaddTapbar> {
-
+class _ProductAddTapbarState extends State<ProductAddTapbar> {
   @override
   Widget build(BuildContext context) {
-    return element().tabbarpage(label1: 'v',icos1: Icons.feed,icos2: Icons.feed ,label2: 'g',tap1: AddProduct(),tap2: AddProduct());
+    return element().tabbarpage(
+        label1: 'v',
+        icos1: Icons.feed,
+        icos2: Icons.feed,
+        label2: 'g',
+        tap1: const AddProduct(),
+        tap2: const AddProduct());
   }
 }
+
 class AddProduct extends StatefulWidget {
   const AddProduct({Key? key}) : super(key: key);
 
@@ -45,9 +50,6 @@ class _AddProductState extends State<AddProduct> {
       images = image;
     });
   }
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -120,7 +122,7 @@ class _AddProductState extends State<AddProduct> {
           child: Column(
             children: [
               elements.inputFields(
-                context:context,
+                context: context,
                 trye: 'nameProduct',
                 hint: 'ຊື່ສິນຄ້າ',
                 icons: Icons.production_quantity_limits,
@@ -128,7 +130,7 @@ class _AddProductState extends State<AddProduct> {
               ),
               const SizedBox(height: 10),
               elements.inputFields(
-                context:context,
+                context: context,
                 hint: 'ລາຄາຕົ້ນທືນ',
                 icons: Icons.price_check,
                 Keybordtye: TextInputType.number,
@@ -136,7 +138,7 @@ class _AddProductState extends State<AddProduct> {
               ),
               const SizedBox(height: 10),
               elements.inputFields(
-                context:context,
+                context: context,
                 hint: 'ລາຄາ',
                 icons: Icons.price_check,
                 Keybordtye: TextInputType.number,
@@ -144,7 +146,7 @@ class _AddProductState extends State<AddProduct> {
               ),
               const SizedBox(height: 10),
               elements.inputFields(
-                context:context,
+                context: context,
                 hint: 'ລາລະອຽດ',
                 icons: Icons.edit,
                 Keybordtye: TextInputType.text,
@@ -152,7 +154,7 @@ class _AddProductState extends State<AddProduct> {
               ),
               const SizedBox(height: 10),
               elements.inputFields(
-                context:context,
+                context: context,
                 hint: 'ຈຳນວນ',
                 icons: Icons.qr_code,
                 Keybordtye: TextInputType.number,
@@ -161,7 +163,7 @@ class _AddProductState extends State<AddProduct> {
               const SizedBox(height: 10),
               comboboxcontainer(context),
               const SizedBox(height: 20),
-              elements.elevatedButton(Key,'addproduct'),
+              elements.elevatedButton(Key, 'addproduct'),
               const SizedBox(height: 20),
             ],
           ),

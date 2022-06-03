@@ -1,31 +1,37 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/screen/product_add/appProduct.dart';
 
-class product_type_tapbar extends StatefulWidget {
-  const product_type_tapbar({Key? key}) : super(key: key);
+class ProductTypeTapbar extends StatefulWidget {
+  const ProductTypeTapbar({Key? key}) : super(key: key);
 
   @override
-  State<product_type_tapbar> createState() => _product_type_tapbarState();
+  State<ProductTypeTapbar> createState() => _ProductTypeTapbarState();
 }
 
-class _product_type_tapbarState extends State<product_type_tapbar> {
-
+class _ProductTypeTapbarState extends State<ProductTypeTapbar> {
   @override
   Widget build(BuildContext context) {
-    return element().tabbarpage(label1: 'v',icos1: Icons.feed,icos2: Icons.feed ,label2: 'g',tap1: catagory(),tap2: AddProduct());
+    return element().tabbarpage(
+        label1: 'v',
+        icos1: Icons.feed,
+        icos2: Icons.feed,
+        label2: 'g',
+        tap1: const Category(),
+        tap2: const AddProduct());
   }
 }
 
-class catagory extends StatefulWidget {
-  const catagory({Key? key}) : super(key: key);
+class Category extends StatefulWidget {
+  const Category({Key? key}) : super(key: key);
 
   @override
-  State<catagory> createState() => _catagoryState();
+  State<Category> createState() => _CategoryState();
 }
 
-class _catagoryState extends State<catagory> {
+class _CategoryState extends State<Category> {
   GlobalKey<FormState> Key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -34,7 +40,6 @@ class _catagoryState extends State<catagory> {
         backgroundColor: element.main,
         leading: element.BackPage(context),
         title: Text(element.p6),
-
       ),
       body: Column(
         children: [

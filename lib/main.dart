@@ -5,9 +5,9 @@ import 'package:untitled1/screen/manageOrder.dart';
 import 'package:untitled1/screen/product_add/category.dart';
 import 'package:untitled1/screen/receiveOrder.dart';
 import 'package:untitled1/screen/product_add/appProduct.dart';
-import 'package:untitled1/celement/router.dart';
-import 'package:untitled1/screen/product_add/supplier_add.dart';
-import 'screen/product_add/registerEmployee.dart';
+import 'package:untitled1/route/router.dart';
+import 'package:untitled1/screen/supplier_add.dart';
+import 'screen/registerEmployee.dart';
 import 'screen/splashScreen .dart';
 import 'package:provider/provider.dart';
 
@@ -36,11 +36,11 @@ class MyApp extends StatelessWidget {
       home: const SplashScreen(),
       routes: <String, WidgetBuilder>{
         route.prodc: (BuildContext context) => const ReceiveOrder(),
-        route.register: (BuildContext context) => const employeetapbar(),
-        route.product: (BuildContext context) => const ProductaddTapbar(),
+        route.register: (BuildContext context) => const EmployeeTapbar(),
+        route.product: (BuildContext context) => const ProductAddTapbar(),
         route.m_orders: (BuildContext context) => const ManageOrder(),
-        route.suppliyer: (BuildContext context) => const supplier_tapbar(),
-        route.product_type: (BuildContext context) => const product_type_tapbar(),
+        route.suppliyer: (BuildContext context) => const SupplierTapbar(),
+        route.product_type: (BuildContext context) => const ProductTypeTapbar(),
       },
     );
   }

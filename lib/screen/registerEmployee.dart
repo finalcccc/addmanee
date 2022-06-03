@@ -1,3 +1,4 @@
+// ignore_for_file: avoid_print
 
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -5,34 +6,31 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import 'package:untitled1/api/aip.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:untitled1/screen/product_add/appProduct.dart';
-import 'package:untitled1/screen/product_add/category.dart';
 
+import '../model/employee_data.dart';
 
-import '../../model/employee_data.dart';
-class employeetapbar extends StatefulWidget {
-  const employeetapbar({Key? key}) : super(key: key);
+class EmployeeTapbar extends StatefulWidget {
+  const EmployeeTapbar({Key? key}) : super(key: key);
 
   @override
-  State<employeetapbar> createState() => _employeetapbarState();
+  State<EmployeeTapbar> createState() => _EmployeeTapbarState();
 }
 
-class _employeetapbarState extends State<employeetapbar> {
-
+class _EmployeeTapbarState extends State<EmployeeTapbar> {
   @override
   Widget build(BuildContext context) {
-    return element().tabbarpage(label1: 'v',icos1: Icons.feed,icos2: Icons.feed ,label2: 'g',tap1: Register(),tap2: AddProduct());
+    return element().tabbarpage(
+        label1: 'v',
+        icos1: Icons.feed,
+        icos2: Icons.feed,
+        label2: 'g',
+        tap1: const Register(),
+        tap2: const AddProduct());
   }
 }
-
-
-
-
-
-
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -51,13 +49,15 @@ final Future<FirebaseApp> firebase = Firebase.initializeApp();
 class _RegisterState extends State<Register> {
   element elemnts = element();
 
-  check() async {  //up to database
+  check() async {
+    //up to database
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
-      if(position!= null){
+      if (position != null) {
         try {
           await FirebaseAuth.instance
-              .createUserWithEmailAndPassword(email: email!, password: password!)
+              .createUserWithEmailAndPassword(
+                  email: email!, password: password!)
               .then((value) async {
             formKey.currentState!.reset();
             Fluttertoast.showToast(
@@ -85,16 +85,14 @@ class _RegisterState extends State<Register> {
                 .doc(uid)
                 .set(data!)
                 .then(
-                  (value) {
-                print('Insert value in to firestore success');
+              (value) {
+                print('Insert value in to fireStore success');
                 setState(() {
                   position = null;
                 });
               },
             );
           });
-
-
         } on FirebaseAuthException catch (e) {
           // print(e.message);
           // print(e.code);
@@ -104,17 +102,15 @@ class _RegisterState extends State<Register> {
             backgroundColor: Colors.blue,
           );
         }
-
-      }else{
-        return  elemnts.showdialog(context,title: 'ຍັງບໍ່ທັນໄດ້ເລືອກຕຳເເໜ່ງ',content: 'ກະລຸນາເລືອກຕຳເເໜ່ງ');
+      } else {
+        return elemnts.showdialog(context,
+            title: 'ຍັງບໍ່ທັນໄດ້ເລືອກຕຳເເໜ່ງ', content: 'ກະລຸນາເລືອກຕຳເເໜ່ງ');
       }
-
-
     }
   }
 
   @override
-  Widget build(BuildContext context ) {
+  Widget build(BuildContext context) {
     return FutureBuilder(
       future: firebase,
       builder: (context, snapshot) {
@@ -199,13 +195,13 @@ class _RegisterState extends State<Register> {
               ),
               onChanged: (value) => name = value.trim(),
               validator: (String? name) {
-
                 if (name!.isEmpty) {
                   return "ກະລຸນາປ້ອນຊື່ ແລະ ນາມສະກຸນ";
                 } else if (name.length < 3) {
                   return "ຊື່ ແລະ ນາມສະກຸນມັນສັ້ນເກີນໄປ";
                 }
                 name = name.toString();
+                return null;
               }),
           const SizedBox(height: 10),
           TextFormField(
@@ -316,7 +312,7 @@ class _RegisterState extends State<Register> {
             keyboardType: TextInputType.number,
             onChanged: (value) => date = value.trim(),
             validator:
-            RequiredValidator(errorText: "ກະລຸນາປ້ອນ ວັນ ເດືອນ ປີ ເກີດ"),
+                RequiredValidator(errorText: "ກະລຸນາປ້ອນ ວັນ ເດືອນ ປີ ເກີດ"),
           ),
           const SizedBox(height: 10),
           TextFormField(
@@ -386,11 +382,11 @@ class _RegisterState extends State<Register> {
         // icon: const Icon(Icons.keyboard_arrow_down),
         items: EmployeeData.positoin
             .map((e) => DropdownMenuItem(
-            value: e,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 20.0),
-              child: Text(e),
-            )))
+                value: e,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: Text(e),
+                )))
             .toList(),
         onChanged: (String? v) {
           setState(() {
@@ -399,4 +395,3 @@ class _RegisterState extends State<Register> {
         });
   }
 }
-

@@ -6,23 +6,27 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/model/supplier_data.dart';
 import 'package:untitled1/screen/product_add/appProduct.dart';
-import 'package:untitled1/screen/product_add/category.dart';
 
-
-class supplier_tapbar extends StatefulWidget {
-  const supplier_tapbar({Key? key}) : super(key: key);
+class SupplierTapbar extends StatefulWidget {
+  const SupplierTapbar({Key? key}) : super(key: key);
 
   @override
-  State<supplier_tapbar> createState() => _supplier_tapbarState();
+  State<SupplierTapbar> createState() => _SupplierTapbarState();
 }
 
-class _supplier_tapbarState extends State<supplier_tapbar> {
-
+class _SupplierTapbarState extends State<SupplierTapbar> {
   @override
   Widget build(BuildContext context) {
-    return element().tabbarpage(label1: 'v',icos1: Icons.feed,icos2: Icons.feed ,label2: 'g',tap1: Supplier(),tap2: AddProduct());
+    return element().tabbarpage(
+        label1: 'v',
+        icos1: Icons.feed,
+        icos2: Icons.feed,
+        label2: 'g',
+        tap1: const Supplier(),
+        tap2: const AddProduct());
   }
 }
+
 class Supplier extends StatefulWidget {
   const Supplier({Key? key}) : super(key: key);
 
