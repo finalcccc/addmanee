@@ -14,10 +14,7 @@ class ViewProduct extends StatefulWidget {
 
 class _ViewProductState extends State<ViewProduct> {
   @override
-  void initState() {
-    super.initState();
-    getProduct_data();
-  }
+
   catagory_data  cate = catagory_data();
 
   @override
@@ -31,7 +28,7 @@ class _ViewProductState extends State<ViewProduct> {
     child: FloatingActionButton(
     backgroundColor: Colors.amberAccent,
     onPressed: ()async {
-      await getProduct_data();
+
     },
     child: Icon(
     Icons.train,
