@@ -7,9 +7,9 @@ import '../api/aip.dart';
 
 
 class element {
-  String? category;
-  String? name, des, productType;
-  int? price, cost, amount;
+ static String? category;
+  String? _name, _des, _productType;
+  int? _price, _cost, _amount;
 
 
   //color
@@ -34,12 +34,12 @@ class element {
     if (key.currentState!.validate()) {
       key.currentState!.save();
       UploadProducts(
-          nameProduct: name,
-          Description: des,
-          prices: price,
-          cost: cost,
-          amount: amount,
-          category: 'category');
+          nameProduct: _name,
+          Description: _des,
+          prices: _price,
+          cost: _cost,
+          amount: _amount,
+          category: category);
     }
   }
 
@@ -175,29 +175,29 @@ class element {
           switch (tye) {
             case "nameProduct":
               {
-                name = v;
+                _name = v;
               }
               break;
             case "cost":
               {
-                cost = int.parse(v);
+                _cost = int.parse(v);
               }
               break;
 
             case "price":
               {
-                price = int.parse(v);
+                _price = int.parse(v);
               }
               break;
 
             case "description":
               {
-                des = v;
+                _des = v;
               }
               break;
             case "amount":
               {
-                amount = int.parse(v);
+                _amount = int.parse(v);
               }
               break;
             case "Products_type":

@@ -7,7 +7,7 @@ import 'package:untitled1/screen/product_add/appProduct.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewCategory.dart';
 
 import '../../api/getCategoryData.dart';
-import '../../notifire/product_notifire.dart';
+import '../../notifire/categorys_notifire.dart';
 
 class ProductTypeTapbar extends StatefulWidget {
   const ProductTypeTapbar({Key? key}) : super(key: key);

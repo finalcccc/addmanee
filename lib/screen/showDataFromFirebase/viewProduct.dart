@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled1/api/aip.dart';
 import 'package:untitled1/api/getCategoryData.dart';
 import 'package:untitled1/model/category.dart';
-import 'package:untitled1/notifire/product_notifire.dart';
+import 'package:untitled1/notifire/categorys_notifire.dart';
 
 class ViewProduct extends StatefulWidget {
   const ViewProduct({Key? key}) : super(key: key);

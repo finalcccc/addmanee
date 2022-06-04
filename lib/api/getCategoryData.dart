@@ -4,17 +4,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
 
 import 'package:untitled1/model/category.dart';
-import '../notifire/product_notifire.dart';
+import '../notifire/categorys_notifire.dart';
 
 GetCategoryData(categorynotifiere cate) async {
-  int i = 0;
   List<CategoryData> category = [];
   QuerySnapshot<Map<String, dynamic>> rfn =
-      await FirebaseFirestore.instance.collection('categorys').get();
+      await FirebaseFirestore.instance.collection('categorys').orderBy('category').get();
   rfn.docs.forEach((e) {
     CategoryData f = CategoryData.frommap(e.data());
+    cate.cate.add(e['category']);
     category.add(f);
-    i++;
   });
   cate.category = category;
 }

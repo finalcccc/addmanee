@@ -3,10 +3,12 @@
 import 'dart:io';
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:untitled1/api/aip.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:untitled1/model/product_data.dart';
+import 'package:untitled1/notifire/categorys_notifire.dart';
 import 'package:untitled1/screen/registerEmployee.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewProduct.dart';
 
@@ -42,30 +44,33 @@ class AddProduct extends StatefulWidget {
 class _AddProductState extends State<AddProduct> {
   element elements = element();
   GlobalKey<FormState> Key = GlobalKey<FormState>();
-  Product_data Product = Product_data();
   XFile? images;
+  String category = '';
   double area = 55;
 
   void set() {
     setState(() {
+      category;
       images = image;
+
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    categorynotifiere category = Provider.of<categorynotifiere>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: element.main,
         leading: element.BackPage(context),
       ),
       body: SingleChildScrollView(
-        child: buildColumn(context),
+        child: buildColumn(context,category,set()),
       ),
     );
   }
 
-  Column buildColumn(BuildContext context) {
+  Column buildColumn(BuildContext context , categorynotifiere cate,void setcate) {
     return Column(
       children: <Widget>[
         const SizedBox(
@@ -162,7 +167,7 @@ class _AddProductState extends State<AddProduct> {
                 trye: 'amount',
               ),
               const SizedBox(height: 10),
-              comboboxcontainer(context),
+              comboboxcontainer(context,cate,setcate),
               const SizedBox(height: 20),
               elements.elevatedButton(Key, 'addproduct'),
               const SizedBox(height: 20),
@@ -174,7 +179,7 @@ class _AddProductState extends State<AddProduct> {
   }
 }
 
-Container comboboxcontainer(context) {
+Container comboboxcontainer(context ,categorynotifiere cate,void setcate) {
   return Container(
       margin: const EdgeInsets.only(right: 15, left: 15),
       decoration: BoxDecoration(
@@ -182,19 +187,20 @@ Container comboboxcontainer(context) {
           borderRadius: BorderRadius.circular(18)),
       child: Column(
         children: [
-          dropdownButton(),
+          dropdownButton(cate,setcate),
         ],
       ));
 }
 
-DropdownButton<String> dropdownButton() {
+DropdownButton<String> dropdownButton(categorynotifiere cate,void setcate) {
+  int i = 0;
   return DropdownButton(
       icon: const Icon(
         Icons.keyboard_arrow_down,
         size: 50,
       ),
       borderRadius: BorderRadius.circular(50),
-      value: position,
+      value: cate.categorytype,
       isExpanded: true,
       underline: Container(),
       hint: const Padding(
@@ -202,15 +208,15 @@ DropdownButton<String> dropdownButton() {
         child: Text("ເລືອກປະເພດສິນຄ້າ"),
       ),
       // icon: const Icon(Icons.keyboard_arrow_down),
-      items: EmployeeData.positoin
+      items: cate.cate
           .map((e) => DropdownMenuItem(
               value: e,
               child: Padding(
                 padding: const EdgeInsets.only(left: 20.0),
-                child: Text(e),
+                child: Text('${e}'),
               )))
           .toList(),
       onChanged: (String? v) {
-        position = v;
+         cate.SelcetType(v);
       });
 }
