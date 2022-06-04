@@ -12,6 +12,7 @@ import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/screen/registerEmployee.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewProduct.dart';
 
+import '../../api/getCategoryData.dart';
 import '../../model/employee_data.dart';
 
 class ProductAddTapbar extends StatefulWidget {
@@ -55,6 +56,18 @@ class _AddProductState extends State<AddProduct> {
 
     });
   }
+  @override
+  void initState() {
+    super.initState();
+    dos();
+  }
+
+  Future dos() async {
+    CategoryNotifire category = Provider.of<CategoryNotifire>(context, listen: false);
+    await GetCategoryData(category);
+    category.RefreshCategory();
+  }
+
 
   @override
   Widget build(BuildContext context) {

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../api/aip.dart';
 
 
+
 class element {
  static String? category;
   String? _name, _des, _productType;
