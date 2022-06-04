@@ -1,12 +1,11 @@
 // ignore_for_file: avoid_function_literals_in_foreach_calls, non_constant_identifier_names, unused_local_variable
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:provider/provider.dart';
 
 import 'package:untitled1/model/category.dart';
-import '../notifire/categorys_notifire.dart';
+import '../notifire/categoryNotifire.dart';
 
-GetCategoryData(categorynotifiere cate) async {
+GetCategoryData(EmployeeNotifire cate) async {
   List<CategoryData> category = [];
   QuerySnapshot<Map<String, dynamic>> rfn =
       await FirebaseFirestore.instance.collection('categorys').orderBy('category').get();

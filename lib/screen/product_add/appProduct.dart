@@ -8,7 +8,7 @@ import 'package:untitled1/api/aip.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:untitled1/model/product_data.dart';
-import 'package:untitled1/notifire/categorys_notifire.dart';
+import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/screen/registerEmployee.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewProduct.dart';
 
@@ -58,7 +58,7 @@ class _AddProductState extends State<AddProduct> {
 
   @override
   Widget build(BuildContext context) {
-    categorynotifiere category = Provider.of<categorynotifiere>(context);
+    EmployeeNotifire category = Provider.of<EmployeeNotifire>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: element.main,
@@ -70,7 +70,7 @@ class _AddProductState extends State<AddProduct> {
     );
   }
 
-  Column buildColumn(BuildContext context , categorynotifiere cate,void setcate) {
+  Column buildColumn(BuildContext context , EmployeeNotifire cate,void setcate) {
     return Column(
       children: <Widget>[
         const SizedBox(
@@ -179,7 +179,7 @@ class _AddProductState extends State<AddProduct> {
   }
 }
 
-Container comboboxcontainer(context ,categorynotifiere cate,void setcate) {
+Container comboboxcontainer(context ,EmployeeNotifire cate,void setcate) {
   return Container(
       margin: const EdgeInsets.only(right: 15, left: 15),
       decoration: BoxDecoration(
@@ -192,7 +192,7 @@ Container comboboxcontainer(context ,categorynotifiere cate,void setcate) {
       ));
 }
 
-DropdownButton<String> dropdownButton(categorynotifiere cate,void setcate) {
+DropdownButton<String> dropdownButton(EmployeeNotifire cate,void setcate) {
   int i = 0;
   return DropdownButton(
       icon: const Icon(
@@ -200,7 +200,7 @@ DropdownButton<String> dropdownButton(categorynotifiere cate,void setcate) {
         size: 50,
       ),
       borderRadius: BorderRadius.circular(50),
-      value: cate.categorytype,
+      value: cate.categoryType,
       isExpanded: true,
       underline: Container(),
       hint: const Padding(
@@ -217,6 +217,6 @@ DropdownButton<String> dropdownButton(categorynotifiere cate,void setcate) {
               )))
           .toList(),
       onChanged: (String? v) {
-         cate.SelcetType(v);
+         cate.SelectType(v);
       });
 }

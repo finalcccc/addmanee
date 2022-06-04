@@ -1,18 +1,18 @@
-class Product_data {
+class ProductData {
   String? id;
   String? nameProduct;
   String? image;
-  String? desciption;
+  String? description;
   int? price, cost, amount;
   String? category;
 
-  Product_data();
+  ProductData();
 
-  Product_data.getProdct(Map<String, dynamic> value) {
+  ProductData.getProduct(Map<String, dynamic> value) {
     id = value['id'];
     nameProduct = value['nameProduct'];
     image = value['image'];
-    desciption = value['desciption'];
+    description = value['description'];
     price = value['price'];
     cost = value['cost'];
     amount = value['amount'];
@@ -24,7 +24,7 @@ class Product_data {
       'id': id,
       'nameProduct': nameProduct,
       'image': image,
-      'desciption': desciption,
+      'description': description,
       'price': price,
       'amount': amount,
       'cost': cost,

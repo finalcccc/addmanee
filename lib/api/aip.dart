@@ -8,7 +8,6 @@ import 'dart:io' as io;
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:untitled1/model/product_data.dart';
 
-import '../celement/elements.dart';
 import '../model/category.dart';
 
 XFile? image;
@@ -23,7 +22,7 @@ Future<void> UploadProducts(
     cost,
     amount,
     String? category}) async {
-  Product_data product = Product_data();
+  ProductData product = ProductData();
   try {
     int random = Random().nextInt(1000);
     Reference ref = await FirebaseStorage.instance
@@ -46,7 +45,7 @@ Future<void> UploadProducts(
     product.cost = cost;
     product.amount = amount;
     product.category = Description;
-    product.desciption = category;
+    product.description = category;
     DocumentReference docid = await reference.add(product.toMap());
     product.id = docid.id;
     print(product.id);

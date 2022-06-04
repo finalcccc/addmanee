@@ -3,11 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/celement/elements.dart';
-import 'package:untitled1/screen/product_add/appProduct.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewCategory.dart';
 
 import '../../api/getCategoryData.dart';
-import '../../notifire/categorys_notifire.dart';
+import '../../notifire/categoryNotifire.dart';
 
 class ProductTypeTapbar extends StatefulWidget {
   const ProductTypeTapbar({Key? key}) : super(key: key);
@@ -17,7 +16,6 @@ class ProductTypeTapbar extends StatefulWidget {
 }
 
 class _ProductTypeTapbarState extends State<ProductTypeTapbar> {
-
   @override
   Widget build(BuildContext context) {
     return element().TabbarPage(
@@ -26,7 +24,7 @@ class _ProductTypeTapbarState extends State<ProductTypeTapbar> {
         icos2: Icons.feed,
         label2: 'g',
         tap1: const Category(),
-        tap2:  ViewCategory());
+        tap2: const ViewCategory());
   }
 }
 
@@ -38,14 +36,18 @@ class Category extends StatefulWidget {
 }
 
 class _CategoryState extends State<Category> {
+  @override
   void initState() {
     super.initState();
     dos();
   }
-  Future dos()async{
-    categorynotifiere category = Provider.of<categorynotifiere>(context,listen: false);
+
+  Future dos() async {
+    EmployeeNotifire category =
+        Provider.of<EmployeeNotifire>(context, listen: false);
     await GetCategoryData(category);
   }
+
   GlobalKey<FormState> Key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {

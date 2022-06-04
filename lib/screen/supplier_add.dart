@@ -5,7 +5,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/model/supplier_data.dart';
-import 'package:untitled1/screen/product_add/appProduct.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewSupplier.dart';
 
 class SupplierTapbar extends StatefulWidget {

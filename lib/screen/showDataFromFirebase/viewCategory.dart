@@ -1,6 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled1/notifire/categorys_notifire.dart';
+import 'package:untitled1/notifire/categoryNotifire.dart';
 
 import '../../api/getCategoryData.dart';
 
@@ -15,33 +17,35 @@ class _ViewCategoryState extends State<ViewCategory> {
   var refreshKey = GlobalKey<RefreshIndicatorState>();
 
   Future dos() async {
-    categorynotifiere category =
-        Provider.of<categorynotifiere>(context, listen: false);
+    EmployeeNotifire category =
+        Provider.of<EmployeeNotifire>(context, listen: false);
     await GetCategoryData(category);
-    Provider.of<categorynotifiere>(context, listen: false).RefreshCategory();
+    Provider.of<EmployeeNotifire>(context, listen: false).RefreshCategory();
   }
 
   @override
   Widget build(BuildContext context) {
-    categorynotifiere category = Provider.of<categorynotifiere>(context);
+    EmployeeNotifire category = Provider.of<EmployeeNotifire>(context);
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('ViewCategory'),
-        ),
-        body: RefreshIndicator(
-            key: refreshKey,
-            child: ListView.separated(
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text('${category.categorylist[index].category}'),
-                  );
-                },
-                separatorBuilder: (contxt, index) {
-                  return const Divider(
-                    color: Colors.black,
-                  );
-                },
-                itemCount: category.categorylist.length),
-            onRefresh: dos));
+      appBar: AppBar(
+        title: const Text('ViewCategory'),
+      ),
+      body: RefreshIndicator(
+        key: refreshKey,
+        onRefresh: dos,
+        child: ListView.separated(
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Text('${category.categoryList[index].category}'),
+              );
+            },
+            separatorBuilder: (context, index) {
+              return const Divider(
+                color: Colors.black,
+              );
+            },
+            itemCount: category.categoryList.length),
+      ),
+    );
   }
 }
