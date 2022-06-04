@@ -18,10 +18,10 @@ class _SupplierTapbarState extends State<SupplierTapbar> {
   @override
   Widget build(BuildContext context) {
     return element().TabbarPage(
-        label1: 'v',
+        label1: 'ຜູ້ສະໜອງ',
         icos1: Icons.feed,
         icos2: Icons.feed,
-        label2: 'g',
+        label2: 'ລາຍລະອຽດຂອງຜູ້ສະໜອງ',
         tap1: const Supplier(),
         tap2: const ViewSupplier());
   }
@@ -59,6 +59,8 @@ class _SupplierState extends State<Supplier> {
           if (snapshot.connectionState == ConnectionState.done) {
             return Scaffold(
               appBar: AppBar(
+                title: const Text('ຂໍ້ມູນຜູ້ສະໜອງ'),
+                centerTitle: true,
                 backgroundColor: element.main,
                 leading: element.BackPage(context),
               ),

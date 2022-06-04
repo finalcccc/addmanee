@@ -12,7 +12,7 @@ class _SupplierDetailState extends State<SupplierDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Supplier Detail'),
+        title: const Text('ຂໍ້ມູນລາຍລະອຽດຂອງແຕ່ລະຄົນ'),
         centerTitle: true,
       ),
     );

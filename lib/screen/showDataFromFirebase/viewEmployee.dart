@@ -31,7 +31,7 @@ class _ViewEmployeeState extends State<ViewEmployee> {
     EmployeeNotifire emp = Provider.of<EmployeeNotifire>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Employee Product'),
+        title: const Text('ຂໍ້ມູນລາຍລະອຽດຂອງພະນັກງານ'),
         centerTitle: true,
       ),
       body: ListView.builder(
@@ -50,7 +50,8 @@ class _ViewEmployeeState extends State<ViewEmployee> {
                     );
                   },
                   child: Text('${emp.employeeList[index].name}')),
-              subtitle: const Text('id'),
+
+              subtitle:  Text('${emp.employeeList[index].position}'),
               trailing: const Icon(Icons.delete),
             ),
           );

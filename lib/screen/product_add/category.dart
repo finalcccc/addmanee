@@ -68,7 +68,7 @@ class _CategoryState extends State<Category> {
                     const SizedBox(height: 20),
                     element().inputFields(
                         icons: Icons.category,
-                        hint: 'ປະເພດສິນຄ້າ',
+                        hint: ' ປະເພດສິນຄ້າ',
                         Keybordtye: TextInputType.text,
                         trye: 'Products_type',
                         context: context),

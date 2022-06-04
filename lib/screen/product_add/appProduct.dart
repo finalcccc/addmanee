@@ -7,13 +7,10 @@ import 'package:provider/provider.dart';
 import 'package:untitled1/api/aip.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:untitled1/model/product_data.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
-import 'package:untitled1/screen/product_add/registerEmployee.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewProduct.dart';
 
 import '../../api/getCategoryData.dart';
-import '../../model/employee_data.dart';
 
 class ProductAddTapbar extends StatefulWidget {
   const ProductAddTapbar({Key? key}) : super(key: key);
@@ -26,10 +23,10 @@ class _ProductAddTapbarState extends State<ProductAddTapbar> {
   @override
   Widget build(BuildContext context) {
     return element().TabbarPage(
-        label1: 'v',
+        label1: 'ສິນຄ້າ',
         icos1: Icons.feed,
         icos2: Icons.feed,
-        label2: 'g',
+        label2: 'ລາຍລະອຽດຂອງສິນຄ້າ',
         tap1: const AddProduct(),
         tap2: const ViewProduct());
   }
@@ -53,9 +50,9 @@ class _AddProductState extends State<AddProduct> {
     setState(() {
       category;
       images = image;
-
     });
   }
+
   @override
   void initState() {
     super.initState();
@@ -63,26 +60,29 @@ class _AddProductState extends State<AddProduct> {
   }
 
   Future dos() async {
-    CategoryNotifire category = Provider.of<CategoryNotifire>(context, listen: false);
+    CategoryNotifire category =
+        Provider.of<CategoryNotifire>(context, listen: false);
     await GetCategoryData(category);
   }
-
 
   @override
   Widget build(BuildContext context) {
     CategoryNotifire category = Provider.of<CategoryNotifire>(context);
     return Scaffold(
       appBar: AppBar(
+        title: const Text('ຂໍ້ມູນສິນຄ້າ'),
+        centerTitle: true,
         backgroundColor: element.main,
         leading: element.BackPage(context),
       ),
       body: SingleChildScrollView(
-        child: buildColumn(context,category,set()),
+        child: buildColumn(context, category, set()),
       ),
     );
   }
 
-  Column buildColumn(BuildContext context , CategoryNotifire cate,void setcate) {
+  Column buildColumn(
+      BuildContext context, CategoryNotifire cate, void setcate) {
     return Column(
       children: <Widget>[
         const SizedBox(
@@ -179,7 +179,7 @@ class _AddProductState extends State<AddProduct> {
                 trye: 'amount',
               ),
               const SizedBox(height: 10),
-              comboboxcontainer(context,cate,setcate),
+              comboboxcontainer(context, cate, setcate),
               const SizedBox(height: 20),
               elements.elevatedButton(Key, 'addproduct'),
               const SizedBox(height: 20),
@@ -191,7 +191,7 @@ class _AddProductState extends State<AddProduct> {
   }
 }
 
-Container comboboxcontainer(context ,CategoryNotifire cate,void setcate) {
+Container comboboxcontainer(context, CategoryNotifire cate, void setcate) {
   return Container(
       margin: const EdgeInsets.only(right: 15, left: 15),
       decoration: BoxDecoration(
@@ -199,12 +199,12 @@ Container comboboxcontainer(context ,CategoryNotifire cate,void setcate) {
           borderRadius: BorderRadius.circular(18)),
       child: Column(
         children: [
-          dropdownButton(cate,setcate),
+          dropdownButton(cate, setcate),
         ],
       ));
 }
 
-DropdownButton<String> dropdownButton(CategoryNotifire cate,void setcate) {
+DropdownButton<String> dropdownButton(CategoryNotifire cate, void setcate) {
   int i = 0;
   return DropdownButton(
       icon: const Icon(
@@ -229,6 +229,6 @@ DropdownButton<String> dropdownButton(CategoryNotifire cate,void setcate) {
               )))
           .toList(),
       onChanged: (String? v) {
-         cate.SelectType(v);
+        cate.SelectType(v);
       });
 }

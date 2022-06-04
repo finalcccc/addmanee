@@ -12,7 +12,7 @@ class _ProductDetailState extends State<ProductDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Product Detail'),
+        title: const Text('ລາຍລະອຽດຂອງສິນຄ້າ'),
         centerTitle: true,
       ),
     );
