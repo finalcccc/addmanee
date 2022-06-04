@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:untitled1/api/aip.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/model/supplier_data.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewSupplier.dart';
@@ -37,8 +38,7 @@ class Supplier extends StatefulWidget {
 final formKey = GlobalKey<FormState>();
 final Future<FirebaseApp> firebase = Firebase.initializeApp();
 SupplierData supplierData = SupplierData();
-CollectionReference supplierCollection =
-    FirebaseFirestore.instance.collection("suppliers");
+CollectionReference supplierCollection = FirebaseFirestore.instance.collection("suppliers");
 
 class _SupplierState extends State<Supplier> {
   @override
@@ -227,15 +227,7 @@ class _SupplierState extends State<Supplier> {
           ),
           onPressed: () async {
             if (formKey.currentState!.validate()) {
-              formKey.currentState!.save();
-              await supplierCollection.add({
-                "name": supplierData.name,
-                "email": supplierData.email,
-                "tel": supplierData.tel,
-                "address": supplierData.address,
-                "supplierProduct": supplierData.supplyProduct,
-              });
-              formKey.currentState!.reset();
+              AddSupplier(supplierData);
               Fluttertoast.showToast(
                 msg: "ໄດ້ເພີ່ມຂໍ້ມູນຜູ້ສະໜອງແລ້ວ",
                 fontSize: 20,

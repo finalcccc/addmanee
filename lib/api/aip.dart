@@ -7,8 +7,10 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io' as io;
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:untitled1/model/product_data.dart';
+import 'package:untitled1/model/supplier_data.dart';
 
 import '../model/category.dart';
+import '../screen/product_add/supplier_add.dart';
 
 XFile? image;
 Future AddImage() async {
@@ -73,4 +75,9 @@ AddProductType() async {
   } catch (e) {
     print(e);
   }
+}
+
+AddSupplier(SupplierData supp)async{
+print(supp.name);
+
 }
