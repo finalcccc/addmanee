@@ -24,10 +24,10 @@ class _EmployeeTapbarState extends State<EmployeeTapbar> {
   @override
   Widget build(BuildContext context) {
     return element().TabbarPage(
-        label1: 'v',
+        label1: ' ຂໍ້ມູນພະນັກງານ',
         icos1: Icons.feed,
         icos2: Icons.feed,
-        label2: 'g',
+        label2: 'ລາຍລະອຽດຂອງພະນັກງານ',
         tap1: const Register(),
         tap2: const ViewEmployee());
   }

@@ -13,7 +13,7 @@ class _EmployeeDetailState extends State<EmployeeDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Employee Detail "),
+        title: const Text("ຂໍ້ມູນລາຍລະອຽດຂອງແຕ່ລະຄົນ "),
         centerTitle: true,
       ),
     );

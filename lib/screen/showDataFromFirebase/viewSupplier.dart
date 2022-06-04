@@ -17,7 +17,7 @@ class _ViewSupplierState extends State<ViewSupplier> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('View Product'),
+        title: const Text('ລາຍລະອຽດຂອງຜູ້ສະໜອງ'),
         centerTitle: true,
       ),
       body: ListView.builder(

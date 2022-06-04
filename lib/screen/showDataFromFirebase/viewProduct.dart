@@ -15,7 +15,7 @@ class _ViewProductState extends State<ViewProduct> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('View Product'),
+        title: const Text('ລາຍລະອຽດຂອງສິນຄ້າ'),
         centerTitle: true,
       ),
       body: ListView.builder(
