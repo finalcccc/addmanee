@@ -17,7 +17,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp().then((value) => print('connect'),);
   runApp(
-    MultiProvider(providers: [
+    MultiProvider(
+      providers: [
       ChangeNotifierProvider(create: (_)=>categorynotifiere()),
     ],
     child: MyApp() ,)
