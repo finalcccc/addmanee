@@ -1,6 +1,5 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, non_constant_identifier_names
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
@@ -49,33 +48,35 @@ class _ViewCategoryState extends State<ViewCategory> {
   }
 
   Widget CardCategory(int index, CategoryNotifire category) {
-    return  Card(
+    return Card(
       color: Colors.white,
       borderOnForeground: true,
-      elevation: 10,
+      elevation: 5,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           ListTile(
-            leading: Icon(Icons.call),
+            leading: const Icon(Icons.category),
             title: Text("${category.categoryList[index].category}",
-                style: TextStyle(color: Colors.green)),
+                style: const TextStyle(color: Colors.green)),
             subtitle: Text(
               "${category.categoryList[index].id}",
-              style: TextStyle(color: Colors.orangeAccent),
+              style: const TextStyle(color: Colors.orangeAccent),
             ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
               TextButton(
-                child: const Text('Dail'),
+                child: const Text('ແກ້ໄຂ'),
                 onPressed: () {/* ... */},
               ),
               const SizedBox(width: 8),
               TextButton(
-                child: const Text('Call History'),
-                onPressed: () {/* ... */},
+                child: const Text('ລົບ'),
+                onPressed: () {
+                  category.categoryList.clear();
+                },
               ),
             ],
           ),
