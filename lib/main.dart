@@ -9,8 +9,8 @@ import 'package:untitled1/screen/product_add/category.dart';
 import 'package:untitled1/screen/receiveOrder.dart';
 import 'package:untitled1/screen/product_add/appProduct.dart';
 import 'package:untitled1/route/router.dart';
-import 'package:untitled1/screen/supplier_add.dart';
-import 'screen/registerEmployee.dart';
+import 'package:untitled1/screen/product_add/supplier_add.dart';
+import 'screen/product_add/registerEmployee.dart';
 import 'screen/splashScreen .dart';
 
 

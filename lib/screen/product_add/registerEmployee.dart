@@ -11,7 +11,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:untitled1/screen/product_add/appProduct.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewEmployee.dart';
 
-import '../model/employee_data.dart';
+import '../../model/employee_data.dart';
 
 class EmployeeTapbar extends StatefulWidget {
   const EmployeeTapbar({Key? key}) : super(key: key);

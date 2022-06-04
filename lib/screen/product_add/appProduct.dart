@@ -9,7 +9,7 @@ import 'package:untitled1/celement/elements.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:untitled1/model/product_data.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
-import 'package:untitled1/screen/registerEmployee.dart';
+import 'package:untitled1/screen/product_add/registerEmployee.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewProduct.dart';
 
 import '../../api/getCategoryData.dart';
