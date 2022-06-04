@@ -65,7 +65,6 @@ class _AddProductState extends State<AddProduct> {
   Future dos() async {
     CategoryNotifire category = Provider.of<CategoryNotifire>(context, listen: false);
     await GetCategoryData(category);
-    category.RefreshCategory();
   }
 
 

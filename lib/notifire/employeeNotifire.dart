@@ -8,18 +8,10 @@ import '../model/employee_data.dart';
 
 class EmployeeNotifire with ChangeNotifier {
   List<EmployeeData> employee = [];
-  List<String> emp = [];
-  String? employeeType;
-  UnmodifiableListView<EmployeeData> get employeeList =>
-      UnmodifiableListView(employee);
-
-  RefreshCategory() {
+  UnmodifiableListView<EmployeeData> get employeeList => UnmodifiableListView(employee);
+  RefreshEmp() {
     employee;
     notifyListeners();
   }
 
-  SelectType(String? v) {
-    employeeType = v;
-    notifyListeners();
-  }
 }

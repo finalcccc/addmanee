@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:untitled1/api/getEmployeeData.dart';
+import 'package:untitled1/notifire/employeeNotifire.dart';
 
 import '../detialOfdata/employeeDetail.dart';
 
@@ -9,18 +12,30 @@ class ViewEmployee extends StatefulWidget {
   State<ViewEmployee> createState() => _ViewEmployeeState();
 }
 
+
 class _ViewEmployeeState extends State<ViewEmployee> {
+
+  void initState() {
+    super.initState();
+    dos();
+  }
+
+  Future dos() async {
+    EmployeeNotifire emp = Provider.of<EmployeeNotifire>(context, listen: false);
+    await GetEmployeeData(emp);
+  }
   final List<String> items =
   List<String>.generate(20, (index) => "items: {++index}");
   @override
   Widget build(BuildContext context) {
+    EmployeeNotifire emp = Provider.of<EmployeeNotifire>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Employee Product'),
         centerTitle: true,
       ),
       body: ListView.builder(
-        itemCount: items.length,
+        itemCount: emp.employeeList.length,
         itemBuilder: (context, index) {
           return  Card(
             child: ListTile(
@@ -34,7 +49,7 @@ class _ViewEmployeeState extends State<ViewEmployee> {
                       ),
                     );
                   },
-                  child: const Text('name of product')),
+                  child: Text('${emp.employeeList[index].name}')),
               subtitle: const Text('id'),
               trailing: const Icon(Icons.delete),
             ),

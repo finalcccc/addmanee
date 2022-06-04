@@ -44,7 +44,6 @@ class _CategoryState extends State<Category> {
 
   Future dos() async {
     CategoryNotifire category = Provider.of<CategoryNotifire>(context, listen: false);
-    category.cate.clear();
     await GetCategoryData(category);
   }
 

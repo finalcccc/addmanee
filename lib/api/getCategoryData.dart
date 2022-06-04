@@ -16,4 +16,5 @@ GetCategoryData(CategoryNotifire cate) async {
     category.add(f);
   });
   cate.category = category;
+  cate.cate.clear();
 }

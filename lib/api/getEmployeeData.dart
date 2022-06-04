@@ -8,13 +8,14 @@ GetEmployeeData(EmployeeNotifire emp) async {
   List<EmployeeData> employee = [];
   QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
       .collection('employees')
-      .orderBy('employee')
+      .orderBy('name')
       .get();
-  rfn.docs.forEach(
-    (e) {
+  rfn.docs.forEach((e) {
+      print(e.data());
       EmployeeData f = EmployeeData.frommap(e.data());
       employee.add(f);
     },
   );
   emp.employee = employee;
+  emp.RefreshEmp();
 }
