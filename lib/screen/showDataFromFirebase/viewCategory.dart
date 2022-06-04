@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
@@ -17,15 +18,15 @@ class _ViewCategoryState extends State<ViewCategory> {
   var refreshKey = GlobalKey<RefreshIndicatorState>();
 
   Future dos() async {
-    EmployeeNotifire category =
-        Provider.of<EmployeeNotifire>(context, listen: false);
+    CategoryNotifire category =
+        Provider.of<CategoryNotifire>(context, listen: false);
     await GetCategoryData(category);
-    Provider.of<EmployeeNotifire>(context, listen: false).RefreshCategory();
+    Provider.of<CategoryNotifire>(context, listen: false).RefreshCategory();
   }
 
   @override
   Widget build(BuildContext context) {
-    EmployeeNotifire category = Provider.of<EmployeeNotifire>(context);
+    CategoryNotifire category = Provider.of<CategoryNotifire>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('ViewCategory'),
@@ -35,9 +36,7 @@ class _ViewCategoryState extends State<ViewCategory> {
         onRefresh: dos,
         child: ListView.separated(
             itemBuilder: (context, index) {
-              return ListTile(
-                title: Text('${category.categoryList[index].category}'),
-              );
+              return CardCategory(index, category);
             },
             separatorBuilder: (context, index) {
               return const Divider(
@@ -45,6 +44,42 @@ class _ViewCategoryState extends State<ViewCategory> {
               );
             },
             itemCount: category.categoryList.length),
+      ),
+    );
+  }
+
+  Widget CardCategory(int index, CategoryNotifire category) {
+    return  Card(
+      color: Colors.white,
+      borderOnForeground: true,
+      elevation: 10,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          ListTile(
+            leading: Icon(Icons.call),
+            title: Text("${category.categoryList[index].category}",
+                style: TextStyle(color: Colors.green)),
+            subtitle: Text(
+              "${category.categoryList[index].id}",
+              style: TextStyle(color: Colors.orangeAccent),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              TextButton(
+                child: const Text('Dail'),
+                onPressed: () {/* ... */},
+              ),
+              const SizedBox(width: 8),
+              TextButton(
+                child: const Text('Call History'),
+                onPressed: () {/* ... */},
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

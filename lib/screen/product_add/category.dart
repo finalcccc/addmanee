@@ -43,8 +43,8 @@ class _CategoryState extends State<Category> {
   }
 
   Future dos() async {
-    EmployeeNotifire category =
-        Provider.of<EmployeeNotifire>(context, listen: false);
+    CategoryNotifire category =
+        Provider.of<CategoryNotifire>(context, listen: false);
     await GetCategoryData(category);
   }
 

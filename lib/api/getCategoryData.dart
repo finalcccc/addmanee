@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:untitled1/model/category.dart';
 import '../notifire/categoryNotifire.dart';
 
-GetCategoryData(EmployeeNotifire cate) async {
+GetCategoryData(CategoryNotifire cate) async {
   List<CategoryData> category = [];
   QuerySnapshot<Map<String, dynamic>> rfn =
       await FirebaseFirestore.instance.collection('categorys').orderBy('category').get();

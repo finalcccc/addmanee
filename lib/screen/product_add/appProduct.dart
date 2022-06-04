@@ -58,7 +58,7 @@ class _AddProductState extends State<AddProduct> {
 
   @override
   Widget build(BuildContext context) {
-    EmployeeNotifire category = Provider.of<EmployeeNotifire>(context);
+    CategoryNotifire category = Provider.of<CategoryNotifire>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: element.main,
@@ -70,7 +70,7 @@ class _AddProductState extends State<AddProduct> {
     );
   }
 
-  Column buildColumn(BuildContext context , EmployeeNotifire cate,void setcate) {
+  Column buildColumn(BuildContext context , CategoryNotifire cate,void setcate) {
     return Column(
       children: <Widget>[
         const SizedBox(
@@ -179,7 +179,7 @@ class _AddProductState extends State<AddProduct> {
   }
 }
 
-Container comboboxcontainer(context ,EmployeeNotifire cate,void setcate) {
+Container comboboxcontainer(context ,CategoryNotifire cate,void setcate) {
   return Container(
       margin: const EdgeInsets.only(right: 15, left: 15),
       decoration: BoxDecoration(
@@ -192,7 +192,7 @@ Container comboboxcontainer(context ,EmployeeNotifire cate,void setcate) {
       ));
 }
 
-DropdownButton<String> dropdownButton(EmployeeNotifire cate,void setcate) {
+DropdownButton<String> dropdownButton(CategoryNotifire cate,void setcate) {
   int i = 0;
   return DropdownButton(
       icon: const Icon(

@@ -5,7 +5,7 @@ import 'dart:collection';
 import 'package:flutter/foundation.dart';
 import 'package:untitled1/model/category.dart';
 
-class EmployeeNotifire with ChangeNotifier {
+class CategoryNotifire with ChangeNotifier {
   List<CategoryData> category = [];
   List<String> cate = [];
   String? categoryType;

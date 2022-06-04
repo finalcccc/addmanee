@@ -19,7 +19,7 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
-      ChangeNotifierProvider(create: (_)=>EmployeeNotifire()),
+      ChangeNotifierProvider(create: (_)=>CategoryNotifire()),
     ],
     child: const MyApp() ,)
 
