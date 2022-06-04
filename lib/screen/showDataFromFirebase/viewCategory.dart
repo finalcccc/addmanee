@@ -17,10 +17,11 @@ class _ViewCategoryState extends State<ViewCategory> {
   var refreshKey = GlobalKey<RefreshIndicatorState>();
 
   Future dos() async {
-    CategoryNotifire category =
-        Provider.of<CategoryNotifire>(context, listen: false);
+
+    CategoryNotifire category = Provider.of<CategoryNotifire>(context, listen: false);
     await GetCategoryData(category);
-    Provider.of<CategoryNotifire>(context, listen: false).RefreshCategory();
+    category.RefreshCategory();
+
   }
 
   @override

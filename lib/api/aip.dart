@@ -64,8 +64,7 @@ cate(v) {
 AddProductType() async {
   CategoryData category = CategoryData();
   try {
-    CollectionReference reference =
-        FirebaseFirestore.instance.collection('categorys');
+    CollectionReference reference = FirebaseFirestore.instance.collection('categorys');
     category.category = categorys;
     DocumentReference docid = await reference.add(category.toMap());
     category.id = docid.id;

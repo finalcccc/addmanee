@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/api/getCategoryData.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
+import 'package:untitled1/notifire/employeeNotifire.dart';
 import 'package:untitled1/screen/manageOrder.dart';
 import 'package:untitled1/screen/product_add/category.dart';
 import 'package:untitled1/screen/receiveOrder.dart';
@@ -20,6 +21,7 @@ void main() async {
     MultiProvider(
       providers: [
       ChangeNotifierProvider(create: (_)=>CategoryNotifire()),
+      ChangeNotifierProvider(create: (_)=>EmployeeNotifire()),
     ],
     child: const MyApp() ,)
 

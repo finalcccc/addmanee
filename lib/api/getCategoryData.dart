@@ -9,6 +9,7 @@ GetCategoryData(CategoryNotifire cate) async {
   List<CategoryData> category = [];
   QuerySnapshot<Map<String, dynamic>> rfn =
       await FirebaseFirestore.instance.collection('categorys').orderBy('category').get();
+  cate.cate.clear();
   rfn.docs.forEach((e) {
     CategoryData f = CategoryData.frommap(e.data());
     cate.cate.add(e['category']);
