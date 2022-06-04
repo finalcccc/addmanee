@@ -213,7 +213,7 @@ DropdownButton<String> dropdownButton(categorynotifiere cate,void setcate) {
               value: e,
               child: Padding(
                 padding: const EdgeInsets.only(left: 20.0),
-                child: Text('${e}'),
+                child: Text(e),
               )))
           .toList(),
       onChanged: (String? v) {
