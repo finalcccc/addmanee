@@ -12,6 +12,7 @@ class ViewCategory extends StatefulWidget {
 }
 
 class _ViewCategoryState extends State<ViewCategory> {
+  var refreshKey = GlobalKey<RefreshIndicatorState>();
   @override
   void initState() {
     super.initState();
@@ -20,6 +21,7 @@ class _ViewCategoryState extends State<ViewCategory> {
   Future dos()async{
     categorynotifiere category = Provider.of<categorynotifiere>(context,listen: false);
    await GetCategoryData(category);
+   Provider.of<categorynotifiere>(context,listen: false).RefreshCategory();
 }
   @override
   Widget build(BuildContext context) {
@@ -28,16 +30,18 @@ class _ViewCategoryState extends State<ViewCategory> {
       appBar: AppBar(
         title: const Text('ViewCategory'),
       ),
-      body: ListView.separated(itemBuilder:(context, index) {
+      body: RefreshIndicator(
+          key: refreshKey,
+          child: ListView.separated(itemBuilder:(context, index) {
         return ListTile(
           title: Text('${category.categorylist[index].category}'),
         );
       },
           separatorBuilder: (contxt,index){
-          return const Divider(
-            color: Colors.black,
-          );
-          }, itemCount: category.categorylist.length ),
+            return const Divider(
+              color: Colors.black,
+            );
+          }, itemCount: category.categorylist.length ), onRefresh:dos)
     );
   }
 }
