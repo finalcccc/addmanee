@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
+import 'package:untitled1/screen/detialOfdata/categoryDetail.dart';
 
 import '../../api/getCategoryData.dart';
 
@@ -28,7 +29,8 @@ class _ViewCategoryState extends State<ViewCategory> {
     CategoryNotifire category = Provider.of<CategoryNotifire>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ViewCategory'),
+        title: const Text('ລາຍລະອຽດຂອງປະເພດສິນຄ້າ'),
+        centerTitle: true,
       ),
       body: RefreshIndicator(
         key: refreshKey,
@@ -69,14 +71,23 @@ class _ViewCategoryState extends State<ViewCategory> {
             children: <Widget>[
               TextButton(
                 child: const Text('ແກ້ໄຂ'),
-                onPressed: () {/* ... */},
+                onPressed: () {
+                  Text(
+                    "${category.categoryList[index].category}",
+                    style: const TextStyle(color: Colors.green),
+                  );
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CategoryDetail(),
+                    ),
+                  );
+                },
               ),
               const SizedBox(width: 8),
               TextButton(
                 child: const Text('ລົບ'),
-                onPressed: () {
-                  category.categoryList.clear();
-                },
+                onPressed: () {},
               ),
             ],
           ),

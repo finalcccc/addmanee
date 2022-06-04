@@ -19,10 +19,10 @@ class _ProductTypeTapbarState extends State<ProductTypeTapbar> {
   @override
   Widget build(BuildContext context) {
     return element().TabbarPage(
-        label1: 'v',
+        label1: 'ປະເພດສິນຄ້າ',
         icos1: Icons.feed,
         icos2: Icons.feed,
-        label2: 'g',
+        label2: 'ລາຍລະອຽດຂອງປະເພດສິນຄ້າ',
         tap1: const Category(),
         tap2: const ViewCategory());
   }
@@ -56,25 +56,28 @@ class _CategoryState extends State<Category> {
         backgroundColor: element.main,
         leading: element.BackPage(context),
         title: Text(element.p6),
+        centerTitle: true,
       ),
       body: Column(
         children: [
           SingleChildScrollView(
             child: Form(
               key: Key,
-              child: Column(
-                children: [
-                  const SizedBox(height: 20),
-                  element().inputFields(
-                      icons: Icons.category,
-                      hint: 'ປະເພດສິນຄ້າ',
-                      Keybordtye: TextInputType.text,
-                      trye: 'Products_type',
-                      context: context),
-                  const SizedBox(height: 20),
-                  element().elevatedButton(Key, 'addproduct_type'),
-                ],
-              ),
+              child: Center(
+                child: Column(
+                  children: [
+                    const SizedBox(height: 20),
+                    element().inputFields(
+                        icons: Icons.category,
+                        hint: 'ປະເພດສິນຄ້າ',
+                        Keybordtye: TextInputType.text,
+                        trye: 'Products_type',
+                        context: context),
+                    const SizedBox(height: 20),
+                    element().elevatedButton(Key, 'addproduct_type'),
+                  ],
+                ),
+              )
             ),
           ),
         ],

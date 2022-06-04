@@ -1,9 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled1/api/aip.dart';
-import 'package:untitled1/api/getCategoryData.dart';
-import 'package:untitled1/model/category.dart';
-import 'package:untitled1/notifire/categoryNotifire.dart';
+import 'package:untitled1/screen/detialOfdata/productDetail.dart';
 
 class ViewProduct extends StatefulWidget {
   const ViewProduct({Key? key}) : super(key: key);
@@ -13,28 +9,37 @@ class ViewProduct extends StatefulWidget {
 }
 
 class _ViewProductState extends State<ViewProduct> {
-  @override
-
-  CategoryData  cate = CategoryData();
-
+  final List<String> items =
+      List<String>.generate(20, (index) => "items: {++index}");
   @override
   Widget build(BuildContext context) {
-  // Productnotifiere product = Provider.of<Productnotifiere>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(''),
+        title: const Text('View Product'),
+        centerTitle: true,
       ),
-      body: Center(
-    child: FloatingActionButton(
-    backgroundColor: Colors.amberAccent,
-    onPressed: ()async {
-
-    },
-    child: Icon(
-    Icons.train,
-    size: 35,
-    color: Colors.black,
-    ),
-    ),),);
+      body: ListView.builder(
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: const Icon(Icons.production_quantity_limits_sharp),
+              title: TextButton(
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ProductDetail(),
+                      ),
+                    );
+                  },
+                  child: const Text('name of product')),
+              subtitle: const Text('id Product'),
+              trailing: const Icon(Icons.delete),
+            ),
+          );
+        },
+      ),
+    );
   }
 }
