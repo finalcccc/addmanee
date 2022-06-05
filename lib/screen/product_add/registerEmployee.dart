@@ -72,6 +72,7 @@ class _RegisterState extends State<Register> {
             print("uid = $uid");
 
             EmployeeData employeeData = EmployeeData(
+              id:uid,
               name: name!,
               email: email!,
               password: password!,

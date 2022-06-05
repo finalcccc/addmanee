@@ -8,11 +8,13 @@ import 'dart:io' as io;
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:untitled1/model/product_data.dart';
 import 'package:untitled1/model/supplier_data.dart';
+import 'package:untitled1/notifire/supplierNotifire.dart';
 
 import '../model/category.dart';
 import '../screen/product_add/supplier_add.dart';
 
 XFile? image;
+
 Future AddImage() async {
   image = await ImagePicker().pickImage(source: ImageSource.gallery);
 }
@@ -59,6 +61,7 @@ Future<void> UploadProducts(
 }
 
 String? categorys;
+
 cate(v) {
   categorys = v;
 }
@@ -77,7 +80,25 @@ AddProductType() async {
   }
 }
 
-AddSupplier(SupplierData supp)async{
-print(supp.name);
-
+AddSupplier(
+  SupplierNotifire Supp,
+    {
+      required String? name,
+      required String? email,
+      required String? tel,
+      required String? address,
+      required String? supplyProduct,
+    }
+) async {
+  SupplierData supp = SupplierData();
+  CollectionReference supplierCollection = FirebaseFirestore.instance.collection("suppliers");
+  supp.name = name;
+  supp.email =email;
+  supp.tel = tel;
+  supp.address = address;
+  supp.supplyProduct=supplyProduct;
+  DocumentReference doid = await supplierCollection.add(supp.toMap());
+  supp.id = doid.id;
+  print(doid.id);
+  doid.set(supp.toMap());
 }

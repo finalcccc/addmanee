@@ -6,29 +6,31 @@ import 'package:provider/provider.dart';
 import 'package:untitled1/api/getCategoryData.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/notifire/employeeNotifire.dart';
+import 'package:untitled1/notifire/supplierNotifire.dart';
 import 'package:untitled1/screen/manageOrder.dart';
 import 'package:untitled1/screen/product_add/category.dart';
 import 'package:untitled1/screen/receiveOrder.dart';
 import 'package:untitled1/screen/product_add/appProduct.dart';
 import 'package:untitled1/route/router.dart';
 import 'package:untitled1/screen/product_add/supplier_add.dart';
+import 'notifire/productNotifire.dart';
 import 'screen/product_add/registerEmployee.dart';
 import 'screen/splashScreen .dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp().then((value) => print('connect'),);
-  runApp(
-    MultiProvider(
-      providers: [
-      ChangeNotifierProvider(create: (_)=>CategoryNotifire()),
-      ChangeNotifierProvider(create: (_)=>EmployeeNotifire()),
-    ],
-    child: const MyApp() ,)
-
-
+  await Firebase.initializeApp().then(
+    (value) => print('connect'),
   );
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_) => CategoryNotifire()),
+      ChangeNotifierProvider(create: (_) => EmployeeNotifire()),
+      ChangeNotifierProvider(create: (_) => ProductNotifire()),
+      ChangeNotifierProvider(create: (_) => SupplierNotifire()),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {

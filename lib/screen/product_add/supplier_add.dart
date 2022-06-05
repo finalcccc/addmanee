@@ -1,11 +1,15 @@
+import 'dart:ffi';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:provider/provider.dart';
 import 'package:untitled1/api/aip.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/model/supplier_data.dart';
+import 'package:untitled1/notifire/supplierNotifire.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewSupplier.dart';
 
 class SupplierTapbar extends StatefulWidget {
@@ -38,11 +42,20 @@ class Supplier extends StatefulWidget {
 final formKey = GlobalKey<FormState>();
 final Future<FirebaseApp> firebase = Firebase.initializeApp();
 SupplierData supplierData = SupplierData();
-CollectionReference supplierCollection = FirebaseFirestore.instance.collection("suppliers");
+
 
 class _SupplierState extends State<Supplier> {
+  String? names;
+  String? emails;
+  String? tels;
+  String? addresss;
+  String? supplyProducts;
+
+
   @override
   Widget build(BuildContext context) {
+    SupplierNotifire Supp = Provider.of<SupplierNotifire>(context);
+
     return FutureBuilder(
         future: firebase,
         builder: (context, snapshot) {
@@ -73,7 +86,7 @@ class _SupplierState extends State<Supplier> {
                       children: [
                         _header(context),
                         const SizedBox(height: 40),
-                        _inputFields(context),
+                        _inputFields(context, Supp),
                       ],
                     ),
                   ),
@@ -110,7 +123,7 @@ class _SupplierState extends State<Supplier> {
     );
   }
 
-  _inputFields(context) {
+  _inputFields(context, SupplierNotifire Supp) {
     return Form(
       key: formKey,
       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
@@ -126,7 +139,7 @@ class _SupplierState extends State<Supplier> {
             ),
           ),
           onSaved: (String? name) {
-            supplierData.name = name;
+            names = name;
           },
           validator: (String? name) {
             if (name!.isEmpty) {
@@ -151,7 +164,7 @@ class _SupplierState extends State<Supplier> {
           ),
           keyboardType: TextInputType.emailAddress,
           onSaved: (String? email) {
-            supplierData.email = email;
+            emails = email;
           },
           validator: MultiValidator(
             [
@@ -174,7 +187,7 @@ class _SupplierState extends State<Supplier> {
           ),
           keyboardType: TextInputType.number,
           onSaved: (String? tel) {
-            supplierData.tel = tel;
+            tels = tel;
           },
           validator: (String? tel) {
             if (tel!.isEmpty) {
@@ -198,7 +211,10 @@ class _SupplierState extends State<Supplier> {
             ),
           ),
           onSaved: (String? address) {
-            supplierData.address = address;
+
+              addresss = address;
+
+
           },
           validator: RequiredValidator(errorText: "ກະລຸນາປ້ອນທີ່ຢູ່"),
         ),
@@ -215,7 +231,7 @@ class _SupplierState extends State<Supplier> {
             ),
           ),
           onSaved: (String? supplyProduct) {
-            supplierData.supplyProduct = supplyProduct;
+            supplyProducts = supplyProduct;
           },
           validator:
               RequiredValidator(errorText: "ກະລຸນາປ້ອນສິນຄ້າຂອງຜູ້ສະໜອງ"),
@@ -227,9 +243,15 @@ class _SupplierState extends State<Supplier> {
             shape: const StadiumBorder(),
             padding: const EdgeInsets.symmetric(vertical: 16),
           ),
-          onPressed: () async {
+          onPressed: ()async {
             if (formKey.currentState!.validate()) {
-              AddSupplier(supplierData);
+              formKey.currentState!.save();
+              AddSupplier(Supp,
+                  address: addresss,
+                  email: emails,
+                  name: names,
+                  tel: tels,
+                  supplyProduct: supplyProducts);
               Fluttertoast.showToast(
                 msg: "ໄດ້ເພີ່ມຂໍ້ມູນຜູ້ສະໜອງແລ້ວ",
                 fontSize: 20,
