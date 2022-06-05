@@ -45,7 +45,7 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
           borderRadius: BorderRadius.all(Radius.circular(8.0))),
       child: InkWell(
         onTap: () {
-          print(product.Products[index].nameProduct);
+          print(product.Products[index].category);
         },
         child: Column(
           children: [
@@ -91,7 +91,7 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('ຈຳນວນ:  '),
-                      Text('${product.Products[index].amount}'),
+                      Text('${product.Products[index].amount}',style: TextStyle(color: product.Products[index].amount! <= 9 ? Colors.red:Color(0xff0FAA4D))),
                     ],
                   ),
                 ],
