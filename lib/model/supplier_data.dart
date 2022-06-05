@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class SupplierData {
   String? id;
   String? name;
@@ -5,7 +7,7 @@ class SupplierData {
   String? tel;
   String? address;
   String? supplyProduct;
-  DateTime? date;
+  Timestamp? date;
 
   SupplierData();
   SupplierData.fromMap(Map<String,dynamic>value){
@@ -27,7 +29,7 @@ class SupplierData {
       'tel': tel,
       'address': address,
       'supplyProduct': supplyProduct,
-      'date':DateTime.now()
+      'date':Timestamp.now()
     };
   }
 }

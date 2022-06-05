@@ -7,6 +7,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/api/aip.dart';
+import 'package:untitled1/api/getsupplier.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/model/supplier_data.dart';
 import 'package:untitled1/notifire/supplierNotifire.dart';
@@ -43,7 +44,6 @@ final formKey = GlobalKey<FormState>();
 final Future<FirebaseApp> firebase = Firebase.initializeApp();
 SupplierData supplierData = SupplierData();
 
-
 class _SupplierState extends State<Supplier> {
   String? names;
   String? emails;
@@ -51,11 +51,18 @@ class _SupplierState extends State<Supplier> {
   String? addresss;
   String? supplyProducts;
 
-
+  @override
+  initState()  {
+  sup();
+  }
+sup()async{
+  super.initState();
+  SupplierNotifire Supp = Provider.of<SupplierNotifire>(context, listen: false);
+  await GetSupplier(Supp);
+}
   @override
   Widget build(BuildContext context) {
     SupplierNotifire Supp = Provider.of<SupplierNotifire>(context);
-
     return FutureBuilder(
         future: firebase,
         builder: (context, snapshot) {
@@ -211,10 +218,7 @@ class _SupplierState extends State<Supplier> {
             ),
           ),
           onSaved: (String? address) {
-
-              addresss = address;
-
-
+            addresss = address;
           },
           validator: RequiredValidator(errorText: "ກະລຸນາປ້ອນທີ່ຢູ່"),
         ),
@@ -243,7 +247,7 @@ class _SupplierState extends State<Supplier> {
             shape: const StadiumBorder(),
             padding: const EdgeInsets.symmetric(vertical: 16),
           ),
-          onPressed: ()async {
+          onPressed: () async {
             if (formKey.currentState!.validate()) {
               formKey.currentState!.save();
               AddSupplier(Supp,

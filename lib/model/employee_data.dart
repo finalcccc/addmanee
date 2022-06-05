@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
 
 class EmployeeData {
@@ -5,11 +6,10 @@ class EmployeeData {
   String? name;
   String? email;
   String? password;
-  // String? confirmPassword;
   String? tel;
-  String? date;
   String? address;
   String? position;
+  Timestamp? date;
   EmployeeData({
     this.id,
     this.email,
@@ -17,7 +17,6 @@ class EmployeeData {
     this.name,
     this.date,
     this.address,
-    // this.confirmPassword,
     this.position,
     this.tel,
   });
@@ -43,7 +42,7 @@ class EmployeeData {
       'address': address,
       'tel': tel,
       'position': position,
-      'date': DateTime.now()
+      'date': Timestamp.now()
     };
   }
 }

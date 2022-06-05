@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../notifire/supplierNotifire.dart';
 import '../detialOfdata/supplierDetail.dart';
 
 class ViewSupplier extends StatefulWidget {
@@ -15,13 +17,14 @@ class _ViewSupplierState extends State<ViewSupplier> {
   List<String>.generate(20, (index) => "items: {++index}");
   @override
   Widget build(BuildContext context) {
+    SupplierNotifire Supp = Provider.of<SupplierNotifire>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('ລາຍລະອຽດຂອງຜູ້ສະໜອງ'),
         centerTitle: true,
       ),
       body: ListView.builder(
-        itemCount: items.length,
+        itemCount: Supp.SupplierList.length,
         itemBuilder: (context, index) {
           return  Card(
             child: ListTile(
@@ -35,8 +38,8 @@ class _ViewSupplierState extends State<ViewSupplier> {
                       ),
                     );
                   },
-                  child: const Text('name of product')),
-              subtitle: const Text('id'),
+                  child: Text('${Supp.SupplierList[index].name}')),
+              subtitle:  Text('${Supp.SupplierList[index].date?.toDate().toString()}'),
               trailing: const Icon(Icons.delete),
             ),
           );

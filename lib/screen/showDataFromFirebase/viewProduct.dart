@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:untitled1/notifire/productNotifire.dart';
 import 'package:untitled1/screen/detialOfdata/productDetail.dart';
 
 class ViewProduct extends StatefulWidget {
@@ -9,17 +11,16 @@ class ViewProduct extends StatefulWidget {
 }
 
 class _ViewProductState extends State<ViewProduct> {
-  final List<String> items =
-      List<String>.generate(20, (index) => "items: {++index}");
   @override
   Widget build(BuildContext context) {
+    ProductNotifire product = Provider.of<ProductNotifire>(context,listen: false);
     return Scaffold(
       appBar: AppBar(
         title: const Text('ລາຍລະອຽດຂອງສິນຄ້າ'),
         centerTitle: true,
       ),
       body: ListView.builder(
-        itemCount: items.length,
+        itemCount: product.Products.length,
         itemBuilder: (context, index) {
           return Card(
             child: ListTile(
@@ -33,8 +34,8 @@ class _ViewProductState extends State<ViewProduct> {
                       ),
                     );
                   },
-                  child: const Text('name of product')),
-              subtitle: const Text('id Product'),
+                  child: Text('${product.Products[index].nameProduct}')),
+              subtitle: Image.network('${product.Products[index].image}'),
               trailing: const Icon(Icons.delete),
             ),
           );

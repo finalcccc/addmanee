@@ -22,8 +22,7 @@ class _ViewEmployeeState extends State<ViewEmployee> {
   }
 
   Future dos() async {
-    EmployeeNotifire emp =
-        Provider.of<EmployeeNotifire>(context, listen: false);
+    EmployeeNotifire emp = Provider.of<EmployeeNotifire>(context, listen: false);
     await GetEmployeeData(emp);
   }
 

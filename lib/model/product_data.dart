@@ -8,7 +8,7 @@ class ProductData {
 
   ProductData();
 
-  ProductData.getProduct(Map<String, dynamic> value) {
+  ProductData.formMap(Map<String, dynamic> value) {
     id = value['id'];
     nameProduct = value['nameProduct'];
     image = value['image'];

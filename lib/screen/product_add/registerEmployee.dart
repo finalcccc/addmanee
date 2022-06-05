@@ -42,7 +42,7 @@ class Register extends StatefulWidget {
 
 final formKey = GlobalKey<FormState>();
 
-String? name, email, password, confirmPassword, tel, date, address, position;
+String? name, email, password, confirmPassword, tel,address, position;
 bool set = false;
 
 final Future<FirebaseApp> firebase = Firebase.initializeApp();
@@ -79,7 +79,6 @@ class _RegisterState extends State<Register> {
               tel: tel!,
               address: address!,
               position: position!,
-              date: date!,
             );
             final Map<String, dynamic>? data = employeeData.toMap();
             await FirebaseFirestore.instance
@@ -312,7 +311,6 @@ class _RegisterState extends State<Register> {
               ),
             ),
             keyboardType: TextInputType.number,
-            onChanged: (value) => date = value.trim(),
             validator:
                 RequiredValidator(errorText: "ກະລຸນາປ້ອນ ວັນ ເດືອນ ປີ ເກີດ"),
           ),

@@ -7,10 +7,13 @@ import 'package:provider/provider.dart';
 import 'package:untitled1/api/aip.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:untitled1/model/product_data.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
+import 'package:untitled1/notifire/productNotifire.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewProduct.dart';
 
 import '../../api/getCategoryData.dart';
+import '../../api/getProduct.dart';
 
 class ProductAddTapbar extends StatefulWidget {
   const ProductAddTapbar({Key? key}) : super(key: key);
@@ -57,11 +60,17 @@ class _AddProductState extends State<AddProduct> {
   void initState() {
     super.initState();
     dos();
+    Productfacing();
   }
 
   Future dos() async {
+    ProductNotifire  Pro = Provider.of<ProductNotifire>(context, listen: false);
+    await GetProduct(Pro);
+  }
+
+  Future Productfacing() async {
     CategoryNotifire category =
-        Provider.of<CategoryNotifire>(context, listen: false);
+    Provider.of<CategoryNotifire>(context, listen: false);
     await GetCategoryData(category);
   }
 

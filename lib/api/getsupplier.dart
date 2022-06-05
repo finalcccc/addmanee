@@ -12,12 +12,11 @@ import '../notifire/categoryNotifire.dart';
 
 GetSupplier(SupplierNotifire supp) async {
   List<SupplierData> _supplier = [];
-  QuerySnapshot<Map<String, dynamic>> rfn =
-  await FirebaseFirestore.instance.collection('categorys').orderBy('category').get();
+  QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance.collection('suppliers').orderBy('name').get();
   supp.Supplierlist.clear();
   rfn.docs.forEach((e) {
     SupplierData f = SupplierData.fromMap(e.data());
-    supp.Supplierlist.add(e['category']);
+    supp.Supplierlist.add(e['name']);
     _supplier.add(f);
   });
   supp.Supplier = _supplier;
