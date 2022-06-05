@@ -25,6 +25,7 @@ class _ViewSupplierState extends State<ViewSupplier> {
       ),
       body: ListView.builder(
         itemCount: Supp.SupplierList.length,
+
         itemBuilder: (context, index) {
           return  Card(
             child: ListTile(
