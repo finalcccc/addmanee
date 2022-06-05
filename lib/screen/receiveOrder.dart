@@ -85,7 +85,7 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('ລາຄາ:  '),
-                      Text('${NumberFormat.decimalPattern().format(product.Products[index].price)}'),
+                      Text('${NumberFormat.decimalPattern().format(product.Products[index].price)}  ກີບ'),
                     ],
                   ),
                   Row(
