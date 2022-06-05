@@ -5,7 +5,20 @@ class SupplierData {
   String? tel;
   String? address;
   String? supplyProduct;
+  DateTime? date;
+
   SupplierData();
+  SupplierData.fromMap(Map<String,dynamic>value){
+
+    this.id = value['id'];
+    this.name = value['name'];
+    this.email = value['email'];
+    this.tel= value['tel'];
+    this.address = value['address'];
+    this.supplyProduct = value['supplyProduct'];
+    this.date = value['date'];
+  }
+
   Map<String, dynamic> toMap() {
     return {
       'id': id,
@@ -13,7 +26,8 @@ class SupplierData {
       'email': email,
       'tel': tel,
       'address': address,
-      'supplyProduct': supplyProduct
+      'supplyProduct': supplyProduct,
+      'date':DateTime.now()
     };
   }
 }

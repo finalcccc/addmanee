@@ -1,6 +1,7 @@
 import 'package:untitled1/notifire/categoryNotifire.dart';
 
 class EmployeeData {
+  String? id;
   String? name;
   String? email;
   String? password;
@@ -10,6 +11,7 @@ class EmployeeData {
   String? address;
   String? position;
   EmployeeData({
+    this.id,
     this.email,
     this.password,
     this.name,
@@ -21,6 +23,7 @@ class EmployeeData {
   });
   static List<String> positoin = ['Admin', 'Sale'];
   EmployeeData.frommap(Map<String, dynamic> value) {
+    name = value['id'];
     name = value['name'];
     email = value['email'];
     password = value['password'];
@@ -32,6 +35,7 @@ class EmployeeData {
 
   Map<String, dynamic>? toMap() {
     return {
+      'id':id,
       'name': name,
       'email': email,
       'password': password,
@@ -39,6 +43,7 @@ class EmployeeData {
       'address': address,
       'tel': tel,
       'position': position,
+      'date': DateTime.now()
     };
   }
 }

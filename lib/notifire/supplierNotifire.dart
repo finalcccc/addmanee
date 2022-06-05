@@ -13,7 +13,7 @@ class SupplierNotifire with ChangeNotifier {
   String? SuppType;
   UnmodifiableListView<SupplierData> get SupplierList => UnmodifiableListView(Supplier);
 
-  RefreshCategory() {
+  RefreshSupplier() {
     Supplier;
     notifyListeners();
   }

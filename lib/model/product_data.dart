@@ -28,7 +28,8 @@ class ProductData {
       'price': price,
       'amount': amount,
       'cost': cost,
-      'category': category
+      'category': category,
+      'date':DateTime.now()
     };
   }
 }
