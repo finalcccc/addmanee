@@ -49,7 +49,6 @@ Future<void> UploadProducts(
     product.cost = cost;
     product.amount = amount;
     product.description = Description;
-    product.description = category;
     DocumentReference docid = await reference.add(product.toMap());
     product.id = docid.id;
     print(product.id);

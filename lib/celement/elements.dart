@@ -7,7 +7,7 @@ import '../api/aip.dart';
 
 class element {
   static String? category;
-  String? _name, _des, _productType;
+  String? _name, _des;
   int? _price, _cost, _amount;
 
   //color
@@ -28,7 +28,9 @@ class element {
   static String p6 = "ປະເພດສິນຄ້າ";
   static String p7 = "ລາຍງານ";
   static String p8 = "ສັ່ງຊື້ສິນຄ້າເຂົ້າຮ້ານ";
-
+void elementgetcategory(String categorys){
+  category = categorys;
+}
 // key khrong class form addproduct
   checks(GlobalKey<FormState> key) {
     if (key.currentState!.validate()) {

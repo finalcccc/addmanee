@@ -46,12 +46,10 @@ class _AddProductState extends State<AddProduct> {
   element elements = element();
   GlobalKey<FormState> Key = GlobalKey<FormState>();
   XFile? images;
-  String category = '';
   double area = 55;
 
   void set() {
     setState(() {
-      category;
       images = image;
     });
   }
@@ -101,10 +99,8 @@ class _AddProductState extends State<AddProduct> {
           child: GestureDetector(
             onTap: () {
               AddImage();
-              Timer(
-                const Duration(seconds: 2),
-                () => set(),
-              );
+              set();
+
               area = 100;
             },
             child: CircleAvatar(
@@ -239,5 +235,6 @@ DropdownButton<String> dropdownButton(CategoryNotifire cate, void setcate) {
           .toList(),
       onChanged: (String? v) {
         cate.SelectType(v);
+        element().elementgetcategory(v!);
       });
 }
