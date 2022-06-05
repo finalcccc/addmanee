@@ -1,17 +1,14 @@
-// ignore_for_file: non_constant_identifier_names, prefer_is_empty, camel_case_types
+// ignore_for_file: non_constant_identifier_names, prefer_is_empty, camel_case_types, unused_field
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../api/aip.dart';
 
-
-
 class element {
- static String? category;
+  static String? category;
   String? _name, _des, _productType;
   int? _price, _cost, _amount;
-
 
   //color
   static var main = const Color(0xff0031CA);
@@ -23,12 +20,14 @@ class element {
 
   //title
   static String title = "ຮ້ານເເອັດມານີ";
-  static String p1 = "ຮັບອໍເດິ";
+  static String p1 = "ຮັບສິນຄ້າເຂົ້າຮ້ານ";
   static String p2 = "ລົງທະບຽນ\nພະນັກງານ";
   static String p3 = "ຈັດການອໍເດິ";
   static String p4 = "ເພີ່ມສິນຄ້າ";
   static String p5 = "ຜູ້ສະໜອງ";
   static String p6 = "ປະເພດສິນຄ້າ";
+  static String p7 = "ລາຍງານ";
+  static String p8 = "ສັ່ງຊື້ສິນຄ້າເຂົ້າຮ້ານ";
 
 // key khrong class form addproduct
   checks(GlobalKey<FormState> key) {
@@ -237,34 +236,37 @@ class element {
             ));
   }
 
-
-  TabbarPage({String? label1,String? label2 ,IconData?icos1,IconData?icos2, required var tap1, required var tap2}){
+  TabbarPage(
+      {String? label1,
+      String? label2,
+      IconData? icos1,
+      IconData? icos2,
+      required var tap1,
+      required var tap2}) {
     return CupertinoTabScaffold(
-      tabBar: CupertinoTabBar(
-        backgroundColor: element.main,
-        activeColor: Colors.white,
-        inactiveColor: Colors.white70,
-        items: [
-          BottomNavigationBarItem(
-            label: label1,
-            icon: Icon(icos1),
-          ),
-          BottomNavigationBarItem(
-            label: label2,
-            icon: Icon(icos2),
-          ),
-        ],
-      ),
-      tabBuilder: (context ,index) {
-        switch(index){
-          case 0:
-            return tap1;
-          case 1:
-          default:
-            return tap2;
-        }
-
-      }
-    );
+        tabBar: CupertinoTabBar(
+          backgroundColor: element.main,
+          activeColor: Colors.white,
+          inactiveColor: Colors.white70,
+          items: [
+            BottomNavigationBarItem(
+              label: label1,
+              icon: Icon(icos1),
+            ),
+            BottomNavigationBarItem(
+              label: label2,
+              icon: Icon(icos2),
+            ),
+          ],
+        ),
+        tabBuilder: (context, index) {
+          switch (index) {
+            case 0:
+              return tap1;
+            case 1:
+            default:
+              return tap2;
+          }
+        });
   }
 }

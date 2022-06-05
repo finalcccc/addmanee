@@ -3,11 +3,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled1/api/getCategoryData.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/notifire/employeeNotifire.dart';
 import 'package:untitled1/screen/manageOrder.dart';
 import 'package:untitled1/screen/product_add/category.dart';
+import 'package:untitled1/screen/product_add/purchaseOrder.dart';
+import 'package:untitled1/screen/product_add/reportData.dart';
 import 'package:untitled1/screen/receiveOrder.dart';
 import 'package:untitled1/screen/product_add/appProduct.dart';
 import 'package:untitled1/route/router.dart';
@@ -48,6 +49,8 @@ class MyApp extends StatelessWidget {
         route.m_orders: (BuildContext context) => const ManageOrder(),
         route.suppliyer: (BuildContext context) => const SupplierTapbar(),
         route.product_type: (BuildContext context) => const ProductTypeTapbar(),
+        route.reportData: (BuildContext context) => const ReportData(),
+        route.purchaseOrder: (BuildContext context) => const PurchaseOrder(),
       },
     );
   }

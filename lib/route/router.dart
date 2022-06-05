@@ -8,4 +8,6 @@ class route {
   static String charts = '/chart';
   static String suppliyer = '/Suppliyer';
   static String product_type = '/product_type';
+  static String reportData = '/ReportData';
+  static String purchaseOrder = '/PurchaseOrder';
 }
