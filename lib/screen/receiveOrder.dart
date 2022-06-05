@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:intl/intl.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -70,7 +71,7 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
                     style: TextStyle(color: Colors.black, fontSize: 18),
                   ),
                    Divider(
-                      color: Colors.primaries[Random().nextInt(product.Products.length+1)],
+                      color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
                      thickness: 1,
 
                     ),
@@ -84,14 +85,14 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('ລາຄາ:  '),
-                      Text('${product.Products[index].price}'),
+                      Text('${NumberFormat.decimalPattern().format(product.Products[index].price)}'),
                     ],
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('ຈຳນວນ:  '),
-                      Text('${product.Products[index].amount}',style: TextStyle(color: product.Products[index].amount! <= 9 ? Colors.red:Color(0xff0FAA4D))),
+                      Text('${product.Products[index].amount}''  ເເກັດ',style: TextStyle(color: product.Products[index].amount! <= 9 ? Colors.red:Color(0xff0FAA4D))),
                     ],
                   ),
                 ],
