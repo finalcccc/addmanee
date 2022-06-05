@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/api/getEmployeeData.dart';
@@ -12,20 +14,19 @@ class ViewEmployee extends StatefulWidget {
   State<ViewEmployee> createState() => _ViewEmployeeState();
 }
 
-
 class _ViewEmployeeState extends State<ViewEmployee> {
-
+  @override
   void initState() {
     super.initState();
     dos();
   }
 
   Future dos() async {
-    EmployeeNotifire emp = Provider.of<EmployeeNotifire>(context, listen: false);
+    EmployeeNotifire emp =
+        Provider.of<EmployeeNotifire>(context, listen: false);
     await GetEmployeeData(emp);
   }
-  final List<String> items =
-  List<String>.generate(20, (index) => "items: {++index}");
+
   @override
   Widget build(BuildContext context) {
     EmployeeNotifire emp = Provider.of<EmployeeNotifire>(context);
@@ -34,28 +35,53 @@ class _ViewEmployeeState extends State<ViewEmployee> {
         title: const Text('ຂໍ້ມູນລາຍລະອຽດຂອງພະນັກງານ'),
         centerTitle: true,
       ),
-      body: ListView.builder(
-        itemCount: emp.employeeList.length,
-        itemBuilder: (context, index) {
-          return  Card(
-            child: ListTile(
-              leading: const Icon(Icons.people),
-              title: TextButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const EmployeeDetail(),
-                      ),
-                    );
-                  },
-                  child: Text('${emp.employeeList[index].name}')),
-
-              subtitle:  Text('${emp.employeeList[index].position}'),
-              trailing: const Icon(Icons.delete),
-            ),
-          );
-        },
+      body: ListView.separated(
+          itemBuilder: (context, index) {
+            return CardEmployee(index, emp);
+          },
+          separatorBuilder: (context,index){
+            return const Divider(
+              color: Colors.black,
+            );
+          },
+          itemCount: emp.employeeList.length),
+    );
+  }
+  Widget CardEmployee(int index,EmployeeNotifire employee){
+    return Card(
+      color: Colors.white,
+      borderOnForeground: true,
+      elevation: 5,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+    ListTile(
+      leading: const Icon(Icons.people),
+      title: Text("${employee.employeeList[index].name}"),
+      subtitle: Text("${employee.employeeList[index].position}"),
+    ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              TextButton(
+                child: const Text('ແກ້ໄຂ'),
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const EmployeeDetail(),
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(width: 8),
+              TextButton(
+                child: const Text('ລົບ'),
+                onPressed: () {},
+              ),
+            ],
+          )
+        ],
       ),
     );
   }

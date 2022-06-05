@@ -30,7 +30,7 @@ class _ViewCategoryState extends State<ViewCategory> {
     CategoryNotifire category = Provider.of<CategoryNotifire>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ລາຍລະອຽດຂອງປະເພດສິນຄ້າ'),
+        title: const Text( 'ລາຍລະອຽດຂອງປະເພດສິນຄ້າ'),
         centerTitle: true,
       ),
       body: RefreshIndicator(
