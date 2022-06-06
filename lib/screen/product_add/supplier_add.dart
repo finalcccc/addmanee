@@ -58,8 +58,7 @@ class _SupplierState extends State<Supplier> {
 
   sup() async {
     super.initState();
-    SupplierNotifire Supp =
-        Provider.of<SupplierNotifire>(context, listen: false);
+    SupplierNotifire Supp = Provider.of<SupplierNotifire>(context, listen: false);
     await GetSupplier(Supp);
   }
 

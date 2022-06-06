@@ -7,12 +7,12 @@ import 'package:flutter/cupertino.dart';
 import '../model/supplier_data.dart';
 
 class SupplierNotifire with ChangeNotifier {
-  // List<String> Supplierlist = [];
-  // String? SuppType;
+   List<String> Supliername = [];
+   String? SuppType;
   List<SupplierData> Supplier = [];
   SupplierData? CurrentSupplier;
 
-  UnmodifiableListView<SupplierData> get SupplierList =>
+  UnmodifiableListView<SupplierData> get SuplierList =>
       UnmodifiableListView(Supplier);
 
   RefreshSupplier() {
@@ -26,8 +26,8 @@ class SupplierNotifire with ChangeNotifier {
     print(CurrentSupplier?.name);
     notifyListeners();
   }
-  // SelectType(String? v) {
-  //   SuppType = v;
-  //   notifyListeners();
-  // }
+  SelectType(String? v) {
+    SuppType = v;
+    notifyListeners();
+  }
 }

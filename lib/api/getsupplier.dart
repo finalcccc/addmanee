@@ -11,11 +11,10 @@ GetSupplier(SupplierNotifire supp) async {
       .collection('suppliers')
       .orderBy('name')
       .get();
-  supp.SupplierList.clear();
+  supp.Supliername.clear();
   rfn.docs.forEach((e) {
-    print(e.data());
     SupplierData f = SupplierData.fromMap(e.data());
-    supp.SupplierList.add(e['name']);
+    supp.Supliername.add(e['name']);
     _supplier.add(f);
   });
   supp.Supplier = _supplier;

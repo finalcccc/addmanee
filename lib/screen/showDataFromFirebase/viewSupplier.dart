@@ -26,7 +26,7 @@ class _ViewSupplierState extends State<ViewSupplier> {
         leading: element().RoutePageBack(context, const Supplier()),
       ),
       body: ListView.builder(
-        itemCount: Supp.SupplierList.length,
+        itemCount: Supp.SuplierList.length,
         itemBuilder: (context, index) {
           return Card(
             child: ListTile(
@@ -40,9 +40,9 @@ class _ViewSupplierState extends State<ViewSupplier> {
                       ),
                     );
                   },
-                  child: Text('${Supp.SupplierList[index].name}')),
+                  child: Text('${Supp.SuplierList[index].name}')),
               subtitle:
-                  Text('${Supp.SupplierList[index].date?.toDate().toString()}'),
+                  Text('${Supp.SuplierList[index].date?.toDate().toString()}'),
               trailing: const Icon(Icons.delete),
             ),
           );
