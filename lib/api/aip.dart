@@ -11,7 +11,6 @@ import 'package:untitled1/model/supplier_data.dart';
 import 'package:untitled1/notifire/supplierNotifire.dart';
 
 import '../model/category.dart';
-import '../screen/product_add/supplier_add.dart';
 
 XFile? image;
 
@@ -53,7 +52,7 @@ Future<void> UploadProducts(
     product.id = docid.id;
     print(product.id);
     print(product.image);
-    docid.set(product.toMap());
+    docid.set(product.toMap()).then((value) => image = null);
   } catch (e) {
     return print(e.toString());
   }

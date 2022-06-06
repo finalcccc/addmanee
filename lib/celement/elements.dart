@@ -10,7 +10,7 @@ class element {
   String? _name, _des;
   int? _price, _cost, _amount;
 
-  static String nullimage ='https://rae.mju.ac.th/images/untitled.png';
+  static String nullimage = 'https://rae.mju.ac.th/images/untitled.png';
   //color
   static var main = const Color(0xff0031CA);
   static var Indigo = const Color(0xff281E5D);
@@ -21,18 +21,19 @@ class element {
 
   //title
   static String title = "ຮ້ານເເອັດມານີ";
-  static String p1 = "ຮັບສິນຄ້າເຂົ້າຮ້ານ";
+  static String p1 = "ສັ່ງສິນຄ້າເຂົ້າຮ້ານ";
   static String p2 = "ລົງທະບຽນ\nພະນັກງານ";
   static String p3 = "ຈັດການອໍເດິ";
   static String p4 = "ເພີ່ມສິນຄ້າ";
   static String p5 = "ຜູ້ສະໜອງ";
   static String p6 = "ປະເພດສິນຄ້າ";
   static String p7 = "ລາຍງານ";
-  static String p8 = "ສັ່ງຊື້ສິນຄ້າເຂົ້າຮ້ານ";
+  static String p8 = "ຮັບຊື້ສິນຄ້າເຂົ້າຮ້ານ";
 
-void elementgetcategory(String categorys){
-  category = categorys;
-}
+  void elementgetcategory(String categorys) {
+    category = categorys;
+  }
+
 // key khrong class form addproduct
   checks(GlobalKey<FormState> key) {
     if (key.currentState!.validate()) {
@@ -44,6 +45,7 @@ void elementgetcategory(String categorys){
           cost: _cost,
           amount: _amount,
           category: category);
+      key.currentState!.reset();
     }
   }
 
@@ -135,6 +137,15 @@ void elementgetcategory(String categorys){
       icon: const Icon(Icons.arrow_back_ios),
       onPressed: () {
         Navigator.pop(context);
+      },
+    );
+  }
+
+  RoutePageBack(BuildContext context, var page) {
+    return IconButton(
+      icon: const Icon(Icons.arrow_back_ios),
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => page));
       },
     );
   }

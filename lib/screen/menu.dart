@@ -31,7 +31,7 @@ class _MenuState extends State<Menu> {
         color: Colors.grey[300],
         child: GridView(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, mainAxisSpacing: 10),
+              crossAxisCount: 2, mainAxisSpacing: 0.5),
           children: [
             element.MenuButton(
                 context, route.prodc, Icons.shop, element.main, element.p1),

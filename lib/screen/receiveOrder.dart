@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace, avoid_print, non_constant_identifier_names, avoid_unnecessary_containers, prefer_if_null_operators
+
 import 'dart:math';
 import 'package:intl/intl.dart';
 
@@ -6,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
+import 'package:untitled1/screen/detialOfdata/productDetail.dart';
 
 import '../api/getProduct.dart';
 
@@ -17,15 +20,15 @@ class ReceiveOrder extends StatefulWidget {
 }
 
 class _ReceiveOrderState extends State<ReceiveOrder> {
-  bool colortype=false;
+  bool colortype = false;
   void colortypes() {
     setState(() {
       colortype;
     });
   }
+
   @override
   Widget build(BuildContext context) {
-
     ProductNotifire product = Provider.of<ProductNotifire>(context);
     CategoryNotifire category = Provider.of<CategoryNotifire>(context);
     return Scaffold(
@@ -47,79 +50,81 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
 
   Padding ViewCategoryAll(ProductNotifire product) {
     return Padding(
-            padding: const EdgeInsets.only(right: 270),
-            child: Container(
-              padding:
-              EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              margin: EdgeInsets.symmetric(horizontal: 5,vertical: 10),
-              decoration: BoxDecoration(
-                color: colortype == true ?element.main:Colors.blue,
-                borderRadius: BorderRadius.circular(15)
+      padding: const EdgeInsets.only(right: 260),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+        decoration: BoxDecoration(
+            color: colortype == true ? element.main : Colors.blue,
+            borderRadius: BorderRadius.circular(15)),
+        child: Row(
+          children: [
+            InkWell(
+              child: Text(
+                'ສີນຄ້າທັ້ງໝົດ',
+                style: TextStyle(color: element.wht),
               ),
-              child: Row(
-                children: [
-                  InkWell(
-                    child: Text('ສີນຄ້າທັ້ງໝົດ',style: TextStyle(color: element.wht),),
-                    onTap: () {
-                      GetProduct(product);
-                       colortypes();
-                      colortype = true;
-                    },
-                  ),
-                ],
-              ),
+              onTap: () {
+                GetProduct(product);
+                colortypes();
+                colortype = true;
+              },
             ),
-          );
+          ],
+        ),
+      ),
+    );
   }
 
   Container ViewCategory(CategoryNotifire category, ProductNotifire product) {
     return Container(
-            height: 50,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              padding: EdgeInsets.all(8),
-              itemCount: category.categoryList.length,
-              itemBuilder: (context, index) {
-                return InkWell(
-                  onTap: () {
-                    GetProduct_type(product,category.categoryList[index].category, index);
-                    colortype =false;
-                  },
-                  child: Container(
-                    padding:
-                    EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    margin: EdgeInsets.symmetric(horizontal: 5),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: colortype != true ?element.main:Colors.blue),
-                    child: Row(
-                      children: [
-                        Container(
-                            child: Text('${category.categoryList[index].category}',style: TextStyle(color: element.wht))),
-                      ],
-                    ),
-                  ),
-                );
-              },
+      height: 50,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.all(8),
+        itemCount: category.categoryList.length,
+        itemBuilder: (context, index) {
+          return InkWell(
+            onTap: () {
+              GetProduct_type(
+                  product, category.categoryList[index].category, index);
+              colortype = false;
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              margin: EdgeInsets.symmetric(horizontal: 5),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: colortype != true ? element.main : Colors.blue),
+              child: Row(
+                children: [
+                  Container(
+                      child: Text('${category.categoryList[index].category}',
+                          style: TextStyle(color: element.wht))),
+                ],
+              ),
             ),
           );
+        },
+      ),
+    );
   }
 
   Container ViewProducts(BuildContext context, ProductNotifire product) {
     return Container(
-            height: MediaQuery.of(context).size.height / 1.25,
-            child: GridView.builder(
-                padding: EdgeInsets.all(10),
-                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 300,
-                    childAspectRatio: 3 / 4.5,
-                    crossAxisSpacing: 8,
-                    mainAxisSpacing: 8),
-                itemCount: product.Products.length,
-                itemBuilder: (BuildContext ctx, index) {
-                  return Content(product, index);
-                }),
-          );
+      height: MediaQuery.of(context).size.height / 1.25,
+      child: GridView.builder(
+          padding: const EdgeInsets.all(10),
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 300,
+              childAspectRatio: 3 / 4.5,
+              crossAxisSpacing: 8,
+              mainAxisSpacing: 8),
+          itemCount: product.Products.length,
+          itemBuilder: (BuildContext ctx, index) {
+            return Content(product, index);
+          }),
+    );
   }
 
   Widget Content(ProductNotifire product, int index) {
@@ -128,17 +133,19 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
       elevation: 14,
       clipBehavior: Clip.antiAlias,
       shadowColor: Colors.blue,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(8.0))),
       child: InkWell(
         onTap: () {
           print(product.Products[index].category);
-          product.CurrenProduct=product.Products[index];
+          product.CurrenProduct = product.Products[index];
           product.getCurrenProduct();
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const ProductDetail()));
         },
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
             Expanded(
@@ -156,7 +163,7 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
                 children: [
                   Text(
                     '${product.Products[index].nameProduct}',
-                    style: TextStyle(color: Colors.black, fontSize: 18),
+                    style: const TextStyle(color: Colors.black, fontSize: 18),
                   ),
                   Divider(
                     color: Colors

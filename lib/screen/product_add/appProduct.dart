@@ -10,6 +10,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:untitled1/model/product_data.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
+import 'package:untitled1/screen/menu.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewProduct.dart';
 
 import '../../api/getCategoryData.dart';
@@ -29,7 +30,7 @@ class _ProductAddTapbarState extends State<ProductAddTapbar> {
         label1: 'ສິນຄ້າ',
         icos1: Icons.feed,
         icos2: Icons.feed,
-        label2: 'ລາຍລະອຽດຂອງສິນຄ້າ',
+        label2: 'ລາຍການສິນຄ້າ',
         tap1: const AddProduct(),
         tap2: const ViewProduct());
   }
@@ -62,13 +63,13 @@ class _AddProductState extends State<AddProduct> {
   }
 
   Future dos() async {
-    ProductNotifire  Pro = Provider.of<ProductNotifire>(context, listen: false);
+    ProductNotifire Pro = Provider.of<ProductNotifire>(context, listen: false);
     await GetProduct(Pro);
   }
 
   Future Productfacing() async {
     CategoryNotifire category =
-    Provider.of<CategoryNotifire>(context, listen: false);
+        Provider.of<CategoryNotifire>(context, listen: false);
     await GetCategoryData(category);
   }
 
@@ -80,7 +81,7 @@ class _AddProductState extends State<AddProduct> {
         title: const Text('ຂໍ້ມູນສິນຄ້າ'),
         centerTitle: true,
         backgroundColor: element.main,
-        leading: element.BackPage(context),
+        leading: element().RoutePageBack(context, const Menu()),
       ),
       body: SingleChildScrollView(
         child: buildColumn(context, category, set()),
@@ -97,8 +98,8 @@ class _AddProductState extends State<AddProduct> {
         ),
         Center(
           child: GestureDetector(
-            onTap: () {
-              AddImage();
+            onTap: () async {
+             await AddImage();
               set();
 
               area = 100;
