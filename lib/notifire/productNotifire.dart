@@ -7,9 +7,17 @@ import '../model/employee_data.dart';
 
 class ProductNotifire with ChangeNotifier {
   List<ProductData> Product= [];
+   ProductData? CurrenProduct;
   UnmodifiableListView<ProductData> get Products=> UnmodifiableListView(Product);
   RefreshProduct() {
     Product;
+    notifyListeners();
+  }
+
+  getCurrenProduct() {
+    CurrenProduct;
+
+    print(CurrenProduct?.nameProduct);
     notifyListeners();
   }
 

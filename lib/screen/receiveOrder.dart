@@ -17,8 +17,15 @@ class ReceiveOrder extends StatefulWidget {
 }
 
 class _ReceiveOrderState extends State<ReceiveOrder> {
+  bool colortype=false;
+  void colortypes() {
+    setState(() {
+      colortype;
+    });
+  }
   @override
   Widget build(BuildContext context) {
+
     ProductNotifire product = Provider.of<ProductNotifire>(context);
     CategoryNotifire category = Provider.of<CategoryNotifire>(context);
     return Scaffold(
@@ -29,75 +36,90 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(right: 270),
-              child: Container(
-                padding:
-                EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                margin: EdgeInsets.symmetric(horizontal: 5,vertical: 10),
-                decoration: BoxDecoration(
-                  color: element.main,
-                  borderRadius: BorderRadius.circular(15)
-                ),
-                child: Row(
-                  children: [
-                    InkWell(
-                      child: Text('ສີນຄ້າທັ້ງໝົດ',style: TextStyle(color: element.wht),),
-                      onTap: () {
-                        GetProduct(product);
-                      },
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              height: 50,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                padding: EdgeInsets.all(8),
-                itemCount: category.categoryList.length,
-                itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: () {
-                      GetProduct_type(product,
-                          category.categoryList[index].category, index);
-                    },
-                    child: Container(
-                      padding:
-                      EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                      margin: EdgeInsets.symmetric(horizontal: 5),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: Colors.blue),
-                      child: Row(
-                        children: [
-                          Text('${category.categoryList[index].category}'),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height / 1.25,
-              child: GridView.builder(
-                  padding: EdgeInsets.all(10),
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 300,
-                      childAspectRatio: 3 / 4.5,
-                      crossAxisSpacing: 8,
-                      mainAxisSpacing: 8),
-                  itemCount: product.Products.length,
-                  itemBuilder: (BuildContext ctx, index) {
-                    return Content(product, index);
-                  }),
-            ),
+            ViewCategoryAll(product),
+            ViewCategory(category, product),
+            ViewProducts(context, product),
           ],
         ),
       ),
     );
+  }
+
+  Padding ViewCategoryAll(ProductNotifire product) {
+    return Padding(
+            padding: const EdgeInsets.only(right: 270),
+            child: Container(
+              padding:
+              EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              margin: EdgeInsets.symmetric(horizontal: 5,vertical: 10),
+              decoration: BoxDecoration(
+                color: colortype == true ?element.main:Colors.blue,
+                borderRadius: BorderRadius.circular(15)
+              ),
+              child: Row(
+                children: [
+                  InkWell(
+                    child: Text('ສີນຄ້າທັ້ງໝົດ',style: TextStyle(color: element.wht),),
+                    onTap: () {
+                      GetProduct(product);
+                       colortypes();
+                      colortype = true;
+                    },
+                  ),
+                ],
+              ),
+            ),
+          );
+  }
+
+  Container ViewCategory(CategoryNotifire category, ProductNotifire product) {
+    return Container(
+            height: 50,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              padding: EdgeInsets.all(8),
+              itemCount: category.categoryList.length,
+              itemBuilder: (context, index) {
+                return InkWell(
+                  onTap: () {
+                    GetProduct_type(product,category.categoryList[index].category, index);
+                    colortype =false;
+                  },
+                  child: Container(
+                    padding:
+                    EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: colortype != true ?element.main:Colors.blue),
+                    child: Row(
+                      children: [
+                        Container(
+                            child: Text('${category.categoryList[index].category}',style: TextStyle(color: element.wht))),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+          );
+  }
+
+  Container ViewProducts(BuildContext context, ProductNotifire product) {
+    return Container(
+            height: MediaQuery.of(context).size.height / 1.25,
+            child: GridView.builder(
+                padding: EdgeInsets.all(10),
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 300,
+                    childAspectRatio: 3 / 4.5,
+                    crossAxisSpacing: 8,
+                    mainAxisSpacing: 8),
+                itemCount: product.Products.length,
+                itemBuilder: (BuildContext ctx, index) {
+                  return Content(product, index);
+                }),
+          );
   }
 
   Widget Content(ProductNotifire product, int index) {
@@ -111,6 +133,8 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
       child: InkWell(
         onTap: () {
           print(product.Products[index].category);
+          product.CurrenProduct=product.Products[index];
+          product.getCurrenProduct();
         },
         child: Column(
           children: [
