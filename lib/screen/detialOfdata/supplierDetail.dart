@@ -20,6 +20,13 @@ class _SupplierDetailState extends State<SupplierDetail> {
         leading: element().RoutePageBack(context, const ViewSupplier()),
         backgroundColor: element.main,
       ),
+      body: Card(
+        child: Column(
+          children: [
+
+          ],
+        ),
+      ),
     );
   }
 }

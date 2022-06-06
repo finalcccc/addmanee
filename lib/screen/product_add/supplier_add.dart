@@ -220,8 +220,8 @@ class _SupplierState extends State<Supplier> {
               borderSide: BorderSide.none,
             ),
           ),
-          onSaved: (String? address) {
-            address = address;
+          onSaved: (String? addres) {
+            address = addres;
           },
           validator: RequiredValidator(errorText: "ກະລຸນາປ້ອນທີ່ຢູ່"),
         ),
@@ -266,6 +266,7 @@ class _SupplierState extends State<Supplier> {
                 backgroundColor: Colors.white,
                 textColor: Colors.black,
               );
+              formKey.currentState!.reset();
             }
           },
           child: const Text(

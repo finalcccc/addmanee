@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, prefer_adjacent_string_concatenation
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -24,7 +24,8 @@ class _ViewEmployeeState extends State<ViewEmployee> {
   }
 
   Future dos() async {
-    EmployeeNotifire emp = Provider.of<EmployeeNotifire>(context, listen: false);
+    EmployeeNotifire emp =
+        Provider.of<EmployeeNotifire>(context, listen: false);
     await GetEmployeeData(emp);
   }
 
@@ -42,7 +43,7 @@ class _ViewEmployeeState extends State<ViewEmployee> {
           itemBuilder: (context, index) {
             return CardEmployee(index, emp);
           },
-          separatorBuilder: (context,index){
+          separatorBuilder: (context, index) {
             return const Divider(
               color: Colors.black,
             );
@@ -50,7 +51,8 @@ class _ViewEmployeeState extends State<ViewEmployee> {
           itemCount: emp.employeeList.length),
     );
   }
-  Widget CardEmployee(int index,EmployeeNotifire employee){
+
+  Widget CardEmployee(int index, EmployeeNotifire employee) {
     return Card(
       color: Colors.white,
       borderOnForeground: true,
@@ -58,17 +60,20 @@ class _ViewEmployeeState extends State<ViewEmployee> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-    ListTile(
-      leading: const Icon(Icons.people),
-      title: Text("${employee.employeeList[index].name}"),
-      subtitle: Text("${employee.employeeList[index].position}"),
-    ),
+          ListTile(
+            leading: const Icon(Icons.people),
+            title: Text(
+                "ຊື່ ແລະ ນາມສະກຸນ: " + " ${employee.employeeList[index].name}"),
+            subtitle:
+                Text("ຕຳແໜ່ງ: " + " ${employee.employeeList[index].position}"),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               TextButton(
                 child: const Text('ແກ້ໄຂ'),
                 onPressed: () {
+                  employee.CurrentEmployee = employee.employeeList[index];
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(

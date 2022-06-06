@@ -138,8 +138,8 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
       child: InkWell(
         onTap: () {
           print(product.Products[index].category);
-          product.CurrenProduct = product.Products[index];
-          product.getCurrenProduct();
+          product.CurrentProduct = product.Products[index];
+          product.getCurrentProduct();
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => const ProductDetail()));
         },

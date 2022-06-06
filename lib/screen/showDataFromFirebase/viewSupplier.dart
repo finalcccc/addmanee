@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/screen/product_add/supplier_add.dart';
@@ -14,8 +16,6 @@ class ViewSupplier extends StatefulWidget {
 }
 
 class _ViewSupplierState extends State<ViewSupplier> {
-  final List<String> items =
-      List<String>.generate(20, (index) => "items: {++index}");
   @override
   Widget build(BuildContext context) {
     SupplierNotifire Supp = Provider.of<SupplierNotifire>(context);
