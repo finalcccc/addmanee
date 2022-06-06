@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/screen/detialOfdata/categoryDetail.dart';
+import 'package:untitled1/screen/product_add/category.dart';
 
 import '../../api/getCategoryData.dart';
+import '../../celement/elements.dart';
 
 class ViewCategory extends StatefulWidget {
   const ViewCategory({Key? key}) : super(key: key);
@@ -30,8 +32,10 @@ class _ViewCategoryState extends State<ViewCategory> {
     CategoryNotifire category = Provider.of<CategoryNotifire>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text( 'ລາຍລະອຽດຂອງປະເພດສິນຄ້າ'),
+        title: const Text( 'ຂໍ້ມູນປະເພດສິນຄ້າ'),
         centerTitle: true,
+        leading: element().RoutePageBack(context, const Category()),
+        backgroundColor: element.main,
       ),
       body: RefreshIndicator(
         key: refreshKey,

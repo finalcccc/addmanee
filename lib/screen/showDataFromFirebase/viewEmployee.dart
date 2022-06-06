@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/api/getEmployeeData.dart';
 import 'package:untitled1/notifire/employeeNotifire.dart';
+import 'package:untitled1/screen/product_add/registerEmployee.dart';
 
+import '../../celement/elements.dart';
 import '../detialOfdata/employeeDetail.dart';
 
 class ViewEmployee extends StatefulWidget {
@@ -31,8 +33,10 @@ class _ViewEmployeeState extends State<ViewEmployee> {
     EmployeeNotifire emp = Provider.of<EmployeeNotifire>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ຂໍ້ມູນລາຍລະອຽດຂອງພະນັກງານ'),
+        title: const Text('ຂໍ້ມູນຂອງພະນັກງານແຕ່ລະຄົນ'),
         centerTitle: true,
+        leading: element().RoutePageBack(context, const Register()),
+        backgroundColor: element.main,
       ),
       body: ListView.separated(
           itemBuilder: (context, index) {

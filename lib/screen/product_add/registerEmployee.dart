@@ -8,7 +8,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:untitled1/screen/product_add/appProduct.dart';
+import 'package:untitled1/screen/menu.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewEmployee.dart';
 
 import '../../model/employee_data.dart';
@@ -27,7 +27,7 @@ class _EmployeeTapbarState extends State<EmployeeTapbar> {
         label1: ' ຂໍ້ມູນພະນັກງານ',
         icos1: Icons.feed,
         icos2: Icons.feed,
-        label2: 'ລາຍລະອຽດຂອງພະນັກງານ',
+        label2: 'ຂໍ້ມູນຂອງພະນັກງານແຕ່ລະຄົນ',
         tap1: const Register(),
         tap2: const ViewEmployee());
   }
@@ -42,7 +42,7 @@ class Register extends StatefulWidget {
 
 final formKey = GlobalKey<FormState>();
 
-String? name, email, password, confirmPassword, tel,address, position;
+String? name, email, password, confirmPassword, tel, address, position;
 bool set = false;
 
 final Future<FirebaseApp> firebase = Firebase.initializeApp();
@@ -72,7 +72,7 @@ class _RegisterState extends State<Register> {
             print("uid = $uid");
 
             EmployeeData employeeData = EmployeeData(
-              id:uid,
+              id: uid,
               name: name!,
               email: email!,
               password: password!,
@@ -128,17 +128,25 @@ class _RegisterState extends State<Register> {
         if (snapshot.connectionState == ConnectionState.done) {
           return Scaffold(
             appBar: AppBar(
+              title:   const Text(
+                "ລົງທະບຽນຂໍ້ມູນພະນັກງານ",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               backgroundColor: element.main,
-              leading: element.BackPage(context),
+              leading: element().RoutePageBack(context, const Menu()),
+              centerTitle: true,
             ),
             body: ListView(
               children: [
                 Container(
-                  margin: const EdgeInsets.all(24),
+                  margin: const EdgeInsets.all(20),
                   child: Column(
                     children: [
                       _header(context),
-                      const SizedBox(height: 40),
+                      const SizedBox(height: 20),
                       _inputFields(context),
                     ],
                   ),
@@ -160,16 +168,9 @@ class _RegisterState extends State<Register> {
     return Column(
       children: const [
         Text(
-          "ລົງທະບຽນຂໍ້ມູນພະນັກງານ",
-          style: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        Text(
           "ຮ້ານເເອັດມານີ",
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 25,
             fontWeight: FontWeight.bold,
           ),
         ),

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/celement/elements.dart';
+import 'package:untitled1/screen/menu.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewCategory.dart';
 
 import '../../api/getCategoryData.dart';
@@ -22,7 +23,7 @@ class _ProductTypeTapbarState extends State<ProductTypeTapbar> {
         label1: 'ປະເພດສິນຄ້າ',
         icos1: Icons.feed,
         icos2: Icons.feed,
-        label2: 'ລາຍລະອຽດຂອງປະເພດສິນຄ້າ',
+        label2: 'ຂໍ້ມູນປະເພດສິນຄ້າ',
         tap1: const Category(),
         tap2: const ViewCategory());
   }
@@ -53,7 +54,7 @@ class _CategoryState extends State<Category> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: element.main,
-        leading: element.BackPage(context),
+        leading: element().RoutePageBack(context, const Menu()),
         title: Text(element.p6),
         centerTitle: true,
       ),

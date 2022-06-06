@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
+import 'package:untitled1/screen/showDataFromFirebase/viewProduct.dart';
 
 class ProductDetail extends StatefulWidget {
   const ProductDetail({Key? key}) : super(key: key);
@@ -17,6 +19,8 @@ class _ProductDetailState extends State<ProductDetail> {
       appBar: AppBar(
         title: const Text('ລາຍລະອຽດຂອງສິນຄ້າ'),
         centerTitle: true,
+        backgroundColor: element.main,
+        leading: element().RoutePageBack(context, const ViewProduct()),
       ),
       body: Card(
         child: Stack(

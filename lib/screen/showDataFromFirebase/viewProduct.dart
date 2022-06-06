@@ -6,6 +6,7 @@ import 'package:untitled1/notifire/productNotifire.dart';
 import 'package:untitled1/screen/detialOfdata/productDetail.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/screen/product_add/appProduct.dart';
+
 class ViewProduct extends StatefulWidget {
   const ViewProduct({Key? key}) : super(key: key);
 
@@ -16,10 +17,11 @@ class ViewProduct extends StatefulWidget {
 class _ViewProductState extends State<ViewProduct> {
   @override
   Widget build(BuildContext context) {
-    ProductNotifire product = Provider.of<ProductNotifire>(context,listen: false);
+    ProductNotifire product =
+        Provider.of<ProductNotifire>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ລາຍລະອຽດຂອງສິນຄ້າ'),
+        title: const Text('ລາຍການສິນຄ້າ'),
         centerTitle: true,
         leading: element().RoutePageBack(context, const AddProduct()),
         backgroundColor: element.main,
@@ -32,7 +34,7 @@ class _ViewProductState extends State<ViewProduct> {
               leading: const Icon(Icons.production_quantity_limits_sharp),
               title: TextButton(
                   onPressed: () {
-                    product.CurrenProduct=product.Products[index];
+                    product.CurrenProduct = product.Products[index];
                     product.getCurrenProduct();
                     Navigator.pushReplacement(
                       context,
@@ -42,7 +44,9 @@ class _ViewProductState extends State<ViewProduct> {
                     );
                   },
                   child: Text('${product.Products[index].nameProduct}')),
-              subtitle: Image.network('${product.Products[index].image != null ? product.Products[index].image : element.nullimage}'),
+              subtitle: Image.network(
+                '${product.Products[index].image != null ? product.Products[index].image : element.nullimage}',
+              ),
               trailing: const Icon(Icons.delete),
             ),
           );

@@ -1,6 +1,5 @@
-import 'dart:ffi';
+// ignore_for_file: non_constant_identifier_names, must_call_super
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -11,6 +10,7 @@ import 'package:untitled1/api/getsupplier.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/model/supplier_data.dart';
 import 'package:untitled1/notifire/supplierNotifire.dart';
+import 'package:untitled1/screen/menu.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewSupplier.dart';
 
 class SupplierTapbar extends StatefulWidget {
@@ -24,10 +24,10 @@ class _SupplierTapbarState extends State<SupplierTapbar> {
   @override
   Widget build(BuildContext context) {
     return element().TabbarPage(
-        label1: 'ຜູ້ສະໜອງ',
+        label1: 'ລົງທະບຽນຜູ້ສະໜອງ',
         icos1: Icons.feed,
         icos2: Icons.feed,
-        label2: 'ລາຍລະອຽດຂອງຜູ້ສະໜອງ',
+        label2: 'ຂໍ້ມູນຜູ້ສະໜອງ',
         tap1: const Supplier(),
         tap2: const ViewSupplier());
   }
@@ -48,18 +48,21 @@ class _SupplierState extends State<Supplier> {
   String? names;
   String? emails;
   String? tels;
-  String? addresss;
+  String? address;
   String? supplyProducts;
 
   @override
-  initState()  {
-  sup();
+  initState() {
+    sup();
   }
-sup()async{
-  super.initState();
-  SupplierNotifire Supp = Provider.of<SupplierNotifire>(context, listen: false);
-  await GetSupplier(Supp);
-}
+
+  sup() async {
+    super.initState();
+    SupplierNotifire Supp =
+        Provider.of<SupplierNotifire>(context, listen: false);
+    await GetSupplier(Supp);
+  }
+
   @override
   Widget build(BuildContext context) {
     SupplierNotifire Supp = Provider.of<SupplierNotifire>(context);
@@ -79,10 +82,10 @@ sup()async{
           if (snapshot.connectionState == ConnectionState.done) {
             return Scaffold(
               appBar: AppBar(
-                title: const Text('ຂໍ້ມູນຜູ້ສະໜອງ'),
+                title: const Text(' ລົງທະບຽນຜູ້ສະໜອງ'),
                 centerTitle: true,
                 backgroundColor: element.main,
-                leading: element.BackPage(context),
+                leading: element().RoutePageBack(context, const Menu()),
               ),
               body: ListView(
                 children: [
@@ -218,7 +221,7 @@ sup()async{
             ),
           ),
           onSaved: (String? address) {
-            addresss = address;
+            address = address;
           },
           validator: RequiredValidator(errorText: "ກະລຸນາປ້ອນທີ່ຢູ່"),
         ),
@@ -251,7 +254,7 @@ sup()async{
             if (formKey.currentState!.validate()) {
               formKey.currentState!.save();
               AddSupplier(Supp,
-                  address: addresss,
+                  address: address,
                   email: emails,
                   name: names,
                   tel: tels,
