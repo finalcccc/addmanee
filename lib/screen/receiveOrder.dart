@@ -4,7 +4,10 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/celement/elements.dart';
+import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
+
+import '../api/getProduct.dart';
 
 class ReceiveOrder extends StatefulWidget {
   const ReceiveOrder({Key? key}) : super(key: key);
@@ -17,22 +20,83 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
   @override
   Widget build(BuildContext context) {
     ProductNotifire product = Provider.of<ProductNotifire>(context);
+    CategoryNotifire category = Provider.of<CategoryNotifire>(context);
     return Scaffold(
       backgroundColor: element.gray,
       appBar: AppBar(
         leading: element.BackPage(context),
       ),
-      body: GridView.builder(
-          padding: EdgeInsets.all(10),
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 300,
-              childAspectRatio: 3 / 4.5,
-              crossAxisSpacing: 8,
-              mainAxisSpacing: 8),
-          itemCount: product.Products.length,
-          itemBuilder: (BuildContext ctx, index) {
-            return Content(product, index);
-          }),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(right: 270),
+              child: Container(
+                padding:
+                EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                margin: EdgeInsets.symmetric(horizontal: 5,vertical: 10),
+                decoration: BoxDecoration(
+                  color: element.main,
+                  borderRadius: BorderRadius.circular(15)
+                ),
+                child: Row(
+                  children: [
+                    InkWell(
+                      child: Text('ສີນຄ້າທັ້ງໝົດ',style: TextStyle(color: element.wht),),
+                      onTap: () {
+                        GetProduct(product);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              height: 50,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                padding: EdgeInsets.all(8),
+                itemCount: category.categoryList.length,
+                itemBuilder: (context, index) {
+                  return InkWell(
+                    onTap: () {
+                      GetProduct_type(product,
+                          category.categoryList[index].category, index);
+                    },
+                    child: Container(
+                      padding:
+                      EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      margin: EdgeInsets.symmetric(horizontal: 5),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Colors.blue),
+                      child: Row(
+                        children: [
+                          Text('${category.categoryList[index].category}'),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height / 1.25,
+              child: GridView.builder(
+                  padding: EdgeInsets.all(10),
+                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent: 300,
+                      childAspectRatio: 3 / 4.5,
+                      crossAxisSpacing: 8,
+                      mainAxisSpacing: 8),
+                  itemCount: product.Products.length,
+                  itemBuilder: (BuildContext ctx, index) {
+                    return Content(product, index);
+                  }),
+            ),
+          ],
+        ),
+      ),
     );
   }
 
@@ -57,7 +121,7 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: Image.network(
-                      '${product.Products[index].image}',
+                      '${product.Products[index].image != null ? product.Products[index].image : element.nullimage}',
                       width: 150,
                       height: 150,
                       fit: BoxFit.fill,
@@ -66,16 +130,15 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
               title: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
-                  Text('${product.Products[index].nameProduct}',
+                  Text(
+                    '${product.Products[index].nameProduct}',
                     style: TextStyle(color: Colors.black, fontSize: 18),
                   ),
-                   Divider(
-                      color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
-                     thickness: 1,
-
-                    ),
-
+                  Divider(
+                    color: Colors
+                        .primaries[Random().nextInt(Colors.primaries.length)],
+                    thickness: 1,
+                  ),
                 ],
               ),
               subtitle: Column(
@@ -85,14 +148,19 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('ລາຄາ:  '),
-                      Text('${NumberFormat.decimalPattern().format(product.Products[index].price)}  ກີບ'),
+                      Text(
+                          '${NumberFormat.decimalPattern().format(product.Products[index].price)}  ກີບ'),
                     ],
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('ຈຳນວນ:  '),
-                      Text('${product.Products[index].amount}''  ເເກັດ',style: TextStyle(color: product.Products[index].amount! <= 9 ? Colors.red:Color(0xff0FAA4D))),
+                      Text('${product.Products[index].amount}' '  ເເກັດ',
+                          style: TextStyle(
+                              color: product.Products[index].amount! <= 9
+                                  ? Colors.red
+                                  : Color(0xff0FAA4D))),
                     ],
                   ),
                 ],

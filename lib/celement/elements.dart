@@ -10,6 +10,7 @@ class element {
   String? _name, _des;
   int? _price, _cost, _amount;
 
+  static String nullimage ='https://rae.mju.ac.th/images/untitled.png';
   //color
   static var main = const Color(0xff0031CA);
   static var Indigo = const Color(0xff281E5D);
@@ -28,6 +29,7 @@ class element {
   static String p6 = "ປະເພດສິນຄ້າ";
   static String p7 = "ລາຍງານ";
   static String p8 = "ສັ່ງຊື້ສິນຄ້າເຂົ້າຮ້ານ";
+
 void elementgetcategory(String categorys){
   category = categorys;
 }
