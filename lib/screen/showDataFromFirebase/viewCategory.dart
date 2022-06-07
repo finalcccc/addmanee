@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously, non_constant_identifier_names
+// ignore_for_file: use_build_context_synchronously, non_constant_identifier_names, prefer_adjacent_string_concatenation
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -6,6 +6,7 @@ import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/screen/detialOfdata/categoryDetail.dart';
 import 'package:untitled1/screen/product_add/category.dart';
 
+import '../../WidgetSearch/widgetSearch.dart';
 import '../../api/getCategoryData.dart';
 import '../../celement/elements.dart';
 
@@ -20,11 +21,10 @@ class _ViewCategoryState extends State<ViewCategory> {
   var refreshKey = GlobalKey<RefreshIndicatorState>();
 
   Future dos() async {
-
-    CategoryNotifire category = Provider.of<CategoryNotifire>(context, listen: false);
+    CategoryNotifire category =
+        Provider.of<CategoryNotifire>(context, listen: false);
     await GetCategoryData(category);
     category.RefreshCategory();
-
   }
 
   @override
@@ -32,10 +32,16 @@ class _ViewCategoryState extends State<ViewCategory> {
     CategoryNotifire category = Provider.of<CategoryNotifire>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text( 'ຂໍ້ມູນປະເພດສິນຄ້າ'),
-        centerTitle: true,
-        leading: element().RoutePageBack(context, const Category()),
         backgroundColor: element.main,
+        centerTitle: true,
+        title: const Text(
+          'ຂໍ້ມູນປະເພດສິນຄ້າ',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        bottom: WidgetSearch(label: "ຄົ້ນຫາຂໍ້ມູນປະເພດສິນຄ້າ"),
+        leading: element().RoutePageBack(context, const Category()),
       ),
       body: RefreshIndicator(
         key: refreshKey,
@@ -56,48 +62,37 @@ class _ViewCategoryState extends State<ViewCategory> {
 
   Widget CardCategory(int index, CategoryNotifire category) {
     return Card(
-      color: Colors.white,
-      borderOnForeground: true,
-      elevation: 5,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          ListTile(
-            leading: const Icon(Icons.category),
-            title: Text("${category.categoryList[index].category}",
-                style: const TextStyle(color: Colors.green)),
-            subtitle: Text(
-              "${category.categoryList[index].id}",
-              style: const TextStyle(color: Colors.orangeAccent),
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+        color: Colors.white,
+        borderOnForeground: true,
+        elevation: 5,
+        child: InkWell(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              TextButton(
-                child: const Text('ແກ້ໄຂ'),
-                onPressed: () {
-                  Text(
-                    "${category.categoryList[index].category}",
-                    style: const TextStyle(color: Colors.green),
-                  );
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const CategoryDetail(),
-                    ),
-                  );
-                },
-              ),
-              const SizedBox(width: 8),
-              TextButton(
-                child: const Text('ລົບ'),
-                onPressed: () {},
+              ListTile(
+                leading: const Icon(Icons.category),
+                title: Text(
+                    "ຊື່ປະເພດສິນຄ້າ:" +
+                        " ${category.categoryList[index].category}",
+                    style: const TextStyle(color: Colors.green)),
+                subtitle: Text(
+                  "ລະຫັດ:" + " ${category.categoryList[index].id}",
+                  style: const TextStyle(color: Colors.orangeAccent),
+                ),
               ),
             ],
           ),
-        ],
-      ),
-    );
+          onTap: () {
+            Text(
+              "${category.categoryList[index].category}",
+              style: const TextStyle(color: Colors.green),
+            );
+            category.CurrentCategory = category.categoryList[index];
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const CategoryDetail()));
+          },
+        ));
   }
 }
