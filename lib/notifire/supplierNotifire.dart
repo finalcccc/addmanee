@@ -22,8 +22,6 @@ class SupplierNotifire with ChangeNotifier {
 
   getCurrentSupplier() {
     CurrentSupplier;
-
-    print(CurrentSupplier?.name);
     notifyListeners();
   }
   SelectType(String? v) {

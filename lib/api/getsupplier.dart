@@ -12,8 +12,8 @@ GetSupplier(SupplierNotifire supp) async {
       .orderBy('name')
       .get();
   supp.Supliername.clear();
-  rfn.docs.forEach((e) {
-    SupplierData f = SupplierData.fromMap(e.data());
+  rfn.docs.forEach((e)  {
+    SupplierData f =   SupplierData.fromMap(e.data());
     supp.Supliername.add(e['name']);
     _supplier.add(f);
   });

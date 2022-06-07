@@ -40,28 +40,29 @@ class Supplier extends StatefulWidget {
   State<Supplier> createState() => _SupplierState();
 }
 
-final formKey = GlobalKey<FormState>();
+
+GlobalKey<FormState> formKey = GlobalKey<FormState>();
 final Future<FirebaseApp> firebase = Firebase.initializeApp();
 SupplierData supplierData = SupplierData();
 
 class _SupplierState extends State<Supplier> {
+  @override
+  void initState() {
+    super.initState();
+    dos();
+
+  }
+
+  Future dos() async {
+    SupplierNotifire supp = Provider.of<SupplierNotifire>(context,listen: false);
+    await GetSupplier(supp);
+  }
+
   String? names;
   String? emails;
   String? tels;
   String? address;
   String? supplyProducts;
-
-  @override
-  initState() {
-    sup();
-  }
-
-  sup() async {
-    super.initState();
-    SupplierNotifire Supp =
-        Provider.of<SupplierNotifire>(context, listen: false);
-    await GetSupplier(Supp);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -134,8 +135,9 @@ class _SupplierState extends State<Supplier> {
 
   _inputFields(context, SupplierNotifire Supp) {
     return Form(
-      key: formKey,
-      child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+     key: formKey,
+      child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         TextFormField(
           decoration: InputDecoration(
             hintText: "ຊື່ ແລະ ນາມສະກຸນ",
@@ -249,15 +251,16 @@ class _SupplierState extends State<Supplier> {
             shape: const StadiumBorder(),
             padding: const EdgeInsets.symmetric(vertical: 16),
           ),
-          onPressed: () async {
+          onPressed: ()async{
             if (formKey.currentState!.validate()) {
               formKey.currentState!.save();
-            await  AddSupplier(Supp,
+             await AddSupplier(Supp,
                   address: address,
                   email: emails,
                   name: names,
                   tel: tels,
                   supplyProduct: supplyProducts);
+              formKey.currentState!.reset();
               Fluttertoast.showToast(
                 msg: "ໄດ້ເພີ່ມຂໍ້ມູນຜູ້ສະໜອງແລ້ວ",
                 fontSize: 20,
@@ -265,7 +268,7 @@ class _SupplierState extends State<Supplier> {
                 backgroundColor: Colors.white,
                 textColor: Colors.black,
               );
-              formKey.currentState!.reset();
+
             }
           },
           child: const Text(

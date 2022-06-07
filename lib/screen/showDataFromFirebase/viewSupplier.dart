@@ -28,7 +28,7 @@ class _ViewSupplierState extends State<ViewSupplier> {
   }
 
   Future dos() async {
-    SupplierNotifire supp = Provider.of<SupplierNotifire>(context);
+    SupplierNotifire supp = Provider.of<SupplierNotifire>(context,listen: false);
    await GetSupplier(supp);
   }
   @override
