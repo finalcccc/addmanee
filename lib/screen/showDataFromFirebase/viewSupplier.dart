@@ -36,6 +36,7 @@ class _ViewSupplierState extends State<ViewSupplier> {
               subtitle:
                   Text('ເບີໂທ:' ' ${Supp.SuplierList[index].tel}'),
               onTap: () {
+                Supp.CurrentSupplier = Supp.SuplierList[index];
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
