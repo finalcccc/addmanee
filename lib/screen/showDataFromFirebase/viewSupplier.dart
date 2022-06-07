@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/WidgetSearch/widgetSearch.dart';
+import 'package:untitled1/api/getsupplier.dart';
 import 'package:untitled1/screen/product_add/supplier_add.dart';
 
 import '../../celement/elements.dart';
@@ -18,6 +19,18 @@ class ViewSupplier extends StatefulWidget {
 }
 
 class _ViewSupplierState extends State<ViewSupplier> {
+
+  @override
+  void initState() {
+    super.initState();
+    dos();
+
+  }
+
+  Future dos() async {
+    SupplierNotifire supp = Provider.of<SupplierNotifire>(context);
+   await GetSupplier(supp);
+  }
   @override
   Widget build(BuildContext context) {
     SupplierNotifire Supp = Provider.of<SupplierNotifire>(context);

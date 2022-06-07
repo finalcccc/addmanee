@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:collection';
+import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:untitled1/model/product_data.dart';
@@ -12,9 +13,6 @@ class Cartnotifire with ChangeNotifier{
   UnmodifiableListView<CartDetailData>get Cartlist => UnmodifiableListView(Carts);
 
 
-   getdata(){
-
-   }
   cecks(){
   Carts.add(CartDetailData(Procartcart, 1));
   notifyListeners();

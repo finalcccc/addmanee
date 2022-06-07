@@ -252,7 +252,7 @@ class _SupplierState extends State<Supplier> {
           onPressed: () async {
             if (formKey.currentState!.validate()) {
               formKey.currentState!.save();
-              AddSupplier(Supp,
+            await  AddSupplier(Supp,
                   address: address,
                   email: emails,
                   name: names,

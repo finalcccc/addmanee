@@ -18,6 +18,7 @@ class SupplierData {
     this.tel= value['tel'];
     this.address = value['address'];
     this.supplyProduct = value['supplyProduct'];
+    this.date= value['date'];
   }
 
   Map<String, dynamic> toMap() {
