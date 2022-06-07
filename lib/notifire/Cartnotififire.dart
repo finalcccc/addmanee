@@ -10,25 +10,30 @@ import '../model/CartdetailData.dart';
 class Cartnotifire with ChangeNotifier{
   List<CartDetailData> Carts =[];
   ProductData? Procartcart;
+  int amoultoal =0;
   UnmodifiableListView<CartDetailData>get Cartlist => UnmodifiableListView(Carts);
 
 
   cecks(){
+    amoultoal++;
   Carts.add(CartDetailData(Procartcart, 1));
   notifyListeners();
   }
   remove(index){
+     amoultoal -= Carts[index].amout;
      Carts.removeAt(index);
   notifyListeners();
    }
    sum(index){
-
+     amoultoal++;
      Carts[index].amout++;
      notifyListeners();
    }
    dedet(index){
      if( Carts[index].amout >1){
+       amoultoal--;
        Carts[index].amout--;
+
      }
 
      notifyListeners();
