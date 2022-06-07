@@ -6,6 +6,7 @@ import 'package:untitled1/api/getEmployeeData.dart';
 import 'package:untitled1/notifire/employeeNotifire.dart';
 import 'package:untitled1/screen/product_add/registerEmployee.dart';
 
+import '../../WidgetSearch/widgetSearch.dart';
 import '../../celement/elements.dart';
 import '../detialOfdata/employeeDetail.dart';
 
@@ -34,10 +35,16 @@ class _ViewEmployeeState extends State<ViewEmployee> {
     EmployeeNotifire emp = Provider.of<EmployeeNotifire>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ຂໍ້ມູນຂອງພະນັກງານແຕ່ລະຄົນ'),
-        centerTitle: true,
-        leading: element().RoutePageBack(context, const Register()),
         backgroundColor: element.main,
+        centerTitle: true,
+        title: const Text(
+          'ຂໍ້ມູນຂອງພະນັກງານແຕ່ລະຄົນ',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        bottom: WidgetSearch(label: "ຄົ້ນຫາຂໍ້ມູນພະນັກງານ"),
+        leading: element().RoutePageBack(context, const Register()),
       ),
       body: ListView.separated(
           itemBuilder: (context, index) {

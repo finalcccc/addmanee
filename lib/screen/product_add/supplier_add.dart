@@ -58,7 +58,8 @@ class _SupplierState extends State<Supplier> {
 
   sup() async {
     super.initState();
-    SupplierNotifire Supp = Provider.of<SupplierNotifire>(context, listen: false);
+    SupplierNotifire Supp =
+        Provider.of<SupplierNotifire>(context, listen: false);
     await GetSupplier(Supp);
   }
 
@@ -115,17 +116,16 @@ class _SupplierState extends State<Supplier> {
     return Column(
       children: const [
         Text(
-          "ຂໍ້ມູນຜູ້ສະໜອງ",
+          "ລົງທະບຽນຜູ້ສະໜອງ",
           style: TextStyle(
-            fontSize: 30,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
         ),
         Text(
-          "ຮ້ານເເອັດມານີ",
+          "ຮ້ານແອັດມະນີ",
           style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+            fontSize: 17,
           ),
         ),
       ],

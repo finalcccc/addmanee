@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, avoid_print
 
 import 'dart:collection';
 
@@ -9,6 +9,7 @@ class CategoryNotifire with ChangeNotifier {
   List<CategoryData> category = [];
   List<String> cate = [];
   String? categoryType;
+  CategoryData? CurrentCategory;
   UnmodifiableListView<CategoryData> get categoryList =>
       UnmodifiableListView(category);
 
@@ -16,7 +17,12 @@ class CategoryNotifire with ChangeNotifier {
     category;
     notifyListeners();
   }
+  getCurrentEmployee() {
+    CurrentCategory;
 
+    print(CurrentCategory?.category);
+    notifyListeners();
+  }
   SelectType(String? v) {
     categoryType = v;
     notifyListeners();
