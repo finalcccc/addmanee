@@ -29,23 +29,22 @@ class _ViewSupplierState extends State<ViewSupplier> {
         itemCount: Supp.SuplierList.length,
         itemBuilder: (context, index) {
           return Card(
+              child: InkWell(
             child: ListTile(
-              leading: const Icon(Icons.people),
-              title: TextButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const SupplierDetail(),
-                      ),
-                    );
-                  },
-                  child: Text('${Supp.SuplierList[index].name}')),
+              leading: const Icon(Icons.people,size: 35,),
+              title: Text( 'ຊື່ ແລະ ນາມສະກຸນ:'  ' ${Supp.SuplierList[index].name}'),
               subtitle:
-                  Text('${Supp.SuplierList[index].date?.toDate().toString()}'),
-              trailing: const Icon(Icons.delete),
+                  Text('ເບີໂທ:' ' ${Supp.SuplierList[index].tel}'),
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SupplierDetail(),
+                  ),
+                );
+              },
             ),
-          );
+          ));
         },
       ),
     );
