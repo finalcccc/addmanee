@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
@@ -7,6 +8,14 @@ import '../model/CartdetailData.dart';
 
 class Cartnotifire with ChangeNotifier{
   List<CartDetailData> Carts =[];
-  CartDetailData?cartproduct;
+  ProductData? Procartcart;
   UnmodifiableListView<CartDetailData>get Cartlist => UnmodifiableListView(Carts);
+
+
+   getdata(){
+
+   }
+  cecks(){
+  Carts.add(CartDetailData(Procartcart, 1));
+  }
 }

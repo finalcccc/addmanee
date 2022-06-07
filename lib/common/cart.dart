@@ -16,15 +16,17 @@ class _CartState extends State<Cart> {
   @override
   Widget build(BuildContext context) {
     Cartnotifire cart = Provider.of<Cartnotifire>(context);
-    return AlertDialog(
-      actions: [
-        Card(
-          child: Stack(
-            children: [
-              Image.network('${cart.cartproduct!.Product!.image}'),
-            ],
-          ),
-        )
-      ],
+    return Scaffold(
+         body:Column(
+           children: [
+             Expanded(
+               child: ListView.builder(
+                 itemCount: cart.Cartlist.length,
+                 itemBuilder: (context, index) {
+                 return Text('${cart.Cartlist[index].Product!.nameProduct}');
+               },),
+             )
+           ],
+         ),
 
-    );}}
+    ) ;}}

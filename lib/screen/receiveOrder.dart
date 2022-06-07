@@ -14,6 +14,8 @@ import 'package:untitled1/screen/detialOfdata/productDetail.dart';
 
 import '../api/getCategoryData.dart';
 import '../api/getProduct.dart';
+import '../common/cart.dart';
+import '../common/cart.dart';
 
 class ReceiveOrder extends StatefulWidget {
   const ReceiveOrder({Key? key}) : super(key: key);
@@ -158,14 +160,13 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(8.0))),
       child: InkWell(
-        onTap: () {
-          print(product.Products[index].category);
-          product.CurrentProduct = product.Products[index];
-          product.getCurrentProduct();
-          cartno.cartproduct!.Product = product.Products[index];
+        onTap: (){
+         print(product.Products[index].category);
+         product.CurrentProduct = product.Products[index];
+         product.getCurrentProduct();
+         cartno.Procartcart = product.Products[index];
 
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const Cart()));
+          Dailog(cartno,context);
         },
         child: Column(
           children: [
@@ -227,3 +228,43 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
     ));
   }
 }
+ Dailog(Cartnotifire Carts,context){
+ return  showDialog(
+     context: context,
+     builder: (context) => AlertDialog(
+       actions: [
+         Column(
+           crossAxisAlignment: CrossAxisAlignment.center,
+           children: [
+             Image.network('${Carts.Procartcart!.image}',fit:BoxFit.fitHeight),
+             Text('${Carts.Procartcart!.nameProduct}'),
+             Text('${Carts.Procartcart!.amount}'),
+             Text('${Carts.Procartcart!.price}'),
+             Text('${Carts.Procartcart!.description}'),
+     SizedBox(height: 20),
+     Container(
+       margin: const EdgeInsets.only(right: 15, left: 15),
+       width: 390,
+       child: ElevatedButton(
+         style: ElevatedButton.styleFrom(
+             primary: element.main,
+             shape: const StadiumBorder(),
+             padding: const EdgeInsets.symmetric(vertical: 16)),
+         onPressed: () {
+          Carts.cecks();
+            Navigator.push(context,
+               MaterialPageRoute(builder: (context) => const Cart()));
+         },
+         child: const Text(
+           "ເພີ່ມສິນເຂົ້າກະຕ້າ",
+           style: TextStyle(fontSize: 20),
+         ),
+       ),
+     ),
+             SizedBox(height: 20),
+           ],
+
+         )
+       ],
+     ));
+ }
