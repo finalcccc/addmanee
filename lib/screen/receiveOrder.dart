@@ -31,6 +31,7 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
       colortype;
     });
   }
+
   @override
   void initState() {
     super.initState();
@@ -45,10 +46,9 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
 
   Future Productfacing() async {
     CategoryNotifire category =
-    Provider.of<CategoryNotifire>(context, listen: false);
+        Provider.of<CategoryNotifire>(context, listen: false);
     await GetCategoryData(category);
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +116,7 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
             },
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              margin: EdgeInsets.symmetric(horizontal: 5),
+              margin: const EdgeInsets.symmetric(horizontal: 5),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: colortype != true ? element.main : Colors.blue),
@@ -134,7 +134,8 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
     );
   }
 
-  Container ViewProducts(BuildContext context, ProductNotifire product,Cartnotifire cartno) {
+  Container ViewProducts(
+      BuildContext context, ProductNotifire product, Cartnotifire cartno) {
     return Container(
       height: MediaQuery.of(context).size.height / 1.25,
       child: GridView.builder(
@@ -146,12 +147,12 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
               mainAxisSpacing: 8),
           itemCount: product.Products.length,
           itemBuilder: (BuildContext ctx, index) {
-            return Content(product, index,cartno);
+            return Content(product, index, cartno);
           }),
     );
   }
 
-  Widget Content(ProductNotifire product, int index,Cartnotifire cartno) {
+  Widget Content(ProductNotifire product, int index, Cartnotifire cartno) {
     return Container(
         child: Card(
       elevation: 14,
@@ -160,13 +161,13 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(8.0))),
       child: InkWell(
-        onTap: (){
-         print(product.Products[index].category);
-         product.CurrentProduct = product.Products[index];
-         product.getCurrentProduct();
-         cartno.Procartcart = product.Products[index];
+        onTap: () {
+          print(product.Products[index].category);
+          product.CurrentProduct = product.Products[index];
+          product.getCurrentProduct();
+          cartno.Procartcart = product.Products[index];
 
-          Dailog(cartno,context);
+          Dailog(cartno, context);
         },
         child: Column(
           children: [
@@ -203,7 +204,7 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('ລາຄາ:  '),
+                      const Text('ລາຄາ:  '),
                       Text(
                           '${NumberFormat.decimalPattern().format(product.Products[index].price)}  ກີບ'),
                     ],
@@ -211,12 +212,12 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('ຈຳນວນ:  '),
+                      const Text('ຈຳນວນ:  '),
                       Text('${product.Products[index].amount}' '  ເເກັດ',
                           style: TextStyle(
                               color: product.Products[index].amount! <= 9
                                   ? Colors.red
-                                  : Color(0xff0FAA4D))),
+                                  : const Color(0xff0FAA4D))),
                     ],
                   ),
                 ],
@@ -228,43 +229,55 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
     ));
   }
 }
- Dailog(Cartnotifire Carts,context){
- return  showDialog(
-     context: context,
-     builder: (context) => AlertDialog(
-       actions: [
-         Column(
-           crossAxisAlignment: CrossAxisAlignment.center,
-           children: [
-             Image.network('${Carts.Procartcart!.image}',fit:BoxFit.fitHeight),
-             Text('${Carts.Procartcart!.nameProduct}'),
-             Text('${Carts.Procartcart!.amount}'),
-             Text('${Carts.Procartcart!.price}'),
-             Text('${Carts.Procartcart!.description}'),
-     SizedBox(height: 20),
-     Container(
-       margin: const EdgeInsets.only(right: 15, left: 15),
-       width: 390,
-       child: ElevatedButton(
-         style: ElevatedButton.styleFrom(
-             primary: element.main,
-             shape: const StadiumBorder(),
-             padding: const EdgeInsets.symmetric(vertical: 16)),
-         onPressed: () {
-          Carts.cecks();
-            Navigator.push(context,
-               MaterialPageRoute(builder: (context) => const Cart()));
-         },
-         child: const Text(
-           "ເພີ່ມສິນເຂົ້າກະຕ້າ",
-           style: TextStyle(fontSize: 20),
-         ),
-       ),
-     ),
-             SizedBox(height: 20),
-           ],
 
-         )
-       ],
-     ));
- }
+Dailog(Cartnotifire Carts, context) {
+  return showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+            actions: [
+              Column(
+                children: [
+                  Image.network('${Carts.Procartcart!.image}',
+                      fit: BoxFit.fitHeight),
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                            'ຊື່ສິນຄ້າ: ' ' ${Carts.Procartcart!.nameProduct}'),
+                        Text('ຈຳນວນສິນຄ້າ: ' ' ${Carts.Procartcart!.amount}'),
+                        Text('ລາຄາ:' ' ${Carts.Procartcart!.price}'),
+                        Text('ລາຍລະອຽດ:' ' ${Carts.Procartcart!.description}'),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Container(
+                    margin: const EdgeInsets.only(right: 15, left: 15),
+                    width: 390,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          primary: element.main,
+                          shape: const StadiumBorder(),
+                          padding: const EdgeInsets.symmetric(vertical: 16)),
+                      onPressed: () {
+                        Carts.cecks();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Cart()));
+                      },
+                      child: const Text(
+                        "ເພີ່ມສິນເຂົ້າກະຕ້າ",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                ],
+              )
+            ],
+          ));
+}
