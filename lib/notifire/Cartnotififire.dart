@@ -17,5 +17,23 @@ class Cartnotifire with ChangeNotifier{
    }
   cecks(){
   Carts.add(CartDetailData(Procartcart, 1));
+  notifyListeners();
   }
+  remove(index){
+     Carts.removeAt(index);
+  notifyListeners();
+   }
+   sum(index){
+
+     Carts[index].amout++;
+     notifyListeners();
+   }
+   dedet(index){
+     if( Carts[index].amout >1){
+       Carts[index].amout--;
+     }
+
+     notifyListeners();
+
+   }
 }
