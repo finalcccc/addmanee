@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:untitled1/notifire/Cartnotififire.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/notifire/employeeNotifire.dart';
 import 'package:untitled1/notifire/supplierNotifire.dart';
@@ -29,6 +30,7 @@ void main() async {
       ChangeNotifierProvider(create: (_) => EmployeeNotifire()),
       ChangeNotifierProvider(create: (_) => ProductNotifire()),
       ChangeNotifierProvider(create: (_) => SupplierNotifire()),
+      ChangeNotifierProvider(create: (_) => Cartnotifire()),
     ],
     child: const MyApp(),
   ));

@@ -6,10 +6,13 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/celement/elements.dart';
+import 'package:untitled1/common/cart.dart';
+import 'package:untitled1/notifire/Cartnotififire.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
 import 'package:untitled1/screen/detialOfdata/productDetail.dart';
 
+import '../api/getCategoryData.dart';
 import '../api/getProduct.dart';
 
 class ReceiveOrder extends StatefulWidget {
@@ -26,11 +29,30 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
       colortype;
     });
   }
+  @override
+  void initState() {
+    super.initState();
+    dos();
+    Productfacing();
+  }
+
+  Future dos() async {
+    ProductNotifire Pro = Provider.of<ProductNotifire>(context, listen: false);
+    await GetProduct(Pro);
+  }
+
+  Future Productfacing() async {
+    CategoryNotifire category =
+    Provider.of<CategoryNotifire>(context, listen: false);
+    await GetCategoryData(category);
+  }
+
 
   @override
   Widget build(BuildContext context) {
     ProductNotifire product = Provider.of<ProductNotifire>(context);
     CategoryNotifire category = Provider.of<CategoryNotifire>(context);
+    Cartnotifire cartno = Provider.of<Cartnotifire>(context);
     return Scaffold(
       backgroundColor: element.gray,
       appBar: AppBar(
@@ -41,7 +63,7 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
           children: [
             ViewCategoryAll(product),
             ViewCategory(category, product),
-            ViewProducts(context, product),
+            ViewProducts(context, product, cartno),
           ],
         ),
       ),
@@ -110,7 +132,7 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
     );
   }
 
-  Container ViewProducts(BuildContext context, ProductNotifire product) {
+  Container ViewProducts(BuildContext context, ProductNotifire product,Cartnotifire cartno) {
     return Container(
       height: MediaQuery.of(context).size.height / 1.25,
       child: GridView.builder(
@@ -122,12 +144,12 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
               mainAxisSpacing: 8),
           itemCount: product.Products.length,
           itemBuilder: (BuildContext ctx, index) {
-            return Content(product, index);
+            return Content(product, index,cartno);
           }),
     );
   }
 
-  Widget Content(ProductNotifire product, int index) {
+  Widget Content(ProductNotifire product, int index,Cartnotifire cartno) {
     return Container(
         child: Card(
       elevation: 14,
@@ -140,8 +162,10 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
           print(product.Products[index].category);
           product.CurrentProduct = product.Products[index];
           product.getCurrentProduct();
+          cartno.cartproduct!.Product = product.Products[index];
+
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const ProductDetail()));
+              MaterialPageRoute(builder: (context) => const Cart()));
         },
         child: Column(
           children: [
