@@ -268,7 +268,7 @@ Dailog(Cartnotifire Carts, context) {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => const Cart()));
-                      },
+                      },//r
                       child: const Text(
                         "ເພີ່ມສິນເຂົ້າກະຕ້າ",
                         style: TextStyle(fontSize: 20),
