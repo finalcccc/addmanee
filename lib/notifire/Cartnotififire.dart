@@ -11,6 +11,7 @@ class Cartnotifire with ChangeNotifier{
   List<CartDetailData> Carts =[];
   ProductData? Procartcart;
   int amoultoal =0;
+  String Cartsupp ='';
   UnmodifiableListView<CartDetailData>get Cartlist => UnmodifiableListView(Carts);
 
 
@@ -38,5 +39,8 @@ class Cartnotifire with ChangeNotifier{
 
      notifyListeners();
 
+   }
+   getCartsupp(v){
+    Cartsupp = v;
    }
 }
