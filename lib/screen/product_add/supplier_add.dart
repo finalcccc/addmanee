@@ -41,7 +41,7 @@ class Supplier extends StatefulWidget {
 }
 
 
-GlobalKey<FormState> formKey = GlobalKey<FormState>();
+late GlobalKey<FormState> formKey = GlobalKey<FormState>();
 final Future<FirebaseApp> firebase = Firebase.initializeApp();
 SupplierData supplierData = SupplierData();
 

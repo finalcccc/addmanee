@@ -1,4 +1,5 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:untitled1/model/product_data.dart';
 
 class CartDetailData {
@@ -27,15 +28,16 @@ class CartModelupload{
   String?id;
     String? NameSupplier;
     int? amouttotal;
+    CartModel? Detell;
     var Ditell =[];
-    String?date;
+    Timestamp?date;
  CartModelupload();
  List<int> p =[1,2,3];
   CartModelupload.formMap(Map<String,dynamic>v){
     id=v['id'];
     NameSupplier = v['NameSupplier'];
     amouttotal =v['amouttotal'];
-    Ditell = v['Ditell'];
+    //Ditell = v['Ditell'];
     date=v['date'];
   }
   Map<String, dynamic> toMap() =>{

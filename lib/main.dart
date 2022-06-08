@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:untitled1/notifire/Cartnotififire.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/notifire/employeeNotifire.dart';
+import 'package:untitled1/notifire/purchase_order_Notifire.dart';
 import 'package:untitled1/notifire/supplierNotifire.dart';
 import 'package:untitled1/screen/manageOrder.dart';
 import 'package:untitled1/screen/product_add/category.dart';
@@ -31,6 +32,7 @@ void main() async {
       ChangeNotifierProvider(create: (_) => ProductNotifire()),
       ChangeNotifierProvider(create: (_) => SupplierNotifire()),
       ChangeNotifierProvider(create: (_) => Cartnotifire()),
+      ChangeNotifierProvider(create: (_) => purchase_order_Notifire()),
     ],
     child: const MyApp(),
   ));
