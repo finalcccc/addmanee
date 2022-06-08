@@ -1,4 +1,4 @@
-// ignore_for_file: sized_box_for_whitespace, avoid_print, non_constant_identifier_names, avoid_unnecessary_containers, prefer_if_null_operators
+// ignore_for_file: sized_box_for_whitespace, avoid_print, non_constant_identifier_names, avoid_unnecessary_containers, prefer_if_null_operators, depend_on_referenced_packages
 
 import 'dart:math';
 import 'package:intl/intl.dart';
@@ -10,11 +10,11 @@ import 'package:untitled1/common/cart.dart';
 import 'package:untitled1/notifire/Cartnotififire.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
-import 'package:untitled1/screen/detialOfdata/productDetail.dart';
+import 'package:untitled1/screen/menu.dart';
 
+import '../WidgetSearch/widgetSearch.dart';
 import '../api/getCategoryData.dart';
 import '../api/getProduct.dart';
-import '../common/cart.dart';
 import '../common/cart.dart';
 
 class ReceiveOrder extends StatefulWidget {
@@ -56,9 +56,17 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
     CategoryNotifire category = Provider.of<CategoryNotifire>(context);
     Cartnotifire cartno = Provider.of<Cartnotifire>(context);
     return Scaffold(
-      backgroundColor: element.gray,
       appBar: AppBar(
-        leading: element.BackPage(context),
+        backgroundColor: element.main,
+        centerTitle: true,
+        title: const Text(
+          'ສັ່ງຊື້ສິນຄ້າເຂົ້າຮ້ານ',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        bottom: WidgetSearch(label: "ຄົ້ນຫາຂໍ້ມູນສິນຄ້າ"),
+        leading: element().RoutePageBack(context, const Menu()),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -247,8 +255,12 @@ Dailog(Cartnotifire Carts, context) {
                       children: [
                         Text(
                             'ຊື່ສິນຄ້າ: ' ' ${Carts.Procartcart!.nameProduct}'),
-                        Text('ຈຳນວນສິນຄ້າ: ' ' ${Carts.Procartcart!.amount}'),
-                        Text('ລາຄາ:' ' ${Carts.Procartcart!.price}'),
+                        Text('ຈຳນວນສິນຄ້າ: '
+                            ' ${Carts.Procartcart!.amount}'
+                            ' ແກັດ'),
+                        Text('ລາຄາ:'
+                            ' ${NumberFormat.decimalPattern().format(Carts.Procartcart!.price)}'
+                            ' ກີບ'),
                         Text('ລາຍລະອຽດ:' ' ${Carts.Procartcart!.description}'),
                       ],
                     ),

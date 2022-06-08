@@ -1,6 +1,5 @@
 // ignore_for_file: unused_local_variable, prefer_adjacent_string_concatenation
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/celement/elements.dart';
