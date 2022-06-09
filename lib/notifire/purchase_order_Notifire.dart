@@ -8,6 +8,7 @@ import '../model/CartdetailData.dart';
 class purchase_order_Notifire with ChangeNotifier{
   List<CartModelupload> Order_addmin =[];
   CartModelupload?Currenorderaddmin;
+  ProductData?Productaddmin;
   List<CartModel>Dettil=[];
   List<ProductData> Productditill =[];
   UnmodifiableListView<CartModelupload> get Order_addminlist=>UnmodifiableListView(Order_addmin);

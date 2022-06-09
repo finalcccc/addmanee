@@ -172,6 +172,9 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                 ],
               ),
             ),
+            SizedBox(
+              height: 20,
+            ),
             Expanded(
               child: ListView.builder(
                 itemCount: orderadmin.Dettil.length,
@@ -192,6 +195,7 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
+                                      SizedBox(height: 10),
                                       Text(
                                           'ຊື່ສິນຄ້າ: ${orderadmin.Productditill[index].nameProduct}'),
                                       Text(
@@ -203,11 +207,8 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                                 ),
                                 TextButton(
                                     onPressed: () {
-                                      Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const Dialog()));
+                                        orderadmin.Productaddmin = orderadmin.Productditill[index];
+                                      _Dialog(orderadmin,context);
                                     },
                                     child: const Text('ເພີ່ມ')),
                               ],
@@ -240,30 +241,95 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
 
   //////////=======////////=======/////////=======///////
 
-  Dailog(purchase_order_Notifire Carts, context) {
+  _Dialog(purchase_order_Notifire orderaddmin,context) {
     return showDialog(
       context: context,
       builder: (context) => AlertDialog(
         actions: [
           Column(
             children: [
-              const SizedBox(height: 20),
-              Container(
-                margin: const EdgeInsets.only(right: 15, left: 15),
-                width: 390,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      primary: element.main,
-                      shape: const StadiumBorder(),
-                      padding: const EdgeInsets.symmetric(vertical: 16)),
-                  onPressed: () {}, //r
-                  child: const Text(
-                    "ເພີ່ມສິນເຂົ້າກະຕ້າ",
-                    style: TextStyle(fontSize: 20),
+              Form(
+                  child: Container(
+                    width:300,
+                    height:400,
+                child: Card(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10,left: 25),
+                        child: Text(
+                          'ເພີ່ມສິນຄ້າຜູ້ສະໜອງ',
+                          style: TextStyle(fontSize: 30),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        'ຊື່ສິນຄ້າ :  ${orderaddmin.Productaddmin!.nameProduct}'
+                      ),
+                      SizedBox(height: 30),
+                      TextFormField(
+                        decoration: InputDecoration(
+                          hintText: "ລາຄາທືນ",
+                          fillColor:
+                              Theme.of(context).primaryColor.withOpacity(0.1),
+                          filled: true,
+                          prefixIcon:
+                              const Icon(Icons.price_check),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(18),
+                            borderSide: BorderSide.none,
+                          ),
+                        ),
+                        keyboardType: TextInputType.number,
+                        onSaved: (String? tel) {},
+                        validator: (String? tel) {
+                          if (tel!.isEmpty) {
+                            return "ກະລຸນາປ້ອນເບີໂທລະສັບ";
+                          } else if (tel.length < 10) {
+                            return "ເບີໂທລະສັບບໍ່ຖືກຕ້ອງ";
+                          }
+                          return null;
+                        },
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        decoration: InputDecoration(
+                          hintText: "ຈຳນວນ",
+                          fillColor:
+                              Theme.of(context).primaryColor.withOpacity(0.1),
+                          filled: true,
+                          prefixIcon:
+                              const Icon(Icons.numbers),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(18),
+                            borderSide: BorderSide.none,
+                          ),
+                        ),
+                        keyboardType: TextInputType.number,
+                        onSaved: (String? tel) {},
+                        validator: (String? tel) {
+                          if (tel!.isEmpty) {
+                            return "ກະລຸນາປ້ອນເບີໂທລະສັບ";
+                          } else if (tel.length < 10) {
+                            return "ເບີໂທລະສັບບໍ່ຖືກຕ້ອງ";
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 40),
+                      Container(
+                        width: 300,
+                        height: 50,
+                        child: ElevatedButton(
+                          child: Text('ບັນທືກ'),
+                          onPressed: () {},
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
-              const SizedBox(height: 20),
+              ))
             ],
           )
         ],

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled1/screen/login.dart';
 import 'package:untitled1/screen/menu.dart';
 import 'dart:async';
 
@@ -19,7 +20,7 @@ class SplashScreenState extends State<SplashScreen> {
         () => Navigator.push(
             context,
             CupertinoPageRoute(
-              builder: (_) => const Menu(),
+              builder: (_) => const Login(),
             )));
     super.initState();
   }
