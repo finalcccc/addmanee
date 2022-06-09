@@ -1,9 +1,9 @@
 class import_products {
   String? id_purchase;
   String? id_products;
-  int? amout;
-  int? cost;
-  int? amouttotal;
+  num? amout ;
+  num? cost;
+  num? amouttotal;
   import_products({this.amout,this.id_products,this.id_purchase,this.cost,this.amouttotal});
 
   Map<String, dynamic> toMap() {
