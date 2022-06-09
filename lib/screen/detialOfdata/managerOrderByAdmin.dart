@@ -6,6 +6,7 @@ import 'package:untitled1/screen/manageOrder.dart';
 import 'package:untitled1/celement/elements.dart';
 
 import '../../api/UploadData/Upload_Data_phuasOrder.dart';
+import '../../api/getsupplier.dart';
 class ManagerOrderByAdmin extends StatefulWidget {
   const ManagerOrderByAdmin({Key? key}) : super(key: key);
 
@@ -14,6 +15,17 @@ class ManagerOrderByAdmin extends StatefulWidget {
 }
 
 class _ManagerOrderByAdminState extends State<ManagerOrderByAdmin> {
+  @override
+  void initState() {
+    super.initState();
+    dos();
+
+  }
+
+  Future dos() async {
+    SupplierNotifire supp = Provider.of<SupplierNotifire>(context,listen: false);
+    await GetSupplier(supp);
+  }
   @override
   Widget build(BuildContext context) {
       purchase_order_Notifire orderadmin = Provider.of<purchase_order_Notifire>(context);
@@ -77,6 +89,7 @@ class _Show_order_addminState extends State<Show_order_addmin> {
                 orderadmin.Currenorderaddmin = await orderadmin.Order_addminlist[index];
                 await orderadmin.Curren();
                 await GetDetill(order_admin: orderadmin);
+                orderadmin.Refresh();
                 Navigator.push(context, MaterialPageRoute(builder: (context) =>Detellorder_addmid()));
               },
               child: Column(
@@ -117,14 +130,20 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
           Expanded(
             child: ListView.builder(itemCount: orderadmin.Dettil.length,
               itemBuilder: (context, index) {
-                return Column(children: [
+                return orderadmin.Productditill.length != 0 ? Column(children: [
                   Row(
                     children: [
-                      Text('${orderadmin.Dettil[index].NameProduct}'),
+                      Image.network('${orderadmin.Productditill[index].image}',width: 100,height: 100,fit: BoxFit.fill),
+                      Text('${orderadmin.Productditill[index].nameProduct}'),
                       Text('${orderadmin.Dettil[index].amout}'),
+                      Text('${orderadmin.Productditill[index].category}'),
+                      TextButton(
+                          onPressed: () {
+                          },
+                          child: const Text('ເພີ່ມ')),
                     ],
                   )
-                ],);
+                ],):Container();
               },),
           ),
           Text('${orderadmin.Currenorderaddmin!.amouttotal}'),
@@ -133,5 +152,38 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
       ),
     );
   }
+
+  Dailog(purchase_order_Notifire Carts, context) {
+    return showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          actions: [
+            Column(
+              children: [
+                const SizedBox(height: 20),
+                Container(
+                  margin: const EdgeInsets.only(right: 15, left: 15),
+                  width: 390,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: element.main,
+                        shape: const StadiumBorder(),
+                        padding: const EdgeInsets.symmetric(vertical: 16)),
+                    onPressed: () {
+
+                    },//r
+                    child: const Text(
+                      "ເພີ່ມສິນເຂົ້າກະຕ້າ",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+              ],
+            )
+          ],
+        ));
+  }
+
 }
 

@@ -46,18 +46,6 @@ final Future<FirebaseApp> firebase = Firebase.initializeApp();
 SupplierData supplierData = SupplierData();
 
 class _SupplierState extends State<Supplier> {
-  @override
-  void initState() {
-    super.initState();
-    dos();
-
-  }
-
-  Future dos() async {
-    SupplierNotifire supp = Provider.of<SupplierNotifire>(context,listen: false);
-    await GetSupplier(supp);
-  }
-
   String? names;
   String? emails;
   String? tels;
