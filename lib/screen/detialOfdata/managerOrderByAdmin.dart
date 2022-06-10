@@ -1,6 +1,11 @@
 // ignore_for_file: use_build_context_synchronously, camel_case_types, non_constant_identifier_names, prefer_is_empty, await_only_futures
 
+
+
+
+
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/api/UploadData/upload_importproduct.dart';
 import 'package:untitled1/model/importproducts_Model.dart';
@@ -9,9 +14,13 @@ import 'package:untitled1/notifire/purchase_order_Notifire.dart';
 import 'package:untitled1/notifire/supplierNotifire.dart';
 import 'package:untitled1/screen/manageOrder.dart';
 import 'package:untitled1/celement/elements.dart';
+import 'dart:io';
 
+import 'package:pdf/widgets.dart' as pw;
 import '../../api/UploadData/Upload_Data_phuasOrder.dart';
 import '../../api/getsupplier.dart';
+import '../splashScreen .dart';
+import 'dart:math';
 
 class ManagerOrderByAdmin extends StatefulWidget {
   const ManagerOrderByAdmin({Key? key}) : super(key: key);
@@ -144,6 +153,12 @@ class Detellorder_addmid extends StatefulWidget {
 
 class _Detellorder_addmidState extends State<Detellorder_addmid> {
 
+   @override
+   initState(){
+    super.initState();
+
+   }
+
   @override
   Widget build(BuildContext context) {
     purchase_order_Notifire orderadmin =
@@ -232,7 +247,17 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                       'ຈຳນວນທັງໝົດ: ${orderadmin.Currenorderaddmin!.amouttotal} ແກັດ'),
                   ElevatedButton(
                     child: const Text('ບັນທຶກເປັນພີດີເອຟ'),
-                    onPressed: () {},
+                    onPressed: ()async {
+                      permissionCheck();
+                      final pdf = pw.Document();
+                      int randomNumber = Random().nextInt(90) + 10;
+                       String date = await orderadmin.Currenorderaddmin!.date!.toDate().toString();
+                      String result =date.substring(2,11);
+                      print(result);
+                      final File file = await File('/storage/emulated/0/Download/${orderadmin.Currenorderaddmin!.NameSupplier}$result$randomNumber.pdf');
+                       print(file);
+                      await file.writeAsBytes(await pdf.save());
+                    },
                   ),
                 ],
               ),
@@ -243,6 +268,34 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
     );
   }
 
+   Future<Widget> permissionCheck() async {
+     var permissionStatus = await Permission.storage.status;
+
+
+     if (!permissionStatus.isGranted){
+       await Permission.storage.request();
+         print('permit');
+     }
+     permissionStatus = await Permission.storage.status;
+     if(permissionStatus.isGranted) return SplashScreen();
+     else {
+       return AlertDialog(
+         title: Text('Permission Required'),  // To display the title it is optional
+         content: Text('Cannot proceed without permission'),   // Message which will be pop up on the screen
+         // Action widget which will provide the user to acknowledge the choice
+         actions: [
+           TextButton(           // FlatButton widget is used to make a text to work like a button
+             child: Text('Open App Settings'),
+             onPressed: () => openAppSettings(),
+             // function used to perform after pressing the button
+           ),
+
+         ],
+       );
+
+     }
+
+   }
 
   //////////=======////////=======/////////=======///////
   final GlobalKey<FormState> _key_import = GlobalKey<FormState>();
