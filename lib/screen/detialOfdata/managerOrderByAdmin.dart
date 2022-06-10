@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously, camel_case_types, non_constant_identifier_names, prefer_is_empty, await_only_futures
+// ignore_for_file: use_build_context_synchronously, camel_case_types, non_constant_identifier_names, prefer_is_empty, await_only_futures, sized_box_for_whitespace, avoid_print
 
 
 
@@ -250,6 +250,13 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                     onPressed: ()async {
                       permissionCheck();
                       final pdf = pw.Document();
+                      pdf.addPage(
+                        pw.Page(
+                          build: (pw.Context context) => pw.Center(
+                            child: pw.Text('Hello World!'),
+                          ),
+                        ),
+                      );
                       int randomNumber = Random().nextInt(90) + 10;
                        String date = await orderadmin.Currenorderaddmin!.date!.toDate().toString();
                       String result =date.substring(2,11);
@@ -280,12 +287,12 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
      if(permissionStatus.isGranted) return SplashScreen();
      else {
        return AlertDialog(
-         title: Text('Permission Required'),  // To display the title it is optional
-         content: Text('Cannot proceed without permission'),   // Message which will be pop up on the screen
+         title: const Text('Permission Required'),  // To display the title it is optional
+         content: const Text('Cannot proceed without permission'),   // Message which will be pop up on the screen
          // Action widget which will provide the user to acknowledge the choice
          actions: [
            TextButton(           // FlatButton widget is used to make a text to work like a button
-             child: Text('Open App Settings'),
+             child: const Text('Open App Settings'),
              onPressed: () => openAppSettings(),
              // function used to perform after pressing the button
            ),
@@ -332,11 +339,11 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                             style: TextStyle(fontSize: 30),
                           ),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Text(
                           'ຊື່ສິນຄ້າ :  ${orderaddmin.Productaddmin!.nameProduct}'
                         ),
-                        SizedBox(height: 30),
+                        const SizedBox(height: 30),
                         ////////////////////////////////////////////////
                         TextFormField(
                           decoration: InputDecoration(
@@ -372,7 +379,7 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                             });
                           },
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         /////////////////////////////////////////
                         TextFormField(
                           decoration: InputDecoration(
@@ -411,7 +418,7 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                           width: 300,
                           height: 50,
                           child: ElevatedButton(
-                            child: Text('ບັນທືກ'),
+                            child: const Text('ບັນທືກ'),
                             onPressed: ()async{
                               if(_key_import.currentState!.validate()){
                                  _key_import.currentState!.save();

@@ -10,7 +10,6 @@ import 'package:untitled1/notifire/employeeNotifire.dart';
 import 'package:untitled1/notifire/import_product.dart';
 import 'package:untitled1/notifire/purchase_order_Notifire.dart';
 import 'package:untitled1/notifire/supplierNotifire.dart';
-import 'package:untitled1/screen/detialOfdata/managerOrderByAdmin.dart';
 import 'package:untitled1/screen/manageOrder.dart';
 import 'package:untitled1/screen/product_add/category.dart';
 import 'package:untitled1/screen/product_add/purchaseOrder.dart';
