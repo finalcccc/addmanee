@@ -1,7 +1,7 @@
 import 'dart:collection';
 
 import 'package:flutter/cupertino.dart';
-import 'package:untitled1/model/importproducts.dart';
+import 'package:untitled1/model/importproducts_Model.dart';
 
 class importproductNotifire with ChangeNotifier{
   List<import_products>impt_productlisl=[];

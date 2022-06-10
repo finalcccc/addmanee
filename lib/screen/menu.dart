@@ -24,7 +24,7 @@ class _MenuState extends State<Menu> {
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
-        actions: [element.CartButton(context, route.charts)],
+        actions: [element.CartButton(context, route.Cart)],
       ),
       drawer: buildDrawer(),
       body: Container(

@@ -6,11 +6,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io' as io;
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:untitled1/model/product_data.dart';
+import 'package:untitled1/model/product_Model.dart';
 import 'package:untitled1/model/supplier_data.dart';
 import 'package:untitled1/notifire/supplierNotifire.dart';
 
-import '../model/category.dart';
+import '../model/category_Model.dart';
 
 XFile? image;
 
@@ -25,7 +25,7 @@ Future<void> UploadProducts(
     cost,
     amount,
     String? category}) async {
-  ProductData product = ProductData();
+  product_Model product = product_Model();
   try {
     int random = Random().nextInt(1000);
     Reference ref = await FirebaseStorage.instance

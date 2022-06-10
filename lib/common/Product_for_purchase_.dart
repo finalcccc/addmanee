@@ -6,16 +6,16 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/celement/elements.dart';
-import 'package:untitled1/common/cart.dart';
 import 'package:untitled1/notifire/Cartnotififire.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
+import 'package:untitled1/route/router.dart';
 import 'package:untitled1/screen/menu.dart';
 
 import '../WidgetSearch/widgetSearch.dart';
 import '../api/getCategoryData.dart';
 import '../api/getProduct.dart';
-import '../common/cart.dart';
+
 
 class ReceiveOrder extends StatefulWidget {
   const ReceiveOrder({Key? key}) : super(key: key);
@@ -67,6 +67,7 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
         ),
         bottom: WidgetSearch(label: "ຄົ້ນຫາຂໍ້ມູນສິນຄ້າ"),
         leading: element().RoutePageBack(context, const Menu()),
+        actions: [element.CartButton(context,route.Cart)],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -79,7 +80,7 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
       ),
     );
   }
-
+///////////////////////////////////////////////////////////////////////
   Padding ViewCategoryAll(ProductNotifire product) {
     return Padding(
       padding: const EdgeInsets.only(right: 260),
@@ -107,7 +108,7 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
       ),
     );
   }
-
+///////////////////////////////////////////////////////////////////////  ////////////////////////////////
   Container ViewCategory(CategoryNotifire category, ProductNotifire product) {
     return Container(
       height: 50,
@@ -141,7 +142,7 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
       ),
     );
   }
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   Container ViewProducts(
       BuildContext context, ProductNotifire product, Cartnotifire cartno) {
     return Container(
@@ -159,7 +160,7 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
           }),
     );
   }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   Widget Content(ProductNotifire product, int index, Cartnotifire cartno) {
     return Container(
         child: Card(
@@ -170,11 +171,9 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
           borderRadius: BorderRadius.all(Radius.circular(8.0))),
       child: InkWell(
         onTap: () {
-          print(product.Products[index].category);
           product.CurrentProduct = product.Products[index];
           product.getCurrentProduct();
           cartno.Procartcart = product.Products[index];
-
           Dailog(cartno, context);
         },
         child: Column(
@@ -238,11 +237,19 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
   }
 }
 
+////////////////////////////////////////////ADD TO CART /////////////////////////////////////////////////////////////////////////////
+
 Dailog(Cartnotifire Carts, context) {
   return showDialog(
       context: context,
       builder: (context) => AlertDialog(
             actions: [
+              IconButton(
+                icon: const Icon(Icons.indeterminate_check_box_outlined,color: Colors.red,size: 30),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
               Column(
                 children: [
                   Image.network('${Carts.Procartcart!.image}',
@@ -276,10 +283,11 @@ Dailog(Cartnotifire Carts, context) {
                           padding: const EdgeInsets.symmetric(vertical: 16)),
                       onPressed: () {
                         Carts.cecks();
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Cart()));
+                        Navigator.pop(context);
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) => const Cart()));
                       },//r
                       child: const Text(
                         "ເພີ່ມສິນເຂົ້າກະຕ້າ",

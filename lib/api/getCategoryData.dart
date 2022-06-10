@@ -2,7 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:untitled1/model/category.dart';
+import 'package:untitled1/model/category_Model.dart';
 import '../notifire/categoryNotifire.dart';
 
 GetCategoryData(CategoryNotifire cate) async {

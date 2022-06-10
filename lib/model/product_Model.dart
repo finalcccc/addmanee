@@ -1,4 +1,4 @@
-class ProductData {
+class product_Model {
   String? id;
   String? nameProduct;
   String? image;
@@ -6,9 +6,9 @@ class ProductData {
   int? price, cost, amount;
   String? category;
 
-  ProductData();
+  product_Model();
 
-  ProductData.formMap(Map<String, dynamic> value) {
+  product_Model.formMap(Map<String, dynamic> value) {
     id = value['id'];
     nameProduct = value['nameProduct'];
     image = value['image'];

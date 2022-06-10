@@ -3,14 +3,14 @@ import 'dart:collection';
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:untitled1/model/product_data.dart';
+import 'package:untitled1/model/product_Model.dart';
 
-import '../model/CartdetailData.dart';
+import '../model/purchase_order_Model.dart';
 
 class Cartnotifire with ChangeNotifier{
   List<CartDetailData> Carts =[];
-  ProductData? Procartcart;
-  int amoultoal =0;
+  product_Model? Procartcart;
+  int amoultoal=0;
   String Cartsupp ='';
   UnmodifiableListView<CartDetailData>get Cartlist => UnmodifiableListView(Carts);
 

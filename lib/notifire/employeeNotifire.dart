@@ -4,7 +4,7 @@ import 'dart:collection';
 
 import 'package:flutter/foundation.dart';
 
-import '../model/employee_data.dart';
+import '../model/Employee_Model.dart';
 
 class EmployeeNotifire with ChangeNotifier {
   List<EmployeeData> employee = [];

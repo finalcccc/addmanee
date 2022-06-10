@@ -3,13 +3,13 @@
 import 'dart:collection';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:untitled1/model/product_data.dart';
+import 'package:untitled1/model/product_Model.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
 
-import '../model/category.dart';
+import '../model/category_Model.dart';
 
 GetProduct(ProductNotifire product) async {
-  List<ProductData> _Product = [];
+  List<product_Model> _Product = [];
   QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
       .collection('products')
       .orderBy('amount')
@@ -17,7 +17,7 @@ GetProduct(ProductNotifire product) async {
   rfn.docs.forEach(
     (e) {
       print(e.data());
-      ProductData f = ProductData.formMap(e.data());
+      product_Model f = product_Model.formMap(e.data());
       _Product.add(f);
     },
   );
@@ -26,7 +26,7 @@ GetProduct(ProductNotifire product) async {
 }
 
 GetProduct_type(ProductNotifire product, var catename, index) async {
-  List<ProductData> _Product = [];
+  List<product_Model> _Product = [];
   QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
       .collection('products')
       .where('category', isEqualTo: catename)
@@ -34,7 +34,7 @@ GetProduct_type(ProductNotifire product, var catename, index) async {
   rfn.docs.forEach(
     (e) {
       print(e.data());
-      ProductData f = ProductData.formMap(e.data());
+      product_Model f = product_Model.formMap(e.data());
       _Product.add(f);
     },
   );

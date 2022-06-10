@@ -3,17 +3,19 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:untitled1/common/purchase__Cart.dart';
 import 'package:untitled1/notifire/Cartnotififire.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/notifire/employeeNotifire.dart';
 import 'package:untitled1/notifire/import_product.dart';
 import 'package:untitled1/notifire/purchase_order_Notifire.dart';
 import 'package:untitled1/notifire/supplierNotifire.dart';
+import 'package:untitled1/screen/detialOfdata/managerOrderByAdmin.dart';
 import 'package:untitled1/screen/manageOrder.dart';
 import 'package:untitled1/screen/product_add/category.dart';
 import 'package:untitled1/screen/product_add/purchaseOrder.dart';
 import 'package:untitled1/screen/product_add/reportData.dart';
-import 'package:untitled1/screen/receiveOrder.dart';
+import 'package:untitled1/common/Product_for_purchase_.dart';
 import 'package:untitled1/screen/product_add/appProduct.dart';
 import 'package:untitled1/route/router.dart';
 import 'package:untitled1/screen/product_add/supplier_add.dart';
@@ -59,6 +61,7 @@ class MyApp extends StatelessWidget {
         route.product_type: (BuildContext context) => const ProductTypeTapbar(),
         route.reportData: (BuildContext context) => const ReportData(),
         route.purchaseOrder: (BuildContext context) => const PurchaseOrder(),
+        route.Cart: (BuildContext context) => const Cart(),
       },
     );
   }

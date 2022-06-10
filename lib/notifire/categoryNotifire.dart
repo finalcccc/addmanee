@@ -3,7 +3,7 @@
 import 'dart:collection';
 
 import 'package:flutter/foundation.dart';
-import 'package:untitled1/model/category.dart';
+import 'package:untitled1/model/category_Model.dart';
 
 class CategoryNotifire with ChangeNotifier {
   List<CategoryData> category = [];

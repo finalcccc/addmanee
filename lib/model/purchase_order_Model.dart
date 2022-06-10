@@ -1,9 +1,9 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:untitled1/model/product_data.dart';
+import 'package:untitled1/model/product_Model.dart';
 
 class CartDetailData {
-  ProductData? Product;
+  product_Model? Product;
   int amout = 0;
 
   CartDetailData(this.Product, this.amout);

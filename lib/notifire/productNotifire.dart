@@ -3,12 +3,12 @@
 import 'dart:collection';
 
 import 'package:flutter/foundation.dart';
-import 'package:untitled1/model/product_data.dart';
+import 'package:untitled1/model/product_Model.dart';
 
 class ProductNotifire with ChangeNotifier {
-  List<ProductData> Product = [];
-  ProductData? CurrentProduct;
-  UnmodifiableListView<ProductData> get Products =>
+  List<product_Model> Product = [];
+  product_Model? CurrentProduct;
+  UnmodifiableListView<product_Model> get Products =>
       UnmodifiableListView(Product);
   RefreshProduct() {
     Product;

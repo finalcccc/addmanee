@@ -4,14 +4,14 @@
 
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:untitled1/model/CartdetailData.dart';
-import 'package:untitled1/model/product_data.dart';
+import 'package:untitled1/model/purchase_order_Model.dart';
+import 'package:untitled1/model/product_Model.dart';
 import 'package:untitled1/notifire/Cartnotififire.dart';
 import 'package:untitled1/notifire/supplierNotifire.dart';
 
 import '../../notifire/purchase_order_Notifire.dart';
 
-
+//  phuas
 Upload_Data_phuashOrder(Cartnotifire Cart)async{
 
   CartModelupload Cartm = CartModelupload();
@@ -47,7 +47,7 @@ GetPureChaseNoly({required purchase_order_Notifire? order_admin,required Supplie
 
 Future GetDetill({required purchase_order_Notifire? order_admin})async{
  List<CartModel> _Detilmo =[];
- List<ProductData> prodetill =[];
+ List<product_Model> prodetill =[];
  QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
      .collection('purchase_order')
      .where('date', isEqualTo: order_admin!.Currenorderaddmin!.date)
@@ -66,7 +66,7 @@ Future GetDetill({required purchase_order_Notifire? order_admin})async{
        .where('nameProduct', isEqualTo: m.NameProduct)
        .get();
    rfn.docs.forEach((element)async{
-      ProductData f = await  ProductData.formMap(element.data());
+      product_Model f = await  product_Model.formMap(element.data());
       prodetill.add(f);
    });
   });

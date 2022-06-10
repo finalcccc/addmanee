@@ -2,6 +2,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:untitled1/notifire/Cartnotififire.dart';
 
 import '../api/aip.dart';
 
@@ -152,11 +154,17 @@ class element {
 
   //CartButton
   static CartButton(BuildContext context, route) {
-    return IconButton(
-        onPressed: () {
-          Navigator.pushNamed(context, route);
-        },
-        icon: const Icon(Icons.shopping_cart_outlined));
+      Cartnotifire amoutotal = Provider.of<Cartnotifire>(context);
+    return Row(
+      children: [
+            Text('${amoutotal.Cartlist.length == 0?'':amoutotal.Cartlist.length}',style: TextStyle(color: Colors.white),),
+        IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, route);
+            },
+            icon: const Icon(Icons.shopping_cart_outlined)),
+      ],
+    );
   }
 
   // textformfile
