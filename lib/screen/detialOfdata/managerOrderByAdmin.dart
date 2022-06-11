@@ -247,7 +247,7 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                     child: const Text('ບັນທຶກເປັນພີດີເອຟ'),
                     onPressed: ()async {
                       permissionCheck();
-                      Bill.save_Bill(orderadmin);
+                      Bill.save_Bill(orderadmin,context);
                     },
                   ),
                 ],

@@ -1,29 +1,29 @@
-import 'dart:math';
-import 'dart:typed_data';
 
+import 'dart:math';
 import 'package:flutter/services.dart';
 import 'package:pdf/pdf.dart';
-import 'package:pdf/widgets.dart';
+import 'package:open_file/open_file.dart';
 import 'package:untitled1/notifire/purchase_order_Notifire.dart';
 
 import 'package:pdf/widgets.dart' as pw;
 import 'dart:io';
-import 'dart:math';
+
+
 
 class Bill{
 
-  static save_Bill (purchase_order_Notifire orderadmin)async{
-  final font  =await rootBundle.load('lib/assets/Phetsarath-Regular.ttf');
-  final ttf = Font.ttf(font);
+  static save_Bill (purchase_order_Notifire orderadmin,context)async{
+    final font  =await rootBundle.load('lib/assets/Phetsarath-Regular.ttf');
+    final ttf = pw.Font.ttf(font);
     final pdf = pw.Document();
     pdf.addPage(pw.Page(
         pageFormat: PdfPageFormat.a4,
         build: (pw.Context context ) {
           return pw.Column(
-            children:[
-              pw.Text('${orderadmin.Currenorderaddmin!.NameSupplier}',style: pw.TextStyle(font: ttf)),
-              pw.Text('${orderadmin.Currenorderaddmin!.id}'),
-            ]
+              children:[
+                pw.Text('${orderadmin.Currenorderaddmin!.NameSupplier}',style: pw.TextStyle(font: ttf)),
+                pw.Text('${orderadmin.Currenorderaddmin!.id}'),
+              ]
           ); // Center
         }));
 
@@ -33,7 +33,10 @@ class Bill{
     print(result);
     final File file = await File('/storage/emulated/0/Download/${orderadmin.Currenorderaddmin!.NameSupplier}$result$randomNumber.pdf');
     print(file);
-    await file.writeAsBytes(await pdf.save());
+    await file.writeAsBytes(await pdf.save()).then((value){
+        OpenFile.open('${file.path}');
+    });
 
   }
 }
+

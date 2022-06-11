@@ -46,6 +46,7 @@ dependencies:
   pdf: ^3.8.1
   path_provider: ^2.0.11
   permission_handler: ^9.2.0
+  open_file: ^3.2.1
 
 
 
@@ -96,7 +97,7 @@ flutter:
   # list giving the asset and other descriptors for the font. For
 #  example:
   fonts:
-    - family: Lato
+    - family: Roboto
       fonts:
         - asset: lib/assets/Phetsarath-Regular.ttf
 #        - asset: fonts/Schyler-Regular.ttf

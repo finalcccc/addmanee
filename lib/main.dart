@@ -49,7 +49,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(),
+      theme: ThemeData(
+        dividerColor: Colors.transparent,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        fontFamily: 'Roboto',
+      ),
       home: const SplashScreen(),
       routes: <String, WidgetBuilder>{
         route.prodc: (BuildContext context) => const ReceiveOrder(),
