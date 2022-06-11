@@ -1,7 +1,9 @@
 // ignore_for_file: non_constant_identifier_names, await_only_futures, avoid_print, unnecessary_string_interpolations, unnecessary_brace_in_string_interps
 
 import 'dart:math';
+
 import 'package:flutter/services.dart';
+
 import 'package:pdf/pdf.dart';
 import 'package:open_file/open_file.dart';
 import 'package:untitled1/notifire/purchase_order_Notifire.dart';
@@ -28,7 +30,7 @@ class Bill {
                 pw.Text(
                   'ຮ້ານແອັດມານີ',
                   style: pw.TextStyle(
-                      fontSize: 30, fontWeight: pw.FontWeight.bold, font: ttf),
+                      fontSize: 25, fontWeight: pw.FontWeight.bold, font: ttf),
                 ),
                 pw.Text(
                   'ໃບສັ່ງຊື້ສິນຄ້າ',
@@ -36,109 +38,22 @@ class Bill {
                       fontSize: 20, fontWeight: pw.FontWeight.bold, font: ttf),
                 ),
                 pw.SizedBox(height: 40),
-                pw.Row(
-                  crossAxisAlignment: pw.CrossAxisAlignment.start,
-                  children: [
-                    pw.Expanded(
-                      child: pw.Column(
-                        crossAxisAlignment: pw.CrossAxisAlignment.start,
-                        children: [
-                          pw.Row(children: [
-                            pw.Text(
-                              'ລະຫັດ: ',
-                              style: pw.TextStyle(font: ttf),
-                            ),
-                            pw.Text('${supp.CurrentSupplier!.id}'),
-                          ]),
-                          pw.Row(children: [
-                            pw.Text('ຊື່ຜູ້ສະໜອງ: ',
-                                style: pw.TextStyle(font: ttf)),
-                            pw.Text(
-                              '${supp.CurrentSupplier!.name}',
-                            ),
-                          ]),
-                          pw.Row(
-                            children: [
-                              pw.Text(
-                                'ເບີໂທ: ',
-                                style: pw.TextStyle(font: ttf),
-                              ),
-                              pw.Text('${supp.CurrentSupplier!.tel}'),
-                            ],
-                          ),
-                          pw.Row(children: [
-                            pw.Text(
-                              'ອີເມວ: ',
-                              style: pw.TextStyle(font: ttf),
-                            ),
-                            pw.Text('${supp.CurrentSupplier!.email}'),
-                          ]),
-                          pw.Row(
-                            children: [
-                              pw.Text(
-                                'ທີ່ຢູ່: ',
-                                style: pw.TextStyle(font: ttf),
-                              ),
-                              pw.Text('${supp.CurrentSupplier!.address}'),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                    pw.Text(
-                      'ວັນທີ ເດືອນ ປີ: ${orderadmin.Currenorderaddmin!.date!.toDate()}',
-                      style: pw.TextStyle(font: ttf),
-                    ),
-                  ],
-                ),
+                Subheader_Purchase_OrderDetial(ttf, supp, orderadmin),
                 pw.SizedBox(height: 40),
-                pw.Center(
-                    child: pw.Row(
-                  children: [
-                    pw.Text('ລຳດັບ', style: pw.TextStyle(font: ttf)),
-                    pw.SizedBox(width: 50),
-                    pw.Text('ຊື່ສິນຄ້າ', style: pw.TextStyle(font: ttf)),
-                    pw.SizedBox(width: 50),
-                    pw.Text('ປະເພດສິນຄ້າ', style: pw.TextStyle(font: ttf)),
-                    pw.SizedBox(width: 50),
-                    pw.Text('ຈຳນວນ', style: pw.TextStyle(font: ttf)),
-                    pw.SizedBox(width: 50),
-                    pw.Text('ລາຄາ', style: pw.TextStyle(font: ttf)),
-                    pw.SizedBox(width: 50),
-                    pw.Text('ລາຄາລວມ', style: pw.TextStyle(font: ttf)),
-                  ],
-                )),
-                pw.Center(
-                  child: pw.ListView.builder(
-                      itemBuilder: (
-                        context,
-                        index,
-                      ) {
-                        return pw.Center(
-                            child: pw.Row(
-                          children: [
-                            pw.Text('${index}', style: pw.TextStyle(font: ttf)),
-                            pw.SizedBox(width: 50),
-                            pw.Text(
-                                '${orderadmin.Productditill[index].nameProduct}',
-                                style: pw.TextStyle(font: ttf)),
-                            pw.SizedBox(width: 50),
-                            pw.Text(
-                                '${orderadmin.Productditill[index].category}',
-                                style: pw.TextStyle(font: ttf)),
-                            pw.SizedBox(width: 50),
-                            pw.Text('${orderadmin.Dettil[index].amout}',
-                                style: pw.TextStyle(font: ttf)),
-                          ],
-                        ));
-                      },
-                      itemCount: orderadmin.Productditill.length),
+                Subtitle_Purchase_Order_Detail(ttf),
+                Detail_Purchase_Order(ttf, orderadmin),
+                pw.Divider(),
+                pw.Padding(
+                  padding: const pw.EdgeInsets.only(right: 70),
+                  child: pw.Row(
+                    mainAxisAlignment: pw.MainAxisAlignment.end,
+                    children: [
+                      pw.Text('ຈຳນວນລວມ: ', style: pw.TextStyle(font: ttf)),
+                      pw.Text('${orderadmin.Currenorderaddmin!.amouttotal}',
+                          style: pw.TextStyle(font: ttf)),
+                    ],
+                  ),
                 ),
-                pw.Row(children: [
-                  pw.Text('ຈຳນວນລວມ:', style: pw.TextStyle(font: ttf)),
-                  pw.Text('${orderadmin.Currenorderaddmin!.amouttotal}',
-                      style: pw.TextStyle(font: ttf)),
-                ])
               ],
             ),
           );
@@ -156,5 +71,134 @@ class Bill {
     await file.writeAsBytes(await pdf.save()).then((value) {
       OpenFile.open('${file.path}');
     });
+  }
+
+  static pw.Row Subheader_Purchase_OrderDetial(
+      pw.Font ttf, SupplierNotifire supp, purchase_order_Notifire orderadmin) {
+    return pw.Row(
+      crossAxisAlignment: pw.CrossAxisAlignment.start,
+      children: [
+        pw.Expanded(
+          child: pw.Column(
+            crossAxisAlignment: pw.CrossAxisAlignment.start,
+            children: [
+              pw.Row(children: [
+                pw.Text(
+                  'ລະຫັດ: ',
+                  style: pw.TextStyle(font: ttf),
+                ),
+                pw.Text('${supp.CurrentSupplier!.id}'),
+              ]),
+              pw.Row(children: [
+                pw.Text('ຊື່ຜູ້ສະໜອງ: ', style: pw.TextStyle(font: ttf)),
+                pw.Text('${supp.CurrentSupplier!.name}',
+                    style: pw.TextStyle(font: ttf)),
+              ]),
+              pw.Row(
+                children: [
+                  pw.Text(
+                    'ເບີໂທ: ',
+                    style: pw.TextStyle(font: ttf),
+                  ),
+                  pw.Text('${supp.CurrentSupplier!.tel}'),
+                ],
+              ),
+              pw.Row(children: [
+                pw.Text(
+                  'ອີເມວ: ',
+                  style: pw.TextStyle(font: ttf),
+                ),
+                pw.Text('${supp.CurrentSupplier!.email}'),
+              ]),
+              pw.Row(
+                children: [
+                  pw.Text(
+                    'ທີ່ຢູ່: ',
+                    style: pw.TextStyle(font: ttf),
+                  ),
+                  pw.Text('${supp.CurrentSupplier!.address}',
+                      style: pw.TextStyle(font: ttf)),
+                ],
+              )
+            ],
+          ),
+        ),
+        pw.Text(
+          'ວັນທີ ເດືອນ ປີ: ${orderadmin.Currenorderaddmin!.date!.toDate()}',
+          style: pw.TextStyle(font: ttf),
+        ),
+      ],
+    );
+  }
+
+  static pw.Row Subtitle_Purchase_Order_Detail(pw.Font ttf) {
+    return pw.Row(
+      crossAxisAlignment: pw.CrossAxisAlignment.start,
+      mainAxisAlignment: pw.MainAxisAlignment.spaceEvenly,
+      children: [
+        pw.Container(
+          width: 70,
+          child: pw.Text('ລຳດັບ', style: pw.TextStyle(font: ttf)),
+        ),
+        pw.Container(
+          width: 70,
+          child: pw.Text('ຊື່ສິນຄ້າ', style: pw.TextStyle(font: ttf)),
+        ),
+        pw.Container(
+          width: 70,
+          child: pw.Text('ປະເພດສິນຄ້າ', style: pw.TextStyle(font: ttf)),
+        ),
+        pw.Container(
+          width: 70,
+          child: pw.Text('ຈຳນວນ', style: pw.TextStyle(font: ttf)),
+        ),
+        pw.Container(
+          width: 70,
+          child: pw.Text('ແກັດ', style: pw.TextStyle(font: ttf)),
+        ),
+      ],
+    );
+  }
+
+  static pw.ListView Detail_Purchase_Order(
+      pw.Font ttf, purchase_order_Notifire orderadmin) {
+    return pw.ListView.builder(
+        itemBuilder: (
+          context,
+          index,
+        ) {
+          return pw.Row(
+              crossAxisAlignment: pw.CrossAxisAlignment.start,
+              mainAxisAlignment: pw.MainAxisAlignment.spaceEvenly,
+              children: [
+                pw.Container(
+                  width: 70,
+                  child:
+                      pw.Text('${index + 1}', style: pw.TextStyle(font: ttf)),
+                ),
+                pw.Container(
+                  width: 70,
+                  child: pw.Text(
+                      '${orderadmin.Productditill[index].nameProduct}',
+                      style: pw.TextStyle(font: ttf)),
+                ),
+                pw.Container(
+                  width: 70,
+                  child: pw.Text('${orderadmin.Productditill[index].category}',
+                      style: pw.TextStyle(font: ttf)),
+                ),
+                pw.Container(
+                    width: 70,
+                    child: pw.Text(
+                      '${orderadmin.Dettil[index].amout}',
+                      style: pw.TextStyle(font: ttf),
+                    )),
+                pw.Container(
+                  width: 70,
+                  child: pw.Text('ແກັດ', style: pw.TextStyle(font: ttf)),
+                ),
+              ]);
+        },
+        itemCount: orderadmin.Productditill.length);
   }
 }
