@@ -18,9 +18,12 @@ class Bill{
     final pdf = pw.Document();
     pdf.addPage(pw.Page(
         pageFormat: PdfPageFormat.a4,
-        build: (pw.Context context) {
-          return pw.Center(
-            child: pw.Text('ນະຈະ', style: pw.TextStyle(font: ttf, fontSize: 40)),
+        build: (pw.Context context ) {
+          return pw.Column(
+            children:[
+              pw.Text('${orderadmin.Currenorderaddmin!.NameSupplier}',style: pw.TextStyle(font: ttf)),
+              pw.Text('${orderadmin.Currenorderaddmin!.id}'),
+            ]
           ); // Center
         }));
 
