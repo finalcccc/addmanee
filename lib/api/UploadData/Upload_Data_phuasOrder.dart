@@ -23,7 +23,7 @@ Upload_Data_phuashOrder(Cartnotifire Cart)async{
 
  });
  Cartm.amouttotal = Cart.amoultoal;
- Cartm.NameSupplier = Cart.Cartsupp;
+ Cartm.Supplier_ID = Cart.Cartsupp;
   CollectionReference reference = await FirebaseFirestore.instance.collection('purchase_order');
   DocumentReference docid = await reference.add(Cartm.toMap());
   Cartm.id =docid.id;

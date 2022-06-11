@@ -151,7 +151,7 @@ class Bill {
     String result = date.substring(2, 11);
     print(result);
     final File file = await File(
-        '/storage/emulated/0/Download/$randomNumber${orderadmin.Currenorderaddmin!.NameSupplier}$result.pdf');
+        '/storage/emulated/0/Download/$randomNumber${supp.CurrentSupplier!.name}$result.pdf');
     print(file);
     await file.writeAsBytes(await pdf.save()).then((value) {
       OpenFile.open('${file.path}');

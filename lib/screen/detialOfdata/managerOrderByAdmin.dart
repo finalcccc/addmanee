@@ -58,8 +58,7 @@ class _ManagerOrderByAdminState extends State<ManagerOrderByAdmin> {
                   child: InkWell(
                     onTap: () async {
                       supp.CurrentSupplier = supp.SuplierList[index];
-                      await GetPureChaseNoly(
-                          order_admin: orderadmin, supp: supp);
+                      await GetPureChaseNoly(order_admin: orderadmin, supp: supp);
                       Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -92,8 +91,8 @@ class Show_order_addmin extends StatefulWidget {
 class _Show_order_addminState extends State<Show_order_addmin> {
   @override
   Widget build(BuildContext context) {
-    purchase_order_Notifire orderadmin =
-        Provider.of<purchase_order_Notifire>(context);
+    purchase_order_Notifire orderadmin = Provider.of<purchase_order_Notifire>(context);
+    SupplierNotifire supp = Provider.of<SupplierNotifire>(context);
     return Scaffold(
         appBar: AppBar(
           title: const Text('ຂໍ້ມູນລາຍລະອຽດຂອງຜູ້ສະໜອງ'),
@@ -114,6 +113,7 @@ class _Show_order_addminState extends State<Show_order_addmin> {
                       await orderadmin.Curren();
                       await GetDetill(order_admin: orderadmin);
                       orderadmin.Refresh();
+
                       Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -123,8 +123,10 @@ class _Show_order_addminState extends State<Show_order_addmin> {
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          Text('ລະຫັດ: '
+                              ' ${orderadmin.Order_addminlist[index].id}'),
                           Text('ຊື່ຜູ້ສະໜອງ: '
-                              ' ${orderadmin.Order_addminlist[index].NameSupplier}'),
+                              ' ${supp.CurrentSupplier!.name}'),
                           Text('ຈຳນວນລາຍການ: '
                               ' ${orderadmin.Order_addminlist[index].Ditell.length}'),
                           Text('ຈຳນວນທັງໝົດ: '

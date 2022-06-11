@@ -26,7 +26,7 @@ class CartModel {
 }
 class CartModelupload{
   String?id;
-    String? NameSupplier;
+    String? Supplier_ID;
     int? amouttotal;
     CartModel? Detell;
     var Ditell =[];
@@ -35,14 +35,14 @@ class CartModelupload{
  List<int> p =[1,2,3];
   CartModelupload.formMap(Map<String,dynamic>v){
     id=v['id'];
-    NameSupplier = v['NameSupplier'];
+    Supplier_ID = v['Supplier_ID'];
     amouttotal =v['amouttotal'];
     Ditell = v['Ditell'];
     date=v['date'];
   }
   Map<String, dynamic> toMap() =>{
       'id':id,
-      'NameSupplier':NameSupplier,
+      'NameSupplier':Supplier_ID,
       'amouttotal':amouttotal,
       'Ditell':Ditell,
        'date':DateTime.now()
