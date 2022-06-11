@@ -18,7 +18,7 @@ Upload_Data_phuashOrder(Cartnotifire Cart)async{
 
   CartModelupload Cartm = CartModelupload();
  Cart.Cartlist.forEach((element)async {
-  CartModel m = CartModel(element.Product!.nameProduct,element.amout);
+  CartModel m = CartModel(element.Product!.id,element.amout);
   Cartm.Ditell.add(m.toMap());
 
  });
@@ -35,7 +35,7 @@ GetPureChaseNoly({required purchase_order_Notifire? order_admin,required Supplie
    List<CartModelupload> _Sup = [];
  QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
      .collection('purchase_order')
-     .where('NameSupplier', isEqualTo: supp!.CurrentSupplier!.name)
+     .where('NameSupplier', isEqualTo: supp!.CurrentSupplier!.id)
      .get();
  rfn.docs.forEach((element) async{
  CartModelupload Sud = CartModelupload.formMap(element.data());
@@ -55,17 +55,14 @@ Future GetDetill({required purchase_order_Notifire? order_admin})async{
      .where('date', isEqualTo: order_admin!.Currenorderaddmin!.date)
      .get();
  rfn.docs.forEach((element) async{
-
   List f = await element['Ditell'];
-
   f.forEach((element) async{
-
    CartModel m = await CartModel.formMAp(element);
    _Detilmo.add(m);
 
    QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
        .collection('products')
-       .where('nameProduct', isEqualTo: m.NameProduct)
+       .where('id', isEqualTo: m.Product_ID)
        .get();
    rfn.docs.forEach((element)async{
       product_Model f = await  product_Model.formMap(element.data());

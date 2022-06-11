@@ -7,7 +7,7 @@ import 'package:flutter/cupertino.dart';
 import '../model/supplier_data.dart';
 
 class SupplierNotifire with ChangeNotifier {
-   List<String> Supliername = [];
+   List<String> Suplierid = [];
    String? SuppType;
   List<SupplierData> Supplier = [];
   SupplierData? CurrentSupplier;
