@@ -37,7 +37,7 @@ class _ManageOrderState extends State<ManageOrder> {
         if (snapshot.connectionState == ConnectionState.done) {
           return Scaffold(
               appBar: AppBar(
-                title: const Text('ສັ່ງຊື້ສິນຄ້າ'),
+                title: const Text('ຈັດການອໍເດີ້'),
                 centerTitle: true,
                 backgroundColor: element.main,
                 leading: element().RoutePageBack(context, const Menu()),
@@ -47,33 +47,47 @@ class _ManageOrderState extends State<ManageOrder> {
                 padding: const EdgeInsets.only(top: 20, right: 15, left: 15),
                 child: Column(
                   children: [
-                    const Text(
-                      'ສັ່ງຊື້ສິນຄ້າ',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    const SizedBox(height: 30),
+                    Container(
+                      color: element.main,
+                      height: 50,
+                      width: double.infinity,
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              primary: element.main),
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const ManagerOrderByAdmin()),
+                            );
+                          },
+                          child: const Text(
+                            'ສັ່ງຊື້ສິນຄ້າເຂົ້າຮ້ານ',
+                            style: TextStyle(fontSize: 17),
+                          )),
                     ),
-                    const SizedBox(height: 50),
-                    ElevatedButton(
+                    const SizedBox(height: 10),
+                    Container(
+                      height: 50,
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: element.main),
                         onPressed: () {
                           Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const ManagerOrderByAdmin()),
-                          );
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const ManagerOrderByCustomer()));
                         },
-                        child: const Text('ສັ່ງຊື້ສິນຄ້າເຂົ້າຮ້ານ')),
-                    const SizedBox(height: 10),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const ManagerOrderByCustomer()));
-                      },
-                      child: const Text('ລູກຄ້າສັ່ງຊື້ສິນຄ້າ'),
-                    ),
+                        child: const Text(
+                          'ລູກຄ້າສັ່ງຊື້ສິນຄ້າ',
+                          style: TextStyle(fontSize: 17),
+                        ),
+                      ),
+                    )
                   ],
                 ),
               )));

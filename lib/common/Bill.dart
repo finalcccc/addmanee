@@ -2,6 +2,7 @@
 
 import 'dart:math';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:pdf/pdf.dart';
@@ -40,20 +41,44 @@ class Bill {
                 pw.SizedBox(height: 40),
                 Subheader_Purchase_OrderDetial(ttf, supp, orderadmin),
                 pw.SizedBox(height: 40),
+                pw.Divider(),
                 Subtitle_Purchase_Order_Detail(ttf),
+                pw.Divider(),
                 Detail_Purchase_Order(ttf, orderadmin),
                 pw.Divider(),
                 pw.Padding(
-                  padding: const pw.EdgeInsets.only(right: 70),
+                  padding: const pw.EdgeInsets.only(right: 30),
                   child: pw.Row(
                     mainAxisAlignment: pw.MainAxisAlignment.end,
                     children: [
-                      pw.Text('ຈຳນວນລວມ: ', style: pw.TextStyle(font: ttf)),
-                      pw.Text('${orderadmin.Currenorderaddmin!.amouttotal}',
-                          style: pw.TextStyle(font: ttf)),
+                      pw.Text('ຈຳນວນລວມ: ',
+                          style: pw.TextStyle(
+                              font: ttf,
+                              fontWeight: pw.FontWeight.bold,
+                              fontSize: 15)),
+                      pw.Text('${orderadmin.Currenorderaddmin!.amouttotal}',style: const pw.TextStyle(fontSize: 15)),
+                      pw.Text(' ແກັດ ',
+                          style: pw.TextStyle(
+                              font: ttf,
+                              fontWeight: pw.FontWeight.bold,
+                              fontSize: 15)),
                     ],
                   ),
                 ),
+                pw.Divider(),
+                pw.Padding(
+                  padding: const pw.EdgeInsets.only(right: 30, top:20),
+                  child: pw.Row(
+                      mainAxisAlignment: pw.MainAxisAlignment.end,
+                    children: [
+                      pw.Text('ລາຍເຊັນ ',
+                          style: pw.TextStyle(
+                              font: ttf,
+                              fontWeight: pw.FontWeight.bold,
+                              fontSize: 15)),
+                    ]
+                  )
+                )
               ],
             ),
           );
@@ -87,7 +112,7 @@ class Bill {
                   'ລະຫັດ: ',
                   style: pw.TextStyle(font: ttf),
                 ),
-                pw.Text('${supp.CurrentSupplier!.id}'),
+                pw.Text('${orderadmin.Currenorderaddmin!.id}'),
               ]),
               pw.Row(children: [
                 pw.Text('ຊື່ຜູ້ສະໜອງ: ', style: pw.TextStyle(font: ttf)),
@@ -154,7 +179,7 @@ class Bill {
         ),
         pw.Container(
           width: 70,
-          child: pw.Text('ແກັດ', style: pw.TextStyle(font: ttf)),
+          child: pw.Text('ຫົວໜ່ວຍ', style: pw.TextStyle(font: ttf)),
         ),
       ],
     );
@@ -168,36 +193,36 @@ class Bill {
           index,
         ) {
           return pw.Row(
-              crossAxisAlignment: pw.CrossAxisAlignment.start,
-              mainAxisAlignment: pw.MainAxisAlignment.spaceEvenly,
-              children: [
-                pw.Container(
-                  width: 70,
-                  child:
-                      pw.Text('${index + 1}', style: pw.TextStyle(font: ttf)),
-                ),
-                pw.Container(
+            crossAxisAlignment: pw.CrossAxisAlignment.start,
+            mainAxisAlignment: pw.MainAxisAlignment.spaceEvenly,
+            children: [
+              pw.SizedBox(height: 5),
+              pw.Container(
+                width: 70,
+                child: pw.Text('${index + 1}', style: pw.TextStyle(font: ttf)),
+              ),
+              pw.Container(
+                width: 70,
+                child: pw.Text('${orderadmin.Productditill[index].nameProduct}',
+                    style: pw.TextStyle(font: ttf)),
+              ),
+              pw.Container(
+                width: 70,
+                child: pw.Text('${orderadmin.Productditill[index].category}',
+                    style: pw.TextStyle(font: ttf)),
+              ),
+              pw.Container(
                   width: 70,
                   child: pw.Text(
-                      '${orderadmin.Productditill[index].nameProduct}',
-                      style: pw.TextStyle(font: ttf)),
-                ),
-                pw.Container(
-                  width: 70,
-                  child: pw.Text('${orderadmin.Productditill[index].category}',
-                      style: pw.TextStyle(font: ttf)),
-                ),
-                pw.Container(
-                    width: 70,
-                    child: pw.Text(
-                      '${orderadmin.Dettil[index].amout}',
-                      style: pw.TextStyle(font: ttf),
-                    )),
-                pw.Container(
-                  width: 70,
-                  child: pw.Text('ແກັດ', style: pw.TextStyle(font: ttf)),
-                ),
-              ]);
+                    '${orderadmin.Dettil[index].amout}',
+                    style: pw.TextStyle(font: ttf),
+                  )),
+              pw.Container(
+                width: 70,
+                child: pw.Text('ແກັດ', style: pw.TextStyle(font: ttf)),
+              ),
+            ],
+          );
         },
         itemCount: orderadmin.Productditill.length);
   }

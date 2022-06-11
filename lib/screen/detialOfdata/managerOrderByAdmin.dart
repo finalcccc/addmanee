@@ -43,7 +43,7 @@ class _ManagerOrderByAdminState extends State<ManagerOrderByAdmin> {
     SupplierNotifire supp = Provider.of<SupplierNotifire>(context);
     return Scaffold(
         appBar: AppBar(
-          title: const Text('ຊື້ສິນຄ້າຈາກຜູ້ສະໜອງ'),
+          title: const Text('ເລືອກຜູ້ສະໜອງທີ່ສັ່ງຊື້'),
           centerTitle: true,
           backgroundColor: element.main,
           leading: element().RoutePageBack(context, const ManageOrder()),
@@ -79,7 +79,9 @@ class _ManagerOrderByAdminState extends State<ManagerOrderByAdmin> {
   }
 }
 
-///////////========////////////////========////////////////========////////////
+///////////========////////// ລາຍການສັ່ງຊື້ຈາກຜູ້ສະໜອງ //////========////////////////========////////////
+
+
 
 class Show_order_addmin extends StatefulWidget {
   const Show_order_addmin({Key? key}) : super(key: key);
@@ -95,10 +97,10 @@ class _Show_order_addminState extends State<Show_order_addmin> {
     SupplierNotifire supp = Provider.of<SupplierNotifire>(context);
     return Scaffold(
         appBar: AppBar(
-          title: const Text('ຂໍ້ມູນລາຍລະອຽດຂອງຜູ້ສະໜອງ'),
+          title: const Text('ລາຍການສັ່ງຊື້ຈາກຜູ້ສະໜອງ'),
           centerTitle: true,
           backgroundColor: element.main,
-          leading: element().RoutePageBack(context, const ManageOrder()),
+          leading: element().RoutePageBack(context, const ManagerOrderByAdmin()),
         ),
         body: ListView.builder(
           itemCount: orderadmin.Order_addminlist.length,
@@ -141,7 +143,10 @@ class _Show_order_addminState extends State<Show_order_addmin> {
   }
 }
 
-///////////  ============= ///////////=======///////////
+///////////  ============= ຂໍ້ມູນລາຍລະອຽດຂອງການສັ່ງຊື້'  ///////////=======////ຂໍ້ມູນລາຍລະອຽດຂອງການສັ່ງຊື້'/////////////////////////
+
+
+
 
 class Detellorder_addmid extends StatefulWidget {
   const Detellorder_addmid({Key? key}) : super(key: key);
@@ -245,6 +250,8 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                   Text(
                       'ຈຳນວນທັງໝົດ: ${orderadmin.Currenorderaddmin!.amouttotal} ແກັດ'),
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: element.main),
                     child: const Text('ບັນທຶກເປັນພີດີເອຟ'),
                     onPressed: () async {
                       permissionCheck();
