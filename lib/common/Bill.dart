@@ -208,7 +208,7 @@ class Bill {
               ),
               pw.Container(
                 width: 70,
-                child: pw.Text('${orderadmin.Productditill[index].category_id}',
+                child: pw.Text('${orderadmin.Product_categoryname[index].category}',
                     style: pw.TextStyle(font: ttf)),
               ),
               pw.Container(

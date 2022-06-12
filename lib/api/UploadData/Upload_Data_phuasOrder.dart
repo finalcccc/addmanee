@@ -6,6 +6,7 @@
 
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:untitled1/model/category_Model.dart';
 import 'package:untitled1/model/purchase_order_Model.dart';
 import 'package:untitled1/model/product_Model.dart';
 import 'package:untitled1/notifire/Cartnotififire.dart';
@@ -67,6 +68,18 @@ Future GetDetill({required purchase_order_Notifire? order_admin})async{
    rfn.docs.forEach((element)async{
       product_Model f = await  product_Model.formMap(element.data());
       prodetill.add(f);
+   });
+
+   prodetill.forEach((element)async {
+    QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
+        .collection('categorys')
+        .where('id', isEqualTo: element.category_id)
+        .get();
+    rfn.docs.forEach((element) {
+      CategoryData c = CategoryData.frommap(element.data());
+     order_admin.Product_categoryname.add(c);
+    });
+
    });
   });
  }
