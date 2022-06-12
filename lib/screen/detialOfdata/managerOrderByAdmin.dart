@@ -396,7 +396,7 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                                 if (amout!.isEmpty) {
                                   return "ກະລຸນາປ້ອນຂໍ້ມູນ";
                                 } else if (amout.length < 1) {
-                                  return "ເບີໂທລະສັບບໍ່ຖືກຕ້ອງ";
+                                  return "ກວດສວບລາຄາ";
                                 }
                                 return null;
                               },
