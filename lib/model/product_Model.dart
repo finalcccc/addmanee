@@ -3,8 +3,8 @@ class product_Model {
   String? nameProduct;
   String? image;
   String? description;
-  int? price, cost, amount;
-  String? category;
+  int? price, amount;
+  String? category_id;
 
   product_Model();
 
@@ -14,9 +14,8 @@ class product_Model {
     image = value['image'];
     description = value['description'];
     price = value['price'];
-    cost = value['cost'];
     amount = value['amount'];
-    category = value['category'];
+    category_id = value['category_id'];
   }
 
   Map<String, dynamic> toMap() {
@@ -27,8 +26,7 @@ class product_Model {
       'description': description,
       'price': price,
       'amount': amount,
-      'cost': cost,
-      'category': category,
+      'category_id': category_id,
       'date':DateTime.now()
     };
   }

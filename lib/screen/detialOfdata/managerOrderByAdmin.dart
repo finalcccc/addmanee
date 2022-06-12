@@ -219,7 +219,7 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                                       Text(
                                           'ຊື່ສິນຄ້າ: ${orderadmin.Productditill[index].nameProduct}'),
                                       Text(
-                                          'ປະເພດສິນຄ້າ: ${orderadmin.Productditill[index].category}'),
+                                          'ປະເພດສິນຄ້າ: ${orderadmin.Productditill[index].category_id}'),
                                       Text(
                                           'ຈຳນວນ: ${orderadmin.Dettil[index].amout} ແກັດ'),
                                     ],

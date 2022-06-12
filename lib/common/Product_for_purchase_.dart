@@ -119,8 +119,7 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
-              GetProduct_type(
-                  product, category.categoryList[index].category, index);
+              GetProduct_type(product, category.categoryList[index].id, index);
               colortype = false;
             },
             child: Container(

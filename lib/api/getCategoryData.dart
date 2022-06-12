@@ -12,7 +12,7 @@ GetCategoryData(CategoryNotifire cate) async {
   cate.cate.clear();
   rfn.docs.forEach((e) {
     CategoryData f = CategoryData.frommap(e.data());
-    cate.cate.add(e['category']);
+    cate.cate.add(e['id']);
     category.add(f);
   });
   cate.category = category;

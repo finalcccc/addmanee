@@ -29,7 +29,7 @@ GetProduct_type(ProductNotifire product, var catename, index) async {
   List<product_Model> _Product = [];
   QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
       .collection('products')
-      .where('category', isEqualTo: catename)
+      .where('category_id', isEqualTo: catename)
       .get();
   rfn.docs.forEach(
     (e) {

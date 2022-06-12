@@ -8,7 +8,7 @@ import 'package:untitled1/notifire/Cartnotififire.dart';
 import '../api/aip.dart';
 
 class element {
-  static String? category;
+  static String? category_id;
   String? _name, _des;
   int? _price, _cost, _amount;
 
@@ -33,7 +33,7 @@ class element {
   static String p8 = "ຮັບຊື້ສິນຄ້າເຂົ້າຮ້ານ";
 
   void elementgetcategory(String categorys) {
-    category = categorys;
+    category_id = categorys;
   }
 
 // key khrong class form addproduct
@@ -44,9 +44,8 @@ class element {
           nameProduct: _name,
           Description: _des,
           prices: _price,
-          cost: _cost,
           amount: _amount,
-          category: category);
+          categorys_id: category_id);
       key.currentState!.reset();
     }
   }

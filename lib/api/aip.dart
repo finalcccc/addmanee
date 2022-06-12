@@ -24,7 +24,7 @@ Future<void> UploadProducts(
     int? prices,
     cost,
     amount,
-    String? category}) async {
+    String? categorys_id}) async {
   product_Model product = product_Model();
   try {
     int random = Random().nextInt(1000);
@@ -42,9 +42,8 @@ Future<void> UploadProducts(
     String url = await ref.getDownloadURL();
     product.image = await url;
     product.nameProduct = nameProduct;
-    product.category = category;
+    product.category_id = categorys_id;
     product.price = prices;
-    product.cost = cost;
     product.amount = amount;
     product.description = Description;
     DocumentReference docid = await reference.add(product.toMap());

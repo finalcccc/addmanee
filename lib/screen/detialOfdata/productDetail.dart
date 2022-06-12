@@ -43,13 +43,12 @@ class _ProductDetailState extends State<ProductDetail> {
                   children: [
                     Text('ລະຫັດສິນຄ້າ:' + ' ${product.CurrentProduct!.id}'),
                     Text(
-                        'ປະເພດສິນຄ້າ:' + ' ${product.CurrentProduct!.category}'),
+                        'ປະເພດສິນຄ້າ:' + ' ${product.CurrentProduct!.category_id}'),
                     Text('ຊື່ສິນຄ້າ:' +
                         ' ${product.CurrentProduct!.nameProduct}'),
                     Text('ຈຳນວນສິນຄ້າ:' +
                         ' ${product.CurrentProduct!.amount}' +
                         ' ແພັກ'),
-                    Text('ລາຄາຕົ້ນທືນ:' + ' ${product.CurrentProduct!.cost}'),
                     Text('ລາຄາຂາຍ:' + ' ${product.CurrentProduct!.price}'),
                     Text('ລາຍລະອຽດ: ' +
                         ' ${product.CurrentProduct!.description}'),

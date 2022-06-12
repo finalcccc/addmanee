@@ -155,14 +155,6 @@ class _AddProductState extends State<AddProduct> {
               const SizedBox(height: 10),
               elements.inputFields(
                 context: context,
-                hint: 'ລາຄາຕົ້ນທືນ',
-                icons: Icons.price_check,
-                Keybordtye: TextInputType.number,
-                trye: 'cost',
-              ),
-              const SizedBox(height: 10),
-              elements.inputFields(
-                context: context,
                 hint: 'ລາຄາ',
                 icons: Icons.price_check,
                 Keybordtye: TextInputType.number,
@@ -211,7 +203,7 @@ Container comboboxcontainer(context, CategoryNotifire cate, void setcate) {
 }
 
 DropdownButton<String> dropdownButton(CategoryNotifire cate, void setcate) {
-  int i = 0;
+  int index =0;
   return DropdownButton(
       icon: const Icon(
         Icons.keyboard_arrow_down,
@@ -226,12 +218,13 @@ DropdownButton<String> dropdownButton(CategoryNotifire cate, void setcate) {
         child: Text("ເລືອກປະເພດສິນຄ້າ"),
       ),
       // icon: const Icon(Icons.keyboard_arrow_down),
+
       items: cate.cate
           .map((e) => DropdownMenuItem(
               value: e,
               child: Padding(
                 padding: const EdgeInsets.only(left: 20.0),
-                child: Text(e),
+                child: Text('${cate.categoryList[index++].category}'),
               )))
           .toList(),
       onChanged: (String? v) {
