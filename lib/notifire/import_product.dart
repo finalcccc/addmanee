@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, avoid_print, camel_case_types
+
 import 'dart:collection';
 
 import 'package:flutter/cupertino.dart';

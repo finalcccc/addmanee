@@ -191,7 +191,7 @@ class _RegisterState extends State<Register> {
                 filled: true,
                 prefixIcon: const Icon(Icons.person),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(18),
+                  borderRadius: BorderRadius.circular(10),
                   borderSide: BorderSide.none,
                 ),
               ),
@@ -205,7 +205,7 @@ class _RegisterState extends State<Register> {
                 name = name.toString();
                 return null;
               }),
-          const SizedBox(height: 10),
+          const SizedBox(height: 8),
           TextFormField(
             decoration: InputDecoration(
               hintText: "ອີເມວ",
@@ -213,7 +213,7 @@ class _RegisterState extends State<Register> {
               filled: true,
               prefixIcon: const Icon(Icons.email_outlined),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide.none,
               ),
             ),
@@ -226,7 +226,7 @@ class _RegisterState extends State<Register> {
               ],
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 8),
           TextFormField(
             decoration: InputDecoration(
               hintText: "ລະຫັດຜ່ານ",
@@ -234,7 +234,7 @@ class _RegisterState extends State<Register> {
               filled: true,
               prefixIcon: const Icon(Icons.lock),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide.none,
               ),
             ),
@@ -250,7 +250,7 @@ class _RegisterState extends State<Register> {
               return null;
             },
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 8),
           TextFormField(
             decoration: InputDecoration(
               hintText: "ຍືນຍັນລະຫັດຜ່ານ",
@@ -258,7 +258,7 @@ class _RegisterState extends State<Register> {
               filled: true,
               prefixIcon: const Icon(Icons.lock),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide.none,
               ),
             ),
@@ -274,9 +274,9 @@ class _RegisterState extends State<Register> {
               return null;
             },
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 8),
           comboboxcontainer(context),
-          const SizedBox(height: 10),
+          const SizedBox(height: 8),
           TextFormField(
               decoration: InputDecoration(
                 hintText: "ເບີໂທລະສັບ",
@@ -284,7 +284,7 @@ class _RegisterState extends State<Register> {
                 filled: true,
                 prefixIcon: const Icon(Icons.phone_bluetooth_speaker_sharp),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(18),
+                  borderRadius: BorderRadius.circular(10),
                   borderSide: BorderSide.none,
                 ),
               ),
@@ -299,7 +299,7 @@ class _RegisterState extends State<Register> {
                 return null;
                 //return ;
               }),
-          const SizedBox(height: 10),
+          const SizedBox(height: 8),
           TextFormField(
             decoration: InputDecoration(
               hintText: "ວັນ ເດືອນ ປີ ເກີດ",
@@ -307,7 +307,7 @@ class _RegisterState extends State<Register> {
               filled: true,
               prefixIcon: const Icon(Icons.person),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide.none,
               ),
             ),
@@ -315,7 +315,7 @@ class _RegisterState extends State<Register> {
             validator:
                 RequiredValidator(errorText: "ກະລຸນາປ້ອນ ວັນ ເດືອນ ປີ ເກີດ"),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 8),
           TextFormField(
             decoration: InputDecoration(
               hintText: "ທີ່ຢູ່",
@@ -323,18 +323,20 @@ class _RegisterState extends State<Register> {
               filled: true,
               prefixIcon: const Icon(Icons.home_filled),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide.none,
               ),
             ),
             onChanged: (value) => address = value.trim(),
             validator: RequiredValidator(errorText: "ກະລຸນາປ້ອນທີ່ຢູ່"),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 15),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               primary: element.main,
-              shape: const StadiumBorder(),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10)
+              ),
               padding: const EdgeInsets.symmetric(vertical: 16),
             ),
             onPressed: () async {
@@ -360,7 +362,7 @@ class _RegisterState extends State<Register> {
     return Container(
         decoration: BoxDecoration(
             color: Theme.of(context).primaryColor.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(18)),
+            borderRadius: BorderRadius.circular(10)),
         child: Column(
           children: [dropdownButton()],
         ));
@@ -370,14 +372,14 @@ class _RegisterState extends State<Register> {
     return DropdownButton(
         icon: const Icon(
           Icons.keyboard_arrow_down,
-          size: 50,
+          size: 35,
         ),
-        borderRadius: BorderRadius.circular(50),
+        borderRadius: BorderRadius.circular(10),
         value: position,
         isExpanded: true,
         underline: Container(),
         hint: const Padding(
-          padding: EdgeInsets.only(left: 50),
+          padding: EdgeInsets.only(left: 45),
           child: Text("ເລືອກຕຳເເໜ່່ງ"),
         ),
         // icon: const Icon(Icons.keyboard_arrow_down),
@@ -385,7 +387,7 @@ class _RegisterState extends State<Register> {
             .map((e) => DropdownMenuItem(
                 value: e,
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
+                  padding: const EdgeInsets.only(right: 50),
                   child: Text(e),
                 )))
             .toList(),
