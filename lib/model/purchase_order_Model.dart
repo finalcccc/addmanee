@@ -14,12 +14,12 @@ class CartModel {
   int? amout;
   CartModel(this.Product_ID,this.amout);
   CartModel.formMAp(Map<String, dynamic> v) {
-    Product_ID = v['nameProduct'];
+    Product_ID = v['Product_ID'];
     amout = v['amout'];
   }
   Map<String,dynamic>toMap(){
     return{
-      'nameProduct':Product_ID,
+      'Product_ID':Product_ID,
       'amout':amout
     };
   }
@@ -42,7 +42,7 @@ class CartModelupload{
   }
   Map<String, dynamic> toMap() =>{
       'id':id,
-      'NameSupplier':Supplier_ID,
+      'Supplier_ID':Supplier_ID,
       'amouttotal':amouttotal,
       'Ditell':Ditell,
        'date':DateTime.now()

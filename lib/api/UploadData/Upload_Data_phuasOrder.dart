@@ -36,7 +36,7 @@ GetPureChaseNoly({required purchase_order_Notifire? order_admin,required Supplie
    List<CartModelupload> _Sup = [];
  QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
      .collection('purchase_order')
-     .where('NameSupplier', isEqualTo: supp!.CurrentSupplier!.id)
+     .where('Supplier_ID', isEqualTo: supp!.CurrentSupplier!.id)
      .get();
  rfn.docs.forEach((element) async{
  CartModelupload Sud = CartModelupload.formMap(element.data());
