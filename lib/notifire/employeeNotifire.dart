@@ -9,10 +9,12 @@ import '../model/Employee_Model.dart';
 class EmployeeNotifire with ChangeNotifier {
   List<EmployeeData> employee = [];
   EmployeeData? CurrentEmployee;
+  EmployeeData? CurrentEmployee_loco;
   UnmodifiableListView<EmployeeData> get employeeList =>
       UnmodifiableListView(employee);
   RefreshEmp() {
     employee;
+    CurrentEmployee_loco;
     notifyListeners();
   }
   getCurrentEmployee() {

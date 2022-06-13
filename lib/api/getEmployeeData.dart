@@ -19,3 +19,19 @@ GetEmployeeData(EmployeeNotifire emp) async {
   emp.employee = employee;
   emp.RefreshEmp();
 }
+
+
+GetEmployeeData_only(EmployeeNotifire emp,String email) async {
+  QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
+      .collection('employees')
+      .where('email',isEqualTo:'${email}')
+      .get();
+  rfn.docs.forEach((e) async{
+       EmployeeData em =  await EmployeeData.frommap(e.data());
+       emp.CurrentEmployee_loco = em;
+       print(emp.CurrentEmployee_loco!.name);
+       },
+  );
+
+  emp.RefreshEmp();
+}

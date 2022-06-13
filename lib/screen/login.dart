@@ -5,8 +5,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:provider/provider.dart';
+import 'package:untitled1/api/getEmployeeData.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/model/Employee_Model.dart';
+import 'package:untitled1/notifire/employeeNotifire.dart';
 import 'package:untitled1/screen/menu.dart';
 
 class Login extends StatefulWidget {
@@ -23,6 +26,7 @@ EmployeeData employeeData = EmployeeData();
 class _Login extends State<Login> {
   @override
   Widget build(BuildContext context) {
+    EmployeeNotifire em = Provider.of<EmployeeNotifire>(context);
     return FutureBuilder(
       future: firebase,
       builder: (context, snapshot) {
@@ -125,19 +129,29 @@ class _Login extends State<Login> {
                             if (formKey.currentState!.validate()) {
                               formKey.currentState!.save();
                               try {
-                                FirebaseAuth.instance
-                                    .signInWithEmailAndPassword(
+                                FirebaseAuth.instance.signInWithEmailAndPassword( ////////////////////////////////////////////////
                                   email: employeeData.email!,
                                   password: employeeData.password!,
-                                )
-                                    .then((value) {
-                                  formKey.currentState!.reset();
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const Menu(),
-                                    ),
-                                  );
+                                ).then((value) {
+
+                                  GetEmployeeData_only(em,employeeData.email!);
+                                   if(em.CurrentEmployee_loco!.position == 'Admin'){
+                                     formKey.currentState!.reset();
+                                     Navigator.pushReplacement(
+                                       context,
+                                       MaterialPageRoute(
+                                         builder: (context) => const Menu(),
+                                       ),
+                                     );
+                                   }else if (em.CurrentEmployee_loco!.position == 'Sale'){
+                                     Fluttertoast.showToast(
+                                       msg: "ທ່ານບໍ່ເເມ່ນ Addmin",
+                                       fontSize: 20,
+                                       gravity: ToastGravity.CENTER,
+                                       backgroundColor: Colors.red,
+                                       textColor: Colors.white,
+                                     );
+                                   }
                                 });
                               } on FirebaseAuthException catch (e) {
                                 // print(e.message);
