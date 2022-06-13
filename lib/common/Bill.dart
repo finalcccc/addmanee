@@ -1,14 +1,10 @@
 // ignore_for_file: non_constant_identifier_names, await_only_futures, avoid_print, unnecessary_string_interpolations, unnecessary_brace_in_string_interps
 
 import 'dart:math';
-
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:pdf/pdf.dart';
 import 'package:open_file/open_file.dart';
 import 'package:untitled1/notifire/purchase_order_Notifire.dart';
-
 import 'package:pdf/widgets.dart' as pw;
 import 'dart:io';
 
@@ -17,8 +13,8 @@ import 'package:untitled1/notifire/supplierNotifire.dart';
 class Bill {
   static save_Bill(purchase_order_Notifire orderadmin, context,
       SupplierNotifire supp) async {
-    final font = await rootBundle.load('lib/assets/Phetsarath-Regular.ttf');
-    final ttf = pw.Font.ttf(font);
+    final  font = await rootBundle.load('lib/assets/Phetsarath-Regular.ttf');
+    final pw.Font ttf = pw.Font.ttf(font);
     final pdf = pw.Document();
     pdf.addPage(
       pw.Page(
@@ -56,7 +52,7 @@ class Bill {
                               font: ttf,
                               fontWeight: pw.FontWeight.bold,
                               fontSize: 15)),
-                      pw.Text('${orderadmin.Currenorderaddmin!.amouttotal}',style: const pw.TextStyle(fontSize: 15)),
+                      pw.Text('${orderadmin.Currenorderaddmin!.amouttotal}',style: const pw.TextStyle(fontSize: 15,)),
                       pw.Text(' ແກັດ ',
                           style: pw.TextStyle(
                               font: ttf,
@@ -67,16 +63,18 @@ class Bill {
                 ),
                 pw.Divider(),
                 pw.Padding(
-                  padding: const pw.EdgeInsets.only(right: 30, top:20),
+                  padding: const pw.EdgeInsets.only(right: 0, top:20),
                   child: pw.Row(
                       mainAxisAlignment: pw.MainAxisAlignment.end,
                     children: [
-                      pw.Text('ລາຍເຊັນ ',
+                      pw.Text('ລາຍເຊັນ ອະນຸມັດ',
                           style: pw.TextStyle(
                               font: ttf,
                               fontWeight: pw.FontWeight.bold,
                               fontSize: 15)),
+                      pw.Text('.........................................'),
                     ]
+
                   )
                 )
               ],
@@ -98,8 +96,7 @@ class Bill {
     });
   }
 
-  static pw.Row Subheader_Purchase_OrderDetial(
-      pw.Font ttf, SupplierNotifire supp, purchase_order_Notifire orderadmin) {
+  static pw.Row Subheader_Purchase_OrderDetial(pw.Font ttf, SupplierNotifire supp, purchase_order_Notifire orderadmin) {
     return pw.Row(
       crossAxisAlignment: pw.CrossAxisAlignment.start,
       children: [
