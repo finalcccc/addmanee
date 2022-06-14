@@ -66,20 +66,24 @@ class _ViewCategoryState extends State<ViewCategory> {
         borderOnForeground: true,
         elevation: 5,
         child: InkWell(
-          child: Column(
+          child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              ListTile(
-                leading: const Icon(Icons.category),
-                title: Text(
-                    "ຊື່ປະເພດສິນຄ້າ:" +
-                        " ${category.categoryList[index].category}",
-                    style: const TextStyle(color: Colors.green)),
-                subtitle: Text(
-                  "ລະຫັດ:" + " ${category.categoryList[index].id}",
-                  style: const TextStyle(color: Colors.orangeAccent),
-                ),
-              ),
+             Column(
+               children: [
+                 ListTile(
+                   leading: const Icon(Icons.category),
+                   title: Text(
+                       "ຊື່ປະເພດສິນຄ້າ:" +
+                           " ${category.categoryList[index].category}",
+                       style: const TextStyle(color: Colors.green)),
+                   subtitle: Text(
+                     "ລະຫັດ:" + " ${category.categoryList[index].id}",
+                     style: const TextStyle(color: Colors.orangeAccent),
+                   ),
+                 ),
+               ],
+             )
             ],
           ),
           onTap: () {

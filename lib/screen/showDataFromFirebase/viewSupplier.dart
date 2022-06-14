@@ -60,11 +60,20 @@ class _ViewSupplierState extends State<ViewSupplier> {
               ),
               title: Row(
                 children: [
-                  const Text('ຊື່:',style: TextStyle(fontWeight: FontWeight.bold),),
+                  const Text(
+                    'ຊື່:',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                   Text(' ${Supp.SuplierList[index].name}'),
                 ],
               ),
-              subtitle: Text('ເບີໂທ:' ' ${Supp.SuplierList[index].tel}'),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('ອີເມວ: ${Supp.SuplierList[index].email}'),
+                  Text('ເບີໂທ:' ' ${Supp.SuplierList[index].tel}'),
+                ],
+              ),
               trailing: IconButton(
                 onPressed: () {},
                 icon: const Icon(

@@ -89,7 +89,7 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
         margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
         decoration: BoxDecoration(
             color: colortype == true ? element.main : Colors.blue,
-            borderRadius: BorderRadius.circular(15)),
+            borderRadius: BorderRadius.circular(10)),
         child: Row(
           children: [
             InkWell(
@@ -123,10 +123,10 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
               colortype = false;
             },
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               margin: const EdgeInsets.symmetric(horizontal: 5),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(10),
                   color: colortype != true ? element.main : Colors.blue),
               child: Row(
                 children: [
@@ -194,7 +194,7 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '${product.Products[index].nameProduct}',
+                    'ຊື່: ${product.Products[index].nameProduct}',
                     style: const TextStyle(color: Colors.black, fontSize: 18),
                   ),
                   Divider(

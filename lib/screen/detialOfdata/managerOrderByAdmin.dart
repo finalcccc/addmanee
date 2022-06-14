@@ -69,7 +69,15 @@ class _ManagerOrderByAdminState extends State<ManagerOrderByAdmin> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'ຊື່ຜູ້ສະໜອງ: ' ' ${supp.SuplierList[index].name}',
+                            'ຊື່ຜູ້ສະໜອງ:  ${supp.SuplierList[index].name}',
+                            style: const TextStyle(fontSize: 15),
+                          ),
+                          Text(
+                            'ເບີໂທລະສັບ: ${supp.SuplierList[index].tel}',
+                            style: const TextStyle(fontSize: 15),
+                          ),
+                          Text(
+                            'ທີ່ຢູ່: ${supp.SuplierList[index].address}',
                             style: const TextStyle(fontSize: 15),
                           )
                         ]),
@@ -96,7 +104,7 @@ class _Show_order_addminState extends State<Show_order_addmin> {
         Provider.of<purchase_order_Notifire>(context);
     SupplierNotifire supp = Provider.of<SupplierNotifire>(context);
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+        backgroundColor: Colors.grey[200],
         appBar: AppBar(
           title: const Text('ລາຍການສັ່ງຊື້ຈາກຜູ້ສະໜອງ'),
           centerTitle: true,
@@ -108,7 +116,7 @@ class _Show_order_addminState extends State<Show_order_addmin> {
           itemCount: orderadmin.Order_addminlist.length,
           itemBuilder: (context, index) {
             return Padding(
-              padding: const EdgeInsets.only(top:10.0),
+              padding: const EdgeInsets.only(top: 10.0),
               child: Card(
                 child: Padding(
                     padding: const EdgeInsets.all(10),
@@ -130,21 +138,23 @@ class _Show_order_addminState extends State<Show_order_addmin> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
-                             mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Text('ລະຫັດ: '
                                     ' ${orderadmin.Order_addminlist[index].id}            '),
-                              Text(
-                                  ' ${orderadmin.Order_addminlist[index].date!.toDate().toString().substring(0,10)}',style: const TextStyle(fontWeight: FontWeight.bold),),
-                            ],),
-
+                                Text(
+                                  ' ${orderadmin.Order_addminlist[index].date!.toDate().toString().substring(0, 10)}',
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
                             Text('ຊື່ຜູ້ສະໜອງ: '
                                 ' ${supp.CurrentSupplier!.name}'),
                             Text('ຈຳນວນ: '
                                 ' ${orderadmin.Order_addminlist[index].Ditell.length} ລາຍການ'),
                             Text('ຈຳນວນທັງໝົດ: '
                                 ' ${orderadmin.Order_addminlist[index].amouttotal} ແກັດ'),
-
                           ]),
                     )),
               ),
@@ -189,21 +199,24 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('ຊື່ຜູ້ສະໜອງ:  ${supp.CurrentSupplier!.name}'),
-                  Text('ທີ່ຢູ່: ${supp.CurrentSupplier!.address}'),
-                  Text('ເບີໂທ: ${supp.CurrentSupplier!.tel}'),
-                  Text('ອີເມວ: ${supp.CurrentSupplier!.email}'),
-                  Text('ວັນທີສັ່ງຊື້: ${orderadmin.Currenorderaddmin!.date!.toDate()}'),
-                ],
-              ),
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('ຊື່ຜູ້ສະໜອງ:  ${supp.CurrentSupplier!.name}'),
+                Text('ທີ່ຢູ່: ${supp.CurrentSupplier!.address}'),
+                Text('ເບີໂທ: ${supp.CurrentSupplier!.tel}'),
+                Text('ອີເມວ: ${supp.CurrentSupplier!.email}'),
+                Text(
+                    'ວັນທີສັ່ງຊື້: ${orderadmin.Currenorderaddmin!.date!.toDate()}'),
+              ],
+            ),
             const SizedBox(height: 20),
             Expanded(
               child: ListView.builder(
                 itemCount: orderadmin.Dettil.length,
                 itemBuilder: (context, index) {
-                  return orderadmin.Productditill.length != 0   && orderadmin.Productditill.length <= orderadmin.Productditill.length
+                  return orderadmin.Productditill.length != 0 &&
+                          orderadmin.Productditill.length <=
+                              orderadmin.Productditill.length
                       ? Column(
                           children: [
                             Row(

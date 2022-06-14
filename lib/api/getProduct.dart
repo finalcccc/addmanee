@@ -5,9 +5,6 @@ import 'dart:collection';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:untitled1/model/product_Model.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
-
-import '../model/category_Model.dart';
-
 GetProduct(ProductNotifire product) async {
   List<product_Model> _Product = [];
   QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance

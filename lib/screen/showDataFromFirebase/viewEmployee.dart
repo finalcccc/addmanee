@@ -61,65 +61,16 @@ class _ViewEmployeeState extends State<ViewEmployee> {
 
   Widget CardEmployee(int index, EmployeeNotifire employee) {
     return Card(
-      color: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10)
+      ),
       borderOnForeground: true,
       elevation: 5,
       child: InkWell(
-        // child: Row(
-        //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        //   children: [
-        //     const Icon(Icons.people_alt_sharp),
-        //     Column(
-        //       mainAxisAlignment: MainAxisAlignment.start,
-        //       children: [
-        //         Row(
-        //           children: [
-        //             Text(
-        //               "ຊື່: ",
-        //               style: const TextStyle(
-        //                   fontWeight: FontWeight.bold, fontSize: 15),
-        //             ),
-        //             Text(
-        //               " ${employee.employeeList[index].name}",
-        //               style: TextStyle(fontSize: 15),
-        //             ),
-        //           ],
-        //         ),
-        //         Row(
-        //           children: [
-        //             Text(
-        //               "ຕຳແໜ່ງ: ",
-        //               style: TextStyle(fontSize: 15),
-        //             ),
-        //             Text(
-        //               " ${employee.employeeList[index].position}",
-        //               style: TextStyle(fontSize: 15),
-        //             ),
-        //           ],
-        //         )
-        //       ],
-        //     ),
-        //     Row(
-        //       crossAxisAlignment: CrossAxisAlignment.start,
-        //       children: [
-        //         const SizedBox(width: 8),
-        //         TextButton(
-        //           child: const Text('ລົບ'),
-        //           onPressed: () {},
-        //         ),
-        //       ],
-        //     )
-        //   ],
-        // ),
-        // onTap: () {
-        //   employee.CurrentEmployee = employee.employeeList[index];
-        //   Navigator.pushReplacement(context,
-        //       MaterialPageRoute(builder: (context) => const EmployeeDetail()));
-        // },
         child: ListTile(
           leading: const Icon(
             Icons.people,
-            size: 35,
+            size: 30,
             color: Colors.black,
           ),
           title: Row(
@@ -131,7 +82,9 @@ class _ViewEmployeeState extends State<ViewEmployee> {
               Text(' ${employee.employeeList[index].name}'),
             ],
           ),
-          subtitle: Column(children: [
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
             Text('ຕຳແໜ່ງ:' ' ${employee.employeeList[index].position}'),
             Text('ລະຫັດ: ${employee.employeeList[index].id}')
           ],),

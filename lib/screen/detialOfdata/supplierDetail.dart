@@ -6,6 +6,7 @@ import 'package:untitled1/notifire/supplierNotifire.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewSupplier.dart';
 
 import '../../celement/elements.dart';
+import '../../dialog/dialog_supplier.dart';
 
 class SupplierDetail extends StatefulWidget {
   const SupplierDetail({Key? key}) : super(key: key);
@@ -43,7 +44,7 @@ class _SupplierDetailState extends State<SupplierDetail> {
                       children: [
                         Text(
                           'ວັນທີ:' +
-                              ' ${supplier.CurrentSupplier!.date.toString().substring(0, 10)}',
+                              ' ${supplier.CurrentSupplier!.date!.toDate().toString().substring(0, 10)}',
                           style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold),
                         ),
@@ -72,20 +73,19 @@ class _SupplierDetailState extends State<SupplierDetail> {
                     ),
                     const SizedBox(height: 100),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        ElevatedButton(
-                            onPressed: () {},
-                            child: const Text(
-                              'ແກ້ໄຂ',
-                              style: TextStyle(fontSize: 16),
-                            )),
-                        ElevatedButton(
-                            onPressed: () {},
-                            child: const Text(
-                              'ບັນທຶກ',
-                              style: TextStyle(fontSize: 16),
-                            )),
+                       SizedBox(
+                         width: 300,
+                         height: 50,
+                         child:  ElevatedButton(
+                             onPressed:(){
+                               SupplierDialog().Dialog(context);
+                             } ,
+                             child: const Text(
+                               'ແກ້ໄຂ',
+                               style: TextStyle(fontSize: 20),
+                             )),
+                       )
                       ],
                     ),
                   ],
