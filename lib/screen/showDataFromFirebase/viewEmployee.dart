@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, prefer_adjacent_string_concatenation
+// ignore_for_file: non_constant_identifier_names, prefer_adjacent_string_concatenation, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -64,39 +64,90 @@ class _ViewEmployeeState extends State<ViewEmployee> {
       color: Colors.white,
       borderOnForeground: true,
       elevation: 5,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ListTile(
-            leading: const Icon(Icons.people),
-            title: Text(
-                "ຊື່ ແລະ ນາມສະກຸນ: " + " ${employee.employeeList[index].name}"),
-            subtitle:
-                Text("ຕຳແໜ່ງ: " + " ${employee.employeeList[index].position}"),
+      child: InkWell(
+        // child: Row(
+        //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        //   children: [
+        //     const Icon(Icons.people_alt_sharp),
+        //     Column(
+        //       mainAxisAlignment: MainAxisAlignment.start,
+        //       children: [
+        //         Row(
+        //           children: [
+        //             Text(
+        //               "ຊື່: ",
+        //               style: const TextStyle(
+        //                   fontWeight: FontWeight.bold, fontSize: 15),
+        //             ),
+        //             Text(
+        //               " ${employee.employeeList[index].name}",
+        //               style: TextStyle(fontSize: 15),
+        //             ),
+        //           ],
+        //         ),
+        //         Row(
+        //           children: [
+        //             Text(
+        //               "ຕຳແໜ່ງ: ",
+        //               style: TextStyle(fontSize: 15),
+        //             ),
+        //             Text(
+        //               " ${employee.employeeList[index].position}",
+        //               style: TextStyle(fontSize: 15),
+        //             ),
+        //           ],
+        //         )
+        //       ],
+        //     ),
+        //     Row(
+        //       crossAxisAlignment: CrossAxisAlignment.start,
+        //       children: [
+        //         const SizedBox(width: 8),
+        //         TextButton(
+        //           child: const Text('ລົບ'),
+        //           onPressed: () {},
+        //         ),
+        //       ],
+        //     )
+        //   ],
+        // ),
+        // onTap: () {
+        //   employee.CurrentEmployee = employee.employeeList[index];
+        //   Navigator.pushReplacement(context,
+        //       MaterialPageRoute(builder: (context) => const EmployeeDetail()));
+        // },
+        child: ListTile(
+          leading: const Icon(
+            Icons.people,
+            size: 35,
+            color: Colors.black,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+          title: Row(
             children: [
-              TextButton(
-                child: const Text('ແກ້ໄຂ'),
-                onPressed: () {
-                  employee.CurrentEmployee = employee.employeeList[index];
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const EmployeeDetail(),
-                    ),
-                  );
-                },
+              const Text(
+                'ຊື່:',
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
-              const SizedBox(width: 8),
-              TextButton(
-                child: const Text('ລົບ'),
-                onPressed: () {},
-              ),
+              Text(' ${employee.employeeList[index].name}'),
             ],
-          )
-        ],
+          ),
+          subtitle: Column(children: [
+            Text('ຕຳແໜ່ງ:' ' ${employee.employeeList[index].position}'),
+            Text('ລະຫັດ: ${employee.employeeList[index].id}')
+          ],),
+          trailing: IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.delete,
+              color: Colors.red,
+            ),
+          ),
+        ),
+        onTap: () {
+          employee.CurrentEmployee = employee.employeeList[index];
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => const EmployeeDetail()));
+        },
       ),
     );
   }

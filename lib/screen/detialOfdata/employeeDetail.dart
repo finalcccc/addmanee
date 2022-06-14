@@ -24,33 +24,67 @@ class _EmployeeDetailState extends State<EmployeeDetail> {
         leading: element().RoutePageBack(context, const ViewEmployee()),
         backgroundColor: element.main,
       ),
-      body: Card(
+      body: Center(
+        child: Card(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          elevation: 5,
           child: Container(
-        margin: const EdgeInsets.all(15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('ອີແມວ: ' + ' ${employee.CurrentEmployee!.email}'),
-            Text('ລະຫັດ: ' + ' ${employee.CurrentEmployee!.password}'),
-            Text('ຊື່ ແລະ ນາມສະກຸນ :' + ' ${employee.CurrentEmployee!.name}'),
-            Text('ເບີໂທ: ' + ' ${employee.CurrentEmployee!.tel}'),
-            Text('ທີ່ຢູ່: ' + ' ${employee.CurrentEmployee!.address}'),
-            Text('ວັນທີ ເດືອນ ປີ :' + ' ${employee.CurrentEmployee!.date}'),
-            Text('ຕຳແໜ່ງ: ' + '${employee.CurrentEmployee!.position}'),
-            const SizedBox(height: 440),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+            height: 400,
+            margin: const EdgeInsets.all(20),
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  IconButton(onPressed: () {}, icon: const Icon(Icons.edit)),
-                  IconButton(onPressed: () {}, icon: const Icon(Icons.delete))
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        'ວັນທີ:' + ' ${employee.CurrentEmployee!.date!.toDate().toString().substring(0,10)}',
+                        style: const TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 15),
+                  Text(
+                    'ລະຫັດ: ' + ' ${employee.CurrentEmployee!.password}',
+                    style: const TextStyle(fontSize: 16),
+                  ),
+                  Text(
+                    'ຊື່ :' + ' ${employee.CurrentEmployee!.name}',
+                    style: const TextStyle(fontSize: 16),
+                  ),
+                  Text(
+                    'ອີແມວ: ' + ' ${employee.CurrentEmployee!.email}',
+                    style: const TextStyle(fontSize: 16),
+                  ),
+                  Text(
+                    'ເບີໂທ: ' + ' ${employee.CurrentEmployee!.tel}',
+                    style: const TextStyle(fontSize: 16),
+                  ),
+
+                  Text(
+                    'ຕຳແໜ່ງ: ' + '${employee.CurrentEmployee!.position}',
+                    style: const TextStyle(fontSize: 16),
+                  ),
+                  Text(
+                    'ທີ່ຢູ່: ' + ' ${employee.CurrentEmployee!.address}',
+                    style: const TextStyle(fontSize: 16),
+                  ),
+                  const SizedBox(height: 100),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      ElevatedButton(onPressed: (){}, child: const Text('ແກ້ໄຂ',style: TextStyle(fontSize: 16),)),
+                    ],
+                  ),
                 ],
               ),
-            )
-          ],
+            ),
+          ),
         ),
-      )),
+      ),
     );
   }
 }

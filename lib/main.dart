@@ -13,12 +13,12 @@ import 'package:untitled1/notifire/purchase_order_Notifire.dart';
 import 'package:untitled1/notifire/supplierNotifire.dart';
 import 'package:untitled1/screen/manageOrder.dart';
 import 'package:untitled1/screen/product_add/category.dart';
-import 'package:untitled1/screen/product_add/purchaseOrder.dart';
 import 'package:untitled1/screen/product_add/reportData.dart';
 import 'package:untitled1/common/Product_for_purchase_.dart';
 import 'package:untitled1/screen/product_add/appProduct.dart';
 import 'package:untitled1/route/router.dart';
 import 'package:untitled1/screen/product_add/supplier_add.dart';
+import 'package:untitled1/screen/showDataFromFirebase/viewSupplier.dart';
 import 'notifire/productNotifire.dart';
 import 'screen/product_add/registerEmployee.dart';
 import 'screen/splashScreen .dart';
@@ -65,7 +65,7 @@ class MyApp extends StatelessWidget {
         route.suppliyer: (BuildContext context) => const SupplierTapbar(),
         route.product_type: (BuildContext context) => const ProductTypeTapbar(),
         route.reportData: (BuildContext context) => const ReportData(),
-        route.purchaseOrder: (BuildContext context) => const PurchaseOrder(),
+        route.ViewSupplier: (BuildContext context) => const ViewSupplier(),
         route.Cart: (BuildContext context) => const Cart(),
       },
     );

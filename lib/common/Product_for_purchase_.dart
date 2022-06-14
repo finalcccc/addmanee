@@ -278,7 +278,9 @@ Dailog(Cartnotifire Carts, context) {
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           primary: element.main,
-                          shape: const StadiumBorder(),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)
+                          ),
                           padding: const EdgeInsets.symmetric(vertical: 16)),
                       onPressed: () {
                         Carts.cecks();

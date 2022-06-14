@@ -9,6 +9,6 @@ class route {
   static String suppliyer = '/Suppliyer';
   static String product_type = '/product_type';
   static String reportData = '/ReportData';
-  static String purchaseOrder = '/PurchaseOrder';
+  static String ViewSupplier = '/ViewSupplier';
   static String  Cart = '/Cart';
 }

@@ -52,7 +52,7 @@ class _MenuState extends State<Menu> {
                 element.sky, element.p6),
             element.MenuButton(context, route.reportData, Icons.report_sharp,
                 element.sky, element.p7),
-            element.MenuButton(context, route.purchaseOrder,
+            element.MenuButton(context, route.ViewSupplier,
                 Icons.shopping_cart, element.sky, element.p8),
           ],
         ),

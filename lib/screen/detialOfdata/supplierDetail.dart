@@ -19,38 +19,80 @@ class _SupplierDetailState extends State<SupplierDetail> {
   Widget build(BuildContext context) {
     SupplierNotifire supplier = Provider.of<SupplierNotifire>(context);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('ຂໍ້ມູນລາຍລະອຽດຂອງແຕ່ລະຄົນ'),
-        centerTitle: true,
-        leading: element().RoutePageBack(context, const ViewSupplier()),
-        backgroundColor: element.main,
-      ),
-      body: Card(
-          child: Container(
-        margin: const EdgeInsets.all(15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('ອີແມວ: ' + ' ${supplier.CurrentSupplier!.email}'),
-            Text('ລະຫັດ: ' + ' ${supplier.CurrentSupplier!.id}'),
-            Text('ຊື່ ແລະ ນາມສະກຸນ :' + ' ${supplier.CurrentSupplier!.name}'),
-            Text('ເບີໂທ: ' + ' ${supplier.CurrentSupplier!.tel}'),
-            Text('ທີ່ຢູ່: ' + ' ${supplier.CurrentSupplier!.address}'),
-            Text('ວັນທີ ເດືອນ ປີ :' + ' ${supplier.CurrentSupplier!.date}'),
-            const SizedBox(height: 440),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  IconButton(onPressed: () {}, icon: const Icon(Icons.edit)),
-                  IconButton(onPressed: () {}, icon: const Icon(Icons.delete))
-                ],
-              ),
-            )
-          ],
+        appBar: AppBar(
+          title: const Text('ຂໍ້ມູນລາຍລະອຽດຂອງແຕ່ລະຄົນ'),
+          centerTitle: true,
+          leading: element().RoutePageBack(context, const ViewSupplier()),
+          backgroundColor: element.main,
         ),
-      )),
-    );
+        body: Center(
+          child: Card(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            elevation: 5,
+            child: Container(
+              height: 400,
+              margin: const EdgeInsets.all(20),
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          'ວັນທີ:' +
+                              ' ${supplier.CurrentSupplier!.date.toString().substring(0, 10)}',
+                          style: const TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 15),
+                    Text(
+                      'ລະຫັດ: ' + ' ${supplier.CurrentSupplier!.id}',
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                    Text(
+                      'ຊື່: ' + ' ${supplier.CurrentSupplier!.name}',
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                    Text(
+                      'ອີແມວ: ' + ' ${supplier.CurrentSupplier!.email}',
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                    Text(
+                      'ເບີໂທ: ' + ' ${supplier.CurrentSupplier!.tel}',
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                    Text(
+                      'ທີ່ຢູ່: ' + ' ${supplier.CurrentSupplier!.address}',
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                    const SizedBox(height: 100),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        ElevatedButton(
+                            onPressed: () {},
+                            child: const Text(
+                              'ແກ້ໄຂ',
+                              style: TextStyle(fontSize: 16),
+                            )),
+                        ElevatedButton(
+                            onPressed: () {},
+                            child: const Text(
+                              'ບັນທຶກ',
+                              style: TextStyle(fontSize: 16),
+                            )),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ));
   }
 }
