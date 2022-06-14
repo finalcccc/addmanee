@@ -96,6 +96,7 @@ class _Show_order_addminState extends State<Show_order_addmin> {
         Provider.of<purchase_order_Notifire>(context);
     SupplierNotifire supp = Provider.of<SupplierNotifire>(context);
     return Scaffold(
+      backgroundColor: Colors.grey[200],
         appBar: AppBar(
           title: const Text('ລາຍການສັ່ງຊື້ຈາກຜູ້ສະໜອງ'),
           centerTitle: true,
@@ -106,43 +107,47 @@ class _Show_order_addminState extends State<Show_order_addmin> {
         body: ListView.builder(
           itemCount: orderadmin.Order_addminlist.length,
           itemBuilder: (context, index) {
-            return Card(
-              child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: InkWell(
-                    onTap: () async {
-                      orderadmin.Currenorderaddmin =
-                          await orderadmin.Order_addminlist[index];
-                      await orderadmin.Curren();
-                      await GetDetill(order_admin: orderadmin);
-                      orderadmin.Refresh();
+            return Padding(
+              padding: const EdgeInsets.only(top:10.0),
+              child: Card(
+                child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: InkWell(
+                      onTap: () async {
+                        orderadmin.Currenorderaddmin =
+                            await orderadmin.Order_addminlist[index];
+                        await orderadmin.Curren();
+                        await GetDetill(order_admin: orderadmin);
+                        orderadmin.Refresh();
 
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  const Detellorder_addmid()));
-                    },
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                           mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                            Text(
-                                ' ${orderadmin.Order_addminlist[index].date!.toDate().toString().substring(0,10)}',style: const TextStyle(fontWeight: FontWeight.bold),),
-                          ],),
-                          Text('ລະຫັດ: '
-                              ' ${orderadmin.Order_addminlist[index].id}'),
-                          Text('ຊື່ຜູ້ສະໜອງ: '
-                              ' ${supp.CurrentSupplier!.name}'),
-                          Text('ຈຳນວນ: '
-                              ' ${orderadmin.Order_addminlist[index].Ditell.length} ລາຍການ'),
-                          Text('ຈຳນວນທັງໝົດ: '
-                              ' ${orderadmin.Order_addminlist[index].amouttotal} ແກັດ'),
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const Detellorder_addmid()));
+                      },
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                             mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text('ລະຫັດ: '
+                                    ' ${orderadmin.Order_addminlist[index].id}            '),
+                              Text(
+                                  ' ${orderadmin.Order_addminlist[index].date!.toDate().toString().substring(0,10)}',style: const TextStyle(fontWeight: FontWeight.bold),),
+                            ],),
 
-                        ]),
-                  )),
+                            Text('ຊື່ຜູ້ສະໜອງ: '
+                                ' ${supp.CurrentSupplier!.name}'),
+                            Text('ຈຳນວນ: '
+                                ' ${orderadmin.Order_addminlist[index].Ditell.length} ລາຍການ'),
+                            Text('ຈຳນວນທັງໝົດ: '
+                                ' ${orderadmin.Order_addminlist[index].amouttotal} ແກັດ'),
+
+                          ]),
+                    )),
+              ),
             );
           },
         ));
@@ -190,8 +195,7 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                   Text('ທີ່ຢູ່: ${supp.CurrentSupplier!.address}'),
                   Text('ເບີໂທ: ${supp.CurrentSupplier!.tel}'),
                   Text('ອີເມວ: ${supp.CurrentSupplier!.email}'),
-                  Text(
-                      'ວັນທີສັ່ງຊື້: ${orderadmin.Currenorderaddmin!.date!.toDate()}'),
+                  Text('ວັນທີສັ່ງຊື້: ${orderadmin.Currenorderaddmin!.date!.toDate()}'),
                 ],
               ),
             const SizedBox(height: 20),
@@ -199,7 +203,7 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
               child: ListView.builder(
                 itemCount: orderadmin.Dettil.length,
                 itemBuilder: (context, index) {
-                  return orderadmin.Productditill.length != 0
+                  return orderadmin.Productditill.length != 0   && orderadmin.Productditill.length <= orderadmin.Productditill.length
                       ? Column(
                           children: [
                             Row(

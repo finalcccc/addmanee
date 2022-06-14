@@ -1,5 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:untitled1/api/get_Order.dart';
+import 'package:untitled1/notifire/OrderNotifire.dart';
 import 'package:untitled1/screen/detialOfdata/managerOrderByAdmin.dart';
 import 'package:untitled1/screen/detialOfdata/managerOrderByCustomer.dart';
 import 'package:untitled1/screen/menu.dart';
@@ -19,6 +22,7 @@ class _ManageOrderState extends State<ManageOrder> {
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
   @override
   Widget build(BuildContext context) {
+    Order_Notifire Order = Provider.of<Order_Notifire>(context);
     sreenWidth = MediaQuery.of(context).size.width;
     sreenHeight = MediaQuery.of(context).size.height;
     return FutureBuilder(
@@ -76,6 +80,7 @@ class _ManageOrderState extends State<ManageOrder> {
                         style: ElevatedButton.styleFrom(
                             primary: element.main),
                         onPressed: () {
+                          Get_Order(Order);
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(

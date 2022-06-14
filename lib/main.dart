@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/common/purchase__Cart.dart';
 import 'package:untitled1/notifire/Cartnotififire.dart';
+import 'package:untitled1/notifire/OrderNotifire.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/notifire/employeeNotifire.dart';
 import 'package:untitled1/notifire/import_product.dart';
@@ -36,6 +37,7 @@ void main() async {
       ChangeNotifierProvider(create: (_) => Cartnotifire()),
       ChangeNotifierProvider(create: (_) => purchase_order_Notifire()),
       ChangeNotifierProvider(create: (_) => importproductNotifire()),
+      ChangeNotifierProvider(create: (_) => Order_Notifire()),
     ],
     child: const MyApp(),
   ));
