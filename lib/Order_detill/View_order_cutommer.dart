@@ -35,8 +35,8 @@ class _View_orderState extends State<view_order> {
                     Text('ລະຫັດສັ່ງຊື້ : ${order.Curren_Order!.id}',style: TextStyle(fontWeight: FontWeight.bold,fontSize:16)),
                     Text('ຂື່ລຸກຄ້າ : ${order.Curren_Order!.nameCutommer}',style: TextStyle(fontWeight: FontWeight.bold,fontSize:16)),
                     Text('ເບີໂທ: ${order.Curren_Order!.tel}',style: TextStyle(fontWeight: FontWeight.bold,fontSize:16)),
-                    Text('ທີ່ຢຸ່ : ${order.Curren_Order!.amouttotal}',style: TextStyle(fontWeight: FontWeight.bold,fontSize:16)),
-                    Text('ລະຫັດພະນັກງານ: ${order.Curren_Order!.Employee_ID}',style: TextStyle(fontWeight: FontWeight.bold,fontSize:16)),
+                    Text('ທີ່ຢຸ່ : ${order.Curren_Order!.address}',style: TextStyle(fontWeight: FontWeight.bold,fontSize:16)),
+                    Text('ລະຫັດພະນັກງານ: ${order.emp_Ooder!.name}',style: TextStyle(fontWeight: FontWeight.bold,fontSize:16)),
                     Text('ວັນທີ: ${order.Curren_Order!.date!.toDate()}',style: TextStyle(fontWeight: FontWeight.bold,fontSize:16)),
                   ],
                 ),
@@ -102,7 +102,7 @@ class _View_orderState extends State<view_order> {
                             scrollDirection: Axis.horizontal,
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Column(
                                   children: [
@@ -154,7 +154,7 @@ class _View_orderState extends State<view_order> {
           Padding(
             padding: const EdgeInsets.only(bottom: 20),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Column(
                   children: [
@@ -162,9 +162,15 @@ class _View_orderState extends State<view_order> {
                     Text(' ລາຄາລວມ : ${NumberFormat.decimalPattern().format(order.Curren_Order!.sumtotal)} ກີບ',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
                   ],
                 ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: element.main),
+                  child: const Text('ບັນທຶກເປັນພີດີເອຟ'),
+                  onPressed: () async {
+                  },
+                ),
               ],
             ),
-          ),
+          )
         ],
       ),
     );
