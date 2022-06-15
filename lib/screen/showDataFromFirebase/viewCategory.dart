@@ -19,9 +19,10 @@ class ViewCategory extends StatefulWidget {
 
 class _ViewCategoryState extends State<ViewCategory> {
   var refreshKey = GlobalKey<RefreshIndicatorState>();
+
   Future dos() async {
     CategoryNotifire category =
-        Provider.of<CategoryNotifire>(context, listen: false);
+    Provider.of<CategoryNotifire>(context, listen: false);
     await GetCategoryData(category);
     category.RefreshCategory();
   }
@@ -65,24 +66,23 @@ class _ViewCategoryState extends State<ViewCategory> {
         borderOnForeground: true,
         elevation: 5,
         child: InkWell(
-          child: Row(
+          child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-             Column(
-               children: [
-                 ListTile(
-                   leading: const Icon(Icons.category),
-                   title: Text(
-                       "ຊື່ປະເພດສິນຄ້າ:" +
-                           " ${category.categoryList[index].category}",
-                       style: const TextStyle(color: Colors.green)),
-                   subtitle: Text(
-                     "ລະຫັດ:" + " ${category.categoryList[index].id}",
-                     style: const TextStyle(color: Colors.orangeAccent),
-                   ),
-                 ),
-               ],
-             )
+              Column(
+                children: [
+                  ListTile(
+                    leading: const Icon(Icons.category),
+                    title: Text(
+                        "ຊື່ປະເພດສິນຄ້າ: ${category.categoryList[index].category}",
+                        style: const TextStyle(color: Colors.green)),
+                    subtitle: Text(
+                      "ລະຫັດ: ${category.categoryList[index].id}",
+                      style: const TextStyle(color: Colors.orangeAccent),
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
           onTap: () {
