@@ -27,55 +27,62 @@ class _ReportIncomeState extends State<ReportIncome> {
         leading: element().RoutePageBack(context, const ReportData()),
         bottom: WidgetSearch(label: "ວັນ ເດືອນ ປີ"),
       ),
-      body: Container(
-        margin: EdgeInsets.only(top: 10),
-        width: double.infinity,
-        height: 120,
-        child: InkWell(
-          child: Card(
-            child: Padding(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Text(
-                        'ເດືອນ ປີ: 10-2022',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
+      body: ListView.separated(
+        physics: BouncingScrollPhysics(),
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          return Container(
+              margin: EdgeInsets.all(10),
+              child: InkWell(
+                child: Card(
+                  child: Column(
+                    children: [
+                      ListTile(
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                'ເດືອນ: 0${index + 1}/2022',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 16),
+                              )
+                            ],
+                          ),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children:  [
+                                  Text(
+                                    'ລາຍຮັບທັງໝົດ:',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16),
+                                  ),
+                                  Text(
+                                    ' ${index+2}0.520.000 ກີບ',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ))
                     ],
                   ),
-                  Column(
-                    children: [
-                      Row(
-                        children: const [
-                          Text(
-                            'ລາຍຮັບປະຈຳເດືອນທັງໝົດແມ່ນ: ',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16),
-                          ),
-                          Text(
-                            '12.620.000 ກີບ',
-                            style: TextStyle(fontSize: 16),
-                          ),
-                        ],
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
-          ),
-          onTap: () {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const ReportIncomeMonth()));
-          },
-        ),
+                ),
+                onTap: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ReportIncomeMonth()));
+                },
+              ));
+        },
+        separatorBuilder: (BuildContext context, int index) {
+          return Divider(
+            color: Colors.blue,
+          );
+        },
       ),
     );
   }

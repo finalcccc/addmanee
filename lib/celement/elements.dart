@@ -30,7 +30,7 @@ class element {
   static String p5 = "ຜູ້ສະໜອງ";
   static String p6 = "ປະເພດສິນຄ້າ";
   static String p7 = "ລາຍງານ";
-  static String p8 = "ຮັບຊື້ສິນຄ້າເຂົ້າຮ້ານ";
+  static String p8 = "ຮັບສິນຄ້າເຂົ້າຮ້ານ";
 
   void elementgetcategory(String categorys) {
     category_id = categorys;

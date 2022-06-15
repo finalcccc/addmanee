@@ -42,49 +42,48 @@ class _ManagerOrderByAdminState extends State<ManagerOrderByAdmin> {
         Provider.of<purchase_order_Notifire>(context);
     SupplierNotifire supp = Provider.of<SupplierNotifire>(context);
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('ເລືອກຜູ້ສະໜອງທີ່ສັ່ງຊື້'),
-          centerTitle: true,
-          backgroundColor: element.main,
-          leading: element().RoutePageBack(context, const ManageOrder()),
-        ),
-        body: ListView.builder(
-          itemCount: supp.SuplierList.length,
-          itemBuilder: (context, index) {
-            return Card(
-              margin: const EdgeInsets.all(10),
-              child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: InkWell(
-                    onTap: () async {
-                      supp.CurrentSupplier = supp.SuplierList[index];
-                      await GetPureChaseNoly(
-                          order_admin: orderadmin, supp: supp);
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Show_order_addmin()));
-                    },
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'ຊື່ຜູ້ສະໜອງ:  ${supp.SuplierList[index].name}',
-                            style: const TextStyle(fontSize: 15),
-                          ),
-                          Text(
-                            'ເບີໂທລະສັບ: ${supp.SuplierList[index].tel}',
-                            style: const TextStyle(fontSize: 15),
-                          ),
-                          Text(
-                            'ທີ່ຢູ່: ${supp.SuplierList[index].address}',
-                            style: const TextStyle(fontSize: 15),
-                          )
-                        ]),
-                  )),
-            );
-          },
-        ));
+      appBar: AppBar(
+        title: const Text('ເລືອກຜູ້ສະໜອງທີ່ສັ່ງຊື້'),
+        centerTitle: true,
+        backgroundColor: element.main,
+        leading: element().RoutePageBack(context, const ManageOrder()),
+      ),
+      body: ListView.builder(
+        itemCount: supp.SuplierList.length,
+        itemBuilder: (context, index) {
+          return Card(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            elevation: 5,
+            margin: const EdgeInsets.all(10),
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: InkWell(
+                onTap: () async {
+                  supp.CurrentSupplier = supp.SuplierList[index];
+                  await GetPureChaseNoly(order_admin: orderadmin, supp: supp);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Show_order_addmin()));
+                },
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('ຊື່ຜູ້ສະໜອງ:  ${supp.SuplierList[index].name}',
+                        style: const TextStyle(fontSize: 15)),
+                    Text('ເບີໂທລະສັບ: ${supp.SuplierList[index].tel}',
+                        style: const TextStyle(fontSize: 15)),
+                    Text('ທີ່ຢູ່: ${supp.SuplierList[index].address}',
+                        style: const TextStyle(fontSize: 15)),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
   }
 }
 
@@ -118,6 +117,10 @@ class _Show_order_addminState extends State<Show_order_addmin> {
             return Padding(
               padding: const EdgeInsets.only(top: 10.0),
               child: Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                elevation: 10,
+                margin: const EdgeInsets.all(10),
                 child: Padding(
                     padding: const EdgeInsets.all(10),
                     child: InkWell(
@@ -189,90 +192,95 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
         leading: element().RoutePageBack(context, const Show_order_addmin()),
       ),
       body: Card(
-        margin: const EdgeInsets.all(10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Column(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          elevation: 10,
+          margin: const EdgeInsets.all(10),
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('ຊື່ຜູ້ສະໜອງ:  ${supp.CurrentSupplier!.name}'),
-                Text('ທີ່ຢູ່: ${supp.CurrentSupplier!.address}'),
-                Text('ເບີໂທ: ${supp.CurrentSupplier!.tel}'),
-                Text('ອີເມວ: ${supp.CurrentSupplier!.email}'),
-                Text(
-                    'ວັນທີສັ່ງຊື້: ${orderadmin.Currenorderaddmin!.date!.toDate()}'),
-              ],
-            ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: ListView.builder(
-                itemCount: orderadmin.Productditill.length,
-                itemBuilder: (context, index) {
-                  return orderadmin.Productditill != [] &&
-                          orderadmin.Productditill.length >= 0
-                      ? Column(
-                          children: [
-                            Row(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('ຊື່ຜູ້ສະໜອງ:  ${supp.CurrentSupplier!.name}'),
+                    Text('ທີ່ຢູ່: ${supp.CurrentSupplier!.address}'),
+                    Text('ເບີໂທ: ${supp.CurrentSupplier!.tel}'),
+                    Text('ອີເມວ: ${supp.CurrentSupplier!.email}'),
+                    Text(
+                        'ວັນທີສັ່ງຊື້: ${orderadmin.Currenorderaddmin!.date!.toDate()}'),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: orderadmin.Productditill.length,
+                    itemBuilder: (context, index) {
+                      return orderadmin.Productditill != [] &&
+                              orderadmin.Productditill.length >= 0
+                          ? Column(
                               children: [
-                                Image.network(
-                                    '${orderadmin.Productditill[index].image}',
-                                    width: 100,
-                                    height: 100,
-                                    fit: BoxFit.fill),
-                                const SizedBox(width: 15),
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      const SizedBox(height: 10),
-                                      Text(
-                                          'ຊື່ສິນຄ້າ: ${orderadmin.Productditill[index].nameProduct}'),
-                                      Text(
-                                          'ປະເພດສິນຄ້າ: ${orderadmin.Product_categoryname[index].category}'),
-                                      Text(
-                                          'ຈຳນວນ: ${orderadmin.Dettil[index].amout} ແກັດ'),
-                                    ],
-                                  ),
-                                ),
-                                TextButton(
-                                    onPressed: () {
-                                      orderadmin.Productaddmin =
-                                          orderadmin.Productditill[index];
-                                      _Dialog(
-                                          orderadmin, context, impit_product);
-                                    },
-                                    child: const Text('ເພີ່ມ')),
+                                Row(
+                                  children: [
+                                    Image.network(
+                                        '${orderadmin.Productditill[index].image}',
+                                        width: 100,
+                                        height: 100,
+                                        fit: BoxFit.fill),
+                                    const SizedBox(width: 15),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          const SizedBox(height: 10),
+                                          Text(
+                                              'ຊື່ສິນຄ້າ: ${orderadmin.Productditill[index].nameProduct}'),
+                                          Text(
+                                              'ປະເພດສິນຄ້າ: ${orderadmin.Product_categoryname[index].category}'),
+                                          Text(
+                                              'ຈຳນວນ: ${orderadmin.Dettil[index].amout} ແກັດ'),
+                                        ],
+                                      ),
+                                    ),
+                                    TextButton(
+                                        onPressed: () {
+                                          orderadmin.Productaddmin =
+                                              orderadmin.Productditill[index];
+                                          _Dialog(orderadmin, context,
+                                              impit_product);
+                                        },
+                                        child: const Text('ເພີ່ມ')),
+                                  ],
+                                )
                               ],
                             )
-                          ],
-                        )
-                      : Container();
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                      'ຈຳນວນທັງໝົດ: ${orderadmin.Currenorderaddmin!.amouttotal} ແກັດ'),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(primary: element.main),
-                    child: const Text('ບັນທຶກເປັນພີດີເອຟ'),
-                    onPressed: () async {
-                      permissionCheck();
-                      Bill.save_Bill(orderadmin, context, supp);
+                          : Container();
                     },
                   ),
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                          'ຈຳນວນທັງໝົດ: ${orderadmin.Currenorderaddmin!.amouttotal} ແກັດ'),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(primary: element.main),
+                        child: const Text('ບັນທຶກເປັນພີດີເອຟ'),
+                        onPressed: () async {
+                          permissionCheck();
+                          Bill.save_Bill(orderadmin, context, supp);
+                        },
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          )),
     );
   }
 

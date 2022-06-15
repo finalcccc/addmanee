@@ -1,12 +1,9 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
-import 'package:untitled1/screen/detialOfdata/reportExpenseDay.dart';
-import 'package:untitled1/screen/product_add/reportData.dart';
-import 'package:untitled1/screen/product_add/reportExpense.dart';
+import 'package:untitled1/screen/product_add/reportIncome.dart';
 
 import '../../WidgetSearch/widgetSearch.dart';
 import '../../celement/elements.dart';
+import '../detialOfdata/reportExpenseDay.dart';
 
 class ReportExpenseMonth extends StatefulWidget {
   const ReportExpenseMonth({Key? key}) : super(key: key);
@@ -15,65 +12,78 @@ class ReportExpenseMonth extends StatefulWidget {
   State<ReportExpenseMonth> createState() => _ReportExpenseMonthState();
 }
 
+final List items = List.generate(4, (i) => "Item $i");
+
 class _ReportExpenseMonthState extends State<ReportExpenseMonth> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('ລາຍງານລາຍຈ່າຍເປັນເດືອນ'),
-          centerTitle: true,
-          backgroundColor: element.main,
-          leading: element().RoutePageBack(context, const ReportExpense()),
-          bottom: WidgetSearch(label: "ຄົ້ນຫາຂໍ້ມູນລາຍຈ່າຍເປັນເດືອນ"),
-        ),
-        body: Container(
-            margin: EdgeInsets.only(top: 10),
-            width: double.infinity,
-            height: 120,
-            child: InkWell(
-              child: Card(
-                child: Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: const [
-                          Text(
-                            'ເດືອນ ປີ: 10-2022',
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      Column(
+      appBar: AppBar(
+        title: const Text('ລາຍງານລາຍຈ່າຍປະຈຳເດືອນ'),
+        centerTitle: true,
+        backgroundColor: element.main,
+        leading: element().RoutePageBack(context, const ReportIncome()),
+        bottom: WidgetSearch(label: "ວັນ ເດືອນ ປີ"),
+      ),
+      body: ListView.separated(
+        physics: const BouncingScrollPhysics(),
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          return Container(
+              margin: const EdgeInsets.all(20),
+              child: InkWell(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    const Text(
+                      'ເດືອນ: 01/2022',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    ),
+                    Card(
+                      child: Column(
                         children: [
-                          Row(
-                            children: const [
-                              Text(
-                                'ລາຍຈ່າຍປະຈຳເດືອນທັງໝົດແມ່ນ: ',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              Text(
-                                '9.620.000 ກີບ',
-                                style: TextStyle(fontSize: 16),
-                              ),
-                            ],
+                          ListTile(
+                            title: Text('ວັນທີ: ${index + 1}/01/2022'),
+                            subtitle: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    const Text(
+                                      'ລາຍຈ່າຍທັງໝົດ:',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16),
+                                    ),
+                                    Text(
+                                      ' -${index + 1}.520.000 ກີບ',
+                                      style: const TextStyle(fontSize: 16),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           )
                         ],
-                      )
-                    ],
-                  ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              onTap: () {
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ReportExpenseDay()));
-              },
-            )));
+                onTap: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ReportExpenseDay()));
+                },
+              ));
+        },
+        separatorBuilder: (BuildContext context, int index) {
+          return const Divider(
+            color: Colors.blue,
+          );
+        },
+      ),
+    );
   }
 }
