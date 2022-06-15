@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:untitled1/Order_detill/Bill_Order.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/notifire/OrderNotifire.dart';
 import 'package:intl/intl.dart';
@@ -140,17 +141,17 @@ class _View_orderState extends State<view_order> {
                                             height: 50,
                                             width: 80,
                                             child: Text(
-                                                '${NumberFormat.decimalPattern().format(order.Order_detill[index].Product!.price)}')),
+                                                '${NumberFormat.decimalPattern().format(order.Order_detill[index].Product!.price).toString()}')),
                                         SizedBox(
                                             height: 50,
                                             width: 60,
                                             child: Text(
-                                                '${order.Order_detill[index].amout}')),
+                                                '${NumberFormat.decimalPattern().format(order.Order_detill[index].amout)}')),
                                         SizedBox(
                                             height: 50,
                                             width: 80,
                                             child: Text(
-                                                '${NumberFormat.decimalPattern().format(order.Order_detill[index].sum)}')),
+                                                '${NumberFormat.decimalPattern().format(order.Order_detill[index].sum).toString()}')),
                                       ],
                                     ),
                                   ],
@@ -187,7 +188,9 @@ class _View_orderState extends State<view_order> {
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(primary: element.main),
                   child: const Text('ບັນທຶກເປັນພີດີເອຟ'),
-                  onPressed: () async {},
+                  onPressed: () async {
+                    Bill_Order.save_Bill(order, context);
+                  },
                 ),
               ],
             ),
