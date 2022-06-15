@@ -40,7 +40,7 @@ class _View_orderState extends State<view_order> {
                         Text('ລະຫັດສັ່ງຊື້ : ${order.Curren_Order!.id}',
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16)),
-                        Text('ຂື່ລຸກຄ້າ : ${order.Curren_Order!.nameCutommer}',
+                        Text('ຊື່ລູກຄ້າ : ${order.Curren_Order!.nameCutommer}',
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16)),
                         Text('ເບີໂທ: ${order.Curren_Order!.tel}',
