@@ -34,7 +34,7 @@ class EmployeeData {
     address = value['address'];
     tel = value['tel'];
     position = value['position'];
-    birthday =value[' birthday'];
+    birthday =value['birthday'];
   }
 
   Map<String, dynamic>? toMap() {
