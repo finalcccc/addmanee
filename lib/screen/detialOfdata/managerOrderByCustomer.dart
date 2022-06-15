@@ -100,6 +100,7 @@ class _ManagerOrderByCustomerState extends State<ManagerOrderByCustomer> {
   Widget Staustus(Order_Notifire order, int index) {
     return order.Order[index].Staustus == 'ລໍຖ້າ' ?
     ElevatedButton(onPressed: () {
+      order.Curren_Order = order.Order[index];
        update_Status(order);
     },child: Text('${order.Order[index].Staustus}'),
       style: ElevatedButton.styleFrom(
