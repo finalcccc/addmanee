@@ -214,9 +214,7 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
               child: ListView.builder(
                 itemCount: orderadmin.Dettil.length,
                 itemBuilder: (context, index) {
-                  return orderadmin.Productditill.length != 0 &&
-                          orderadmin.Productditill.length <=
-                              orderadmin.Productditill.length
+                  return orderadmin.Productditill != []&& orderadmin.Productditill.length >= 0
                       ? Column(
                           children: [
                             Row(

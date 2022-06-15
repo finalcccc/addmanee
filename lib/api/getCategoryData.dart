@@ -11,6 +11,7 @@ GetCategoryData(CategoryNotifire cate) async {
       await FirebaseFirestore.instance.collection('categorys').orderBy('category').get();
   cate.cate.clear();
   rfn.docs.forEach((e) {
+    print(e.data());
     CategoryData f = CategoryData.frommap(e.data());
     cate.cate.add(e['id']);
     category.add(f);

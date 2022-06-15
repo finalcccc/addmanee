@@ -19,7 +19,6 @@ class ViewCategory extends StatefulWidget {
 
 class _ViewCategoryState extends State<ViewCategory> {
   var refreshKey = GlobalKey<RefreshIndicatorState>();
-
   Future dos() async {
     CategoryNotifire category =
         Provider.of<CategoryNotifire>(context, listen: false);

@@ -19,8 +19,8 @@ import 'package:untitled1/common/Product_for_purchase_.dart';
 import 'package:untitled1/screen/product_add/appProduct.dart';
 import 'package:untitled1/route/router.dart';
 import 'package:untitled1/screen/product_add/supplier_add.dart';
-import 'package:untitled1/screen/showDataFromFirebase/viewSupplier.dart';
 import 'notifire/productNotifire.dart';
+import 'screen/detialOfdata/managerOrderByAdmin.dart';
 import 'screen/product_add/registerEmployee.dart';
 import 'screen/splashScreen .dart';
 
@@ -66,7 +66,7 @@ class MyApp extends StatelessWidget {
         route.suppliyer: (BuildContext context) => const SupplierTapbar(),
         route.product_type: (BuildContext context) => const ProductTypeTapbar(),
         route.reportData: (BuildContext context) => const ReportData(),
-        route.ManagerOrderByAdmin: (BuildContext context) => const ManagerOrderByAdmin(),
+        route.MnagerOrderByAdmin: (BuildContext context) => const ManagerOrderByAdmin(),
         route.Cart: (BuildContext context) => const Cart(),
       },
     );

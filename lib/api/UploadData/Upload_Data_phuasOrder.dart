@@ -51,6 +51,7 @@ GetPureChaseNoly({required purchase_order_Notifire? order_admin,required Supplie
 Future GetDetill({required purchase_order_Notifire? order_admin})async{
  List<CartModel> _Detilmo =[];
  List<product_Model> prodetill =[];
+
  QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
      .collection('purchase_order')
      .where('date', isEqualTo: order_admin!.Currenorderaddmin!.date)
@@ -78,16 +79,18 @@ Future GetDetill({required purchase_order_Notifire? order_admin})async{
     rfn.docs.forEach((element) {
       CategoryData c = CategoryData.frommap(element.data());
      order_admin.Product_categoryname.add(c);
-    });
+
 
    });
   });
  }
  );
- Timer(
-     const Duration(seconds: 1),
-         (){ order_admin.Refresh();});
- order_admin.Productditill = prodetill;
- order_admin.Dettil =_Detilmo;
+  Timer(const Duration(seconds: 1), (){
+   order_admin.Productditill = prodetill;
+   order_admin.Dettil =_Detilmo;
+   order_admin.Refresh();
+  });
+
+ });
 
 }

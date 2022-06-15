@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/Order_detill/View_order_cutommer.dart';
+import 'package:untitled1/api/get_Order.dart';
 import 'package:untitled1/notifire/OrderNotifire.dart';
 import 'package:untitled1/screen/manageOrder.dart';
 import 'package:untitled1/celement/elements.dart';
@@ -37,6 +38,8 @@ class _ManagerOrderByCustomerState extends State<ManagerOrderByCustomer> {
                   padding: const EdgeInsets.all(10),
                   child: InkWell(
                     onTap: () async {
+                      order.Curren_Order=order.Order[index];
+                      Get_Order_Detlill(order);
                       Navigator.push(context, MaterialPageRoute(builder: (context) => view_order()));
                     },
                     child: Column(
