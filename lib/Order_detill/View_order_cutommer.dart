@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types
+// ignore_for_file: camel_case_types, unnecessary_string_interpolations
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -33,29 +33,78 @@ class _View_orderState extends State<view_order> {
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('ລະຫັດສັ່ງຊື້ : ${order.Curren_Order!.id}',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16)),
-                        Text('ຊື່ລູກຄ້າ : ${order.Curren_Order!.nameCutommer}',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16)),
-                        Text('ເບີໂທ: ${order.Curren_Order!.tel}',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16)),
-                        Text('ທີ່ຢຸ່ : ${order.Curren_Order!.address}',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16)),
-                        Text('ຊື່ພະນັກງານ: ${order.emp_Ooder!.name}',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16)),
-                        Text('ວັນທີ: ${order.Curren_Order!.date!.toDate()}',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16)),
+                        Row(
+                          children: [
+                            const Text('ລະຫັດສັ່ງຊື້ :',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 16)),
+                            Text(
+                              ' ${order.Curren_Order!.id}',
+                              style: const TextStyle(fontSize: 16),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            const Text('ຊື່ລູກຄ້າ :',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 16)),
+                            Text(
+                              ' ${order.Curren_Order!.nameCutommer}',
+                              style: const TextStyle(fontSize: 16),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            const Text(
+                              'ເບີໂທ: ',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
+                            Text('${order.Curren_Order!.tel}',
+                                style: const TextStyle(fontSize: 16)),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            const Text(
+                              'ວັນທີ: ',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                                '${order.Curren_Order!.date!.toDate().toString().substring(0, 10)}',
+                                style: const TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold)),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            const Text(
+                              'ທີ່ຢຸ່ :',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
+                            Text(' ${order.Curren_Order!.address}',
+                                style: const TextStyle(fontSize: 16)),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            const Text(
+                              'ຊື່ພະນັກງານ:',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16),
+                            ),
+                            Text(' ${order.emp_Ooder!.name}',
+                                style: const TextStyle(fontSize: 16)),
+                          ],
+                        ),
                       ],
                     ),
                   ],
@@ -173,21 +222,40 @@ class _View_orderState extends State<view_order> {
               children: [
                 Column(
                   children: [
-                    Text(
-                      'ຈຳນວນລວມ : ${order.Curren_Order!.amouttotal} ເເກັດ',
-                      style:
-                          TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                    Row(
+                      children: [
+                        const Text(
+                          'ຈຳນວນລວມ :',
+                          style: TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          ' ${order.Curren_Order!.amouttotal} ເເກັດ',
+                          style: const TextStyle(fontSize: 17),
+                        ),
+                      ],
                     ),
-                    Text(
-                      ' ລາຄາລວມ : ${NumberFormat.decimalPattern().format(order.Curren_Order!.sumtotal)} ກີບ',
-                      style:
-                          TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-                    ),
+                    Row(
+                      children: [
+                        const Text(
+                          ' ລາຄາລວມ :',
+                          style: TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          ' ${NumberFormat.decimalPattern().format(order.Curren_Order!.sumtotal)} ກີບ',
+                          style: const TextStyle(fontSize: 17),
+                        ),
+                      ],
+                    )
                   ],
                 ),
                 ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: element.main),
-                  child: const Text('ບັນທຶກເປັນພີດີເອຟ'),
+                  style: ElevatedButton.styleFrom(
+                      primary: element.main,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                  child: const Text('ບັນທຶກເປັນພີດີເອຟ',style: TextStyle(fontSize: 17),),
                   onPressed: () async {
                     Bill_Order.save_Bill(order, context);
                   },

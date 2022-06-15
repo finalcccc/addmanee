@@ -34,7 +34,7 @@ class CategoryDialog {
                                     initialValue: '',
                                     decoration: const InputDecoration(
                                       hintText: "ປະເພດສິນຄ້າ",
-                                      prefixIcon: Icon(Icons.person),
+                                      prefixIcon: Icon(Icons.category),
                                     ),
                                     onSaved: (value) {},
                                     validator: (cost) {

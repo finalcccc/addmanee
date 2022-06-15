@@ -1,15 +1,13 @@
-// ignore_for_file: non_constant_identifier_names, await_only_futures, avoid_print, unnecessary_string_interpolations, unnecessary_brace_in_string_interps
+// ignore_for_file: non_constant_identifier_names, await_only_futures, avoid_print, unnecessary_string_interpolations, unnecessary_brace_in_string_interps, camel_case_types, depend_on_referenced_packages
 
 import 'dart:math';
 import 'package:flutter/services.dart';
 import 'package:pdf/pdf.dart';
 import 'package:open_file/open_file.dart';
 import 'package:untitled1/notifire/OrderNotifire.dart';
-import 'package:untitled1/notifire/purchase_order_Notifire.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'dart:io';
 import 'package:intl/intl.dart';
-import 'package:untitled1/notifire/supplierNotifire.dart';
 
 class Bill_Order {
   static save_Bill(Order_Notifire order, context) async {
@@ -84,7 +82,7 @@ class Bill_Order {
                               fontWeight: pw.FontWeight.bold,
                               fontSize: 15)),
                       pw.Text('.........................................'),
-                      pw.Text('ລາຍເຊັນ ຮັບເຄຶອງ',
+                      pw.Text('ລາຍເຊັນ ຮັບເຄື່ອງ',
                           style: pw.TextStyle(
                               font: ttf,
                               fontWeight: pw.FontWeight.bold,
@@ -129,7 +127,7 @@ class Bill_Order {
                 pw.Text('${order.Curren_Order!.id}'),
               ]),
               pw.Row(children: [
-                pw.Text('ຊື່ຜູ້ຮັບ:', style: pw.TextStyle(font: ttf)),
+                pw.Text('ຊື່ຜູ້ຮັບ: ', style: pw.TextStyle(font: ttf)),
                 pw.Text('${order.Curren_Order!.nameCutommer}',
                     style: pw.TextStyle(font: ttf)),
               ]),
@@ -155,7 +153,7 @@ class Bill_Order {
               pw.Row(
                 children: [
                   pw.Text(
-                    'ລະຫັດພະນັດງານ',
+                    'ລະຫັດພະນັດງານ: ',
                     style: pw.TextStyle(font: ttf),
                   ),
                   pw.Text('${order.emp_Ooder!.id}'),
@@ -164,7 +162,7 @@ class Bill_Order {
               pw.Row(
                 children: [
                   pw.Text(
-                    'ຊື່ພະນັກງານ',
+                    'ຊື່ພະນັກງານ: ',
                     style: pw.TextStyle(font: ttf),
                   ),
                   pw.Text('${order.emp_Ooder!.name}',
@@ -175,7 +173,7 @@ class Bill_Order {
               pw.Row(
                 children: [
                   pw.Text(
-                    'ເບີໂທ',
+                    'ເບີໂທ: ',
                     style: pw.TextStyle(font: ttf),
                   ),
                   pw.Text('${order.emp_Ooder!.tel}',
@@ -186,7 +184,7 @@ class Bill_Order {
               pw.Row(
                 children: [
                   pw.Text(
-                    'ອີເມວ',
+                    'ອີເມວ: ',
                     style: pw.TextStyle(font: ttf),
                   ),
                   pw.Text('${order.emp_Ooder!.email}'),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/celement/elements.dart';
+import 'package:untitled1/screen/showDataFromFirebase/reportExpenseMonth.dart';
 import 'package:untitled1/screen/showDataFromFirebase/reportIncomeMonth.dart';
 
 import '../menu.dart';
@@ -50,7 +51,12 @@ class _ReportDataState extends State<ReportData> {
                 width: double.infinity,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(primary: element.main),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ReportExpenseMonth()));
+                  },
                   child: const Text(
                     'ລາຍງານລາຍຈ່າຍ',
                     style: TextStyle(fontSize: 17),

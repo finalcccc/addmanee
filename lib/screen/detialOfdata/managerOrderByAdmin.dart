@@ -174,8 +174,6 @@ class Detellorder_addmid extends StatefulWidget {
 }
 
 class _Detellorder_addmidState extends State<Detellorder_addmid> {
-
-
   @override
   Widget build(BuildContext context) {
     purchase_order_Notifire orderadmin =
@@ -211,7 +209,8 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
               child: ListView.builder(
                 itemCount: orderadmin.Productditill.length,
                 itemBuilder: (context, index) {
-                  return orderadmin.Productditill != []&& orderadmin.Productditill.length >= 0
+                  return orderadmin.Productditill != [] &&
+                          orderadmin.Productditill.length >= 0
                       ? Column(
                           children: [
                             Row(
@@ -313,146 +312,151 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
   _Dialog(purchase_order_Notifire orderaddmin, context,
       importproductNotifire improtduct) {
     return showDialog(
-      context: context,
-      builder: (context) => SingleChildScrollView(
-        child: AlertDialog(
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.indeterminate_check_box_outlined,
-                  color: Colors.red, size: 30),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-            Column(
-              children: [
-                Form(
-                  key: _key_import,
-                  child: Container(
-                    width: 400,
-                    height: 350,
-                    child: Card(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Text(
-                            'ເພີ່ມສິນຄ້າຜູ້ສະໜອງ',
-                            style: TextStyle(fontSize: 20),
-                          ),
-
-                          const SizedBox(height: 10),
-                          Text(
-                            'ຊື່ສິນຄ້າ:  ${orderaddmin.Productaddmin!.nameProduct}',
-                            style: const TextStyle(fontSize: 15),
-                          ),
-                          const SizedBox(height: 25),
-                          ////////////////////////////////////////////////
-                          TextFormField(
-                            decoration: InputDecoration(
-                              hintText: "ລາຄາທືນ",
-                              fillColor: Theme.of(context)
-                                  .primaryColor
-                                  .withOpacity(0.1),
-                              filled: true,
-                              prefixIcon: const Icon(Icons.price_check),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide.none,
-                              ),
-                            ),
-                            keyboardType: TextInputType.number,
-                            onSaved: (cost) {
-                              setState(() {
-                                costs = int.parse(cost!);
-                              });
-                            },
-                            validator: (cost) {
-                              if (cost!.isEmpty) {
-                                return "ກະລຸນາປ້ອນຂໍ້ມູນ";
-                              } else if (cost.length < 4) {
-                                return "ກວດສວບລາຄາ";
-                              }
-                              return null;
-                            },
-                            onTap: () {
-                              setState(() {
-                                amoutall = costs! * amouts!;
-                              });
-                            },
-                          ),
-                          const SizedBox(height: 10),
-                          /////////////////////////////////////////
-                          TextFormField(
-                            decoration: InputDecoration(
-                              hintText: "ຈຳນວນ",
-                              fillColor: Theme.of(context)
-                                  .primaryColor
-                                  .withOpacity(0.1),
-                              filled: true,
-                              prefixIcon: const Icon(Icons.numbers),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide.none,
-                              ),
-                            ),
-                            keyboardType: TextInputType.number,
-                            onSaved: (amout) {
-                              setState(() {
-                                amouts = int.parse(amout!);
-                              });
-                            },
-                            validator: (amout) {
-                              if (amout!.isEmpty) {
-                                return "ກະລຸນາປ້ອນຂໍ້ມູນ";
-                              } else if (amout.length < 1) {
-                                return "ກວດສວບລາຄາ";
-                              }
-                              return null;
-                            },
-                          ),
-                          // const SizedBox(height: 10),
-                          // Text('ລາຄາລວມ : ${amoutall}ຂອງສິນຄ້າ'),
-                          const SizedBox(height: 40),
-
-                          Container(
-                            width: 300,
-                            height: 50,
-                            child: ElevatedButton(
-                              child: const Text('ບັນທືກ'),
-                              onPressed: () async {
-                                if (_key_import.currentState!.validate()) {
-                                  _key_import.currentState!.save();
-                                  if (costs != null &&
-                                      amouts != null &&
-                                      orderaddmin.Currenorderaddmin != null) {
-                                    improtduct.impt_product =
-                                        await import_products(
-                                            cost: costs,
-                                            amout: amouts,
-                                            amouttotal: costs! * amouts!,
-                                            id_products:
-                                                orderaddmin.Productaddmin!.id,
-                                            id_purchase: orderaddmin
-                                                .Currenorderaddmin!.id);
-                                    improtduct.Refresh();
-                                    Upload_import_product(improtduct);
-                                  } else {
-                                    print('no');
-                                  }
-                                }
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+        context: context,
+        builder: (context) {
+          return Center(
+            child: SingleChildScrollView(
+              child: AlertDialog(
+                actions: [
+                  IconButton(
+                    icon: const Icon(Icons.indeterminate_check_box_outlined,
+                        color: Colors.red, size: 30),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                   ),
-                )
-              ],
-            )
-          ],
-        ),
-      ),
-    );
+                  Column(
+                    children: [
+                      Form(
+                        key: _key_import,
+                        child: Container(
+                          width: 400,
+                          height: 350,
+                          child: Card(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const Text(
+                                  'ເພີ່ມສິນຄ້າຜູ້ສະໜອງ',
+                                  style: TextStyle(fontSize: 20),
+                                ),
+
+                                const SizedBox(height: 10),
+                                Text(
+                                  'ຊື່ສິນຄ້າ:  ${orderaddmin.Productaddmin!.nameProduct}',
+                                  style: const TextStyle(fontSize: 15),
+                                ),
+                                const SizedBox(height: 25),
+                                ////////////////////////////////////////////////
+                                TextFormField(
+                                  decoration: InputDecoration(
+                                    hintText: "ລາຄາທືນ",
+                                    fillColor: Theme.of(context)
+                                        .primaryColor
+                                        .withOpacity(0.1),
+                                    filled: true,
+                                    prefixIcon: const Icon(Icons.price_check),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                  ),
+                                  keyboardType: TextInputType.number,
+                                  onSaved: (cost) {
+                                    setState(() {
+                                      costs = int.parse(cost!);
+                                    });
+                                  },
+                                  validator: (cost) {
+                                    if (cost!.isEmpty) {
+                                      return "ກະລຸນາປ້ອນຂໍ້ມູນ";
+                                    } else if (cost.length < 4) {
+                                      return "ກວດສວບລາຄາ";
+                                    }
+                                    return null;
+                                  },
+                                  onTap: () {
+                                    setState(() {
+                                      amoutall = costs! * amouts!;
+                                    });
+                                  },
+                                ),
+                                const SizedBox(height: 10),
+                                /////////////////////////////////////////
+                                TextFormField(
+                                  decoration: InputDecoration(
+                                    hintText: "ຈຳນວນ",
+                                    fillColor: Theme.of(context)
+                                        .primaryColor
+                                        .withOpacity(0.1),
+                                    filled: true,
+                                    prefixIcon: const Icon(Icons.numbers),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                  ),
+                                  keyboardType: TextInputType.number,
+                                  onSaved: (amout) {
+                                    setState(() {
+                                      amouts = int.parse(amout!);
+                                    });
+                                  },
+                                  validator: (amout) {
+                                    if (amout!.isEmpty) {
+                                      return "ກະລຸນາປ້ອນຂໍ້ມູນ";
+                                    } else if (amout.length < 1) {
+                                      return "ກວດສວບລາຄາ";
+                                    }
+                                    return null;
+                                  },
+                                ),
+                                // const SizedBox(height: 10),
+                                // Text('ລາຄາລວມ : ${amoutall}ຂອງສິນຄ້າ'),
+                                const SizedBox(height: 40),
+
+                                Container(
+                                  width: 300,
+                                  height: 50,
+                                  child: ElevatedButton(
+                                    child: const Text('ບັນທືກ'),
+                                    onPressed: () async {
+                                      if (_key_import.currentState!
+                                          .validate()) {
+                                        _key_import.currentState!.save();
+                                        if (costs != null &&
+                                            amouts != null &&
+                                            orderaddmin.Currenorderaddmin !=
+                                                null) {
+                                          improtduct.impt_product =
+                                              await import_products(
+                                                  cost: costs,
+                                                  amout: amouts,
+                                                  amouttotal: costs! * amouts!,
+                                                  id_products: orderaddmin
+                                                      .Productaddmin!.id,
+                                                  id_purchase: orderaddmin
+                                                      .Currenorderaddmin!.id);
+                                          improtduct.Refresh();
+                                          Upload_import_product(improtduct);
+                                        } else {
+                                          print('no');
+                                        }
+                                      }
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+          );
+        });
   }
 }
