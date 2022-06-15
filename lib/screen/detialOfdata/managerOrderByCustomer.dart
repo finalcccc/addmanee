@@ -40,7 +40,7 @@ class _ManagerOrderByCustomerState extends State<ManagerOrderByCustomer> {
                     onTap: () async {
                       order.Curren_Order=order.Order[index];
                       Get_Order_Detlill(order);
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => view_order()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const view_order()));
                     },
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,9 +60,9 @@ class _ManagerOrderByCustomerState extends State<ManagerOrderByCustomer> {
                           Text('ລາຄາທັ້ງໝົດ: '
                               ' ${order.Order[index].sumtotal} ກີບ'),
 
-                          Text('ຂື່ລຸກຄ້າ: '
+                          Text('ຊື່ລູກຄ້າ: '
                               ' ${order.Order[index].nameCutommer} ແກັດ'),
-                          Text(' ເບີໂທ: '
+                          Text('ເບີໂທ: '
                               ' ${order.Order[index].tel} '),
                           Text('ທີ່ຢູ່: '
                               ' ${order.Order[index].address}'),
