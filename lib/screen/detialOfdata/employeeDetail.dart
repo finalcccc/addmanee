@@ -73,6 +73,10 @@ class _EmployeeDetailState extends State<EmployeeDetail> {
                         style: const TextStyle(fontSize: 16),
                       ),
                       Text(
+                        'ຕຳແໜ່ງ: ' + '${employee.CurrentEmployee!.birthday}',
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                      Text(
                         'ທີ່ຢູ່: ' + ' ${employee.CurrentEmployee!.address}',
                         style: const TextStyle(fontSize: 16),
                       ),

@@ -11,6 +11,7 @@ class EmployeeData {
   String? tel;
   String? address;
   String? position;
+  String? birthday;
   Timestamp? date;
   EmployeeData({
     this.id,
@@ -21,6 +22,7 @@ class EmployeeData {
     this.address,
     this.position,
     this.tel,
+    this.birthday
   });
   static List<String> positoin = ['Admin', 'Sale'];
   EmployeeData.frommap(Map<String, dynamic> value) {
@@ -32,6 +34,7 @@ class EmployeeData {
     address = value['address'];
     tel = value['tel'];
     position = value['position'];
+    birthday =value[' birthday'];
   }
 
   Map<String, dynamic>? toMap() {
@@ -44,7 +47,8 @@ class EmployeeData {
       'address': address,
       'tel': tel,
       'position': position,
-      'date': Timestamp.now()
+      'date': Timestamp.now(),
+      'birthday':birthday,
     };
   }
 }

@@ -1,11 +1,14 @@
 // ignore_for_file: camel_case_types
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class import_products {
   String? id_purchase;
   String? id_products;
   num? amout ;
   num? cost;
   num? amouttotal;
+  Timestamp? date;
   import_products({this.amout,this.id_products,this.id_purchase,this.cost,this.amouttotal});
 
   Map<String, dynamic> toMap() {
@@ -15,6 +18,7 @@ class import_products {
       'cost': cost,
       'amout': amout,
       'amouttotal': amouttotal,
+       'date': Timestamp.now()
     };
   }
 }
