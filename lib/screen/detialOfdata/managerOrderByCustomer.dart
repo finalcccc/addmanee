@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/Order_detill/View_order_cutommer.dart';
+import 'package:untitled1/api/Update%20status/Status.dart';
 import 'package:untitled1/api/get_Order.dart';
 import 'package:untitled1/notifire/OrderNotifire.dart';
 import 'package:untitled1/screen/manageOrder.dart';
@@ -52,16 +53,21 @@ class _ManagerOrderByCustomerState extends State<ManagerOrderByCustomer> {
                               ),
                                 SizedBox(width: 30),
                                 Text(
-                                  '${order.Order[index].date!.toDate().toString().substring(0, 10)}',
+                                  '${order.Order[index].date!
+                                      .toDate()
+                                      .toString()
+                                      .substring(0, 10)}',
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16),
                                 ),
+
                               ],
                             ),
-
+                            Staustus(order, index),
                             Text(
-                              'ຊື່ລູກຄ້າ: ${order.Order[index].nameCutommer} ແກັດ',
+                              'ຊື່ລູກຄ້າ: ${order.Order[index]
+                                  .nameCutommer} ແກັດ',
                               style: const TextStyle(fontSize: 16),
                             ),
                             Text(
@@ -69,15 +75,18 @@ class _ManagerOrderByCustomerState extends State<ManagerOrderByCustomer> {
                               style: const TextStyle(fontSize: 16),
                             ),
                             Text(
-                              'ຈຳນວນ: ${order.Order[index].Ditell.length} ລາຍການ',
+                              'ຈຳນວນ: ${order.Order[index].Ditell
+                                  .length} ລາຍການ',
                               style: const TextStyle(fontSize: 16),
                             ),
                             Text(
-                              'ຈຳນວນທັງໝົດ: ${order.Order[index].amouttotal} ແກັດ',
+                              'ຈຳນວນທັງໝົດ: ${order.Order[index]
+                                  .amouttotal} ແກັດ',
                               style: const TextStyle(fontSize: 16),
                             ),
                             Text(
-                              'ລາຄາລວມ: ${NumberFormat.decimalPattern().format(order.Order[index].sumtotal)} ກີບ',
+                              'ລາຄາລວມ: ${NumberFormat.decimalPattern().format(
+                                  order.Order[index].sumtotal)} ກີບ',
                               style: const TextStyle(fontSize: 16),
                             ),
                           ]),
@@ -86,5 +95,20 @@ class _ManagerOrderByCustomerState extends State<ManagerOrderByCustomer> {
             );
           },
         ));
+  }
+
+  Widget Staustus(Order_Notifire order, int index) {
+    return order.Order[index].Staustus == 'ລໍຖ້າ' ?
+    ElevatedButton(onPressed: () {
+       update_Status(order);
+    },child: Text('${order.Order[index].Staustus}'),
+      style: ElevatedButton.styleFrom(
+        primary: Colors.red,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+       ),) :
+    ElevatedButton(onPressed: () {},child: Text('${order.Order[index].Staustus}'), style: ElevatedButton.styleFrom(
+      primary: Colors.green,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+    ),);
   }
 }
