@@ -65,7 +65,7 @@ class _CategoryDetailState extends State<CategoryDetail> {
                             height: 50,
                             child: ElevatedButton(
                                 onPressed: () {
-                                //  CategoryDialog().Dialog(context);
+                                 CategoryDialog().Dialog(context);
                                 },
                                 child: const Text(
                                   'ແກ້ໄຂ',

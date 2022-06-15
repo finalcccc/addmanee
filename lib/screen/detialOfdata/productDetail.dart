@@ -6,6 +6,8 @@ import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewProduct.dart';
 
+import '../../dialog/dialog_product.dart';
+
 class ProductDetail extends StatefulWidget {
   const ProductDetail({Key? key}) : super(key: key);
 
@@ -26,49 +28,70 @@ class _ProductDetailState extends State<ProductDetail> {
       ),
       body: SingleChildScrollView(
         child: Card(
-          margin: const EdgeInsets.all(10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.network(
-                '${product.CurrentProduct!.image}',
-                height: 200,
-                fit: BoxFit.cover,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            margin: const EdgeInsets.all(20),
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.network(
+                    '${product.CurrentProduct!.image}',
+                    height: 200,
+                    fit: BoxFit.cover,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10, left: 10),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'ລະຫັດສິນຄ້າ: ${product.CurrentProduct!.id}',
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                        Text(
+                            'ປະເພດສິນຄ້າ: ${product.CurrentProduct!.category_id}',
+                            style: const TextStyle(fontSize: 16)),
+                        Text(
+                            'ຊື່ສິນຄ້າ: ${product.CurrentProduct!.nameProduct}',
+                            style: const TextStyle(fontSize: 16)),
+                        Text(
+                            'ຈຳນວນສິນຄ້າ: ${product.CurrentProduct!.amount} ແພັກ',
+                            style: const TextStyle(fontSize: 16)),
+                        Text('ລາຄາຂາຍ: ${product.CurrentProduct!.price} ກີບ',
+                            style: const TextStyle(fontSize: 16)),
+                        Text('ລາຍລະອຽດ: ${product.CurrentProduct!.description}',
+                            style: const TextStyle(fontSize: 16)),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 60),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 30),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 300,
+                          height: 50,
+                          color: Colors.blue,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              ProductDialog().Dialog(context);
+                            },
+                            child: const Text(
+                              'ແກ້ໄຂ',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  )
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 10, left: 10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('ລະຫັດສິນຄ້າ:' + ' ${product.CurrentProduct!.id}'),
-                    Text(
-                        'ປະເພດສິນຄ້າ:' + ' ${product.CurrentProduct!.category_id}'),
-                    Text('ຊື່ສິນຄ້າ:' +
-                        ' ${product.CurrentProduct!.nameProduct}'),
-                    Text('ຈຳນວນສິນຄ້າ:' +
-                        ' ${product.CurrentProduct!.amount}' +
-                        ' ແພັກ'),
-                    Text('ລາຄາຂາຍ:' + ' ${product.CurrentProduct!.price}'),
-                    Text('ລາຍລະອຽດ: ' +
-                        ' ${product.CurrentProduct!.description}'),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 250),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    IconButton(onPressed: () {}, icon: const Icon(Icons.edit)),
-                    IconButton(onPressed: () {}, icon: const Icon(Icons.delete))
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
+            )),
       ),
     );
   }
