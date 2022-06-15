@@ -80,7 +80,7 @@ class _EmployeeDetailState extends State<EmployeeDetail> {
                         'ທີ່ຢູ່: ' + ' ${employee.CurrentEmployee!.address}',
                         style: const TextStyle(fontSize: 16),
                       ),
-                      const SizedBox(height: 100),
+                      const SizedBox(height: 70),
                       SizedBox(
                         width: double.infinity,
                         child: Row(

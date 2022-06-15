@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/celement/elements.dart';
+import 'package:untitled1/screen/product_add/reportExpense.dart';
+import 'package:untitled1/screen/product_add/reportIncome.dart';
 import 'package:untitled1/screen/showDataFromFirebase/reportExpenseMonth.dart';
 import 'package:untitled1/screen/showDataFromFirebase/reportIncomeMonth.dart';
 
@@ -38,7 +40,7 @@ class _ReportDataState extends State<ReportData> {
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const ReportIncomeMonth()));
+                              builder: (context) => const ReportIncome()));
                     },
                     child: const Text(
                       'ລາຍງານລາຍຮັບ',
@@ -55,7 +57,7 @@ class _ReportDataState extends State<ReportData> {
                     Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const ReportExpenseMonth()));
+                            builder: (context) => const ReportExpense()));
                   },
                   child: const Text(
                     'ລາຍງານລາຍຈ່າຍ',
