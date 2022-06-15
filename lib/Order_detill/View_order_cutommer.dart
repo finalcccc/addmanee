@@ -36,7 +36,7 @@ class _View_orderState extends State<view_order> {
                     Text('ຂື່ລຸກຄ້າ : ${order.Curren_Order!.nameCutommer}',style: TextStyle(fontWeight: FontWeight.bold,fontSize:16)),
                     Text('ເບີໂທ: ${order.Curren_Order!.tel}',style: TextStyle(fontWeight: FontWeight.bold,fontSize:16)),
                     Text('ທີ່ຢຸ່ : ${order.Curren_Order!.address}',style: TextStyle(fontWeight: FontWeight.bold,fontSize:16)),
-                    Text('ລະຫັດພະນັກງານ: ${order.emp_Ooder!.name}',style: TextStyle(fontWeight: FontWeight.bold,fontSize:16)),
+                    Text('ຊື່ພະນັກງານ: ${order.emp_Ooder!.name}',style: TextStyle(fontWeight: FontWeight.bold,fontSize:16)),
                     Text('ວັນທີ: ${order.Curren_Order!.date!.toDate()}',style: TextStyle(fontWeight: FontWeight.bold,fontSize:16)),
                   ],
                 ),

@@ -174,10 +174,7 @@ class Detellorder_addmid extends StatefulWidget {
 }
 
 class _Detellorder_addmidState extends State<Detellorder_addmid> {
-  @override
-  initState() {
-    super.initState();
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -212,7 +209,7 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
             const SizedBox(height: 20),
             Expanded(
               child: ListView.builder(
-                itemCount: orderadmin.Dettil.length,
+                itemCount: orderadmin.Productditill.length,
                 itemBuilder: (context, index) {
                   return orderadmin.Productditill != []&& orderadmin.Productditill.length >= 0
                       ? Column(
