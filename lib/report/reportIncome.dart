@@ -1,11 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:untitled1/screen/product_add/reportData.dart';
-import 'package:untitled1/screen/showDataFromFirebase/reportIncomeMonth.dart';
+import 'package:untitled1/report/reportData.dart';
+import 'package:untitled1/report/reportIncomeMonth.dart';
 
-import '../../WidgetSearch/widgetSearch.dart';
-import '../../celement/elements.dart';
+import '../WidgetSearch/widgetSearch.dart';
+import '../celement/elements.dart';
 
 class ReportIncome extends StatefulWidget {
   const ReportIncome({Key? key}) : super(key: key);
@@ -32,7 +32,7 @@ class _ReportIncomeState extends State<ReportIncome> {
         itemCount: items.length,
         itemBuilder: (context, index) {
           return Container(
-              margin: EdgeInsets.all(10),
+              margin: EdgeInsets.only(right: 10,left: 10),
               child: InkWell(
                 child: Card(
                   child: Column(
@@ -60,9 +60,10 @@ class _ReportIncomeState extends State<ReportIncome> {
                                         fontSize: 16),
                                   ),
                                   Text(
-                                    ' ${index+2}0.520.000 ກີບ',
-                                    style: TextStyle(fontSize: 16),
+                                    ' ${index+2}0.520.000 ',
+                                    style: TextStyle(fontSize: 16,color: element.main),
                                   ),
+                                  Text('ກີບ',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),)
                                 ],
                               ),
                             ],
@@ -79,9 +80,7 @@ class _ReportIncomeState extends State<ReportIncome> {
               ));
         },
         separatorBuilder: (BuildContext context, int index) {
-          return Divider(
-            color: Colors.blue,
-          );
+          return SizedBox();
         },
       ),
     );

@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:untitled1/screen/showDataFromFirebase/reportIncomeMonth.dart';
+import 'package:untitled1/report/reportIncomeMonth.dart';
 
-import '../../WidgetSearch/widgetSearch.dart';
-import '../../celement/elements.dart';
+import '../WidgetSearch/widgetSearch.dart';
+import '../celement/elements.dart';
 
 class ReportIncomeDay extends StatefulWidget {
   const ReportIncomeDay({Key? key}) : super(key: key);

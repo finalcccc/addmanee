@@ -1,9 +1,8 @@
-
 import 'package:flutter/material.dart';
-import 'package:untitled1/screen/product_add/reportData.dart';
-import '../../WidgetSearch/widgetSearch.dart';
-import '../../celement/elements.dart';
-import '../showDataFromFirebase/reportExpenseMonth.dart';
+import 'package:untitled1/report/reportData.dart';
+import '../WidgetSearch/widgetSearch.dart';
+import '../celement/elements.dart';
+import 'reportExpenseMonth.dart';
 
 class ReportExpense extends StatefulWidget {
   const ReportExpense({Key? key}) : super(key: key);
@@ -26,11 +25,11 @@ class _ReportExpenseState extends State<ReportExpense> {
         bottom: WidgetSearch(label: "ວັນ ເດືອນ ປີ"),
       ),
       body: ListView.separated(
-        physics: const  BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         itemCount: items.length,
         itemBuilder: (context, index) {
           return Container(
-              margin: const EdgeInsets.all(10),
+              margin: const EdgeInsets.only(right: 10,left: 10),
               child: InkWell(
                 child: Card(
                   child: Column(
@@ -58,8 +57,17 @@ class _ReportExpenseState extends State<ReportExpense> {
                                         fontSize: 16),
                                   ),
                                   Text(
-                                    ' -${index+1}1.140.000 ກີບ',
-                                    style: const  TextStyle(fontSize: 16),
+                                    ' -${index + 1}1.140.000 ',
+                                    style: const TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.red,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  const Text(
+                                    'ກີບ',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
                                   ),
                                 ],
                               ),
@@ -77,9 +85,7 @@ class _ReportExpenseState extends State<ReportExpense> {
               ));
         },
         separatorBuilder: (BuildContext context, int index) {
-          return const Divider(
-            color: Colors.blue,
-          );
+          return const SizedBox();
         },
       ),
     );

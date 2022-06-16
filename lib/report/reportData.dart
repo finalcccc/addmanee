@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/celement/elements.dart';
-import 'package:untitled1/screen/product_add/reportExpense.dart';
-import 'package:untitled1/screen/product_add/reportIncome.dart';
+import 'package:untitled1/report/reportExpense.dart';
+import 'package:untitled1/report/reportIncome.dart';
 
-import '../menu.dart';
+import '../screen/menu.dart';
 
 class ReportData extends StatefulWidget {
   const ReportData({Key? key}) : super(key: key);
