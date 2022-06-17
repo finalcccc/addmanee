@@ -31,7 +31,8 @@ Future<void> UploadProducts(
     Reference ref = await FirebaseStorage.instance
         .ref()
         .child("image/${nameProduct}${random}");
-    CollectionReference reference = FirebaseFirestore.instance.collection('products');
+    CollectionReference reference =
+        FirebaseFirestore.instance.collection('products');
 
     final metadata = SettableMetadata(
       contentType: 'image/png',
@@ -58,14 +59,15 @@ Future<void> UploadProducts(
 
 String? categorys;
 
-cate(v) {
+Get_Category_Form(v) {
   categorys = v;
 }
 
-AddProductType() async {
+AddCategory() async {
   CategoryData category = CategoryData();
   try {
-    CollectionReference reference = FirebaseFirestore.instance.collection('categorys');
+    CollectionReference reference =
+        FirebaseFirestore.instance.collection('categorys');
     category.category = categorys;
     DocumentReference docid = await reference.add(category.toMap());
     category.id = docid.id;
@@ -77,23 +79,21 @@ AddProductType() async {
 }
 
 AddSupplier(
-
-  SupplierNotifire Supp,
-    {
-      required String? name,
-      required String? email,
-      required String? tel,
-      required String? address,
-      required String? supplyProduct,
-    }
-) async {
+  SupplierNotifire Supp, {
+  required String? name,
+  required String? email,
+  required String? tel,
+  required String? address,
+  required String? supplyProduct,
+}) async {
   SupplierData supp = SupplierData();
-  CollectionReference supplierCollection = FirebaseFirestore.instance.collection("suppliers");
+  CollectionReference supplierCollection =
+      FirebaseFirestore.instance.collection("suppliers");
   supp.name = name;
-  supp.email =email;
+  supp.email = email;
   supp.tel = tel;
   supp.address = address;
-  supp.supplyProduct=supplyProduct;
+  supp.supplyProduct = supplyProduct;
   DocumentReference doid = await supplierCollection.add(supp.toMap());
   supp.id = doid.id;
   print(doid.id);

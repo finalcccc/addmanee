@@ -57,7 +57,8 @@ class element {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
             primary: element.main,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             padding: const EdgeInsets.symmetric(vertical: 16)),
         onPressed: () {
           switch (type) {
@@ -153,10 +154,13 @@ class element {
 
   //CartButton
   static CartButton(BuildContext context, route) {
-      Cartnotifire amoutotal = Provider.of<Cartnotifire>(context);
+    Cartnotifire amoutotal = Provider.of<Cartnotifire>(context);
     return Row(
       children: [
-            Text('${amoutotal.Cartlist.length == 0?'':amoutotal.Cartlist.length}',style: TextStyle(color: Colors.white),),
+        Text(
+          '${amoutotal.Cartlist.length == 0 ? '' : amoutotal.Cartlist.length}',
+          style: const TextStyle(color: Colors.white),
+        ),
         IconButton(
             onPressed: () {
               Navigator.pushNamed(context, route);
@@ -225,7 +229,7 @@ class element {
             case "Products_type":
               {
                 if (v.length < 3) return 'ຊື່ປະເພດສິ້ນຄ້າສັ້ນເກີນໄປ';
-                cate(v);
+                Get_Category_Form(v);
               }
               break;
           }
@@ -238,7 +242,7 @@ class element {
   checkformcategory(GlobalKey<FormState> key) async {
     if (key.currentState!.validate()) {
       key.currentState!.save();
-      AddProductType();
+      AddCategory();
     }
   }
 

@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, avoid_function_literals_in_foreach_calls, avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:untitled1/model/Report_Income_Modle.dart';
 import 'package:untitled1/notifire/Repport_incomNotifire.dart';

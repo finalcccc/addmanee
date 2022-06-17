@@ -52,8 +52,11 @@ class _CategoryDetailState extends State<CategoryDetail> {
                         ),
                       ],
                     ),
-                    Text('ຊື່ປະເພດສິນຄ້າ :' +
-                        ' ${category.CurrentCategory!.category}',style: TextStyle(fontSize: 16),),
+                    Text(
+                      'ຊື່ປະເພດສິນຄ້າ :' +
+                          ' ${category.CurrentCategory!.category}',
+                      style: TextStyle(fontSize: 16),
+                    ),
                     const SizedBox(height: 100),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 10),
@@ -65,7 +68,7 @@ class _CategoryDetailState extends State<CategoryDetail> {
                             height: 50,
                             child: ElevatedButton(
                                 onPressed: () {
-                                 CategoryDialog().Dialog(context);
+                                  CategoryDialog().Dialog(context, category);
                                 },
                                 child: const Text(
                                   'ແກ້ໄຂ',

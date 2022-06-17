@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_function_literals_in_foreach_calls, non_constant_identifier_names, unused_local_variable
+// ignore_for_file: avoid_function_literals_in_foreach_calls, non_constant_identifier_names, unused_local_variable, avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -7,8 +7,10 @@ import '../notifire/categoryNotifire.dart';
 
 GetCategoryData(CategoryNotifire cate) async {
   List<CategoryData> category = [];
-  QuerySnapshot<Map<String, dynamic>> rfn =
-      await FirebaseFirestore.instance.collection('categorys').orderBy('category').get();
+  QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
+      .collection('categorys')
+      .orderBy('category')
+      .get();
   cate.cate.clear();
   rfn.docs.forEach((e) {
     print(e.data());
