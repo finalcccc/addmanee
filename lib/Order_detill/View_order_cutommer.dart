@@ -28,16 +28,15 @@ class _View_orderState extends State<view_order> {
         body: Container(
           margin: const EdgeInsets.all(10),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 'ວັນທີ: ${order.Curren_Order!.date!.toDate().toString().substring(0, 10)}',
                 style:
                     const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
-              Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: SingleChildScrollView(
+
+                SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
@@ -108,7 +107,7 @@ class _View_orderState extends State<view_order> {
                         ),
                       ],
                     ),
-                  )),
+                ),
               Padding(
                 padding: const EdgeInsets.only(top: 40),
                 child: SingleChildScrollView(

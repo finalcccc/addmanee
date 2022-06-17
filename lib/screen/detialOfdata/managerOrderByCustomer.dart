@@ -51,19 +51,22 @@ class _ManagerOrderByCustomerState extends State<ManagerOrderByCustomer> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        children: [
-                          Text(
-                            'ລະຫັດ: ${order.Order[index].id}',
-                            style: const TextStyle(fontSize: 16),
-                          ),
-                          const SizedBox(width: 30),
-                          Text(
-                            '${order.Order[index].date!.toDate().toString().substring(0, 10)}',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16),
-                          ),
-                        ],
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            Text(
+                              'ລະຫັດ: ${order.Order[index].id}',
+                              style: const TextStyle(fontSize: 16),
+                            ),
+                            const SizedBox(width: 30),
+                            Text(
+                              '${order.Order[index].date!.toDate().toString().substring(0, 10)}',
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16),
+                            ),
+                          ],
+                        ),
                       ),
                       Text(
                         'ຊື່ລູກຄ້າ: ${order.Order[index].nameCutommer} ແກັດ',
