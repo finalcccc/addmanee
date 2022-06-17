@@ -8,6 +8,7 @@ import 'package:untitled1/report/reportData.dart';
 import 'package:untitled1/report/reportIncomeMonth.dart';
 import '../WidgetSearch/widgetSearch.dart';
 import '../celement/elements.dart';
+import 'package:intl/intl.dart';
 
 
 class ReportIncome extends StatefulWidget {
@@ -29,65 +30,74 @@ class _ReportIncomeState extends State<ReportIncome> {
         centerTitle: true,
         backgroundColor: element.main,
         leading: element().RoutePageBack(context, const ReportData()),
-        bottom: WidgetSearch(label: "ວັນ ເດືອນ ປີ"),
+        bottom: WidgetSearch(label: 'ປີ - ເດືອນ'),
       ),
       body: ListView.separated(
         physics: BouncingScrollPhysics(),
-        itemCount: items.length,
+        itemCount: income.icome.length,
         itemBuilder: (context, index) {
           return Container(
-              margin: EdgeInsets.only(right: 10,left: 10),
+              margin: EdgeInsets.only(right: 10, left: 10),
               child: InkWell(
-                child: Card(
-                  child: Column(
-                    children: [
-                      ListTile(
-                          title: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                'ເດືອນ: 0${index + 1}/2022',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              )
-                            ],
-                          ),
-                          subtitle: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                                children: [
-                                  Row(
-                                    children:  [
-                                      Text(
-                                        'ລາຍຮັບທັງໝົດ:',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16),
-                                      ),
-                                      Text(
-                                        ' ${index+2}0.520.000 ',
-                                        style: TextStyle(fontSize: 16,color: element.main),
-                                      ),
-                                      Text('ກີບ',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),)
-                                    ],
-                                  ),
-                                  Icon(Icons.arrow_forward_ios_sharp,size: 14)
-                                ],
-                              ),
-                            ],
-                          ))
-                    ],
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Card(
+                      child: Column(
+                        children: [
+                          ListTile(
+                            title: Text(
+                                'ວັນທີ: ${income.icome[index].date}'),
+                            subtitle: Column(
+                              crossAxisAlignment:
+                              CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'ລາຍຮັບທັງໝົດ:',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16),
+                                        ),
+                                        Text(
+                                          ' ${NumberFormat.decimalPattern().format(income.icome[index].sumtatall)}',
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              color: element.main,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Text(
+                                          'ກີບ',
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      child:Icon(Icons.arrow_forward_ios_sharp,size: 14),
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
                 onTap: () {
-                  Get_reportl_income(income);
+                //  Get_reportl_income(income);
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const ReportIncomeMonth()));
+                          builder: (context) =>
+                          const ReportIncomeMonth()));
                 },
               ));
         },

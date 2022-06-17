@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/report/reportExpense.dart';
 import 'package:untitled1/report/reportIncome.dart';
 
+import '../api/Getrepoert/get_reportl_income.dart';
+import '../notifire/Repport_incomNotifire.dart';
 import '../screen/menu.dart';
 
 class ReportData extends StatefulWidget {
@@ -15,6 +18,7 @@ class ReportData extends StatefulWidget {
 class _ReportDataState extends State<ReportData> {
   @override
   Widget build(BuildContext context) {
+    report_incomeNotifire income =Provider.of<report_incomeNotifire>(context);
     return Scaffold(
         appBar: AppBar(
           title: const Text('ລາຍງານຂໍ້ມູນ'),
@@ -35,6 +39,7 @@ class _ReportDataState extends State<ReportData> {
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(primary: element.main),
                     onPressed: () {
+                      Get_reportl_income(income);
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(

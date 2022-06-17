@@ -8,10 +8,9 @@ import 'package:untitled1/notifire/Repport_incomNotifire.dart';
 
 Get_reportl_income(report_incomeNotifire imcome)async{
   List<Report_income> m1 =[];
-  num sumtotal_m6=0;
-  num sumtotal_m5=0;
-  String Month6 = '';
-  String Month5 = '';
+  List<num> sumtotal=[0,0,0,0,0,0,0,0,0,0,0,0];
+  List<String> Month=['','','','','','','','','','','',''];
+  int subvalue =10;
   // QuerySnapshot<Map<String,dynamic>> rfn = await FirebaseFirestore.instance.collection("order").where('date',isGreaterThan:DateTime(2022,6,16)).where('date',isLessThanOrEqualTo: DateTime(2022,6,17)).get();
   // m1.clear();
   QuerySnapshot<Map<String,dynamic>> rfn = await FirebaseFirestore.instance.collection("order").where('date',isGreaterThanOrEqualTo:DateTime(2022,1)).get();
@@ -24,74 +23,66 @@ Get_reportl_income(report_incomeNotifire imcome)async{
       String m = g.toDate().toString().substring(6,7);
       switch(m){
         case'12':
-          Timestamp d = element['date'];
-          Month5 = g.toDate().toString().substring(0,7);
-          sumtotal_m5 +=element['sumtotal'];
+          Month[11] = g.toDate().toString().substring(0,subvalue);
+          sumtotal[11]+=element['sumtotal'];
           break;
         case'11':
-          Timestamp d = element['date'];
-          Month5 = g.toDate().toString().substring(0,7);
-          sumtotal_m5 +=element['sumtotal'];
+          Month[10]= g.toDate().toString().substring(0,subvalue);
+          sumtotal[10]+=element['sumtotal'];
           break;
         case'10':
-          Timestamp d = element['date'];
-          Month5 = g.toDate().toString().substring(0,7);
-          sumtotal_m5 +=element['sumtotal'];
+          Month[9] = g.toDate().toString().substring(0,subvalue);
+          sumtotal[9]+=element['sumtotal'];
           break;
         case'9':
-          Timestamp d = element['date'];
-          Month5 = g.toDate().toString().substring(0,7);
-          sumtotal_m5 +=element['sumtotal'];
+          Month[8]= g.toDate().toString().substring(0,subvalue);
+          sumtotal[8]+=element['sumtotal'];
           break;
         case'8':
-          Timestamp d = element['date'];
-          Month5 = g.toDate().toString().substring(0,7);
-          sumtotal_m5 +=element['sumtotal'];
+          Month[7] = g.toDate().toString().substring(0,subvalue);
+          sumtotal[7]+=element['sumtotal'];
           break;
         case'7':
-          Timestamp d = element['date'];
-          Month5 = g.toDate().toString().substring(0,7);
-          sumtotal_m5 +=element['sumtotal'];
+          Month[6] = g.toDate().toString().substring(0,subvalue);
+          sumtotal[6]+=element['sumtotal'];
           break;
         case'6':{
-          Timestamp d = element['date'];
-          Month6 = g.toDate().toString().substring(0,7);
-          sumtotal_m6 +=element['sumtotal'];}
+          Month[5] = g.toDate().toString().substring(0,subvalue);
+          sumtotal[5]+=element['sumtotal'];}
         break;
         case'5':
-          Timestamp d = element['date'];
-          Month5 = g.toDate().toString().substring(0,7);
-          sumtotal_m5 +=element['sumtotal'];
+          Month[4] = g.toDate().toString().substring(0,subvalue);
+          sumtotal[4]+=element['sumtotal'];
           break;
         case'4':{
-          Timestamp d = element['date'];
-          Month6 = g.toDate().toString().substring(0,7);
-          sumtotal_m6 +=element['sumtotal'];}
+          Month[3] = g.toDate().toString().substring(0,subvalue);
+          sumtotal[3]+=element['sumtotal'];}
         break;
         case'3':{
-          Timestamp d = element['date'];
-          Month6 = g.toDate().toString().substring(0,7);
-          sumtotal_m6 +=element['sumtotal'];}
+          Month[2]=g.toDate().toString().substring(0,subvalue);
+          sumtotal[2]+=element['sumtotal'];}
         break;
         case'2':{
-          Timestamp d = element['date'];
-          Month6 = g.toDate().toString().substring(0,7);
-          sumtotal_m6 +=element['sumtotal'];}
+          Month[1] = g.toDate().toString().substring(0,subvalue);
+          sumtotal[1]+=element['sumtotal'];}
         break;
         case'1':{
-          Timestamp d = element['date'];
-          Month6 = g.toDate().toString().substring(0,7);
-          sumtotal_m6 +=element['sumtotal'];
+          Month[0] = g.toDate().toString().substring(0,subvalue);
+          sumtotal[0]+=element['sumtotal'];
         }
       };
-
-
 });
-  Report_income  m5 =Report_income(sumtatall: int.parse(sumtotal_m5.toString()),date: Month5);
-  m1.add(m5);
-  Report_income gg =Report_income(sumtatall: int.parse(sumtotal_m6.toString()),date: Month6);
-  m1.add(gg);
+  int i = 0 ;
+  for(var shan in Month){
+    if(Month[i] != ''){
+      Report_income  m5 =Report_income(sumtatall: int.parse(sumtotal[i].toString()),date: Month[i]);
+      m1.add(m5);
+      imcome.icome=m1;
+      imcome.Refresh();
+    }
+    i++;
+  }
 
-  imcome.icome=m1;
-  imcome.Refresh();
+
+
 }
