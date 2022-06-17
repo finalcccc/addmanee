@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_brace_in_string_interps
 
 import 'package:flutter/material.dart';
-import 'package:untitled1/report/reportIncomeDay.dart';
 import 'package:untitled1/report/reportExpense.dart';
 import 'package:untitled1/report/reportIncome.dart';
 
@@ -86,11 +85,6 @@ class _ReportExpenseMonthState extends State<ReportExpenseMonth> {
                           ],
                         ),
                         onTap: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                  const ReportIncomeDay()));
                         },
                       ));
                 },

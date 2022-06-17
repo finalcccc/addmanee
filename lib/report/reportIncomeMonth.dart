@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled1/report/reportIncomeDay.dart';
 import 'package:untitled1/report/reportIncome.dart';
 
 import '../WidgetSearch/widgetSearch.dart';
@@ -38,9 +37,9 @@ class _ReportIncomeMonthState extends State<ReportIncomeMonth> {
               padding: EdgeInsets.all(10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
+                children:  [
                   Text(
-                    ' ເດືອນ: 1/2022',
+                    ' ເດືອນ: ${income.curren_income!.date!.toDate().toString().substring(0,7)}',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -49,7 +48,7 @@ class _ReportIncomeMonthState extends State<ReportIncomeMonth> {
             Expanded(
               child: ListView.separated(
                 physics: BouncingScrollPhysics(),
-                itemCount: income.icome.length,
+                itemCount: income.icome_day.length,
                 itemBuilder: (context, index) {
                   return Container(
                       margin: EdgeInsets.only(right: 10, left: 10),
@@ -62,7 +61,7 @@ class _ReportIncomeMonthState extends State<ReportIncomeMonth> {
                                 children: [
                                   ListTile(
                                     title: Text(
-                                        'ວັນທີ: ${income.icome[index].date}'),
+                                        'ວັນທີ: ${income.icome_day[index].date!.toDate().toString().substring(0,10)}'),
                                     subtitle: Column(
                                       crossAxisAlignment:
                                       CrossAxisAlignment.start,
@@ -76,7 +75,7 @@ class _ReportIncomeMonthState extends State<ReportIncomeMonth> {
                                                   fontSize: 16),
                                             ),
                                             Text(
-                                              ' ${NumberFormat.decimalPattern().format(income.icome[index].sumtatall)}',
+                                              ' ${NumberFormat.decimalPattern().format(income.icome_day[index].sumtatall)}',
                                               style: TextStyle(
                                                   fontSize: 16,
                                                   color: element.main,
@@ -99,12 +98,7 @@ class _ReportIncomeMonthState extends State<ReportIncomeMonth> {
                           ],
                         ),
                         onTap: () {
-                          Get_reportl_income(income);
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                  const ReportIncomeDay()));
+
                         },
                       ));
                 },

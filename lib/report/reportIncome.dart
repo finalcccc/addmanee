@@ -47,7 +47,7 @@ class _ReportIncomeState extends State<ReportIncome> {
                         children: [
                           ListTile(
                             title: Text(
-                                'ວັນທີ: ${income.icome[index].date}'),
+                                'ວັນທີ: ${income.icome[income.icome.length-index-1].date!.toDate().toString().substring(0,7)}'),
                             subtitle: Column(
                               crossAxisAlignment:
                               CrossAxisAlignment.start,
@@ -64,7 +64,7 @@ class _ReportIncomeState extends State<ReportIncome> {
                                               fontSize: 16),
                                         ),
                                         Text(
-                                          ' ${NumberFormat.decimalPattern().format(income.icome[index].sumtatall)}',
+                                          ' ${NumberFormat.decimalPattern().format(income.icome[income.icome.length-index-1].sumtatall)}',
                                           style: TextStyle(
                                               fontSize: 16,
                                               color: element.main,
@@ -92,7 +92,8 @@ class _ReportIncomeState extends State<ReportIncome> {
                   ],
                 ),
                 onTap: () {
-                //  Get_reportl_income(income);
+                  income.curren_income = income.icome[income.icome.length-index-1];
+                  Get_reportl_income_Month(income);
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
