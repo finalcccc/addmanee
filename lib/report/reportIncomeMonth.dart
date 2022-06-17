@@ -1,11 +1,15 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_brace_in_string_interps
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:untitled1/report/reportIncomeDay.dart';
 import 'package:untitled1/report/reportIncome.dart';
 
 import '../WidgetSearch/widgetSearch.dart';
+import '../api/Getrepoert/get_reportl_income.dart';
 import '../celement/elements.dart';
+import '../notifire/Repport_incomNotifire.dart';
+import 'package:intl/intl.dart';
 
 class ReportIncomeMonth extends StatefulWidget {
   const ReportIncomeMonth({Key? key}) : super(key: key);
@@ -19,6 +23,7 @@ final List items = List.generate(4, (i) => "Item $i");
 class _ReportIncomeMonthState extends State<ReportIncomeMonth> {
   @override
   Widget build(BuildContext context) {
+    report_incomeNotifire income = Provider.of<report_incomeNotifire>(context);
     return Scaffold(
         appBar: AppBar(
           title: const Text('ລາຍງານລາຍຮັບປະຈຳເດືອນ'),
@@ -44,10 +49,10 @@ class _ReportIncomeMonthState extends State<ReportIncomeMonth> {
             Expanded(
               child: ListView.separated(
                 physics: BouncingScrollPhysics(),
-                itemCount: items.length,
+                itemCount: income.icome.length,
                 itemBuilder: (context, index) {
                   return Container(
-                      margin: EdgeInsets.only(right: 10,left: 10),
+                      margin: EdgeInsets.only(right: 10, left: 10),
                       child: InkWell(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
@@ -56,10 +61,11 @@ class _ReportIncomeMonthState extends State<ReportIncomeMonth> {
                               child: Column(
                                 children: [
                                   ListTile(
-                                    title: Text('ວັນທີ: ${index + 1}/01/2022'),
+                                    title: Text(
+                                        'ວັນທີ: ${income.icome[index].date}'),
                                     subtitle: Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      CrossAxisAlignment.start,
                                       children: [
                                         Row(
                                           children: [
@@ -70,10 +76,18 @@ class _ReportIncomeMonthState extends State<ReportIncomeMonth> {
                                                   fontSize: 16),
                                             ),
                                             Text(
-                                              ' ${index + 1}.520.000 ',
-                                              style: TextStyle(fontSize: 16,color: element.main,fontWeight: FontWeight.bold),
+                                              ' ${NumberFormat.decimalPattern().format(income.icome[index].sumtatall)}',
+                                              style: TextStyle(
+                                                  fontSize: 16,
+                                                  color: element.main,
+                                                  fontWeight: FontWeight.bold),
                                             ),
-                                            Text('ກີບ',style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
+                                            Text(
+                                              'ກີບ',
+                                              style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
                                           ],
                                         ),
                                       ],
@@ -85,11 +99,12 @@ class _ReportIncomeMonthState extends State<ReportIncomeMonth> {
                           ],
                         ),
                         onTap: () {
+                          Get_reportl_income(income);
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      const ReportIncomeDay()));
+                                  const ReportIncomeDay()));
                         },
                       ));
                 },
@@ -100,5 +115,4 @@ class _ReportIncomeMonthState extends State<ReportIncomeMonth> {
             )
           ],
         ));
-  }
-}
+  }}

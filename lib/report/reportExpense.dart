@@ -29,7 +29,7 @@ class _ReportExpenseState extends State<ReportExpense> {
         itemCount: items.length,
         itemBuilder: (context, index) {
           return Container(
-              margin: const EdgeInsets.only(right: 10,left: 10),
+            //  margin: const EdgeInsets.only(right: 10,left: 10),
               child: InkWell(
                 child: Card(
                   child: Column(
@@ -46,31 +46,42 @@ class _ReportExpenseState extends State<ReportExpense> {
                             ],
                           ),
                           subtitle: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+
                             children: [
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  const Text(
-                                    'ລາຍຈ່າຍທັງໝົດ:',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16),
+                                  Row(
+                                    children: [
+                                      const Text(
+                                        'ລາຍຈ່າຍທັງໝົດ:',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16),
+                                      ),
+                                      Text(
+                                        ' - ${index + 1}1.140.000 ',
+                                        style: const TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.red,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      const Text(
+                                        'ກີບ',
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
                                   ),
-                                  Text(
-                                    ' -${index + 1}1.140.000 ',
-                                    style: const TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.red,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  const Text(
-                                    'ກີບ',
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold),
-                                  ),
+
+                                  SizedBox(
+                                    child:Icon(Icons.arrow_forward_ios_sharp,size: 14),
+                                  )
+
                                 ],
                               ),
+
                             ],
                           ))
                     ],

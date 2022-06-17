@@ -1,11 +1,14 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:untitled1/api/Getrepoert/get_reportl_income.dart';
+import 'package:untitled1/notifire/Repport_incomNotifire.dart';
 import 'package:untitled1/report/reportData.dart';
 import 'package:untitled1/report/reportIncomeMonth.dart';
-
 import '../WidgetSearch/widgetSearch.dart';
 import '../celement/elements.dart';
+
 
 class ReportIncome extends StatefulWidget {
   const ReportIncome({Key? key}) : super(key: key);
@@ -19,6 +22,7 @@ final List items = List.generate(3, (i) => "Item $i");
 class _ReportIncomeState extends State<ReportIncome> {
   @override
   Widget build(BuildContext context) {
+    report_incomeNotifire income =Provider.of<report_incomeNotifire>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('ລາຍງານລາຍຮັບ'),
@@ -52,18 +56,25 @@ class _ReportIncomeState extends State<ReportIncome> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
-                                children:  [
-                                  Text(
-                                    'ລາຍຮັບທັງໝົດ:',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16),
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                                children: [
+                                  Row(
+                                    children:  [
+                                      Text(
+                                        'ລາຍຮັບທັງໝົດ:',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16),
+                                      ),
+                                      Text(
+                                        ' ${index+2}0.520.000 ',
+                                        style: TextStyle(fontSize: 16,color: element.main),
+                                      ),
+                                      Text('ກີບ',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),)
+                                    ],
                                   ),
-                                  Text(
-                                    ' ${index+2}0.520.000 ',
-                                    style: TextStyle(fontSize: 16,color: element.main),
-                                  ),
-                                  Text('ກີບ',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),)
+                                  Icon(Icons.arrow_forward_ios_sharp,size: 14)
                                 ],
                               ),
                             ],
@@ -72,6 +83,7 @@ class _ReportIncomeState extends State<ReportIncome> {
                   ),
                 ),
                 onTap: () {
+                  Get_reportl_income(income);
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
