@@ -215,9 +215,9 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                 const SizedBox(height: 20),
                 Expanded(
                   child: ListView.builder(
-                    itemCount: orderadmin.Productditill.length,
+                    itemCount: orderadmin.Dettil.length,
                     itemBuilder: (context, index) {
-                      return orderadmin.Productditill != 0 && orderadmin.Productditill.length != 0
+                      return orderadmin.Productditill.length == orderadmin.Dettil.length
                           ? Column(
                               children: [
                                 Row(
@@ -255,7 +255,11 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                                 )
                               ],
                             )
-                          : Container();
+                          :Row(
+                            children: [
+                              CircularProgressIndicator(color: element.main,),
+                            ],
+                          );
                     },
                   ),
                 ),

@@ -26,6 +26,10 @@ class purchase_order_Notifire with ChangeNotifier{
     notifyListeners();
   }
  Refresh(){
+   Order_addmin;
+   Currenorderaddmin;
+   Dettil;
+   Product_categoryname;
    Productditill;
    notifyListeners();
  }

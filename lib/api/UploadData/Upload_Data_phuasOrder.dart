@@ -19,7 +19,7 @@ Upload_Data_phuashOrder(Cartnotifire Cart)async{
 
   CartModelupload Cartm = CartModelupload();
  Cart.Cartlist.forEach((element)async {
-  CartModel m = CartModel(element.Product!.id,element.amout);
+  CartModel m = await CartModel(element.Product!.id,element.amout);
   Cartm.Ditell.add(m.toMap());
 
  });
@@ -39,7 +39,7 @@ GetPureChaseNoly({required purchase_order_Notifire? order_admin,required Supplie
      .where('Supplier_ID', isEqualTo: supp!.CurrentSupplier!.id)
      .get();
  rfn.docs.forEach((element) async{
- CartModelupload Sud = CartModelupload.formMap(element.data());
+ CartModelupload Sud = await CartModelupload.formMap(element.data());
   _Sup.add(Sud);
  }
  );
@@ -75,21 +75,22 @@ Future GetDetill({required purchase_order_Notifire order_admin})async{
         .collection('categorys')
         .where('id', isEqualTo: element.category_id)
         .get();
-    rfn.docs.forEach((element) {
-      CategoryData c = CategoryData.frommap(element.data());
+    rfn.docs.forEach((element) async{
+      CategoryData c = await CategoryData.frommap(element.data());
      order_admin.Product_categoryname.add(c);
-
-
    });
   });
  }
  );
-  Timer(const Duration(seconds: 2), (){
-   order_admin.Refresh();
-  });
-  order_admin.Productditill = prodetill;
-  order_admin.Dettil =_Detilmo;
-
+    fetchUserOrder(order_admin, prodetill, _Detilmo);
  });
 
+}
+Future<void> fetchUserOrder( purchase_order_Notifire order_admin,prodetill,_Detilmo) async {
+ Future.delayed(const Duration(seconds: 1),
+         () {
+          order_admin.Refresh();
+          order_admin.Productditill = prodetill;
+          order_admin.Dettil =_Detilmo;
+         });
 }
