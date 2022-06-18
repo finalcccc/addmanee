@@ -439,7 +439,7 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                                               await import_products(
                                                   cost: costs,
                                                   amout: amouts,
-                                                  amouttotal: costs! * amouts!,
+                                                  sumtotal: costs! * amouts!,
                                                   id_products: orderaddmin
                                                       .Productaddmin!.id,
                                                   id_purchase: orderaddmin

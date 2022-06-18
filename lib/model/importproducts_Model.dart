@@ -7,9 +7,9 @@ class import_products {
   String? id_products;
   num? amout ;
   num? cost;
-  num? amouttotal;
+  num? sumtotal;
   Timestamp? date;
-  import_products({this.amout,this.id_products,this.id_purchase,this.cost,this.amouttotal});
+  import_products({this.amout,this.id_products,this.id_purchase,this.cost,this.sumtotal});
 
   Map<String, dynamic> toMap() {
     return {
@@ -17,7 +17,7 @@ class import_products {
       'id_products': id_products,
       'cost': cost,
       'amout': amout,
-      'amouttotal': amouttotal,
+      'sumtotal': sumtotal,
        'date': Timestamp.now()
     };
   }
