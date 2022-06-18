@@ -68,6 +68,7 @@ class CategoryDialog {
                                           .validate()) {
                                         _key_import.currentState!.save();
                                         UpdateCategory(cate);
+                                        Navigator.pop(context);
                                       }
                                     },
                                   ),

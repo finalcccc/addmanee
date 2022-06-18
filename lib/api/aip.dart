@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, avoid_print, await_only_futures, unnecessary_brace_in_string_interps
+// ignore_for_file: non_constant_identifier_names, avoid_print, await_only_futures, unnecessary_brace_in_string_interps, avoid_types_as_parameter_names
 
 import 'dart:math';
 import 'dart:async';
@@ -8,14 +8,17 @@ import 'dart:io' as io;
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:untitled1/model/product_Model.dart';
 import 'package:untitled1/model/supplier_data.dart';
+import 'package:untitled1/notifire/productNotifire.dart';
 import 'package:untitled1/notifire/supplierNotifire.dart';
 
 import '../model/category_Model.dart';
 
 XFile? image;
 
-Future AddImage() async {
+Future AddImage(ProductNotifire product) async {
   image = await ImagePicker().pickImage(source: ImageSource.gallery);
+  product.ChangeImage = image;
+  product.RefreshProduct();
 }
 
 Future<void> UploadProducts(

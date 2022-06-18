@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 import 'package:untitled1/api/aip.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:untitled1/model/product_Model.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
 import 'package:untitled1/screen/menu.dart';
@@ -44,8 +43,8 @@ class AddProduct extends StatefulWidget {
 }
 
 class _AddProductState extends State<AddProduct> {
-  element elements = element();
   GlobalKey<FormState> Key = GlobalKey<FormState>();
+  element elements = element();
   XFile? images;
   double area = 55;
 
@@ -76,6 +75,7 @@ class _AddProductState extends State<AddProduct> {
   @override
   Widget build(BuildContext context) {
     CategoryNotifire category = Provider.of<CategoryNotifire>(context);
+    ProductNotifire product = Provider.of<ProductNotifire>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('ຂໍ້ມູນສິນຄ້າ'),
@@ -84,13 +84,13 @@ class _AddProductState extends State<AddProduct> {
         leading: element().RoutePageBack(context, const Menu()),
       ),
       body: SingleChildScrollView(
-        child: buildColumn(context, category, set()),
+        child: buildColumn(context, category, set(), product),
       ),
     );
   }
 
   Column buildColumn(
-      BuildContext context, CategoryNotifire cate, void setcate) {
+      BuildContext context, CategoryNotifire cate, void setcate, product) {
     return Column(
       children: <Widget>[
         const SizedBox(
@@ -99,9 +99,8 @@ class _AddProductState extends State<AddProduct> {
         Center(
           child: GestureDetector(
             onTap: () async {
-             await AddImage();
+              await AddImage(product);
               set();
-
               area = 100;
             },
             child: CircleAvatar(
@@ -203,7 +202,7 @@ Container comboboxcontainer(context, CategoryNotifire cate, void setcate) {
 }
 
 DropdownButton<String> dropdownButton(CategoryNotifire cate, void setcate) {
-  int index =0;
+  int index = 0;
   return DropdownButton(
       icon: const Icon(
         Icons.keyboard_arrow_down,

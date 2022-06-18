@@ -78,7 +78,7 @@ class _ProductDetailState extends State<ProductDetail> {
                           color: Colors.blue,
                           child: ElevatedButton(
                             onPressed: () {
-                              ProductDialog().Dialog(context);
+                              ProductDialog().Dialog(context, product);
                             },
                             child: const Text(
                               'ແກ້ໄຂ',
