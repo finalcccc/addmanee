@@ -15,10 +15,14 @@ class ProductNotifire with ChangeNotifier {
   UnmodifiableListView<product_Model> get Products =>
       UnmodifiableListView(Product);
   RefreshProduct() {
-    Product;
     ChangeImage;
+    Product;
     notifyListeners();
   }
+   image(XFile x){
+    ChangeImage =x;
+    notifyListeners();
+   }
 
   getCurrentProduct() {
     CurrentProduct;

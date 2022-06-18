@@ -15,10 +15,9 @@ import '../model/category_Model.dart';
 
 XFile? image;
 
-Future AddImage(ProductNotifire product) async {
-  image = await ImagePicker().pickImage(source: ImageSource.gallery);
-  product.ChangeImage = image;
-  product.RefreshProduct();
+Future<XFile> AddImage() async {
+  image  = await ImagePicker().pickImage(source: ImageSource.gallery);
+  return image!;
 }
 
 Future<void> UploadProducts(

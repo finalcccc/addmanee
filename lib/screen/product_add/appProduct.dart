@@ -99,7 +99,7 @@ class _AddProductState extends State<AddProduct> {
         Center(
           child: GestureDetector(
             onTap: () async {
-              await AddImage(product);
+              await AddImage();
               set();
               area = 100;
             },

@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_adjacent_string_concatenation, prefer_interpolation_to_compose_strings
 
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
@@ -12,10 +13,10 @@ class ProductDetail extends StatefulWidget {
   const ProductDetail({Key? key}) : super(key: key);
 
   @override
-  State<ProductDetail> createState() => _ProductDetailState();
+  State<ProductDetail> createState() => ProductDetailState();
 }
 
-class _ProductDetailState extends State<ProductDetail> {
+class ProductDetailState extends State<ProductDetail> {
   @override
   Widget build(BuildContext context) {
     ProductNotifire product = Provider.of<ProductNotifire>(context);
@@ -78,7 +79,11 @@ class _ProductDetailState extends State<ProductDetail> {
                           color: Colors.blue,
                           child: ElevatedButton(
                             onPressed: () {
-                              ProductDialog().Dialog(context, product);
+                              set(){
+                                ProductDialogState().Dialog(context, product);
+                              }
+
+
                             },
                             child: const Text(
                               'ແກ້ໄຂ',
