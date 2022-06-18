@@ -79,9 +79,8 @@ class ProductDetailState extends State<ProductDetail> {
                           color: Colors.blue,
                           child: ElevatedButton(
                             onPressed: () {
-                              set(){
+
                                 ProductDialogState().Dialog(context, product);
-                              }
 
 
                             },
