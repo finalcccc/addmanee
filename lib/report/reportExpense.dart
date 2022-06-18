@@ -2,9 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:untitled1/api/Getrepoert/get_report_Expanese.dart';
 import 'package:untitled1/api/Getrepoert/get_reportl_income.dart';
 import 'package:untitled1/notifire/Repport_Notifire.dart';
 import 'package:untitled1/report/reportData.dart';
+import 'package:untitled1/report/reportExpenseMonth.dart';
 import 'package:untitled1/report/reportIncomeMonth.dart';
 import '../WidgetSearch/widgetSearch.dart';
 import '../celement/elements.dart';
@@ -92,13 +94,13 @@ class _ReportExpenseState extends State<ReportExpense> {
                   ],
                 ),
                 onTap: () {
-                 // Expanese.expanese = Expanese.expanese[Expanese.icome.length-index-1];
-
+                 Expanese.curren_expanese = Expanese.expanese[Expanese.expanese.length-index-1];
+                     Get_reportl_Expanese_day(Expanese);
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                          const ReportIncomeMonth()));
+                          const  ReportExpenseMonth()));
                 },
               ));
         },

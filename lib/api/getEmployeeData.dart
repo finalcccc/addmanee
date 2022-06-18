@@ -1,8 +1,13 @@
 // ignore_for_file: avoid_function_literals_in_foreach_calls, non_constant_identifier_names, unused_local_variable, avoid_print, file_names
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import '../model/Employee_Model.dart';
 import '../notifire/employeeNotifire.dart';
+import '../screen/login.dart';
+import '../screen/menu.dart';
 
 GetEmployeeData(EmployeeNotifire emp) async {
   List<EmployeeData> employee = [];
@@ -21,7 +26,7 @@ GetEmployeeData(EmployeeNotifire emp) async {
 }
 
 
-GetEmployeeData_only(EmployeeNotifire emp,String email) async {
+GetEmployeeData_only(EmployeeNotifire emp,String email,BuildContext context) async {
   QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
       .collection('employees')
       .where('email',isEqualTo:'${email}')
@@ -29,7 +34,23 @@ GetEmployeeData_only(EmployeeNotifire emp,String email) async {
   rfn.docs.forEach((e) async{
        EmployeeData em =  await EmployeeData.frommap(e.data());
        emp.CurrentEmployee_loco = em;
-       print(emp.CurrentEmployee_loco!.name);
+       if(emp.CurrentEmployee_loco!.position == 'Admin'){
+         formKey.currentState!.reset();
+         Navigator.pushReplacement(
+           context,
+           MaterialPageRoute(
+             builder: (context) => const Menu(),
+           ),
+         );
+       }else if (emp.CurrentEmployee_loco!.position == 'Sale'){
+         Fluttertoast.showToast(
+           msg: "ທ່ານບໍ່ເເມ່ນ Addmin",
+           fontSize: 20,
+           gravity: ToastGravity.CENTER,
+           backgroundColor: Colors.red,
+           textColor: Colors.white,
+         );
+       }
        },
   );
 

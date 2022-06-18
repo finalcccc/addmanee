@@ -130,24 +130,8 @@ class _Login extends State<Login> {
                                     password: employeeData.password!,
                                   ).then((value) {
 
-                                    GetEmployeeData_only(em,employeeData.email!);
-                                    if(em.CurrentEmployee_loco!.position == 'Admin'){
-                                      formKey.currentState!.reset();
-                                      Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => const Menu(),
-                                        ),
-                                      );
-                                    }else if (em.CurrentEmployee_loco!.position == 'Sale'){
-                                      Fluttertoast.showToast(
-                                        msg: "ທ່ານບໍ່ເເມ່ນ Addmin",
-                                        fontSize: 20,
-                                        gravity: ToastGravity.CENTER,
-                                        backgroundColor: Colors.red,
-                                        textColor: Colors.white,
-                                      );
-                                    }
+                                    GetEmployeeData_only(em,employeeData.email!,context);
+
                                   });
                                 } on FirebaseAuthException catch (e) {
                                   // print(e.message);
