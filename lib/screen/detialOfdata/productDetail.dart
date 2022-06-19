@@ -3,7 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:untitled1/api/aip.dart';
 import 'package:untitled1/celement/elements.dart';
+import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewProduct.dart';
 
@@ -20,6 +22,7 @@ class ProductDetailState extends State<ProductDetail> {
   @override
   Widget build(BuildContext context) {
     ProductNotifire product = Provider.of<ProductNotifire>(context);
+    CategoryNotifire cate = Provider.of<CategoryNotifire>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('ລາຍລະອຽດຂອງສິນຄ້າ'),
@@ -80,7 +83,7 @@ class ProductDetailState extends State<ProductDetail> {
                           child: ElevatedButton(
                             onPressed: () {
 
-                                ProductDialogState().Dialog(context, product);
+                                ProductDialogState().Dialog(context: context,product: product,cate: cate);
 
 
                             },

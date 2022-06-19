@@ -25,6 +25,7 @@ class CategoryNotifire with ChangeNotifier {
   }
   SelectType(String? v) {
     categoryType = v;
+
     notifyListeners();
   }
 }

@@ -6,6 +6,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:untitled1/celement/elements.dart';
+import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
 import 'package:untitled1/screen/detialOfdata/productDetail.dart';
 
@@ -13,13 +14,14 @@ import '../api/aip.dart';
 
 
 class ProductDialogState {
+  int index =0;
   Future<XFile> AddImages() async {
     XFile? _image  = await ImagePicker().pickImage(source: ImageSource.gallery);
     return _image!;
   }
   final GlobalKey<FormState> _key_import = GlobalKey<FormState>();
   double area = 55;
-  Dialog(context, ProductNotifire product,)async {
+  Dialog({required context,required ProductNotifire product,required CategoryNotifire cate})async {
     return showDialog(
         context: context,
         builder: (context) {
@@ -31,6 +33,8 @@ class ProductDialogState {
                     icon: const Icon(Icons.indeterminate_check_box_outlined,
                         color: Colors.red, size: 30),
                     onPressed: () {
+                      cate.categoryType =null;
+                       product.CurrentProduct!.category_id=null;
                       product.ChangeImage = null;
                       Navigator.pop(context);
                     },
@@ -54,7 +58,7 @@ class ProductDialogState {
                                         onTap: ()async{
                                          AddImages().then((value) { product.image(value);
                                          Navigator.pop(context);
-                                         ProductDialogState().Dialog(context, product);
+                                         ProductDialogState().Dialog(context: context,product: product,cate: cate);
                                          });
 
                                         },
@@ -161,21 +165,42 @@ class ProductDialogState {
                                       },
                                     ),
                                     const SizedBox(height: 5),
-                                    TextFormField(
-                                      initialValue: product.CurrentProduct!.category_id,
-                                      decoration: const InputDecoration(
-                                        hintText: "ເລືອກປະເພດສິນຄ້າ",
-                                      ),
-                                      onSaved: (_address) {},
-                                      validator: (cost) {
-                                        if (cost!.isEmpty) {
-                                          return "ກະລຸນາປ້ອນຂໍ້ມູນ";
-                                        } else if (cost.length < 4) {
-                                          return "ກວດສວບລາຄາ";
-                                        }
-                                        return null;
-                                      },
-                                    ),
+                            DropdownButton(
+                                icon: const Icon(
+                                  Icons.keyboard_arrow_down,
+                                  size: 30,
+                                ),
+                                borderRadius: BorderRadius.circular(50),
+                                value: cate.categoryType,
+                                isExpanded: true,
+                                underline: const SizedBox(
+                                  height: 4,
+                                  child: Divider(
+                                    indent: 1,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                hint: const Padding(
+                                  padding: EdgeInsets.only(left: 50),
+                                  child: Text("ເລືອກປະເພດສິນຄ້າ"),
+                                ),
+                                // icon: const Icon(Icons.keyboard_arrow_down),
+
+                                items: cate.cate
+                                    .map((e) => DropdownMenuItem(
+                                    value: e,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 20.0),
+                                      child: Text('${cate.categoryList[index++].category}'),
+                                    )))
+                                    .toList(),
+                                onChanged: (String? v) {
+                                  Navigator.pop(context);
+                                  ProductDialogState().Dialog(context: context,product: product,cate: cate);
+                                   cate.SelectType(v);
+                                   product.CurrentProduct!.category_id =v;
+                                   print(product.CurrentProduct!.category_id);
+                                }),
                                     const SizedBox(height: 5),
                                     TextFormField(
                                       initialValue: product.CurrentProduct!.description,
