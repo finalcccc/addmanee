@@ -106,7 +106,7 @@ class ProductDialogState {
                                       ),
                                     ),
                                     TextFormField(
-                                      initialValue: '',
+                                      initialValue: product.CurrentProduct!.nameProduct,
                                       decoration: const InputDecoration(
                                         hintText: "ຊື່ສິນຄ້າ",
                                         prefixIcon: Icon(
@@ -127,7 +127,7 @@ class ProductDialogState {
                                     ),
                                     const SizedBox(height: 5),
                                     TextFormField(
-                                      initialValue: '',
+                                      initialValue: product.CurrentProduct!.price.toString(),
                                       decoration: const InputDecoration(
                                         hintText: "ລາຄາ",
                                         prefixIcon:
@@ -145,7 +145,7 @@ class ProductDialogState {
                                     ),
                                     const SizedBox(height: 5),
                                     TextFormField(
-                                      initialValue: '',
+                                      initialValue: product.CurrentProduct!.amount.toString(),
                                       decoration: const InputDecoration(
                                         hintText: "ຈຳນວນ",
                                         prefixIcon: Icon(Icons.qr_code),
@@ -162,7 +162,7 @@ class ProductDialogState {
                                     ),
                                     const SizedBox(height: 5),
                                     TextFormField(
-                                      initialValue: '',
+                                      initialValue: product.CurrentProduct!.category_id,
                                       decoration: const InputDecoration(
                                         hintText: "ເລືອກປະເພດສິນຄ້າ",
                                       ),
@@ -178,7 +178,7 @@ class ProductDialogState {
                                     ),
                                     const SizedBox(height: 5),
                                     TextFormField(
-                                      initialValue: '',
+                                      initialValue: product.CurrentProduct!.description,
                                       decoration: const InputDecoration(
                                         hintText: "ລາຍລະອຽດ",
                                         prefixIcon: Icon(Icons.details_sharp),

@@ -79,7 +79,7 @@ class _SupplierDetailState extends State<SupplierDetail> {
                          height: 50,
                          child:  ElevatedButton(
                              onPressed:(){
-                               SupplierDialog().Dialog(context);
+                               SupplierDialog().Dialog(context: context,supp: supplier);
                              } ,
                              child: const Text(
                                'ແກ້ໄຂ',

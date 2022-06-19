@@ -1,10 +1,11 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:untitled1/notifire/employeeNotifire.dart';
 
 class EmployeeDialog {
   final GlobalKey<FormState> _key_import = GlobalKey<FormState>();
-  Dialog(context) {
+  Dialog(context,EmployeeNotifire emp) {
     return showDialog(
         context: context,
         builder: (context) {
@@ -31,7 +32,7 @@ class EmployeeDialog {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   TextFormField(
-                                    initialValue: '',
+                                    initialValue: emp.CurrentEmployee!.name,
                                     decoration: const InputDecoration(
                                       hintText: "ຊື່ ແລະ ນາມສະກຸນ",
                                       prefixIcon: Icon(Icons.person),
@@ -48,7 +49,7 @@ class EmployeeDialog {
                                   ),
                                   const SizedBox(height: 5),
                                   TextFormField(
-                                    initialValue: '',
+                                    initialValue: emp.CurrentEmployee!.email,
                                     decoration: const InputDecoration(
                                       hintText: "ອີເມວ",
                                       prefixIcon: Icon(Icons.email),
@@ -67,7 +68,7 @@ class EmployeeDialog {
                                   ////////////////////////////////////////////////
 
                                   TextFormField(
-                                    initialValue: '',
+                                    initialValue: emp.CurrentEmployee!.password,
                                     decoration: const InputDecoration(
                                       hintText: "ລະຫັດ",
                                       prefixIcon: Icon(Icons.lock),
@@ -85,7 +86,7 @@ class EmployeeDialog {
 
                                   const SizedBox(height: 5),
                                   TextFormField(
-                                    initialValue: '',
+                                    initialValue: emp.CurrentEmployee!.tel,
                                     decoration: const InputDecoration(
                                       hintText: "ເບີໂທ",
                                       prefixIcon: Icon(Icons.phone),
@@ -102,7 +103,7 @@ class EmployeeDialog {
                                   ),
                                   const SizedBox(height: 5),
                                   TextFormField(
-                                    initialValue: '',
+                                    initialValue: emp.CurrentEmployee!.birthday,
                                     decoration: const InputDecoration(
                                       hintText: "ວັນ ເດືອນ ປີເກີດ",
                                       prefixIcon: Icon(Icons.people),
@@ -119,7 +120,7 @@ class EmployeeDialog {
                                   ),
                                   const SizedBox(height: 5),
                                   TextFormField(
-                                    initialValue: '',
+                                    initialValue: emp.CurrentEmployee!.position,
                                     decoration: const InputDecoration(
                                       hintText: "ຕຳແໜ່ງ",
                                     ),
@@ -135,7 +136,7 @@ class EmployeeDialog {
                                   ),
                                   const SizedBox(height: 5),
                                   TextFormField(
-                                    initialValue: '',
+                                    initialValue: emp.CurrentEmployee!.address,
                                     decoration: const InputDecoration(
                                       hintText: "ທີ່ຢູ່",
                                       prefixIcon: Icon(Icons.home),

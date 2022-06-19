@@ -91,7 +91,7 @@ class _EmployeeDetailState extends State<EmployeeDetail> {
                               height: 50,
                               child: ElevatedButton(
                                   onPressed: () {
-                                    EmployeeDialog().Dialog(context);
+                                    EmployeeDialog().Dialog(context,employee);
                                   },
                                   child: const Text(
                                     'ແກ້ໄຂ',
