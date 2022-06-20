@@ -33,8 +33,7 @@ Future<void> UploadProducts(
     Reference ref = await FirebaseStorage.instance
         .ref()
         .child("image/${nameProduct}${random}");
-    CollectionReference reference =
-        FirebaseFirestore.instance.collection('products');
+    CollectionReference reference = FirebaseFirestore.instance.collection('products');
 
     final metadata = SettableMetadata(
       contentType: 'image/png',

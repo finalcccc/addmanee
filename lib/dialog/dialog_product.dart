@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:untitled1/api/update_data/update_product.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
@@ -117,9 +118,12 @@ class ProductDialogState {
                                             Icons.production_quantity_limits_sharp),
                                       ),
                                       onChanged: (value) {
-                                        product.RefreshProduct();
+
+                                       product.CurrentProduct!.nameProduct =value;
                                       },
-                                      onSaved: (value) {},
+                                      onSaved: (value) {
+                                        product.CurrentProduct!.nameProduct =value;
+                                      },
                                       validator: (cost) {
                                         if (cost!.isEmpty) {
                                           return "ກະລຸນາປ້ອນຂໍ້ມູນ";
@@ -137,7 +141,13 @@ class ProductDialogState {
                                         prefixIcon:
                                         Icon(Icons.price_check_outlined),
                                       ),
-                                      onSaved: (value) {},
+                                      onChanged: (value) {
+
+                                        product.CurrentProduct!.price =int.parse(value);
+                                      },
+                                      onSaved: (value) {
+                                        product.CurrentProduct!.price =int.parse(value!);
+                                      },
                                       validator: (amout) {
                                         if (amout!.isEmpty) {
                                           return "ກະລຸນາປ້ອນຂໍ້ມູນ";
@@ -154,11 +164,17 @@ class ProductDialogState {
                                         hintText: "ຈຳນວນ",
                                         prefixIcon: Icon(Icons.qr_code),
                                       ),
-                                      onSaved: (_address) {},
+                                      onChanged: (value) {
+
+                                        product.CurrentProduct!.amount =int.parse(value);
+                                      },
+                                      onSaved: (value) {
+                                        product.CurrentProduct!.amount =int.parse(value!);
+                                      },
                                       validator: (cost) {
                                         if (cost!.isEmpty) {
                                           return "ກະລຸນາປ້ອນຂໍ້ມູນ";
-                                        } else if (cost.length < 4) {
+                                        } else if (cost.length < 1) {
                                           return "ກວດສວບລາຄາ";
                                         }
                                         return null;
@@ -171,7 +187,7 @@ class ProductDialogState {
                                   size: 30,
                                 ),
                                 borderRadius: BorderRadius.circular(50),
-                                value: cate.categoryType,
+                                value: product.CurrentProduct!.category_id,
                                 isExpanded: true,
                                 underline: const SizedBox(
                                   height: 4,
@@ -208,7 +224,13 @@ class ProductDialogState {
                                         hintText: "ລາຍລະອຽດ",
                                         prefixIcon: Icon(Icons.details_sharp),
                                       ),
-                                      onSaved: (_address) {},
+                                      onChanged: (value) {
+
+                                        product.CurrentProduct!.description =value;
+                                      },
+                                      onSaved: (value) {
+                                        product.CurrentProduct!.description =value;
+                                      },
                                       validator: (cost) {
                                         if (cost!.isEmpty) {
                                           return "ກະລຸນາປ້ອນຂໍ້ມູນ";
@@ -234,6 +256,7 @@ class ProductDialogState {
                                           if (_key_import.currentState!
                                               .validate()) {
                                             _key_import.currentState!.save();
+                                            Update_products(product);
                                           }
                                         },
                                       ),
