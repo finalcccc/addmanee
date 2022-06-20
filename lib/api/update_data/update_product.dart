@@ -20,30 +20,23 @@ Update_products(ProductNotifire  pro) async{
       pro.RefreshProduct();
     });
   }else if (pro.ChangeImage != null){
-    FirebaseStorage.instance.ref().child(pro.CurrentProduct!.image.toString()).delete().then((value) async {
-      int random = Random().nextInt(1000);
-      final metadata = SettableMetadata(
-        contentType: 'image/png',
-        customMetadata: {'picked-file-path': pro.ChangeImage!.path},
-      );
-      Reference ref = await FirebaseStorage.instance
-          .ref()
-          .child("image/${pro.CurrentProduct!.nameProduct}${random}");
-      await ref.putFile(File(pro.ChangeImage!.path), metadata);
-     await ref.getDownloadURL().then((value) {
-        pro.CurrentProduct!.image =value;
-        FirebaseFirestore.instance
+
+    final metadata = SettableMetadata(
+      contentType: 'image/png',
+      customMetadata: {'picked-file-path': pro.ChangeImage!.path},
+    );
+  Reference ref = await FirebaseStorage.instance
+      .ref()
+      .child("image/${pro.CurrentProduct!.nameProduct}");
+  await ref.putFile(File(pro.ChangeImage!.path), metadata);
+  var url = await ref.getDownloadURL();
+  pro.CurrentProduct!.image = url;
+      await FirebaseFirestore.instance
             .collection('products')
             .doc(pro.CurrentProduct!.id)
             .update(pro.CurrentProduct!.toMap()).then((value) {
           pro.RefreshProduct();
           GetProduct(pro);
         });
-      });
-
-
-
-    });
-
   }
 }
