@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_if_null_operators, prefer_adjacent_string_concatenation, prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_if_null_operators, prefer_adjacent_string_concatenation, prefer_interpolation_to_compose_strings, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -38,23 +38,21 @@ class _ViewProductState extends State<ViewProduct> {
           itemCount: product.Products.length,
           itemBuilder: (context, index) {
             return Container(
-              height: 150,
+              height: 110,
               margin: const EdgeInsets.all(10),
               child: InkWell(
-                onTap: (){
-                    product.CurrentProduct = product.Products[index];
-                    product.getCurrentProduct();
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ProductDetail(),
-                      ),
-                    );
-
+                onTap: () {
+                  product.CurrentProduct = product.Products[index];
+                  product.getCurrentProduct();
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ProductDetail(),
+                    ),
+                  );
                 },
                 child: Container(
                   child: Card(
-
                     child: Column(
                       children: [
                         Row(
@@ -67,24 +65,31 @@ class _ViewProductState extends State<ViewProduct> {
                             ),
                             Expanded(
                               child: ListTile(
-                                title: Text(
-                                  'ຊື່ສິນຄ້າ: ' +
+                                title: Row(
+                                  children: [
+                                    const Text(
+                                      'ຊື່ສິນຄ້າ:',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15),
+                                    ),
+                                    Text(
                                       ' ${product.Products[index].nameProduct}',
-                                  style: const TextStyle(
-                                      fontSize: 15, fontWeight: FontWeight.bold),
+                                      style: const TextStyle(fontSize: 15),
+                                    ),
+                                  ],
                                 ),
                                 subtitle: Text('ຈຳນວນສິນຄ້າ: ' +
                                     ' ${product.Products[index].amount} ' +
                                     ' ແພັກ'),
                                 trailing: IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                      ),
+                                  onPressed: () {},
+                                  icon: const Icon(
+                                    Icons.delete,
+                                    color: Colors.red,
+                                  ),
                                 ),
                               ),
-
                             ),
                           ],
                         )

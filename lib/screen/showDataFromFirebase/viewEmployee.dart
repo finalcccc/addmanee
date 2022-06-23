@@ -61,9 +61,7 @@ class _ViewEmployeeState extends State<ViewEmployee> {
 
   Widget CardEmployee(int index, EmployeeNotifire employee) {
     return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10)
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       borderOnForeground: true,
       elevation: 5,
       child: InkWell(
@@ -85,9 +83,10 @@ class _ViewEmployeeState extends State<ViewEmployee> {
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-            Text('ຕຳແໜ່ງ:' ' ${employee.employeeList[index].position}'),
-            Text('ລະຫັດ: ${employee.employeeList[index].id}')
-          ],),
+              Text('ຕຳແໜ່ງ: ${employee.employeeList[index].position}'),
+              Text('ລະຫັດ: ${employee.employeeList[index].id}')
+            ],
+          ),
           trailing: IconButton(
             onPressed: () {},
             icon: const Icon(

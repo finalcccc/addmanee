@@ -28,7 +28,7 @@ class _CategoryDetailState extends State<CategoryDetail> {
         ),
         body: Center(
             child: Container(
-          height: 300,
+          height: 270,
           margin: const EdgeInsets.all(10),
           child: Card(
               shape: RoundedRectangleBorder(

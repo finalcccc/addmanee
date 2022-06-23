@@ -46,8 +46,8 @@ class CategoryDialog {
                                   validator: (cost) {
                                     if (cost!.isEmpty) {
                                       return "ກະລຸນາປ້ອນຂໍ້ມູນ";
-                                    } else if (cost.length < 4) {
-                                      return "ກວດສວບລາຄາ";
+                                    } else if (cost.length < 2) {
+                                      return "ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຖືກຕ້ອງ";
                                     }
                                     return null;
                                   },

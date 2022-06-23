@@ -26,69 +26,73 @@ class _SupplierDetailState extends State<SupplierDetail> {
           leading: element().RoutePageBack(context, const ViewSupplier()),
           backgroundColor: element.main,
         ),
-        body: Center(
-          child: Card(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-            elevation: 5,
-            child: Container(
-              height: 400,
-              margin: const EdgeInsets.all(20),
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          'ວັນທີ:' +
-                              ' ${supplier.CurrentSupplier!.date!.toDate().toString().substring(0, 10)}',
-                          style: const TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 15),
-                    Text(
-                      'ລະຫັດ: ' + ' ${supplier.CurrentSupplier!.id}',
-                      style: const TextStyle(fontSize: 16),
-                    ),
-                    Text(
-                      'ຊື່: ' + ' ${supplier.CurrentSupplier!.name}',
-                      style: const TextStyle(fontSize: 16),
-                    ),
-                    Text(
-                      'ອີແມວ: ' + ' ${supplier.CurrentSupplier!.email}',
-                      style: const TextStyle(fontSize: 16),
-                    ),
-                    Text(
-                      'ເບີໂທ: ' + ' ${supplier.CurrentSupplier!.tel}',
-                      style: const TextStyle(fontSize: 16),
-                    ),
-                    Text(
-                      'ທີ່ຢູ່: ' + ' ${supplier.CurrentSupplier!.address}',
-                      style: const TextStyle(fontSize: 16),
-                    ),
-                    const SizedBox(height: 100),
-                    Row(
-                      children: [
-                       SizedBox(
-                         width: 300,
-                         height: 50,
-                         child:  ElevatedButton(
-                             onPressed:(){
-                               SupplierDialog().Dialog(context: context,supp: supplier);
-                             } ,
-                             child: const Text(
-                               'ແກ້ໄຂ',
-                               style: TextStyle(fontSize: 20),
-                             )),
-                       )
-                      ],
-                    ),
-                  ],
+        body: Container(
+          margin: EdgeInsets.all(10),
+          child: Center(
+            child: Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
+              elevation: 5,
+              child: Container(
+                height: 300,
+                margin: const EdgeInsets.all(20),
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            'ວັນທີ:' +
+                                ' ${supplier.CurrentSupplier!.date!.toDate().toString().substring(0, 10)}',
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 15),
+                      Text(
+                        'ລະຫັດ: ' + ' ${supplier.CurrentSupplier!.id}',
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                      Text(
+                        'ຊື່: ' + ' ${supplier.CurrentSupplier!.name}',
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                      Text(
+                        'ອີແມວ: ' + ' ${supplier.CurrentSupplier!.email}',
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                      Text(
+                        'ເບີໂທ: ' + ' ${supplier.CurrentSupplier!.tel}',
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                      Text(
+                        'ທີ່ຢູ່: ' + ' ${supplier.CurrentSupplier!.address}',
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                      const SizedBox(height: 70),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 294,
+                            height: 50,
+                            child: ElevatedButton(
+                                onPressed: () {
+                                  SupplierDialog()
+                                      .Dialog(context: context, supp: supplier);
+                                },
+                                child: const Text(
+                                  'ແກ້ໄຂ',
+                                  style: TextStyle(fontSize: 20),
+                                )),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
