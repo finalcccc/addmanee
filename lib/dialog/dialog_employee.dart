@@ -1,7 +1,11 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:untitled1/api/update_data/update_Employee.dart';
 import 'package:untitled1/notifire/employeeNotifire.dart';
+import 'package:untitled1/screen/login.dart';
+
+import '../model/Employee_Model.dart';
 
 class EmployeeDialog {
   final GlobalKey<FormState> _key_import = GlobalKey<FormState>();
@@ -119,21 +123,40 @@ class EmployeeDialog {
                                     },
                                   ),
                                   const SizedBox(height: 5),
-                                  TextFormField(
-                                    initialValue: emp.CurrentEmployee!.position,
-                                    decoration: const InputDecoration(
-                                      hintText: "ຕຳແໜ່ງ",
-                                    ),
-                                    onSaved: (_address) {},
-                                    validator: (cost) {
-                                      if (cost!.isEmpty) {
-                                        return "ກະລຸນາປ້ອນຂໍ້ມູນ";
-                                      } else if (cost.length < 4) {
-                                        return "ກວດສວບລາຄາ";
-                                      }
-                                      return null;
-                                    },
-                                  ),
+                                  DropdownButton(
+                                      icon: const Icon(
+                                        Icons.keyboard_arrow_down,
+                                        size: 30,
+                                      ),
+                                      borderRadius: BorderRadius.circular(50),
+                                      value: emp.CurrentEmployee!.position,
+                                      isExpanded: true,
+                                      underline: const SizedBox(
+                                        height: 4,
+                                        child: Divider(
+                                          indent: 1,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                      hint: const Padding(
+                                        padding: EdgeInsets.only(left: 50),
+                                        child: Text("ເລືອກປະເພດສິນຄ້າ"),
+                                      ),
+                                      // icon: const Icon(Icons.keyboard_arrow_down),
+
+                                      items: EmployeeData.positoin
+                                          .map((e) => DropdownMenuItem(
+                                          value: e,
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(left: 20.0),
+                                            child: Text('${e}'),
+                                          )))
+                                          .toList(),
+                                      onChanged: (v) {
+                                        Navigator.pop(context);
+                                        EmployeeDialog().Dialog(context, emp);
+                                        emp.CurrentEmployee!.position =v.toString();
+                                      }),
                                   const SizedBox(height: 5),
                                   TextFormField(
                                     initialValue: emp.CurrentEmployee!.address,
@@ -163,6 +186,7 @@ class EmployeeDialog {
                                             fontSize: 20),
                                       ),
                                       onPressed: () async {
+                                        update_Employee();
                                         if (_key_import.currentState!.validate()) {
                                           _key_import.currentState!.save();
                                         }

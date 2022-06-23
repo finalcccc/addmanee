@@ -75,10 +75,16 @@ class _ViewCategoryState extends State<ViewCategory> {
                     leading: const Icon(Icons.category),
                     title: Text(
                         "ຊື່ປະເພດສິນຄ້າ: ${category.categoryList[index].category}",
-                        style: const TextStyle(color: Colors.green)),
+                        style: const TextStyle(color: Colors.indigo)),
                     subtitle: Text(
                       "ລະຫັດ: ${category.categoryList[index].id}",
-                      style: const TextStyle(color: Colors.orangeAccent),
+                    ),
+                    trailing: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.delete,
+                        color: Colors.red,
+                      ),
                     ),
                   ),
                 ],
