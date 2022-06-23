@@ -32,7 +32,7 @@ class _ViewProductState extends State<ViewProduct> {
           ),
         ),
         bottom: WidgetSearch(label: "ຄົ້ນຫາຂໍ້ມູນລາຍການສິນຄ້າ"),
-        leading: element().RoutePageBack(context, const AddProduct()),
+        leading: element().RoutePageBack(context, const ProductAddTapbar()),
       ),
       body: ListView.builder(
           itemCount: product.Products.length,

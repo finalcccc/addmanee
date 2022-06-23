@@ -44,7 +44,7 @@ class _ViewEmployeeState extends State<ViewEmployee> {
           ),
         ),
         bottom: WidgetSearch(label: "ຄົ້ນຫາຂໍ້ມູນພະນັກງານ"),
-        leading: element().RoutePageBack(context, const Register()),
+        leading: element().RoutePageBack(context, const EmployeeTapbar()),
       ),
       body: ListView.separated(
           itemBuilder: (context, index) {
