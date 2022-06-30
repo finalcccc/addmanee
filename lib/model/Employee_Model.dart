@@ -37,7 +37,7 @@ class EmployeeData {
     birthday =value['birthday'];
   }
 
-  Map<String, dynamic>? toMap() {
+  Map<String, dynamic> toMap() {
     return {
       'id':id,
       'name': name,

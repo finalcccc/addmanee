@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/WidgetSearch/widgetSearch.dart';
 import 'package:untitled1/api/getsupplier.dart';
+import 'package:untitled1/dialog/dialog_and_snackbar.dart';
 import 'package:untitled1/screen/product_add/supplier_add.dart';
 
 import '../../celement/elements.dart';
@@ -75,7 +76,10 @@ class _ViewSupplierState extends State<ViewSupplier> {
                 ],
               ),
               trailing: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Supp.CurrentSupplier = Supp.SuplierList[index];
+                  Dialog_D(context, name: Supp.CurrentSupplier!.name, typefuction: 'supplier',notifire: Supp);
+                },
                 icon: const Icon(
                   Icons.delete,
                   color: Colors.red,

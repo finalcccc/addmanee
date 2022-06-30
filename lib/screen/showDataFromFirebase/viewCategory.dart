@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:untitled1/dialog/dialog_and_snackbar.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/screen/detialOfdata/categoryDetail.dart';
 import 'package:untitled1/screen/product_add/category.dart';
@@ -80,7 +81,10 @@ class _ViewCategoryState extends State<ViewCategory> {
                       "ລະຫັດ: ${category.categoryList[index].id}",
                     ),
                     trailing: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        category.CurrentCategory = category.categoryList[index];
+                        Dialog_D(context, name: category.categoryList[index].category,notifire: category ,typefuction: 'cate');
+                      },
                       icon: const Icon(
                         Icons.delete,
                         color: Colors.red,

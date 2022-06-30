@@ -2,11 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:untitled1/api/Delete/Delete_product.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/screen/product_add/appProduct.dart';
 
 import '../../WidgetSearch/widgetSearch.dart';
+import '../../dialog/dialog_and_snackbar.dart';
 import '../detialOfdata/productDetail.dart';
 
 class ViewProduct extends StatefulWidget {
@@ -83,7 +85,12 @@ class _ViewProductState extends State<ViewProduct> {
                                     ' ${product.Products[index].amount} ' +
                                     ' ແພັກ'),
                                 trailing: IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+
+                                    product.CurrentProduct = product.Products[index];
+                                    Dialog_D(context, name: product.CurrentProduct!.nameProduct,notifire: product ,typefuction: 'products');
+
+                                  },
                                   icon: const Icon(
                                     Icons.delete,
                                     color: Colors.red,

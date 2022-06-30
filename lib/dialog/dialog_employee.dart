@@ -9,6 +9,7 @@ import '../model/Employee_Model.dart';
 
 class EmployeeDialog {
   final GlobalKey<FormState> _key_import = GlobalKey<FormState>();
+  String? email, pass;
   Dialog(context,EmployeeNotifire emp) {
     return showDialog(
         context: context,
@@ -41,7 +42,9 @@ class EmployeeDialog {
                                       hintText: "ຊື່ ແລະ ນາມສະກຸນ",
                                       prefixIcon: Icon(Icons.person),
                                     ),
-                                    onSaved: (value) {},
+                                    onSaved: (value) {
+                                      emp.CurrentEmployee!.name = value;
+                                    },
                                     validator: (cost) {
                                       if (cost!.isEmpty) {
                                         return "ກະລຸນາປ້ອນຂໍ້ມູນ";
@@ -58,7 +61,9 @@ class EmployeeDialog {
                                       hintText: "ອີເມວ",
                                       prefixIcon: Icon(Icons.email),
                                     ),
-                                    onSaved: (value) {},
+                                    onSaved: (value) {
+                                       email = value!;
+                                    },
                                     validator: (amout) {
                                       if (amout!.isEmpty) {
                                         return "ກະລຸນາປ້ອນຂໍ້ມູນ";
@@ -77,7 +82,9 @@ class EmployeeDialog {
                                       hintText: "ລະຫັດ",
                                       prefixIcon: Icon(Icons.lock),
                                     ),
-                                    onSaved: (_address) {},
+                                    onSaved: (value) {
+                                    pass  = value!;
+                                    },
                                     validator: (cost) {
                                       if (cost!.isEmpty) {
                                         return "ກະລຸນາປ້ອນຂໍ້ມູນ";
@@ -95,7 +102,9 @@ class EmployeeDialog {
                                       hintText: "ເບີໂທ",
                                       prefixIcon: Icon(Icons.phone),
                                     ),
-                                    onSaved: (_address) {},
+                                    onSaved: (value) {
+                                      emp.CurrentEmployee!.tel = value;
+                                    },
                                     validator: (cost) {
                                       if (cost!.isEmpty) {
                                         return "ກະລຸນາປ້ອນຂໍ້ມູນ";
@@ -112,7 +121,9 @@ class EmployeeDialog {
                                       hintText: "ວັນ ເດືອນ ປີເກີດ",
                                       prefixIcon: Icon(Icons.people),
                                     ),
-                                    onSaved: (_address) {},
+                                    onSaved: (v) {
+                                      emp.CurrentEmployee!.birthday =v;
+                                    },
                                     validator: (cost) {
                                       if (cost!.isEmpty) {
                                         return "ກະລຸນາປ້ອນຂໍ້ມູນ";
@@ -164,7 +175,9 @@ class EmployeeDialog {
                                       hintText: "ທີ່ຢູ່",
                                       prefixIcon: Icon(Icons.home),
                                     ),
-                                    onSaved: (_address) {},
+                                    onSaved: (_address) {
+                                      emp.CurrentEmployee!.address =_address;
+                                    },
                                     validator: (cost) {
                                       if (cost!.isEmpty) {
                                         return "ກະລຸນາປ້ອນຂໍ້ມູນ";
@@ -186,9 +199,9 @@ class EmployeeDialog {
                                             fontSize: 20),
                                       ),
                                       onPressed: () async {
-                                        update_Employee();
                                         if (_key_import.currentState!.validate()) {
                                           _key_import.currentState!.save();
+                                          update_Employee(emp,email: email!,pass: pass! );
                                         }
                                       },
                                     ),

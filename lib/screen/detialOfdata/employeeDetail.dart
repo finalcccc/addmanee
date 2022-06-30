@@ -53,7 +53,7 @@ class _EmployeeDetailState extends State<EmployeeDetail> {
                       ),
                       const SizedBox(height: 15),
                       Text(
-                        'ລະຫັດ: ' + ' ${employee.CurrentEmployee!.password}',
+                        'ລະຫັດພະນັກງານ: ' + ' ${employee.CurrentEmployee!.id}',
                         style: const TextStyle(fontSize: 16),
                       ),
                       Text(

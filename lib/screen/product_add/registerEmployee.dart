@@ -10,7 +10,7 @@ import 'package:untitled1/celement/elements.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:untitled1/screen/menu.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewEmployee.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import '../../model/Employee_Model.dart';
 
 class EmployeeTapbar extends StatefulWidget {
@@ -56,10 +56,8 @@ class _RegisterState extends State<Register> {
       formKey.currentState!.save();
       if (position != null) {
         try {
-          await FirebaseAuth.instance
-              .createUserWithEmailAndPassword(
-                  email: email!, password: password!)
-              .then((value) async {
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                  email: email!, password: password!).then((value) async {
             formKey.currentState!.reset();
             Fluttertoast.showToast(
               msg: "ລົງທະບຽນໄດ້ແລ້ວ",
@@ -94,6 +92,8 @@ class _RegisterState extends State<Register> {
                 });
               },
             );
+          }).then((value) {
+            FirebaseAuth.instance.sendPasswordResetEmail(email:'tonking5624@gmail.com');
           });
         } on FirebaseAuthException catch (e) {
           // print(e.message);
