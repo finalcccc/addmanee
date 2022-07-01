@@ -41,7 +41,7 @@ class _ViewCategoryState extends State<ViewCategory> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        bottom: WidgetSearch(label: "ຄົ້ນຫາຂໍ້ມູນປະເພດສິນຄ້າ"),
+        bottom: WidgetSearch(label: "ຄົ້ນຫາຂໍ້ມູນປະເພດສິນຄ້າ",notifire: category,type: 'cate'),
         leading: element().RoutePageBack(context, const ProductTypeTapbar()),
       ),
       body: RefreshIndicator(

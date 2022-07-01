@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/api/getEmployeeData.dart';
+import 'package:untitled1/dialog/dialog_and_snackbar.dart';
 import 'package:untitled1/notifire/employeeNotifire.dart';
 import 'package:untitled1/screen/product_add/registerEmployee.dart';
 
@@ -43,7 +44,7 @@ class _ViewEmployeeState extends State<ViewEmployee> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        bottom: WidgetSearch(label: "ຄົ້ນຫາຂໍ້ມູນພະນັກງານ"),
+        bottom: WidgetSearch(label: "ຄົ້ນຫາຂໍ້ມູນພະນັກງານ",notifire: emp,type: 'emp'),
         leading: element().RoutePageBack(context, const EmployeeTapbar()),
       ),
       body: ListView.separated(
@@ -84,11 +85,14 @@ class _ViewEmployeeState extends State<ViewEmployee> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('ຕຳແໜ່ງ: ${employee.employeeList[index].position}'),
-              Text('ລະຫັດ: ${employee.employeeList[index].id}')
+              Text('ອີເມວ: ${employee.employeeList[index].email}')
             ],
           ),
           trailing: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              employee.CurrentEmployee = employee.employeeList[index];
+              Dialog_D(context, name: employee.CurrentEmployee!.name, typefuction: 'employee',notifire: employee);
+            },
             icon: const Icon(
               Icons.delete,
               color: Colors.red,

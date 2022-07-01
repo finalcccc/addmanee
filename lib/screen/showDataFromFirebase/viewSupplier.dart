@@ -45,7 +45,7 @@ class _ViewSupplierState extends State<ViewSupplier> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        bottom: WidgetSearch(label: "ຄົ້ນຫາຂໍ້ມູນຜູ້ສະໜອງ"),
+        bottom: WidgetSearch(label: "ຄົ້ນຫາຂໍ້ມູນຜູ້ສະໜອງ",notifire: Supp,type: 'supp'),
         leading: element().RoutePageBack(context, const SupplierTapbar()),
       ),
       body: ListView.builder(

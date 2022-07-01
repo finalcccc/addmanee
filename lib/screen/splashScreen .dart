@@ -17,10 +17,10 @@ class SplashScreenState extends State<SplashScreen> {
   void initState() {
     Timer(
         const Duration(seconds: 3),
-        () => Navigator.push(
+        () => Navigator.pushReplacement(
             context,
             CupertinoPageRoute(
-              builder: (_) => const Login(),
+              builder: (_) => Login(),
             )));
     super.initState();
   }

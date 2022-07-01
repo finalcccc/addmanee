@@ -33,7 +33,7 @@ class _ViewProductState extends State<ViewProduct> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        bottom: WidgetSearch(label: "ຄົ້ນຫາຂໍ້ມູນລາຍການສິນຄ້າ"),
+        bottom: WidgetSearch(label: "ຄົ້ນຫາຂໍ້ມູນລາຍການສິນຄ້າ",notifire: product,type: 'product'),
         leading: element().RoutePageBack(context, const ProductAddTapbar()),
       ),
       body: ListView.builder(

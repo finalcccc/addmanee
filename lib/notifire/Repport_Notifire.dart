@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import '../model/Report_Income_Modle.dart';
 
 class report_incomeNotifire with ChangeNotifier{
-  List<Report_income>icome = [];
-  List<Report_income>icome_day = [];
-  Report_income? curren_income;
+  List<Report>icome = [];
+  List<Report>icome_day = [];
+  Report? curren_income;
 
-  List<Report_income>expanese = [];
-  List<Report_income>expanese_day = [];
-  Report_income? curren_expanese;
+  List<Report>expanese = [];
+  List<Report>expanese_day = [];
+  Report? curren_expanese;
 
   Refresh(){
     expanese;

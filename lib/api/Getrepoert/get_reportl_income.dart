@@ -4,7 +4,7 @@ import 'package:untitled1/model/Report_Income_Modle.dart';
 import 'package:untitled1/notifire/Repport_Notifire.dart';
 
 Get_reportl_income(report_incomeNotifire imcome) async {
-  List<Report_income> m1 = [];
+  List<Report> m1 = [];
   List<num> sumtotal = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   List<Timestamp> Month = [
     Timestamp(1, 1),
@@ -35,7 +35,7 @@ Get_reportl_income(report_incomeNotifire imcome) async {
   int i = 0;
   for (var shan in Month) {
     if (Month[i] != Timestamp(1, 1)) {
-      Report_income m5 = Report_income(
+      Report m5 = Report(
           sumtatall: int.parse(sumtotal[i].toString()), date: Month[i]);
       m1.add(m5);
       imcome.icome = m1;
@@ -109,7 +109,7 @@ Report_Month({required String? m,required List<Timestamp>?Month,required List<nu
 }
 
 Get_reportl_income_Month(report_incomeNotifire imcome) async {
-  List<Report_income> m1 = [];
+  List<Report> m1 = [];
   List<num> sumtotal = [
     0,
     0,
@@ -202,7 +202,7 @@ Get_reportl_income_Month(report_incomeNotifire imcome) async {
   int i = 0;
   for (var shan in Day) {
     if (Day[i] != Timestamp(1, 1)) {
-      Report_income m5 = Report_income(
+      Report m5 = Report(
           sumtatall: int.parse(sumtotal[i].toString()), date: Day[i]);
       m1.add(m5);
       imcome.icome_day = m1;
@@ -212,7 +212,7 @@ Get_reportl_income_Month(report_incomeNotifire imcome) async {
   }
 }
 
-Report_Day({required String? m,required List<Timestamp>?Day,required List<num>?sumtotal, required Timestamp? g,required element}){
+Report_Day({required String? m,required List<Timestamp>?Day,required List<num>?sumtotal, required Timestamp? g,required element})async{
   switch (m) {
     case '31':
       Day![30] = g!;
@@ -302,51 +302,51 @@ Report_Day({required String? m,required List<Timestamp>?Day,required List<num>?s
       Day![9] = g!;
       sumtotal![9] += element['sumtotal'];
       break;
-    case '9':
+    case '09':
       Day![8] = g!;
       sumtotal![8] += element['sumtotal'];
       break;
-    case '8':
+    case '08':
       Day![7] = g!;
       sumtotal![7] += element['sumtotal'];
       break;
-    case '7':
+    case '07':
       Day![6] = g!;
       sumtotal![6] += element['sumtotal'];
       break;
-    case '6':
+    case '06':
       {
         Day![5] = g!;
         sumtotal![5] += element['sumtotal'];
       }
       break;
-    case '5':
+    case '05':
       Day![4] = g!;
       sumtotal![4] += element['sumtotal'];
       break;
-    case '4':
+    case '04':
       {
         Day![3] = g!;
         sumtotal![3] += element['sumtotal'];
       }
       break;
-    case '3':
+    case '03':
       {
         Day![2] = g!;
         sumtotal![2] += element['sumtotal'];
       }
       break;
-    case '2':
+    case '02':
       {
         Day![1] = g!;
         sumtotal![1] += element['sumtotal'];
       }
       break;
-    case '1':
+    case '01':
       {
         Day![0] = g!;
         sumtotal![0] += element['sumtotal'];
       }
-  }
-  ;
+      break;
+  };
 }

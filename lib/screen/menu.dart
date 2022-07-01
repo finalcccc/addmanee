@@ -65,12 +65,20 @@ class _MenuState extends State<Menu> {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          const DrawerHeader(
+          DrawerHeader(
             decoration: BoxDecoration(
-              color: Color(0xff0031CA),
+              color:  Color(0xff281E5D),
             ),
-            //Title of header
-            child: Text(''),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text('ຮ້ານເເອັດມະນີ',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 40,color: Colors.white)),
+                SizedBox(height: 10),
+                Text('${emp.CurrentEmployee_loco!.id}',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14,color: Colors.white)),
+                Text('${emp.CurrentEmployee_loco!.name}',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17,color: Colors.white)),
+                Expanded(child: Text('${emp.CurrentEmployee_loco!.email}',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17,color: Colors.white))),
+              ],
+            ),
           ),
           buildListTile(element.p1, route.prodc),
           buildListTile(element.p2, route.register),

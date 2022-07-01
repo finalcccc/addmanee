@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:untitled1/api/Delete/Delete_category.dart';
+import 'package:untitled1/api/Delete/Delete_emp.dart';
 import 'package:untitled1/api/Delete/Delete_product.dart';
 import '../api/Delete/Delete_supp.dart';
 
@@ -50,7 +51,7 @@ Dialog_D(context,{var notifire,required String? name,required String? typefuctio
                             break;
                             case 'supplier': Delete_supp(notifire);
                             break;
-                            case 'employee': Delete_Category(notifire);
+                            case 'employee': Delete_emp(notifire);
                             break;
                           }
 

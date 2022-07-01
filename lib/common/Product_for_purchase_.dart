@@ -65,7 +65,7 @@ class _ReceiveOrderState extends State<ReceiveOrder> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        bottom: WidgetSearch(label: "ຄົ້ນຫາຂໍ້ມູນສິນຄ້າ"),
+        bottom: WidgetSearch(label: "ຄົ້ນຫາຂໍ້ມູນສິນຄ້າ",type: 'product',notifire: product),
         leading: element().RoutePageBack(context, const Menu()),
         actions: [element.CartButton(context,route.Cart)],
       ),
