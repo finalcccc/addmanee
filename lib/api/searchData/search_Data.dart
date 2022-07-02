@@ -75,6 +75,7 @@ Future Searchcategory(CategoryNotifire cate,String values) async {
       print(_cate.length);
       cate.category = _cate;
       cate.RefreshCategory();
+      //dddd
     }
   }).catchError((err) {});
 }
