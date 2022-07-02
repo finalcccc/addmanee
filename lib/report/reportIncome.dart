@@ -30,7 +30,7 @@ class _ReportIncomeState extends State<ReportIncome> {
         centerTitle: true,
         backgroundColor: element.main,
         leading: element().RoutePageBack(context, const ReportData()),
-        bottom: WidgetSearch(label: 'ປີ - ເດືອນ'),
+        bottom: WidgetSearch(label: 'ປີ - ເດືອນ /2000-01',type: 'income',notifire: income),
       ),
       body: ListView.separated(
         physics: BouncingScrollPhysics(),

@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously, camel_case_types, non_constant_identifier_names, prefer_is_empty, await_only_futures, sized_box_for_whitespace, avoid_print, curly_braces_in_flow_control_structures
-
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
@@ -32,14 +30,14 @@ class _ManagerOrderByAdminState extends State<ManagerOrderByAdmin> {
 
   Future dos() async {
     SupplierNotifire supp =
-        Provider.of<SupplierNotifire>(context, listen: false);
+    Provider.of<SupplierNotifire>(context, listen: false);
     await GetSupplier(supp);
   }
 
   @override
   Widget build(BuildContext context) {
     purchase_order_Notifire orderadmin =
-        Provider.of<purchase_order_Notifire>(context);
+    Provider.of<purchase_order_Notifire>(context);
     SupplierNotifire supp = Provider.of<SupplierNotifire>(context);
     return Scaffold(
       appBar: AppBar(
@@ -53,7 +51,7 @@ class _ManagerOrderByAdminState extends State<ManagerOrderByAdmin> {
         itemBuilder: (context, index) {
           return Card(
             shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             elevation: 5,
             margin: const EdgeInsets.all(10),
             child: Padding(
@@ -88,7 +86,6 @@ class _ManagerOrderByAdminState extends State<ManagerOrderByAdmin> {
 }
 
 ///////////========////////// ລາຍການສັ່ງຊື້ຈາກຜູ້ສະໜອງ //////========////////////////========////////////
-
 class Show_order_addmin extends StatefulWidget {
   const Show_order_addmin({Key? key}) : super(key: key);
 
@@ -100,7 +97,7 @@ class _Show_order_addminState extends State<Show_order_addmin> {
   @override
   Widget build(BuildContext context) {
     purchase_order_Notifire orderadmin =
-        Provider.of<purchase_order_Notifire>(context);
+    Provider.of<purchase_order_Notifire>(context);
     SupplierNotifire supp = Provider.of<SupplierNotifire>(context);
     return Scaffold(
         backgroundColor: Colors.grey[200],
@@ -109,7 +106,7 @@ class _Show_order_addminState extends State<Show_order_addmin> {
           centerTitle: true,
           backgroundColor: element.main,
           leading:
-              element().RoutePageBack(context, const ManagerOrderByAdmin()),
+          element().RoutePageBack(context, const ManagerOrderByAdmin()),
         ),
         body: ListView.builder(
           itemCount: orderadmin.Order_addminlist.length,
@@ -126,7 +123,7 @@ class _Show_order_addminState extends State<Show_order_addmin> {
                     child: InkWell(
                       onTap: () async {
                         orderadmin.Currenorderaddmin =
-                            await orderadmin.Order_addminlist[index];
+                        await orderadmin.Order_addminlist[index];
                         await orderadmin.Curren();
                         await GetDetill(order_admin: orderadmin);
                         orderadmin.Refresh();
@@ -135,7 +132,7 @@ class _Show_order_addminState extends State<Show_order_addmin> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    const Detellorder_addmid()));
+                                const Detellorder_addmid()));
                       },
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -168,7 +165,6 @@ class _Show_order_addminState extends State<Show_order_addmin> {
 }
 
 ///////////  ============= ຂໍ້ມູນລາຍລະອຽດຂອງການສັ່ງຊື້'  ///////////=======////ຂໍ້ມູນລາຍລະອຽດຂອງການສັ່ງຊື້'/////////////////////////
-
 class Detellorder_addmid extends StatefulWidget {
   const Detellorder_addmid({Key? key}) : super(key: key);
 
@@ -180,10 +176,10 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
   @override
   Widget build(BuildContext context) {
     purchase_order_Notifire orderadmin =
-        Provider.of<purchase_order_Notifire>(context);
+    Provider.of<purchase_order_Notifire>(context);
     SupplierNotifire supp = Provider.of<SupplierNotifire>(context);
     importproductNotifire impit_product =
-        Provider.of<importproductNotifire>(context);
+    Provider.of<importproductNotifire>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('ຂໍ້ມູນລາຍລະອຽດຂອງການສັ່ງຊື້'),
@@ -193,7 +189,7 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
       ),
       body: Card(
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           elevation: 10,
           margin: const EdgeInsets.all(10),
           child: Padding(
@@ -219,47 +215,47 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                     itemBuilder: (context, index) {
                       return orderadmin.Productditill.length == orderadmin.Dettil.length
                           ? Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    Image.network(
-                                        '${orderadmin.Productditill[index].image}',
-                                        width: 100,
-                                        height: 100,
-                                        fit: BoxFit.fill),
-                                    const SizedBox(width: 15),
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          const SizedBox(height: 10),
-                                          Text(
-                                              'ຊື່ສິນຄ້າ: ${orderadmin.Productditill[index].nameProduct}'),
-                                          Text(
-                                              'ປະເພດສິນຄ້າ: ${orderadmin.Product_categoryname[index].category}'),
-                                          Text(
-                                              'ຈຳນວນ: ${orderadmin.Dettil[index].amout} ແກັດ'),
-                                        ],
-                                      ),
-                                    ),
-                                    TextButton(
-                                        onPressed: () {
-                                          orderadmin.Productaddmin =
-                                              orderadmin.Productditill[index];
-                                          _Dialog(orderadmin, context,
-                                              impit_product);
-                                        },
-                                        child: const Text('ເພີ່ມ')),
-                                  ],
-                                )
-                              ],
-                            )
-                          :Row(
+                        children: [
+                          Row(
                             children: [
-                              CircularProgressIndicator(color: element.main,),
+                              Image.network(
+                                  '${orderadmin.Productditill[index].image}',
+                                  width: 100,
+                                  height: 100,
+                                  fit: BoxFit.fill),
+                              const SizedBox(width: 15),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment:
+                                  CrossAxisAlignment.start,
+                                  children: [
+                                    const SizedBox(height: 10),
+                                    Text(
+                                        'ຊື່ສິນຄ້າ: ${orderadmin.Productditill[index].nameProduct}'),
+                                    Text(
+                                        'ປະເພດສິນຄ້າ: ${orderadmin.Product_categoryname[index].category}'),
+                                    Text(
+                                        'ຈຳນວນ: ${orderadmin.Dettil[index].amout} ແກັດ'),
+                                  ],
+                                ),
+                              ),
+                              TextButton(
+                                  onPressed: () {
+                                    orderadmin.Productaddmin =
+                                    orderadmin.Productditill[index];
+                                    _Dialog(orderadmin, context,
+                                        impit_product);
+                                  },
+                                  child: const Text('ເພີ່ມ')),
                             ],
-                          );
+                          )
+                        ],
+                      )
+                          :Row(
+                        children: [
+                          CircularProgressIndicator(color: element.main,),
+                        ],
+                      );
                     },
                   ),
                 ),
@@ -440,14 +436,14 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                                             orderaddmin.Currenorderaddmin !=
                                                 null) {
                                           improtduct.impt_product =
-                                              await import_products(
-                                                  cost: costs,
-                                                  amout: amouts,
-                                                  sumtotal: costs! * amouts!,
-                                                  id_products: orderaddmin
-                                                      .Productaddmin!.id,
-                                                  id_purchase: orderaddmin
-                                                      .Currenorderaddmin!.id);
+                                          await import_products(
+                                              cost: costs,
+                                              amout: amouts,
+                                              sumtotal: costs! * amouts!,
+                                              id_products: orderaddmin
+                                                  .Productaddmin!.id,
+                                              id_purchase: orderaddmin
+                                                  .Currenorderaddmin!.id);
                                           improtduct.Refresh();
                                           Upload_import_product(improtduct);
                                         } else {

@@ -29,7 +29,7 @@ class _ReportIncomeMonthState extends State<ReportIncomeMonth> {
           centerTitle: true,
           backgroundColor: element.main,
           leading: element().RoutePageBack(context, const ReportIncome()),
-          bottom: WidgetSearch(label: "ວັນ ເດືອນ ປີ"),
+          bottom: WidgetSearch(label: 'ປີ - ເດືອນ -ວັນ',type: 'incomeM',notifire: income),
         ),
         body: Column(
           children: [

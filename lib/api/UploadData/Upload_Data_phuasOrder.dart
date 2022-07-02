@@ -87,7 +87,7 @@ Future GetDetill({required purchase_order_Notifire order_admin})async{
 
 }
 Future<void> fetchUserOrder( purchase_order_Notifire order_admin,prodetill,_Detilmo) async {
- Future.delayed(const Duration(seconds: 1),
+ Future.delayed(const Duration(seconds: 2),
          () {
           order_admin.Refresh();
           order_admin.Productditill = prodetill;

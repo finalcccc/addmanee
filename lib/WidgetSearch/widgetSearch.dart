@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled1/api/searchData/search_expanse.dart';
+import 'package:untitled1/api/searchData/search_income.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
 
 import '../api/searchData/search_Data.dart';
@@ -50,7 +52,18 @@ WidgetSearch({String? label, required String? type ,var notifire}) {
                       case'supp':
                         Searchsupp(notifire, txt.text);
                         break;
-
+                      case'exp':
+                        Search_expase(notifire,txt.text);
+                        break;
+                      case'expM':
+                        Search_expanse_day(notifire,txt.text);
+                        break;
+                      case'income':
+                        Search_income(notifire,txt.text);
+                        break;
+                      case'incomeM':
+                         Search_income_day(notifire, txt.text);
+                        break;
                     }
 
                   },

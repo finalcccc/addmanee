@@ -30,7 +30,7 @@ class _ReportExpenseMonthState extends State<ReportExpenseMonth> {
           centerTitle: true,
           backgroundColor: element.main,
           leading: element().RoutePageBack(context, const ReportExpense()),
-          bottom: WidgetSearch(label: "ວັນ ເດືອນ ປີ"),
+          bottom: WidgetSearch(label: 'ປີ - ເດືອນ-ວັນ',type: 'expM',notifire: expanese),
         ),
         body: Column(
           children: [

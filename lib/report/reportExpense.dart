@@ -32,7 +32,7 @@ class _ReportExpenseState extends State<ReportExpense> {
         centerTitle: true,
         backgroundColor: element.main,
         leading: element().RoutePageBack(context, const ReportData()),
-        bottom: WidgetSearch(label: 'ປີ - ເດືອນ'),
+        bottom: WidgetSearch(label: 'ປີ - ເດືອນ/2000-01',type: 'exp',notifire: Expanese),
       ),
       body: ListView.separated(
         physics: BouncingScrollPhysics(),
