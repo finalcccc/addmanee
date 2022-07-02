@@ -9,8 +9,7 @@ import 'package:untitled1/notifire/purchase_order_Notifire.dart';
 import 'package:untitled1/notifire/supplierNotifire.dart';
 import 'package:untitled1/screen/manageOrder.dart';
 import 'package:untitled1/celement/elements.dart';
-
-import '../../api/UploadData/Upload_Data_phuasOrder.dart';
+import '../../api/UploadData/Get_Data_phuasOrder.dart';
 import '../../api/getsupplier.dart';
 import '../splashScreen .dart';
 
@@ -172,7 +171,15 @@ class Detellorder_addmid extends StatefulWidget {
   State<Detellorder_addmid> createState() => _Detellorder_addmidState();
 }
 
+
 class _Detellorder_addmidState extends State<Detellorder_addmid> {
+  @override
+  initState(){
+  super.initState();
+  purchase_order_Notifire orderadmin =
+  Provider.of<purchase_order_Notifire>(context,listen: false);
+   GetDetill(order_admin: orderadmin);
+  }
   @override
   Widget build(BuildContext context) {
     purchase_order_Notifire orderadmin =
@@ -213,8 +220,8 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                   child: ListView.builder(
                     itemCount: orderadmin.Dettil.length,
                     itemBuilder: (context, index) {
-                      return orderadmin.Productditill.length == orderadmin.Dettil.length
-                          ? Column(
+                      if (orderadmin.Product_categoryname.length != 0) {
+                        return Column(
                         children: [
                           Row(
                             children: [
@@ -232,8 +239,7 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                                     const SizedBox(height: 10),
                                     Text(
                                         'ຊື່ສິນຄ້າ: ${orderadmin.Productditill[index].nameProduct}'),
-                                    Text(
-                                        'ປະເພດສິນຄ້າ: ${orderadmin.Product_categoryname[index].category}'),
+                                    Text('ປະເພດສິນຄ້າ: ${orderadmin.Product_categoryname[index].category}'),
                                     Text(
                                         'ຈຳນວນ: ${orderadmin.Dettil[index].amout} ແກັດ'),
                                   ],
@@ -250,12 +256,15 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                             ],
                           )
                         ],
-                      )
-                          :Row(
+                      );
+                      } else {
+                        GetDetill(order_admin: orderadmin);
+                        return Row(
                         children: [
                           CircularProgressIndicator(color: element.main,),
                         ],
                       );
+                      }
                     },
                   ),
                 ),
