@@ -2,8 +2,12 @@
 
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:untitled1/model/Employee_Model.dart';
 import 'package:untitled1/model/category_Model.dart';
+import 'package:untitled1/model/supplier_data.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
+import 'package:untitled1/notifire/employeeNotifire.dart';
+import 'package:untitled1/notifire/supplierNotifire.dart';
 import '../../model/product_Model.dart';
 import '../../notifire/productNotifire.dart';
 
@@ -75,7 +79,75 @@ Future Searchcategory(CategoryNotifire cate,String values) async {
       print(_cate.length);
       cate.category = _cate;
       cate.RefreshCategory();
-      //dddd
+    }
+  }).catchError((err) {});
+}
+
+
+
+Future Searchemp(EmployeeNotifire emp,String values) async {
+  List<EmployeeData>? _emp = [];
+  List<EmployeeData> _f = [];
+  QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
+      .collection('employees')
+      .where('name', isGreaterThanOrEqualTo: '${values}')
+      .get();
+  emp.employee.clear();
+  rfn.docs.forEach((data) async {
+    String namecate = data['name'].toString();
+    if (namecate.trim() == values) {
+      EmployeeData p = await EmployeeData.frommap(data.data());
+      _f.add(p);
+      emp.RefreshEmp();
+    } else if (namecate[0] == values[0] && namecate[1] == values[1] || namecate[2] == values[2] || namecate[0] == [1]) {
+      EmployeeData p = await EmployeeData.frommap(data.data());
+      _f.add(p);
+    }
+  });
+  Future.delayed(Duration(seconds: 1), () {
+    if (_f.length != 0) {
+      print(_f.length);
+      emp.employee = _f;
+      emp.RefreshEmp();
+    } else {
+      emp.employee.clear();
+      print(_emp.length);
+      emp.employee = _emp;
+      emp.RefreshEmp();
+    }
+  }).catchError((err) {});
+}
+
+
+Future Searchsupp(SupplierNotifire supp,String values) async {
+  List<SupplierData> _supp = [];
+  List<SupplierData> _f = [];
+  QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
+      .collection('suppliers')
+      .where('name', isGreaterThanOrEqualTo: '${values}')
+      .get();
+  supp.Supplier.clear();
+  rfn.docs.forEach((data) async {
+    String namecate = data['name'].toString();
+    if (namecate.trim() == values) {
+      SupplierData p = await SupplierData.fromMap(data.data());
+      _f.add(p);
+      supp.RefreshSupplier();
+    } else if (namecate[0] == values[0] && namecate[1] == values[1] || namecate[0] == values[0] || namecate[0] == [1]) {
+      SupplierData p = await SupplierData.fromMap(data.data());
+      _f.add(p);
+    }
+  });
+  Future.delayed(Duration(seconds: 1), () {
+    if (_f.length != 0) {
+      print(_f.length);
+      supp.Supplier = _f;
+      supp.RefreshSupplier();
+    } else {
+      supp.Supplier.clear();
+      print(_supp.length);
+      supp.Supplier = _supp;
+      supp.RefreshSupplier();
     }
   }).catchError((err) {});
 }

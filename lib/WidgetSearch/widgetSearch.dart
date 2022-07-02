@@ -5,7 +5,7 @@ import 'package:untitled1/notifire/productNotifire.dart';
 import '../api/searchData/search_Data.dart';
 
 // ignore: non_constant_identifier_names
-WidgetSearch({String? label, String? type ,var notifire}) {
+WidgetSearch({String? label, required String? type ,var notifire}) {
   var txt =TextEditingController();
   return PreferredSize(
     preferredSize: const Size.fromHeight(40),
@@ -39,8 +39,8 @@ WidgetSearch({String? label, String? type ,var notifire}) {
                         }
                         break;
                       case'emp':
-
-
+                         Searchemp(notifire,txt.text);
+                          txt.clear();
                         break;
                       case'cate':
                         Searchcategory(notifire,txt.text).then((value){
@@ -48,6 +48,7 @@ WidgetSearch({String? label, String? type ,var notifire}) {
                         });
                         break;
                       case'supp':
+                        Searchsupp(notifire, txt.text);
                         break;
 
                     }
