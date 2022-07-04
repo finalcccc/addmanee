@@ -47,7 +47,6 @@ class _View_orderState extends State<view_order> {
                               children: [
                                 const Text('ລະຫັດສັ່ງຊື້ :',
                                     style: TextStyle(
-                                        fontWeight: FontWeight.bold,
                                         fontSize: 16)),
                                 Text(
                                   ' ${order.Curren_Order!.id}',
@@ -59,7 +58,6 @@ class _View_orderState extends State<view_order> {
                               children: [
                                 const Text('ຊື່ລູກຄ້າ :',
                                     style: TextStyle(
-                                        fontWeight: FontWeight.bold,
                                         fontSize: 16)),
                                 Text(
                                   ' ${order.Curren_Order!.nameCutommer}',
@@ -72,8 +70,7 @@ class _View_orderState extends State<view_order> {
                                 const Text(
                                   'ເບີໂທ: ',
                                   style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold),
+                                      fontSize: 16,),
                                 ),
                                 Text('${order.Curren_Order!.tel}',
                                     style: const TextStyle(fontSize: 16)),
@@ -85,7 +82,7 @@ class _View_orderState extends State<view_order> {
                                   'ທີ່ຢຸ່ :',
                                   style: TextStyle(
                                       fontSize: 16,
-                                      fontWeight: FontWeight.bold),
+                                 ),
                                 ),
                                 Text(' ${order.Curren_Order!.address}',
                                     style: const TextStyle(fontSize: 16)),
@@ -96,7 +93,6 @@ class _View_orderState extends State<view_order> {
                                 const Text(
                                   'ຊື່ພະນັກງານ:',
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold,
                                       fontSize: 16),
                                 ),
                                 Text(' ${order.emp_Ooder!.name}',

@@ -53,7 +53,7 @@ class _Login extends State<Login> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
-                          "ຮ້ານເເອັດມານີ",
+                          "ຮ້ານເເອັດມະນີ",
                           style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
