@@ -78,7 +78,6 @@ Future GetDetill({required purchase_order_Notifire order_admin})async{
                    f.amount = h.amout;
                    prodetill.add(f);
                    cate.add(c);
-                   //s
             }
           }
 
