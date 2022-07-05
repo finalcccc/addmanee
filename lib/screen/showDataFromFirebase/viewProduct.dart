@@ -33,7 +33,10 @@ class _ViewProductState extends State<ViewProduct> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        bottom: WidgetSearch(label: "ຄົ້ນຫາຂໍ້ມູນລາຍການສິນຄ້າ",notifire: product,type: 'product'),
+        bottom: WidgetSearch(
+            label: "ຄົ້ນຫາຂໍ້ມູນລາຍການສິນຄ້າ",
+            notifire: product,
+            type: 'product'),
         leading: element().RoutePageBack(context, const ProductAddTapbar()),
       ),
       body: ListView.builder(
@@ -83,13 +86,16 @@ class _ViewProductState extends State<ViewProduct> {
                                 ),
                                 subtitle: Text('ຈຳນວນສິນຄ້າ: ' +
                                     ' ${product.Products[index].amount} ' +
-                                    ' ແພັກ'),
+                                    ' ແກັດ'),
                                 trailing: IconButton(
                                   onPressed: () {
-
-                                    product.CurrentProduct = product.Products[index];
-                                    Dialog_D(context, name: product.CurrentProduct!.nameProduct,notifire: product ,typefuction: 'products');
-
+                                    product.CurrentProduct =
+                                        product.Products[index];
+                                    Dialog_D(context,
+                                        name:
+                                            product.CurrentProduct!.nameProduct,
+                                        notifire: product,
+                                        typefuction: 'products');
                                   },
                                   icon: const Icon(
                                     Icons.delete,

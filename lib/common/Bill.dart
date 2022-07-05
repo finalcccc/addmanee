@@ -13,7 +13,7 @@ import 'package:untitled1/notifire/supplierNotifire.dart';
 class Bill {
   static save_Bill(purchase_order_Notifire orderadmin, context,
       SupplierNotifire supp) async {
-    final  font = await rootBundle.load('lib/assets/Phetsarath-Regular.ttf');
+    final font = await rootBundle.load('lib/assets/Phetsarath-Regular.ttf');
     final pw.Font ttf = pw.Font.ttf(font);
     final pdf = pw.Document();
     pdf.addPage(
@@ -25,7 +25,7 @@ class Bill {
             child: pw.Column(
               children: [
                 pw.Text(
-                  'ຮ້ານແອັດມານີ',
+                  'ຮ້ານແອັດມະນີ',
                   style: pw.TextStyle(
                       fontSize: 25, fontWeight: pw.FontWeight.bold, font: ttf),
                 ),
@@ -52,7 +52,10 @@ class Bill {
                               font: ttf,
                               fontWeight: pw.FontWeight.bold,
                               fontSize: 15)),
-                      pw.Text('${orderadmin.Currenorderaddmin!.amouttotal}',style: const pw.TextStyle(fontSize: 15,)),
+                      pw.Text('${orderadmin.Currenorderaddmin!.amouttotal}',
+                          style: const pw.TextStyle(
+                            fontSize: 15,
+                          )),
                       pw.Text(' ແກັດ ',
                           style: pw.TextStyle(
                               font: ttf,
@@ -63,20 +66,17 @@ class Bill {
                 ),
                 pw.Divider(),
                 pw.Padding(
-                  padding: const pw.EdgeInsets.only(right: 0, top:20),
-                  child: pw.Row(
-                      mainAxisAlignment: pw.MainAxisAlignment.end,
-                    children: [
-                      pw.Text('ລາຍເຊັນ ອະນຸມັດ',
-                          style: pw.TextStyle(
-                              font: ttf,
-                              fontWeight: pw.FontWeight.bold,
-                              fontSize: 15)),
-                      pw.Text('.........................................'),
-                    ]
-
-                  )
-                )
+                    padding: const pw.EdgeInsets.only(right: 0, top: 20),
+                    child: pw.Row(
+                        mainAxisAlignment: pw.MainAxisAlignment.end,
+                        children: [
+                          pw.Text('ລາຍເຊັນ ອະນຸມັດ',
+                              style: pw.TextStyle(
+                                  font: ttf,
+                                  fontWeight: pw.FontWeight.bold,
+                                  fontSize: 15)),
+                          pw.Text('.........................................'),
+                        ]))
               ],
             ),
           );
@@ -96,7 +96,8 @@ class Bill {
     });
   }
 
-  static pw.Row Subheader_Purchase_OrderDetial(pw.Font ttf, SupplierNotifire supp, purchase_order_Notifire orderadmin) {
+  static pw.Row Subheader_Purchase_OrderDetial(
+      pw.Font ttf, SupplierNotifire supp, purchase_order_Notifire orderadmin) {
     return pw.Row(
       crossAxisAlignment: pw.CrossAxisAlignment.start,
       children: [
@@ -205,7 +206,8 @@ class Bill {
               ),
               pw.Container(
                 width: 70,
-                child: pw.Text('${orderadmin.Product_categoryname[index].category}',
+                child: pw.Text(
+                    '${orderadmin.Product_categoryname[index].category}',
                     style: pw.TextStyle(font: ttf)),
               ),
               pw.Container(

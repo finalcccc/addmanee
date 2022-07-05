@@ -3,9 +3,11 @@
 import 'dart:math';
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io' as io;
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:untitled1/dialog/dialog_and_snackbar.dart';
 import 'package:untitled1/model/product_Model.dart';
 import 'package:untitled1/model/supplier_data.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
@@ -15,9 +17,10 @@ import '../model/category_Model.dart';
 
 XFile? image;
 
-Future<XFile> AddImage() async {
-  image  = await ImagePicker().pickImage(source: ImageSource.gallery);
-  return image!;
+Future AddImage(ProductNotifire product) async {
+  image = await ImagePicker().pickImage(source: ImageSource.gallery);
+  product.images = image;
+  product.RefreshProduct();
 }
 
 Future<void> UploadProducts(
@@ -33,7 +36,8 @@ Future<void> UploadProducts(
     Reference ref = await FirebaseStorage.instance
         .ref()
         .child("image/${nameProduct}${random}");
-    CollectionReference reference = FirebaseFirestore.instance.collection('products');
+    CollectionReference reference =
+        FirebaseFirestore.instance.collection('products');
 
     final metadata = SettableMetadata(
       contentType: 'image/png',
@@ -64,7 +68,7 @@ Get_Category_Form(v) {
   categorys = v;
 }
 
-AddCategory() async {
+AddCategory({required var key}) async {
   CategoryData category = CategoryData();
   try {
     CollectionReference reference =
@@ -72,7 +76,10 @@ AddCategory() async {
     category.category = categorys;
     DocumentReference docid = await reference.add(category.toMap());
     category.id = docid.id;
-    docid.set(category.toMap());
+    docid.set(category.toMap()).then((value) async {
+      await ShowMessage(text: 'ປະເພດສິນຄ້າ', type: true);
+      key.currentState!.reset();
+    });
     print(category.category);
   } catch (e) {
     print(e);

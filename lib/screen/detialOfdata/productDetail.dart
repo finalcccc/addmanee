@@ -1,9 +1,7 @@
 // ignore_for_file: prefer_adjacent_string_concatenation, prefer_interpolation_to_compose_strings
 
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled1/api/aip.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
@@ -56,9 +54,6 @@ class ProductDetailState extends State<ProductDetail> {
                               'ລະຫັດສິນຄ້າ: ${product.CurrentProduct!.id}',
                               style: const TextStyle(fontSize: 16),
                             ),
-                            Text(
-                                'ປະເພດສິນຄ້າ: ${product.CurrentProduct!.category_id}',
-                                style: const TextStyle(fontSize: 16)),
                             Text(
                                 'ຊື່ສິນຄ້າ: ${product.CurrentProduct!.nameProduct}',
                                 style: const TextStyle(fontSize: 16)),

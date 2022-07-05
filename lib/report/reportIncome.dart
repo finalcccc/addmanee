@@ -10,7 +10,6 @@ import '../WidgetSearch/widgetSearch.dart';
 import '../celement/elements.dart';
 import 'package:intl/intl.dart';
 
-
 class ReportIncome extends StatefulWidget {
   const ReportIncome({Key? key}) : super(key: key);
 
@@ -23,14 +22,15 @@ final List items = List.generate(3, (i) => "Item $i");
 class _ReportIncomeState extends State<ReportIncome> {
   @override
   Widget build(BuildContext context) {
-    report_incomeNotifire income =Provider.of<report_incomeNotifire>(context);
+    report_incomeNotifire income = Provider.of<report_incomeNotifire>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('ລາຍງານລາຍຮັບ'),
         centerTitle: true,
         backgroundColor: element.main,
         leading: element().RoutePageBack(context, const ReportData()),
-        bottom: WidgetSearch(label: 'ປີ - ເດືອນ /2000-01',type: 'income',notifire: income),
+        bottom: WidgetSearch(
+            label: 'ປີ - ເດືອນ /2000-01', type: 'income', notifire: income),
       ),
       body: ListView.separated(
         physics: BouncingScrollPhysics(),
@@ -47,13 +47,13 @@ class _ReportIncomeState extends State<ReportIncome> {
                         children: [
                           ListTile(
                             title: Text(
-                                'ວັນທີ: ${income.icome[income.icome.length-index-1].date!.toDate().toString().substring(0,7)}'),
+                                'ວັນທີ: ${income.icome[income.icome.length - index - 1].date!.toDate().toString().substring(0, 7)}'),
                             subtitle: Column(
-                              crossAxisAlignment:
-                              CrossAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Row(
                                       children: [
@@ -64,14 +64,14 @@ class _ReportIncomeState extends State<ReportIncome> {
                                               fontSize: 16),
                                         ),
                                         Text(
-                                          ' ${NumberFormat.decimalPattern().format(income.icome[income.icome.length-index-1].sumtatall)}',
+                                          ' ${NumberFormat.decimalPattern().format(income.icome[income.icome.length - index - 1].sumtatall)}',
                                           style: TextStyle(
                                               fontSize: 16,
                                               color: element.main,
                                               fontWeight: FontWeight.bold),
                                         ),
                                         Text(
-                                          'ກີບ',
+                                          ' ກີບ',
                                           style: TextStyle(
                                               fontSize: 16,
                                               fontWeight: FontWeight.bold),
@@ -79,7 +79,8 @@ class _ReportIncomeState extends State<ReportIncome> {
                                       ],
                                     ),
                                     SizedBox(
-                                      child:Icon(Icons.arrow_forward_ios_sharp,size: 14),
+                                      child: Icon(Icons.arrow_forward_ios_sharp,
+                                          size: 14),
                                     )
                                   ],
                                 ),
@@ -92,13 +93,13 @@ class _ReportIncomeState extends State<ReportIncome> {
                   ],
                 ),
                 onTap: () {
-                  income.curren_income = income.icome[income.icome.length-index-1];
+                  income.curren_income =
+                      income.icome[income.icome.length - index - 1];
                   Get_reportl_income_Month(income);
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                          const ReportIncomeMonth()));
+                          builder: (context) => const ReportIncomeMonth()));
                 },
               ));
         },

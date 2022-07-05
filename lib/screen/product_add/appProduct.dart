@@ -10,6 +10,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
 import 'package:untitled1/screen/menu.dart';
+import 'package:untitled1/screen/product_add/registerEmployee.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewProduct.dart';
 
 import '../../api/getCategoryData.dart';
@@ -45,14 +46,7 @@ class AddProduct extends StatefulWidget {
 class _AddProductState extends State<AddProduct> {
   GlobalKey<FormState> Key = GlobalKey<FormState>();
   element elements = element();
-  XFile? images;
   double area = 55;
-
-  void set() {
-    setState(() {
-      images = image;
-    });
-  }
 
   @override
   void initState() {
@@ -84,13 +78,12 @@ class _AddProductState extends State<AddProduct> {
         leading: element().RoutePageBack(context, const Menu()),
       ),
       body: SingleChildScrollView(
-        child: buildColumn(context, category, set(), product),
+        child: buildColumn(context, category, product),
       ),
     );
   }
 
-  Column buildColumn(
-      BuildContext context, CategoryNotifire cate, void setcate, product) {
+  Column buildColumn(BuildContext context, CategoryNotifire cate, product) {
     return Column(
       children: <Widget>[
         const SizedBox(
@@ -99,18 +92,17 @@ class _AddProductState extends State<AddProduct> {
         Center(
           child: GestureDetector(
             onTap: () async {
-              await AddImage();
-              set();
+              await AddImage(product);
               area = 100;
             },
             child: CircleAvatar(
               radius: area,
               backgroundColor: element.main,
-              child: images != null
+              child: product.images != null
                   ? ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Image.file(
-                        File(images!.path),
+                        File(product.images!.path),
                         width: 200,
                         height: 200,
                         fit: BoxFit.cover,
@@ -176,9 +168,9 @@ class _AddProductState extends State<AddProduct> {
                 trye: 'amount',
               ),
               const SizedBox(height: 10),
-              comboboxcontainer(context, cate, setcate),
+              comboboxcontainer(context, cate),
               const SizedBox(height: 20),
-              elements.elevatedButton(Key, 'addproduct'),
+              elements.elevatedButton(Key, 'addproduct', product: product),
               const SizedBox(height: 20),
             ],
           ),
@@ -188,27 +180,33 @@ class _AddProductState extends State<AddProduct> {
   }
 }
 
-Container comboboxcontainer(context, CategoryNotifire cate, void setcate) {
+Container comboboxcontainer(context, CategoryNotifire cate) {
   return Container(
+      height: 60,
       margin: const EdgeInsets.only(right: 15, left: 15),
       decoration: BoxDecoration(
           color: Theme.of(context).primaryColor.withOpacity(0.1),
-          borderRadius: BorderRadius.circular(18)),
+          borderRadius: BorderRadius.circular(10)),
       child: Column(
         children: [
-          dropdownButton(cate, setcate),
+          Padding(
+            padding: const EdgeInsets.only(left: 18, right: 24),
+            child: dropdownButton(cate),
+          )
         ],
       ));
 }
 
-DropdownButton<String> dropdownButton(CategoryNotifire cate, void setcate) {
+DropdownButton<String> dropdownButton(
+  CategoryNotifire cate,
+) {
   int index = 0;
   return DropdownButton(
       icon: const Icon(
         Icons.keyboard_arrow_down,
-        size: 50,
+        size: 35,
       ),
-      borderRadius: BorderRadius.circular(50),
+      borderRadius: BorderRadius.circular(10),
       value: cate.categoryType,
       isExpanded: true,
       underline: Container(),

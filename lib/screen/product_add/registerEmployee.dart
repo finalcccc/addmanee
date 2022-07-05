@@ -42,7 +42,14 @@ class Register extends StatefulWidget {
 
 final formKey = GlobalKey<FormState>();
 
-String? name,birthday, email, password, confirmPassword, tel, address, position;
+String? name,
+    birthday,
+    email,
+    password,
+    confirmPassword,
+    tel,
+    address,
+    position;
 bool set = false;
 
 final Future<FirebaseApp> firebase = Firebase.initializeApp();
@@ -56,8 +63,10 @@ class _RegisterState extends State<Register> {
       formKey.currentState!.save();
       if (position != null) {
         try {
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                  email: email!, password: password!).then((value) async {
+          await FirebaseAuth.instance
+              .createUserWithEmailAndPassword(
+                  email: email!, password: password!)
+              .then((value) async {
             formKey.currentState!.reset();
             Fluttertoast.showToast(
               msg: "ລົງທະບຽນໄດ້ແລ້ວ",
@@ -70,15 +79,14 @@ class _RegisterState extends State<Register> {
             print("uid = $uid");
 
             EmployeeData employeeData = EmployeeData(
-              id: uid,
-              name: name!,
-              email: email!,
-              password: password!,
-              tel: tel!,
-              address: address!,
-              position: position!,
-              birthday: birthday
-            );
+                id: uid,
+                name: name!,
+                email: email!,
+                password: password!,
+                tel: tel!,
+                address: address!,
+                position: position!,
+                birthday: birthday);
             final Map<String, dynamic>? data = employeeData.toMap();
             await FirebaseFirestore.instance
                 .collection("employees")
@@ -93,7 +101,8 @@ class _RegisterState extends State<Register> {
               },
             );
           }).then((value) {
-            FirebaseAuth.instance.sendPasswordResetEmail(email:'tonking5624@gmail.com');
+            FirebaseAuth.instance
+                .sendPasswordResetEmail(email: 'tonking5624@gmail.com');
           });
         } on FirebaseAuthException catch (e) {
           // print(e.message);
@@ -129,7 +138,7 @@ class _RegisterState extends State<Register> {
         if (snapshot.connectionState == ConnectionState.done) {
           return Scaffold(
             appBar: AppBar(
-              title:   const Text(
+              title: const Text(
                 "ລົງທະບຽນຂໍ້ມູນພະນັກງານ",
                 style: TextStyle(
                   fontSize: 20,
@@ -169,7 +178,7 @@ class _RegisterState extends State<Register> {
     return Column(
       children: const [
         Text(
-          "ຮ້ານເເອັດມານີ",
+          "ຮ້ານເເອັດມະນີ",
           style: TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.bold,
@@ -337,8 +346,7 @@ class _RegisterState extends State<Register> {
             style: ElevatedButton.styleFrom(
               primary: element.main,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10)
-              ),
+                  borderRadius: BorderRadius.circular(10)),
               padding: const EdgeInsets.symmetric(vertical: 16),
             ),
             onPressed: () async {
@@ -362,11 +370,17 @@ class _RegisterState extends State<Register> {
 
   Container comboboxcontainer(context) {
     return Container(
+        height: 60,
         decoration: BoxDecoration(
             color: Theme.of(context).primaryColor.withOpacity(0.1),
             borderRadius: BorderRadius.circular(10)),
         child: Column(
-          children: [dropdownButton()],
+          children: [
+            Padding(
+              padding: EdgeInsets.only(right: 20, left: 15),
+              child: dropdownButton(),
+            )
+          ],
         ));
   }
 
@@ -381,7 +395,7 @@ class _RegisterState extends State<Register> {
         isExpanded: true,
         underline: Container(),
         hint: const Padding(
-          padding: EdgeInsets.only(left: 45),
+          padding: EdgeInsets.only(left: 35),
           child: Text("ເລືອກຕຳເເໜ່່ງ"),
         ),
         // icon: const Icon(Icons.keyboard_arrow_down),

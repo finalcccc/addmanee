@@ -29,7 +29,8 @@ class _ReportIncomeMonthState extends State<ReportIncomeMonth> {
           centerTitle: true,
           backgroundColor: element.main,
           leading: element().RoutePageBack(context, const ReportIncome()),
-          bottom: WidgetSearch(label: 'ປີ - ເດືອນ -ວັນ',type: 'incomeM',notifire: income),
+          bottom: WidgetSearch(
+              label: 'ປີ - ເດືອນ -ວັນ', type: 'incomeM', notifire: income),
         ),
         body: Column(
           children: [
@@ -37,9 +38,9 @@ class _ReportIncomeMonthState extends State<ReportIncomeMonth> {
               padding: EdgeInsets.all(10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children:  [
+                children: [
                   Text(
-                    ' ເດືອນ: ${income.curren_income!.date!.toDate().toString().substring(0,7)}',
+                    ' ເດືອນ: ${income.curren_income!.date!.toDate().toString().substring(0, 7)}',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -61,10 +62,10 @@ class _ReportIncomeMonthState extends State<ReportIncomeMonth> {
                                 children: [
                                   ListTile(
                                     title: Text(
-                                        'ວັນທີ: ${income.icome_day[index].date!.toDate().toString().substring(0,10)}'),
+                                        'ວັນທີ: ${income.icome_day[index].date!.toDate().toString().substring(0, 10)}'),
                                     subtitle: Column(
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Row(
                                           children: [
@@ -82,7 +83,7 @@ class _ReportIncomeMonthState extends State<ReportIncomeMonth> {
                                                   fontWeight: FontWeight.bold),
                                             ),
                                             Text(
-                                              'ກີບ',
+                                              ' ກີບ',
                                               style: TextStyle(
                                                   fontSize: 16,
                                                   fontWeight: FontWeight.bold),
@@ -97,9 +98,7 @@ class _ReportIncomeMonthState extends State<ReportIncomeMonth> {
                             ),
                           ],
                         ),
-                        onTap: () {
-
-                        },
+                        onTap: () {},
                       ));
                 },
                 separatorBuilder: (BuildContext context, int index) {
@@ -109,4 +108,5 @@ class _ReportIncomeMonthState extends State<ReportIncomeMonth> {
             )
           ],
         ));
-  }}
+  }
+}

@@ -12,7 +12,6 @@ import '../WidgetSearch/widgetSearch.dart';
 import '../celement/elements.dart';
 import 'package:intl/intl.dart';
 
-
 class ReportExpense extends StatefulWidget {
   const ReportExpense({Key? key}) : super(key: key);
 
@@ -25,14 +24,16 @@ final List items = List.generate(3, (i) => "Item $i");
 class _ReportExpenseState extends State<ReportExpense> {
   @override
   Widget build(BuildContext context) {
-    report_incomeNotifire Expanese =Provider.of<report_incomeNotifire>(context);
+    report_incomeNotifire Expanese =
+        Provider.of<report_incomeNotifire>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('ລາຍງານລາຍຈ່າຍ'),
         centerTitle: true,
         backgroundColor: element.main,
         leading: element().RoutePageBack(context, const ReportData()),
-        bottom: WidgetSearch(label: 'ປີ - ເດືອນ/2000-01',type: 'exp',notifire: Expanese),
+        bottom: WidgetSearch(
+            label: 'ປີ - ເດືອນ/2000-01', type: 'exp', notifire: Expanese),
       ),
       body: ListView.separated(
         physics: BouncingScrollPhysics(),
@@ -49,13 +50,13 @@ class _ReportExpenseState extends State<ReportExpense> {
                         children: [
                           ListTile(
                             title: Text(
-                                'ວັນທີ: ${Expanese.expanese[Expanese.expanese.length-index-1].date!.toDate().toString().substring(0,7)}'),
+                                'ວັນທີ: ${Expanese.expanese[Expanese.expanese.length - index - 1].date!.toDate().toString().substring(0, 7)}'),
                             subtitle: Column(
-                              crossAxisAlignment:
-                              CrossAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Row(
                                       children: [
@@ -66,14 +67,14 @@ class _ReportExpenseState extends State<ReportExpense> {
                                               fontSize: 16),
                                         ),
                                         Text(
-                                          ' - ${NumberFormat.decimalPattern().format(Expanese.expanese[Expanese.expanese.length-index-1].sumtatall)}',
+                                          ' - ${NumberFormat.decimalPattern().format(Expanese.expanese[Expanese.expanese.length - index - 1].sumtatall)}',
                                           style: TextStyle(
                                               fontSize: 16,
                                               color: Colors.red,
                                               fontWeight: FontWeight.bold),
                                         ),
                                         Text(
-                                          'ກີບ',
+                                          ' ກີບ',
                                           style: TextStyle(
                                               fontSize: 16,
                                               fontWeight: FontWeight.bold),
@@ -81,7 +82,8 @@ class _ReportExpenseState extends State<ReportExpense> {
                                       ],
                                     ),
                                     SizedBox(
-                                      child:Icon(Icons.arrow_forward_ios_sharp,size: 14),
+                                      child: Icon(Icons.arrow_forward_ios_sharp,
+                                          size: 14),
                                     )
                                   ],
                                 ),
@@ -94,13 +96,13 @@ class _ReportExpenseState extends State<ReportExpense> {
                   ],
                 ),
                 onTap: () {
-                 Expanese.curren_expanese = Expanese.expanese[Expanese.expanese.length-index-1];
-                     Get_reportl_Expanese_day(Expanese);
+                  Expanese.curren_expanese =
+                      Expanese.expanese[Expanese.expanese.length - index - 1];
+                  Get_reportl_Expanese_day(Expanese);
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                          const  ReportExpenseMonth()));
+                          builder: (context) => const ReportExpenseMonth()));
                 },
               ));
         },

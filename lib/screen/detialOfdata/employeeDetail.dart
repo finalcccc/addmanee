@@ -53,7 +53,7 @@ class _EmployeeDetailState extends State<EmployeeDetail> {
                       ),
                       const SizedBox(height: 15),
                       Text(
-                        'ລະຫັດພະນັກງານ: ' + ' ${employee.CurrentEmployee!.id}',
+                        'ລະຫັດ:' + ' ${employee.CurrentEmployee!.id}',
                         style: const TextStyle(fontSize: 16),
                       ),
                       Text(
@@ -91,7 +91,7 @@ class _EmployeeDetailState extends State<EmployeeDetail> {
                               height: 50,
                               child: ElevatedButton(
                                   onPressed: () {
-                                    EmployeeDialog().Dialog(context,employee);
+                                    EmployeeDialog().Dialog(context, employee);
                                   },
                                   child: const Text(
                                     'ແກ້ໄຂ',

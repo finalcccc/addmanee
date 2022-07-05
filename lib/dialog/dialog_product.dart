@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:untitled1/api/update_data/update_product.dart';
 import 'package:untitled1/celement/elements.dart';
+import 'package:untitled1/dialog/dialog_and_snackbar.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
 import 'package:untitled1/screen/detialOfdata/productDetail.dart';
@@ -29,7 +30,7 @@ class ProductDialogState {
     return showDialog(
         context: context,
         builder: (context) {
-          return Center(
+          return SingleChildScrollView(
             child: SingleChildScrollView(
               child: AlertDialog(
                 actions: [
@@ -272,12 +273,16 @@ class ProductDialogState {
                                       if (_key_import.currentState!
                                           .validate()) {
                                         _key_import.currentState!.save();
-                                        Update_products(product);
+                                        await Update_products(product);
+                                        ShowMessage(
+                                            type: false,
+                                            text: product
+                                                .CurrentProduct!.nameProduct);
                                         Navigator.pop(context);
                                       }
                                     },
                                   ),
-                                ),
+                                )
                               ],
                             ),
                           )),

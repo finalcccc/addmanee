@@ -10,7 +10,6 @@ import '../celement/elements.dart';
 import '../notifire/Repport_Notifire.dart';
 import 'package:intl/intl.dart';
 
-
 class ReportExpenseMonth extends StatefulWidget {
   const ReportExpenseMonth({Key? key}) : super(key: key);
 
@@ -23,14 +22,16 @@ final List items = List.generate(4, (i) => "Item $i");
 class _ReportExpenseMonthState extends State<ReportExpenseMonth> {
   @override
   Widget build(BuildContext context) {
-    report_incomeNotifire expanese = Provider.of<report_incomeNotifire>(context);
+    report_incomeNotifire expanese =
+        Provider.of<report_incomeNotifire>(context);
     return Scaffold(
         appBar: AppBar(
           title: const Text('ລາຍງານລາຍຈ່າຍປະຈຳເດືອນ'),
           centerTitle: true,
           backgroundColor: element.main,
           leading: element().RoutePageBack(context, const ReportExpense()),
-          bottom: WidgetSearch(label: 'ປີ - ເດືອນ-ວັນ',type: 'expM',notifire: expanese),
+          bottom: WidgetSearch(
+              label: 'ປີ - ເດືອນ-ວັນ', type: 'expM', notifire: expanese),
         ),
         body: Column(
           children: [
@@ -38,9 +39,9 @@ class _ReportExpenseMonthState extends State<ReportExpenseMonth> {
               padding: EdgeInsets.all(10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children:  [
+                children: [
                   Text(
-                    ' ເດືອນ: ${expanese.curren_expanese!.date!.toDate().toString().substring(0,7)}',
+                    ' ເດືອນ: ${expanese.curren_expanese!.date!.toDate().toString().substring(0, 7)}',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -52,7 +53,7 @@ class _ReportExpenseMonthState extends State<ReportExpenseMonth> {
                 itemCount: expanese.expanese_day.length,
                 itemBuilder: (context, index) {
                   return Container(
-                      margin: EdgeInsets.only(right: 10,left: 10),
+                      margin: EdgeInsets.only(right: 10, left: 10),
                       child: InkWell(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
@@ -61,11 +62,11 @@ class _ReportExpenseMonthState extends State<ReportExpenseMonth> {
                               child: Column(
                                 children: [
                                   ListTile(
-                                    title:  Text(
-                                        'ວັນທີ: ${expanese.expanese_day[index].date!.toDate().toString().substring(0,10)}'),
+                                    title: Text(
+                                        'ວັນທີ: ${expanese.expanese_day[index].date!.toDate().toString().substring(0, 10)}'),
                                     subtitle: Column(
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Row(
                                           children: [
@@ -76,14 +77,14 @@ class _ReportExpenseMonthState extends State<ReportExpenseMonth> {
                                                   fontSize: 16),
                                             ),
                                             Text(
-                                              ' - ${NumberFormat.decimalPattern().format(expanese.expanese_day[expanese.expanese_day.length-index-1].sumtatall)}',
+                                              ' - ${NumberFormat.decimalPattern().format(expanese.expanese_day[expanese.expanese_day.length - index - 1].sumtatall)}',
                                               style: TextStyle(
                                                   fontSize: 16,
                                                   color: Colors.red,
                                                   fontWeight: FontWeight.bold),
                                             ),
                                             Text(
-                                              '  ກີບ',
+                                              ' ກີບ',
                                               style: TextStyle(
                                                   fontSize: 16,
                                                   fontWeight: FontWeight.bold),
@@ -98,8 +99,7 @@ class _ReportExpenseMonthState extends State<ReportExpenseMonth> {
                             ),
                           ],
                         ),
-                        onTap: () {
-                        },
+                        onTap: () {},
                       ));
                 },
                 separatorBuilder: (BuildContext context, int index) {

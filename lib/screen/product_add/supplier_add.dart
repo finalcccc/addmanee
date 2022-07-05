@@ -40,7 +40,6 @@ class Supplier extends StatefulWidget {
   State<Supplier> createState() => _SupplierState();
 }
 
-
 late GlobalKey<FormState> formKey = GlobalKey<FormState>();
 final Future<FirebaseApp> firebase = Firebase.initializeApp();
 SupplierData supplierData = SupplierData();
@@ -123,9 +122,8 @@ class _SupplierState extends State<Supplier> {
 
   _inputFields(context, SupplierNotifire Supp) {
     return Form(
-     key: formKey,
-      child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      key: formKey,
+      child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         TextFormField(
           decoration: InputDecoration(
             hintText: "ຊື່ ແລະ ນາມສະກຸນ",
@@ -133,7 +131,7 @@ class _SupplierState extends State<Supplier> {
             filled: true,
             prefixIcon: const Icon(Icons.person),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(18),
+              borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide.none,
             ),
           ),
@@ -157,7 +155,7 @@ class _SupplierState extends State<Supplier> {
             filled: true,
             prefixIcon: const Icon(Icons.email_outlined),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(18),
+              borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide.none,
             ),
           ),
@@ -180,7 +178,7 @@ class _SupplierState extends State<Supplier> {
             filled: true,
             prefixIcon: const Icon(Icons.phone_bluetooth_speaker_sharp),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(18),
+              borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide.none,
             ),
           ),
@@ -205,7 +203,7 @@ class _SupplierState extends State<Supplier> {
             filled: true,
             prefixIcon: const Icon(Icons.home_filled),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(18),
+              borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide.none,
             ),
           ),
@@ -222,7 +220,7 @@ class _SupplierState extends State<Supplier> {
             filled: true,
             prefixIcon: const Icon(Icons.production_quantity_limits),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(18),
+              borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide.none,
             ),
           ),
@@ -236,13 +234,14 @@ class _SupplierState extends State<Supplier> {
         ElevatedButton(
           style: ElevatedButton.styleFrom(
             primary: element.main,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             padding: const EdgeInsets.symmetric(vertical: 16),
           ),
-          onPressed: ()async{
+          onPressed: () async {
             if (formKey.currentState!.validate()) {
               formKey.currentState!.save();
-             await AddSupplier(Supp,
+              await AddSupplier(Supp,
                   address: address,
                   email: emails,
                   name: names,
@@ -256,7 +255,6 @@ class _SupplierState extends State<Supplier> {
                 backgroundColor: Colors.white,
                 textColor: Colors.black,
               );
-
             }
           },
           child: const Text(

@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:untitled1/dialog/dialog_and_snackbar.dart';
 import 'package:untitled1/notifire/Cartnotififire.dart';
 
 import '../api/aip.dart';
@@ -37,20 +38,25 @@ class element {
   }
 
 // key khrong class form addproduct
-  checks(GlobalKey<FormState> key) {
+  checks(GlobalKey<FormState> key, var product) async {
     if (key.currentState!.validate()) {
       key.currentState!.save();
-      UploadProducts(
-          nameProduct: _name,
-          Description: _des,
-          prices: _price,
-          amount: _amount,
-          categorys_id: category_id);
-      key.currentState!.reset();
+      await UploadProducts(
+              nameProduct: _name,
+              Description: _des,
+              prices: _price,
+              amount: _amount,
+              categorys_id: category_id)
+          .then((value) {
+        ShowMessage(type: true, text: 'ສິນຄ້າ');
+        product.images = null;
+        product.RefreshProduct();
+        key.currentState!.reset();
+      });
     }
   }
 
-  elevatedButton(GlobalKey<FormState> key, String? type) {
+  elevatedButton(GlobalKey<FormState> key, String? type, {var product}) {
     return Container(
       margin: const EdgeInsets.only(right: 15, left: 15),
       width: 390,
@@ -64,7 +70,7 @@ class element {
           switch (type) {
             case "addproduct":
               {
-                checks(key);
+                checks(key, product);
               }
               break;
             case "addproduct_type":
@@ -186,7 +192,7 @@ class element {
           filled: true,
           prefixIcon: Icon(icons),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide.none,
           ),
         ),
@@ -242,7 +248,7 @@ class element {
   checkformcategory(GlobalKey<FormState> key) async {
     if (key.currentState!.validate()) {
       key.currentState!.save();
-      AddCategory();
+      AddCategory(key: key);
     }
   }
 

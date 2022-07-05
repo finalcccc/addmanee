@@ -29,12 +29,13 @@ class _SupplierDetailState extends State<SupplierDetail> {
         body: Container(
           margin: EdgeInsets.all(10),
           child: Center(
+              child: SingleChildScrollView(
             child: Card(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)),
               elevation: 5,
               child: Container(
-                height: 300,
+                height: 320,
                 margin: const EdgeInsets.all(20),
                 child: Padding(
                   padding: const EdgeInsets.all(10),
@@ -73,7 +74,7 @@ class _SupplierDetailState extends State<SupplierDetail> {
                         'ທີ່ຢູ່: ' + ' ${supplier.CurrentSupplier!.address}',
                         style: const TextStyle(fontSize: 16),
                       ),
-                      const SizedBox(height: 70),
+                      const SizedBox(height: 60),
                       Row(
                         children: [
                           SizedBox(
@@ -96,7 +97,7 @@ class _SupplierDetailState extends State<SupplierDetail> {
                 ),
               ),
             ),
-          ),
+          )),
         ));
   }
 }

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:untitled1/api/update_data/update_category.dart';
+import 'package:untitled1/dialog/dialog_and_snackbar.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
 
 class CategoryDialog {
@@ -67,7 +68,11 @@ class CategoryDialog {
                                       if (_key_import.currentState!
                                           .validate()) {
                                         _key_import.currentState!.save();
-                                        UpdateCategory(cate);
+                                        await UpdateCategory(cate);
+                                        ShowMessage(
+                                            text:
+                                                cate.CurrentCategory!.category,
+                                            type: false);
                                         Navigator.pop(context);
                                       }
                                     },

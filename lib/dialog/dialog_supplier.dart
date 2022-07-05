@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:untitled1/api/update_data/update_supplier.dart';
+import 'package:untitled1/dialog/dialog_and_snackbar.dart';
 import 'package:untitled1/notifire/supplierNotifire.dart';
 
 class SupplierDialog {
@@ -144,7 +145,10 @@ class SupplierDialog {
                                       if (_key_import.currentState!
                                           .validate()) {
                                         _key_import.currentState!.save();
-                                        Update_supplier(supp);
+                                        await Update_supplier(supp);
+                                        ShowMessage(
+                                            type: false,
+                                            text: supp.CurrentSupplier!.name);
                                         Navigator.pop(context);
                                       }
                                     },

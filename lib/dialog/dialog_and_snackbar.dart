@@ -1,11 +1,14 @@
+// ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:untitled1/api/Delete/Delete_category.dart';
 import 'package:untitled1/api/Delete/Delete_emp.dart';
 import 'package:untitled1/api/Delete/Delete_product.dart';
 import '../api/Delete/Delete_supp.dart';
 
-Dialog_D(context,{var notifire,required String? name,required String? typefuction}) {
+Dialog_D(context,
+    {var notifire, required String? name, required String? typefuction}) {
   return showDialog(
       context: context,
       builder: (context) {
@@ -22,16 +25,23 @@ Dialog_D(context,{var notifire,required String? name,required String? typefuctio
                 ),
                 Column(
                   children: [
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text('ທ່ານເເນ່ໃຈລະບໍ່ທີ່ຈະລົບຂໍ້ມູນ:',style: TextStyle(fontSize:20,color: Colors.grey),),
-
+                        Text(
+                          'ທ່ານເເນ່ໃຈລະບໍ່ທີ່ຈະລົບຂໍ້ມູນ:',
+                          style: TextStyle(fontSize: 20, color: Colors.grey),
+                        ),
                       ],
                     ),
                     SizedBox(height: 10),
-                    Text('  $name !',style: TextStyle(fontSize:20,color: Colors.red ,fontWeight: FontWeight.bold,)),
+                    Text('  $name !',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.red,
+                          fontWeight: FontWeight.bold,
+                        )),
                     SizedBox(height: 20),
                     SizedBox(
                       width: 300,
@@ -40,22 +50,23 @@ Dialog_D(context,{var notifire,required String? name,required String? typefuctio
                         child: const Text(
                           'ລົບ',
                           style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20),
+                              fontWeight: FontWeight.bold, fontSize: 20),
                         ),
                         onPressed: () async {
-                          switch(typefuction){
-                            case 'cate': Delete_Category(notifire);
-                            break;
-                            case 'products': Delete_products(notifire);
-                            break;
-                            case 'supplier': Delete_supp(notifire);
-                            break;
-                            case 'employee': Delete_emp(notifire);
-                            break;
+                          switch (typefuction) {
+                            case 'cate':
+                              Delete_Category(notifire);
+                              break;
+                            case 'products':
+                              Delete_products(notifire);
+                              break;
+                            case 'supplier':
+                              Delete_supp(notifire);
+                              break;
+                            case 'employee':
+                              Delete_emp(notifire);
+                              break;
                           }
-
-
                         },
                       ),
                     ),
@@ -66,4 +77,17 @@ Dialog_D(context,{var notifire,required String? name,required String? typefuctio
           ),
         );
       });
+}
+
+ShowMessage({
+  String? text,
+  required bool type,
+}) {
+  Fluttertoast.showToast(
+    msg: type ? 'ເພີ່ມຂໍ້ມູນ $text ສຳເລັດແລ້ວ' : 'ແກ້ໄຂຂໍ້ມູນ $text ສຳເລັດແລ້ວ',
+    fontSize: 20,
+    gravity: ToastGravity.CENTER,
+    backgroundColor: Colors.white,
+    textColor: Colors.black,
+  );
 }
