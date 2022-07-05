@@ -9,7 +9,6 @@ import 'package:intl/intl.dart';
 
 class view_order extends StatefulWidget {
   const view_order({Key? key}) : super(key: key);
-
   @override
   State<view_order> createState() => _View_orderState();
 }
@@ -25,7 +24,7 @@ class _View_orderState extends State<view_order> {
           title: const Text('ລາຍລະອຽດອໍເດີ້'),
           centerTitle: true,
         ),
-        body: Container(
+        body: order.Curren_Order != null?Container(
           margin: const EdgeInsets.all(10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -152,7 +151,7 @@ class _View_orderState extends State<view_order> {
               Expanded(
                 child: ListView.builder(
                     itemBuilder: (context, index) {
-                      return Card(
+                      return order.Order_detill != null? Card(
                         child: Column(
                           children: [
                             Center(
@@ -206,7 +205,7 @@ class _View_orderState extends State<view_order> {
                             ),
                           ],
                         ),
-                      );
+                      ):Container();
                     },
                     itemCount: order.Order_detill.length),
               ),
@@ -263,6 +262,6 @@ class _View_orderState extends State<view_order> {
               )
             ],
           ),
-        ));
+        ):Container());
   }
 }

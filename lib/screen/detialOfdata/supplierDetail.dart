@@ -4,10 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/notifire/supplierNotifire.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewSupplier.dart';
-
 import '../../celement/elements.dart';
-import '../../dialog/dialog_supplier.dart';
-
+import '../../dialog_edit/dialog_supplier.dart';
 class SupplierDetail extends StatefulWidget {
   const SupplierDetail({Key? key}) : super(key: key);
 

@@ -3,10 +3,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled1/dialog/dialog_and_snackbar.dart';
 import 'package:untitled1/notifire/Cartnotififire.dart';
 
 import '../api/aip.dart';
+import '../dialog_edit/dialog_and_snackbar.dart';
 
 class element {
   static String? category_id;
@@ -42,6 +42,7 @@ class element {
     if (key.currentState!.validate()) {
       key.currentState!.save();
       await UploadProducts(
+              pro: product,
               nameProduct: _name,
               Description: _des,
               prices: _price,

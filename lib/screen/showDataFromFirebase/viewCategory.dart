@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled1/dialog/dialog_and_snackbar.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/screen/detialOfdata/categoryDetail.dart';
 import 'package:untitled1/screen/product_add/category.dart';
@@ -10,6 +9,7 @@ import 'package:untitled1/screen/product_add/category.dart';
 import '../../WidgetSearch/widgetSearch.dart';
 import '../../api/getCategoryData.dart';
 import '../../celement/elements.dart';
+import '../../dialog_edit/dialog_and_snackbar.dart';
 
 class ViewCategory extends StatefulWidget {
   const ViewCategory({Key? key}) : super(key: key);

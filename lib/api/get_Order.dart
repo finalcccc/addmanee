@@ -26,9 +26,10 @@ Get_Order(Order_Notifire Order)async{
           .collection('employees')
           .where('id', isEqualTo: Order.Curren_Order!.Employee_ID)
           .get();
-      rfn.docs.forEach((element) {
+      rfn.docs.forEach((element)async {
         EmployeeData emp = EmployeeData.frommap(element.data());
-        Order.emp_Ooder = emp;
+        Order.emp_Ooder =  await emp;
+        Order.Referencdetill();
       });
       });
       Order.Curren_Order!.Ditell.forEach((v) async {
@@ -47,9 +48,9 @@ Get_Order(Order_Notifire Order)async{
           rfn.docs.forEach((element) async {
             f.category_id = await element['category'];
             detill.add(CartDetailData(f, v['amout'], v['sum']));
-            Order.Order_detill = detill;
-            print(Order.Order_detill.length);
-            Order.Referenc();
+            Order.Order_detill = await detill;
+           // print(Order.Order_detill.length);
+            Order.Referencdetill();
           });
         });
       });

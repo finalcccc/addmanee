@@ -6,7 +6,8 @@ import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/notifire/employeeNotifire.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewEmployee.dart';
 
-import '../../dialog/dialog_employee.dart';
+import '../../dialog_edit/dialog_employee.dart';
+
 
 class EmployeeDetail extends StatefulWidget {
   const EmployeeDetail({Key? key}) : super(key: key);

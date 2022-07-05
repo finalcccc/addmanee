@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/WidgetSearch/widgetSearch.dart';
 import 'package:untitled1/api/getsupplier.dart';
-import 'package:untitled1/dialog/dialog_and_snackbar.dart';
 import 'package:untitled1/screen/product_add/supplier_add.dart';
 
 import '../../celement/elements.dart';
+import '../../dialog_edit/dialog_and_snackbar.dart';
 import '../../notifire/supplierNotifire.dart';
 import '../detialOfdata/supplierDetail.dart';
 

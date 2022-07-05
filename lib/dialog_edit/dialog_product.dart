@@ -7,12 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:untitled1/api/update_data/update_product.dart';
 import 'package:untitled1/celement/elements.dart';
-import 'package:untitled1/dialog/dialog_and_snackbar.dart';
+
 import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
-import 'package:untitled1/screen/detialOfdata/productDetail.dart';
+
 
 import '../api/aip.dart';
+import 'dialog_and_snackbar.dart';
 
 class ProductDialogState {
   int index = 0;
@@ -276,8 +277,7 @@ class ProductDialogState {
                                         await Update_products(product);
                                         ShowMessage(
                                             type: false,
-                                            text: product
-                                                .CurrentProduct!.nameProduct);
+                                            text: product.CurrentProduct!.nameProduct);
                                         Navigator.pop(context);
                                       }
                                     },

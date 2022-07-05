@@ -3,6 +3,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/api/UploadData/upload_importproduct.dart';
 import 'package:untitled1/common/Bill.dart';
+import 'package:untitled1/dialog_edit/dialog_and_snackbar.dart';
 import 'package:untitled1/model/importproducts_Model.dart';
 import 'package:untitled1/notifire/import_product.dart';
 import 'package:untitled1/notifire/purchase_order_Notifire.dart';
@@ -241,7 +242,7 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                                         'ຊື່ສິນຄ້າ: ${orderadmin.Productditill[index].nameProduct}'),
                                     Text('ປະເພດສິນຄ້າ: ${orderadmin.Product_categoryname[index].category}'),
                                     Text(
-                                        'ຈຳນວນ: ${orderadmin.Dettil[index].amout} ແກັດ'),
+                                        'ຈຳນວນ: ${orderadmin.Productditill[index].amount} ແກັດ'),
                                   ],
                                 ),
                               ),
@@ -379,9 +380,9 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                                   ),
                                   keyboardType: TextInputType.number,
                                   onSaved: (cost) {
-                                    setState(() {
+
                                       costs = int.parse(cost!);
-                                    });
+
                                   },
                                   validator: (cost) {
                                     if (cost!.isEmpty) {
@@ -392,9 +393,9 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                                     return null;
                                   },
                                   onTap: () {
-                                    setState(() {
+
                                       amoutall = costs! * amouts!;
-                                    });
+
                                   },
                                 ),
                                 const SizedBox(height: 10),
@@ -414,9 +415,9 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                                   ),
                                   keyboardType: TextInputType.number,
                                   onSaved: (amout) {
-                                    setState(() {
+
                                       amouts = int.parse(amout!);
-                                    });
+
                                   },
                                   validator: (amout) {
                                     if (amout!.isEmpty) {
@@ -454,7 +455,11 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                                               id_purchase: orderaddmin
                                                   .Currenorderaddmin!.id);
                                           improtduct.Refresh();
-                                          Upload_import_product(improtduct);
+                                          await Upload_import_product(improtduct);
+                                          ShowMessage(type:true,text: '${orderaddmin.Productaddmin!.nameProduct} $amouts ຈຳນວນ ');
+                                          _key_import.currentState!.reset();
+                                          Navigator.pop(context);
+
                                         } else {
                                           print('no');
                                         }

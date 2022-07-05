@@ -12,5 +12,8 @@ EmployeeData?emp_Ooder;
    Order;
    notifyListeners();
  }
-
+Referencdetill(){
+  Order_detill;
+  notifyListeners();
+}
 }

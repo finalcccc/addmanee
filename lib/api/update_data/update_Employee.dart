@@ -27,8 +27,9 @@ update_Employee(EmployeeNotifire emp,
         email: emp.CurrentEmployee_loco!.email.toString(),
         password: emp.CurrentEmployee_loco!.password.toString(),
       )
-          .then((value) {
-        GetEmployeeData(emp);
+          .then((value) async{
+        await GetEmployeeData(emp);
+        emp.RefreshEmp();
       });
     });
   });

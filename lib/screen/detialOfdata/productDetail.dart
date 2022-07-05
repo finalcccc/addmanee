@@ -6,8 +6,7 @@ import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewProduct.dart';
-
-import '../../dialog/dialog_product.dart';
+import '../../dialog_edit/dialog_product.dart';
 
 class ProductDetail extends StatefulWidget {
   const ProductDetail({Key? key}) : super(key: key);

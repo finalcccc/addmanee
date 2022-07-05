@@ -3,12 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/api/getEmployeeData.dart';
-import 'package:untitled1/dialog/dialog_and_snackbar.dart';
 import 'package:untitled1/notifire/employeeNotifire.dart';
 import 'package:untitled1/screen/product_add/registerEmployee.dart';
 
 import '../../WidgetSearch/widgetSearch.dart';
 import '../../celement/elements.dart';
+import '../../dialog_edit/dialog_and_snackbar.dart';
 import '../detialOfdata/employeeDetail.dart';
 
 class ViewEmployee extends StatefulWidget {

@@ -55,16 +55,20 @@ Dialog_D(context,
                         onPressed: () async {
                           switch (typefuction) {
                             case 'cate':
-                              Delete_Category(notifire);
+                              await Delete_Category(notifire);
+                              Navigator.pop(context);
                               break;
                             case 'products':
-                              Delete_products(notifire);
+                             await Delete_products(notifire);
+                              Navigator.pop(context);
                               break;
                             case 'supplier':
-                              Delete_supp(notifire);
+                             await Delete_supp(notifire);
+                              Navigator.pop(context);
                               break;
                             case 'employee':
-                              Delete_emp(notifire);
+                             await Delete_emp(notifire);
+                              Navigator.pop(context);
                               break;
                           }
                         },
@@ -89,5 +93,6 @@ ShowMessage({
     gravity: ToastGravity.CENTER,
     backgroundColor: Colors.white,
     textColor: Colors.black,
+    timeInSecForIosWeb: 3
   );
 }

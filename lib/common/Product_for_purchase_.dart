@@ -285,10 +285,6 @@ Dailog(Cartnotifire Carts, context) {
                       onPressed: () {
                         Carts.cecks();
                         Navigator.pop(context);
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) => const Cart()));
                       },//r
                       child: const Text(
                         "ເພີ່ມສິນເຂົ້າກະຕ້າ",

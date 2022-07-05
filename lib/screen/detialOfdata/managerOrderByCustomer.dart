@@ -42,11 +42,11 @@ class _ManagerOrderByCustomerState extends State<ManagerOrderByCustomer> {
                 child: InkWell(
                   onTap: () async {
                     order.Curren_Order = order.Order[index];
-                    Get_Order_Detlill(order);
+                   await Get_Order_Detlill(order);
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const view_order()));
+                            builder: (context) =>  view_order()));
                   },
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

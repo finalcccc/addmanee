@@ -34,9 +34,9 @@ Update_products(ProductNotifire  pro) async{
       await FirebaseFirestore.instance
             .collection('products')
             .doc(pro.CurrentProduct!.id)
-            .update(pro.CurrentProduct!.toMap()).then((value) {
+            .update(pro.CurrentProduct!.toMap()).then((value) async {
+          await GetProduct(pro);
           pro.RefreshProduct();
-          GetProduct(pro);
         });
   }
 }

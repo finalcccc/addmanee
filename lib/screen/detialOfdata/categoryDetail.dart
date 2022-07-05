@@ -6,7 +6,8 @@ import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewCategory.dart';
 
 import '../../celement/elements.dart';
-import '../../dialog/dialog_category.dart';
+import '../../dialog_edit/dialog_category.dart';
+
 
 class CategoryDetail extends StatefulWidget {
   const CategoryDetail({Key? key}) : super(key: key);

@@ -8,7 +8,8 @@ import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/screen/product_add/appProduct.dart';
 
 import '../../WidgetSearch/widgetSearch.dart';
-import '../../dialog/dialog_and_snackbar.dart';
+
+import '../../dialog_edit/dialog_and_snackbar.dart';
 import '../detialOfdata/productDetail.dart';
 
 class ViewProduct extends StatefulWidget {

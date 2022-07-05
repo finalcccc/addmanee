@@ -44,6 +44,7 @@ GetPureChaseNoly({required purchase_order_Notifire? order_admin,required Supplie
 }
 
 Future GetDetill({required purchase_order_Notifire order_admin})async{
+  int i = 0;
   order_admin.Productditill.clear();
   order_admin.Dettil.clear();
   List<CartModel> _Detilmo =[];
@@ -65,24 +66,32 @@ Future GetDetill({required purchase_order_Notifire order_admin})async{
           .get();
       rfn.docs.forEach((element)async{
         product_Model f = await  product_Model.formMap(element.data());
-        prodetill.add(f);
         QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
             .collection('categorys')
             .where('id', isEqualTo: f.category_id)
             .get();
         rfn.docs.forEach((element) async{
           CategoryData c = await CategoryData.frommap(element.data());
-          cate.add(c);
-          order_admin.Product_categoryname = cate;
-          order_admin.Refresh();
-        });
+
+          for(var h in _Detilmo){
+            if(f.id == h.Product_ID){
+                   f.amount = h.amout;
+                   prodetill.add(f);
+                   cate.add(c);
+            }
+          }
+
       });
+      });
+
+
 
     }
     );
     Future.delayed(Duration(seconds: 1),(){
       order_admin.Productditill = prodetill;
       order_admin.Dettil =_Detilmo;
+      order_admin.Product_categoryname = cate;
       order_admin.Refresh();
     });
 

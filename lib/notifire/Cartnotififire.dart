@@ -43,4 +43,9 @@ class Cartnotifire with ChangeNotifier{
    getCartsupp(v){
     Cartsupp = v;
    }
+   Refresh(){
+     amoultoal = 0;
+     Carts;
+    notifyListeners();
+   }
 }

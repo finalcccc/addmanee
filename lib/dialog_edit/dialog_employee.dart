@@ -1,13 +1,17 @@
-// ignore_for_file: camel_case_types, non_constant_identifier_names
+// ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:untitled1/api/update_data/update_supplier.dart';
-import 'package:untitled1/dialog/dialog_and_snackbar.dart';
-import 'package:untitled1/notifire/supplierNotifire.dart';
+import 'package:untitled1/api/update_data/update_Employee.dart';
+import 'package:untitled1/notifire/employeeNotifire.dart';
+import 'package:untitled1/screen/login.dart';
 
-class SupplierDialog {
+import '../model/Employee_Model.dart';
+import 'dialog_and_snackbar.dart';
+
+class EmployeeDialog {
   final GlobalKey<FormState> _key_import = GlobalKey<FormState>();
-  Dialog({required BuildContext context, required SupplierNotifire supp}) {
+  String? email, pass;
+  Dialog(context, EmployeeNotifire emp) {
     return showDialog(
         context: context,
         builder: (context) {
@@ -28,39 +32,39 @@ class SupplierDialog {
                         key: _key_import,
                         child: SizedBox(
                           width: 400,
-                          height: 360,
+                          height: 480,
                           child: Card(
                               child: SingleChildScrollView(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 TextFormField(
-                                  initialValue: supp.CurrentSupplier!.name,
+                                  initialValue: emp.CurrentEmployee!.name,
                                   decoration: const InputDecoration(
                                     hintText: "ຊື່ ແລະ ນາມສະກຸນ",
                                     prefixIcon: Icon(Icons.person),
                                   ),
                                   onSaved: (value) {
-                                    supp.CurrentSupplier!.name = value;
+                                    emp.CurrentEmployee!.name = value;
                                   },
                                   validator: (cost) {
                                     if (cost!.isEmpty) {
                                       return "ກະລຸນາປ້ອນຂໍ້ມູນ";
-                                    } else if (cost.length < 2) {
-                                      return "ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຖືກຕ້ອງ";
+                                    } else if (cost.length < 4) {
+                                      return "ກວດສວບລາຄາ";
                                     }
                                     return null;
                                   },
                                 ),
                                 const SizedBox(height: 5),
                                 TextFormField(
-                                  initialValue: supp.CurrentSupplier!.email,
+                                  initialValue: emp.CurrentEmployee!.email,
                                   decoration: const InputDecoration(
                                     hintText: "ອີເມວ",
                                     prefixIcon: Icon(Icons.email),
                                   ),
                                   onSaved: (value) {
-                                    supp.CurrentSupplier!.email = value;
+                                    email = value!;
                                   },
                                   validator: (amout) {
                                     if (amout!.isEmpty) {
@@ -72,14 +76,36 @@ class SupplierDialog {
                                   },
                                 ),
                                 const SizedBox(height: 5),
+                                ////////////////////////////////////////////////
+
                                 TextFormField(
-                                  initialValue: supp.CurrentSupplier!.tel,
+                                  initialValue: emp.CurrentEmployee!.password,
                                   decoration: const InputDecoration(
-                                    hintText: "ເບີໂທລະສັບ",
+                                    hintText: "ລະຫັດ",
+                                    prefixIcon: Icon(Icons.lock),
+                                  ),
+                                  onSaved: (value) {
+                                    pass = value!;
+                                  },
+                                  validator: (cost) {
+                                    if (cost!.isEmpty) {
+                                      return "ກະລຸນາປ້ອນຂໍ້ມູນ";
+                                    } else if (cost.length < 4) {
+                                      return "ກວດສວບລາຄາ";
+                                    }
+                                    return null;
+                                  },
+                                ),
+
+                                const SizedBox(height: 5),
+                                TextFormField(
+                                  initialValue: emp.CurrentEmployee!.tel,
+                                  decoration: const InputDecoration(
+                                    hintText: "ເບີໂທ",
                                     prefixIcon: Icon(Icons.phone),
                                   ),
                                   onSaved: (value) {
-                                    supp.CurrentSupplier!.tel = value;
+                                    emp.CurrentEmployee!.tel = value;
                                   },
                                   validator: (cost) {
                                     if (cost!.isEmpty) {
@@ -92,34 +118,69 @@ class SupplierDialog {
                                 ),
                                 const SizedBox(height: 5),
                                 TextFormField(
-                                  initialValue: supp.CurrentSupplier!.address,
+                                  initialValue: emp.CurrentEmployee!.birthday,
+                                  decoration: const InputDecoration(
+                                    hintText: "ວັນ ເດືອນ ປີເກີດ",
+                                    prefixIcon: Icon(Icons.people),
+                                  ),
+                                  onSaved: (v) {
+                                    emp.CurrentEmployee!.birthday = v;
+                                  },
+                                  validator: (cost) {
+                                    if (cost!.isEmpty) {
+                                      return "ກະລຸນາປ້ອນຂໍ້ມູນ";
+                                    } else if (cost.length < 4) {
+                                      return "ກວດສວບລາຄາ";
+                                    }
+                                    return null;
+                                  },
+                                ),
+                                const SizedBox(height: 5),
+                                DropdownButton(
+                                    icon: const Icon(
+                                      Icons.keyboard_arrow_down,
+                                      size: 30,
+                                    ),
+                                    borderRadius: BorderRadius.circular(50),
+                                    value: emp.CurrentEmployee!.position,
+                                    isExpanded: true,
+                                    underline: const SizedBox(
+                                      height: 4,
+                                      child: Divider(
+                                        indent: 1,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    hint: const Padding(
+                                      padding: EdgeInsets.only(left: 50),
+                                      child: Text("ເລືອກປະເພດສິນຄ້າ"),
+                                    ),
+                                    // icon: const Icon(Icons.keyboard_arrow_down),
+
+                                    items: EmployeeData.positoin
+                                        .map((e) => DropdownMenuItem(
+                                            value: e,
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 20.0),
+                                              child: Text('${e}'),
+                                            )))
+                                        .toList(),
+                                    onChanged: (v) {
+                                      Navigator.pop(context);
+                                      EmployeeDialog().Dialog(context, emp);
+                                      emp.CurrentEmployee!.position =
+                                          v.toString();
+                                    }),
+                                const SizedBox(height: 5),
+                                TextFormField(
+                                  initialValue: emp.CurrentEmployee!.address,
                                   decoration: const InputDecoration(
                                     hintText: "ທີ່ຢູ່",
                                     prefixIcon: Icon(Icons.home),
                                   ),
-                                  onSaved: (value) {
-                                    supp.CurrentSupplier!.address = value;
-                                  },
-                                  validator: (cost) {
-                                    if (cost!.isEmpty) {
-                                      return "ກະລຸນາປ້ອນຂໍ້ມູນ";
-                                    } else if (cost.length < 4) {
-                                      return "ກວດສວບລາຄາ";
-                                    }
-                                    return null;
-                                  },
-                                ),
-                                const SizedBox(height: 5),
-                                TextFormField(
-                                  initialValue:
-                                      supp.CurrentSupplier!.supplyProduct,
-                                  decoration: const InputDecoration(
-                                    hintText: "ສິນຄ້າຜູ້ສະໜອງ",
-                                    prefixIcon: Icon(
-                                        Icons.production_quantity_limits_sharp),
-                                  ),
-                                  onSaved: (value) {
-                                    supp.CurrentSupplier!.supplyProduct = value;
+                                  onSaved: (_address) {
+                                    emp.CurrentEmployee!.address = _address;
                                   },
                                   validator: (cost) {
                                     if (cost!.isEmpty) {
@@ -145,10 +206,9 @@ class SupplierDialog {
                                       if (_key_import.currentState!
                                           .validate()) {
                                         _key_import.currentState!.save();
-                                        await Update_supplier(supp);
-                                        ShowMessage(
-                                            type: false,
-                                            text: supp.CurrentSupplier!.name);
+                                        await update_Employee(emp,
+                                            email: email!, pass: pass!);
+                                       ShowMessage(type: false, text: 'ພະນັກງານ');
                                         Navigator.pop(context);
                                       }
                                     },

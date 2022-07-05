@@ -25,6 +25,7 @@ Delete_emp(EmployeeNotifire emp) {
         password:emp.CurrentEmployee_loco!.password!.trim(),
       );
       GetEmployeeData(emp);
+      emp.RefreshEmp();
     });
   });
 
