@@ -22,8 +22,7 @@ class ViewProduct extends StatefulWidget {
 class _ViewProductState extends State<ViewProduct> {
   @override
   Widget build(BuildContext context) {
-    ProductNotifire product =
-        Provider.of<ProductNotifire>(context, listen: false);
+    ProductNotifire product = Provider.of<ProductNotifire>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: element.main,
@@ -85,9 +84,14 @@ class _ViewProductState extends State<ViewProduct> {
                                     ),
                                   ],
                                 ),
-                                subtitle: Text('ຈຳນວນສິນຄ້າ: ' +
-                                    ' ${product.Products[index].amount} ' +
-                                    ' ແກັດ'),
+                                subtitle: Column(children: [
+                                  Text('ຈຳນວນສິນຄ້າ: ' +
+                                      ' ${product.Products[index].amount} ' +
+                                      ' ແກັດ'),
+                                  Text('ລາຄາ: ' +
+                                      ' ${product.Products[index].price} ' +
+                                      'ກີບ'),
+                                ]),
                                 trailing: IconButton(
                                   onPressed: () {
                                     product.CurrentProduct =

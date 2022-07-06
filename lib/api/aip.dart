@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io' as io;
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:untitled1/api/getsupplier.dart';
+import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/model/product_Model.dart';
 import 'package:untitled1/model/supplier_data.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
@@ -25,12 +26,12 @@ Future AddImage(ProductNotifire product) async {
 
 Future<void> UploadProducts(
     {ProductNotifire? pro,
-      String? nameProduct,
+    String? nameProduct,
     String? Description,
     int? prices,
     cost,
     amount,
-    String? categorys_id} ) async {
+    String? categorys_id}) async {
   product_Model product = product_Model();
   try {
     int random = Random().nextInt(1000);
@@ -57,7 +58,11 @@ Future<void> UploadProducts(
     product.id = docid.id;
     print(product.id);
     print(product.image);
-    docid.set(product.toMap()).then((value) async { image = null;  await GetProduct(pro!); pro.RefreshProduct();});
+    docid.set(product.toMap()).then((value) async {
+      image = null;
+      await GetProduct(pro!);
+      pro.RefreshProduct();
+    });
   } catch (e) {
     return print(e.toString());
   }
@@ -72,7 +77,8 @@ Get_Category_Form(v) {
 AddCategory({required var key}) async {
   CategoryData category = CategoryData();
   try {
-    CollectionReference reference = FirebaseFirestore.instance.collection('categorys');
+    CollectionReference reference =
+        FirebaseFirestore.instance.collection('categorys');
     category.category = categorys;
     DocumentReference docid = await reference.add(category.toMap());
     category.id = docid.id;

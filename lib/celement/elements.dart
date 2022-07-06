@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:untitled1/api/getProduct.dart';
 import 'package:untitled1/notifire/Cartnotififire.dart';
 
 import '../api/aip.dart';
@@ -23,7 +24,7 @@ class element {
   static var gray = const Color(0xffF7F7F7);
 
   //title
-  static String title = "ຮ້ານເເອັດມານີ";
+  static String title = "ຮ້ານເເອັດມະນີ";
   static String p1 = "ສັ່ງສິນຄ້າເຂົ້າຮ້ານ";
   static String p2 = "ລົງທະບຽນ\nພະນັກງານ";
   static String p3 = "ຈັດການອໍເດິ";
@@ -37,6 +38,12 @@ class element {
     category_id = categorys;
   }
 
+  Circu() {
+    CircularProgressIndicator(
+      color: Colors.indigo,
+    );
+  }
+
 // key khrong class form addproduct
   checks(GlobalKey<FormState> key, var product) async {
     if (key.currentState!.validate()) {
@@ -48,7 +55,7 @@ class element {
               prices: _price,
               amount: _amount,
               categorys_id: category_id)
-          .then((value) {
+          .then((value) async {
         ShowMessage(type: true, text: 'ສິນຄ້າ');
         product.images = null;
         product.RefreshProduct();
@@ -57,7 +64,7 @@ class element {
     }
   }
 
-  elevatedButton(GlobalKey<FormState> key, String? type, {var product}) {
+  elevatedButton(GlobalKey<FormState> key, String? typ, {var product}) {
     return Container(
       margin: const EdgeInsets.only(right: 15, left: 15),
       width: 390,
@@ -67,11 +74,12 @@ class element {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             padding: const EdgeInsets.symmetric(vertical: 16)),
-        onPressed: () {
-          switch (type) {
+        onPressed: () async {
+          switch (typ) {
             case "addproduct":
               {
-                checks(key, product);
+                await checks(key, product);
+                // GetProduct(product);
               }
               break;
             case "addproduct_type":
@@ -283,15 +291,19 @@ class element {
           inactiveColor: Colors.white70,
           items: [
             BottomNavigationBarItem(
-              activeIcon: Text(label1.toString(),style: TextStyle(fontSize: 17)) ,
-             // label: label1,
+              activeIcon:
+                  Text(label1.toString(), style: TextStyle(fontSize: 17)),
+              // label: label1,
               icon: Icon(icos1),
-
             ),
             BottomNavigationBarItem(
-              activeIcon: Text(label2.toString(),style: TextStyle(fontSize: 17)) ,
+              activeIcon:
+                  Text(label2.toString(), style: TextStyle(fontSize: 17)),
               //label: label2,
-              icon: Icon(icos2,size: 30,),
+              icon: Icon(
+                icos2,
+                size: 30,
+              ),
             ),
           ],
         ),

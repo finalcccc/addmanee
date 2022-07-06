@@ -6,13 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/api/aip.dart';
 import 'package:untitled1/celement/elements.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:untitled1/notifire/categoryNotifire.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
 import 'package:untitled1/screen/menu.dart';
-import 'package:untitled1/screen/product_add/registerEmployee.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewProduct.dart';
-
 import '../../api/getCategoryData.dart';
 import '../../api/getProduct.dart';
 
@@ -154,7 +151,7 @@ class _AddProductState extends State<AddProduct> {
               const SizedBox(height: 10),
               elements.inputFields(
                 context: context,
-                hint: 'ລາລະອຽດ',
+                hint: 'ລາຍລະອຽດ',
                 icons: Icons.edit,
                 Keybordtye: TextInputType.text,
                 trye: 'description',
