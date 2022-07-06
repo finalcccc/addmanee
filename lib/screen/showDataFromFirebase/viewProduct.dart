@@ -1,8 +1,7 @@
 // ignore_for_file: prefer_if_null_operators, prefer_adjacent_string_concatenation, prefer_interpolation_to_compose_strings, avoid_unnecessary_containers
-
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled1/api/Delete/Delete_product.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/screen/product_add/appProduct.dart';
@@ -89,7 +88,7 @@ class _ViewProductState extends State<ViewProduct> {
                                       ' ${product.Products[index].amount} ' +
                                       ' ແກັດ'),
                                   Text('ລາຄາ: ' +
-                                      ' ${product.Products[index].price} ' +
+                                      ' ${NumberFormat.decimalPattern().format(product.Products[index].price)} ' +
                                       'ກີບ'),
                                 ]),
                                 trailing: IconButton(
