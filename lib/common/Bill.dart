@@ -213,7 +213,7 @@ class Bill {
               pw.Container(
                   width: 70,
                   child: pw.Text(
-                    '${orderadmin.Dettil[index].amout}',
+                    '${orderadmin.Productditill[index].amount}',
                     style: pw.TextStyle(font: ttf),
                   )),
               pw.Container(
