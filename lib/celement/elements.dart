@@ -283,12 +283,15 @@ class element {
           inactiveColor: Colors.white70,
           items: [
             BottomNavigationBarItem(
-              label: label1,
+              activeIcon: Text(label1.toString(),style: TextStyle(fontSize: 17)) ,
+             // label: label1,
               icon: Icon(icos1),
+
             ),
             BottomNavigationBarItem(
-              label: label2,
-              icon: Icon(icos2),
+              activeIcon: Text(label2.toString(),style: TextStyle(fontSize: 17)) ,
+              //label: label2,
+              icon: Icon(icos2,size: 30,),
             ),
           ],
         ),

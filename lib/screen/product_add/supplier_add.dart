@@ -24,8 +24,8 @@ class _SupplierTapbarState extends State<SupplierTapbar> {
   @override
   Widget build(BuildContext context) {
     return element().TabbarPage(
-        label1: 'ລົງທະບຽນຜູ້ສະໜອງ',
-        icos1: Icons.feed,
+        label1: 'ເພີ່ມຜູ້ສະໜອງ',
+        icos1: Icons.ad_units,
         icos2: Icons.feed,
         label2: 'ຂໍ້ມູນຜູ້ສະໜອງ',
         tap1: const Supplier(),

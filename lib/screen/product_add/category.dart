@@ -20,8 +20,8 @@ class _ProductTypeTapbarState extends State<ProductTypeTapbar> {
   @override
   Widget build(BuildContext context) {
     return element().TabbarPage(
-        label1: 'ປະເພດສິນຄ້າ',
-        icos1: Icons.feed,
+        label1: 'ເພີ່ມປະເພດສິນຄ້າ',
+        icos1: Icons.ad_units,
         icos2: Icons.feed,
         label2: 'ຂໍ້ມູນປະເພດສິນຄ້າ',
         tap1: const Category(),
