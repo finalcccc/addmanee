@@ -30,7 +30,7 @@ class _View_orderState extends State<view_order> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'ວັນທີ: ${order.Curren_Order!.date!.toDate().toString().substring(0, 10)}',
+                'ວັນທີ: ${order.Curren_Order.date!.toDate().toString().substring(0, 10)}',
                 style:
                     const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
@@ -48,7 +48,7 @@ class _View_orderState extends State<view_order> {
                                     style: TextStyle(
                                         fontSize: 16)),
                                 Text(
-                                  ' ${order.Curren_Order!.id}',
+                                  ' ${order.Curren_Order.id}',
                                   style: const TextStyle(fontSize: 16),
                                 ),
                               ],
@@ -59,7 +59,7 @@ class _View_orderState extends State<view_order> {
                                     style: TextStyle(
                                         fontSize: 16)),
                                 Text(
-                                  ' ${order.Curren_Order!.nameCutommer}',
+                                  ' ${order.Curren_Order.nameCutommer}',
                                   style: const TextStyle(fontSize: 16),
                                 ),
                               ],
@@ -71,7 +71,7 @@ class _View_orderState extends State<view_order> {
                                   style: TextStyle(
                                       fontSize: 16,),
                                 ),
-                                Text('${order.Curren_Order!.tel}',
+                                Text('${order.Curren_Order.tel}',
                                     style: const TextStyle(fontSize: 16)),
                               ],
                             ),
@@ -83,7 +83,7 @@ class _View_orderState extends State<view_order> {
                                       fontSize: 16,
                                  ),
                                 ),
-                                Text(' ${order.Curren_Order!.address}',
+                                Text(' ${order.Curren_Order.address}',
                                     style: const TextStyle(fontSize: 16)),
                               ],
                             ),
@@ -94,7 +94,7 @@ class _View_orderState extends State<view_order> {
                                   style: TextStyle(
                                       fontSize: 16),
                                 ),
-                                Text(' ${order.emp_Ooder!.name}',
+                                Text(' ${order.emp_Ooder.name}',
                                     style: const TextStyle(fontSize: 16)),
                               ],
                             ),
@@ -207,7 +207,7 @@ class _View_orderState extends State<view_order> {
                         ),
                       ):Container();
                     },
-                    itemCount: order.Order_detill.length),
+                    itemCount: order.Order_detill.length??1),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),
@@ -224,7 +224,7 @@ class _View_orderState extends State<view_order> {
                                   fontSize: 17, fontWeight: FontWeight.bold),
                             ),
                             Text(
-                              ' ${order.Curren_Order!.amouttotal} ເເກັດ',
+                              ' ${order.Curren_Order.amouttotal} ເເກັດ',
                               style: const TextStyle(fontSize: 17),
                             ),
                           ],
@@ -237,7 +237,7 @@ class _View_orderState extends State<view_order> {
                                   fontSize: 17, fontWeight: FontWeight.bold),
                             ),
                             Text(
-                              ' ${NumberFormat.decimalPattern().format(order.Curren_Order!.sumtotal)} ກີບ',
+                              ' ${NumberFormat.decimalPattern().format(order.Curren_Order.sumtotal)} ກີບ',
                               style: const TextStyle(fontSize: 17),
                             ),
                           ],

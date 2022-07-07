@@ -21,18 +21,18 @@ Get_Order(Order_Notifire Order)async{
   Get_Order_Detlill(Order_Notifire Order)async{
 
     List<CartDetailData>detill=[];
-    Order.Curren_Order!.Ditell.forEach((v)async {
+    Order.Curren_Order.Ditell.forEach((v)async {
       QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
           .collection('employees')
-          .where('id', isEqualTo: Order.Curren_Order!.Employee_ID)
+          .where('id', isEqualTo: Order.Curren_Order.Employee_ID)
           .get();
       rfn.docs.forEach((element)async {
         EmployeeData emp = EmployeeData.frommap(element.data());
         Order.emp_Ooder =  await emp;
-        Order.Referencdetill();
+       // Order.Referencdetill();
       });
       });
-      Order.Curren_Order!.Ditell.forEach((v) async {
+      Order.Curren_Order.Ditell.forEach((v) async {
         QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore
             .instance
             .collection('products')
@@ -50,8 +50,9 @@ Get_Order(Order_Notifire Order)async{
             detill.add(CartDetailData(f, v['amout'], v['sum']));
             Order.Order_detill = await detill;
            // print(Order.Order_detill.length);
-            Order.Referencdetill();
+           //
           });
+          Order.Referencdetill();
         });
       });
     }

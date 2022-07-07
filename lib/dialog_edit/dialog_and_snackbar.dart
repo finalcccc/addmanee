@@ -85,12 +85,9 @@ Dialog_D(context,
 Dialog_Cire(BuildContext context) {
   return showDialog(
     context: context,
-    builder: (context) => SingleChildScrollView(
-      child: Center(
+    builder: (context) =>  Center(
         child: CircularProgressIndicator(
-          color: Colors.indigo,
-        ),
-      ),
+          color: Colors.indigo,),
     ),
   );
 }
