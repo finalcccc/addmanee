@@ -96,7 +96,7 @@ class _Login extends State<Login> {
                               borderSide: BorderSide.none,
                             ),
                           ),
-                          keyboardType: TextInputType.number,
+                          keyboardType: TextInputType.text,
                           obscureText: true,
                           onSaved: (String? password) {
                             employeeData.password = password;
