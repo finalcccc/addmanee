@@ -87,7 +87,7 @@ Dialog_Cire(BuildContext context) {
     context: context,
     builder: (context) =>  Center(
         child: CircularProgressIndicator(
-          color: Colors.indigo,),
+          color: Color(0xff0031CA)),
     ),
   );
 }
