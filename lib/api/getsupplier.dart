@@ -9,7 +9,7 @@ GetSupplier(SupplierNotifire supp) async {
   List<SupplierData> _supplier = [];
   QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
       .collection('suppliers')
-      .orderBy('name')
+      .orderBy('email',descending: false)
       .get();
   supp.Suplierid.clear();
   rfn.docs.forEach((e)  {
