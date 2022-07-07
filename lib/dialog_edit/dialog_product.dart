@@ -245,7 +245,6 @@ class ProductDialogState {
                                     prefixIcon: Icon(Icons.details_sharp),
                                   ),
                                   onChanged: (value) {
-                                    h=70;
                                     product.CurrentProduct!.description = value;
                                   },
                                   onSaved: (value) {
