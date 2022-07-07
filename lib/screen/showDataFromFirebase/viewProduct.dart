@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_if_null_operators, prefer_adjacent_string_concatenation, prefer_interpolation_to_compose_strings, avoid_unnecessary_containers
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -62,7 +61,7 @@ class _ViewProductState extends State<ViewProduct> {
                         Row(
                           children: [
                             Image.network(
-                              '${product.Products[index].image != null ? product.Products[index].image : element.nullimage}',
+                              '${product.Products[index].image ?? element.nullimage}',
                               fit: BoxFit.cover,
                               width: 100,
                               height: 100,
