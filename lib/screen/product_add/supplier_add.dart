@@ -188,11 +188,12 @@ class _SupplierState extends State<Supplier> {
           },
           validator: (String? tel) {
             if (tel!.isEmpty) {
-              return "ກະລຸນາປ້ອນເບີໂທລະສັບ";
-            } else if (tel.length < 10) {
-              return "ເບີໂທລະສັບບໍ່ຖືກຕ້ອງ";
+              return "ກະລຸນາປ້ອນຂໍ້ມູນ";
+            } else if (tel.length < 12 ) {
+              return "ໃສ່ຫມາຍໂທລະສັບໃຫ້ຖຶກຕ້ອງ";
+            }else if(tel.length < 8 ){
+              return "ໃສ່ໝາຍໂທລະສັບໃຫ້ຖຶກຕ້ອງ";
             }
-            return null;
           },
         ),
         const SizedBox(height: 10),

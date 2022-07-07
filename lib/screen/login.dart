@@ -121,16 +121,23 @@ class _Login extends State<Login> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
-                            onPressed: () {
+                            onPressed: () async{
+                              Scaffold(
+                                body: Center(
+                                  child: CircularProgressIndicator(
+                                    color: Colors.indigo,
+                                  ),
+                                ),
+                              );
                               if (formKey.currentState!.validate()) {
                                 formKey.currentState!.save();
                                 try {
                                   FirebaseAuth.instance.signInWithEmailAndPassword( ////////////////////////////////////////////////
                                     email: employeeData.email!,
                                     password: employeeData.password!,
-                                  ).then((value) {
+                                  ).then((value)async {
 
-                                    GetEmployeeData_only(em,employeeData.email!,context);
+                                    await GetEmployeeData_only(em,employeeData.email!,context);
 
                                   });
                                 } on FirebaseAuthException catch (e) {

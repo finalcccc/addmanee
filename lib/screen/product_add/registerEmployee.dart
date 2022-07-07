@@ -248,7 +248,7 @@ class _RegisterState extends State<Register> {
                 borderSide: BorderSide.none,
               ),
             ),
-            keyboardType: TextInputType.number,
+            keyboardType: TextInputType.text,
             obscureText: true,
             onChanged: (value) => password = value.trim(),
             validator: (String? password) {
@@ -273,7 +273,7 @@ class _RegisterState extends State<Register> {
               ),
             ),
             obscureText: true,
-            keyboardType: TextInputType.number,
+            keyboardType: TextInputType.text,
             onChanged: (value) => confirmPassword = value.trim(),
             validator: (String? confirmPassword) {
               if (confirmPassword == password) {
@@ -302,12 +302,13 @@ class _RegisterState extends State<Register> {
               onChanged: (value) => tel = value.trim(),
               validator: (String? tel) {
                 if (tel!.isEmpty) {
-                  return "ກະລຸນາປ້ອນເບີໂທລະສັບ";
-                } else if (tel.length < 10) {
-                  return "ເບີໂທລະສັບບໍ່ຖືກຕ້ອງ";
+                  return "ກະລຸນາປ້ອນຂໍ້ມູນ";
+                } else if (tel.length < 12 ) {
+                  return "ໃສ່ຫມາຍໂທລະສັບໃຫ້ຖຶກຕ້ອງ";
+                }else if(tel.length < 8 ){
+                  return "ໃສ່ໝາຍໂທລະສັບໃຫ້ຖຶກຕ້ອງ";
                 }
                 return null;
-                //return ;
               }),
           const SizedBox(height: 8),
           TextFormField(
