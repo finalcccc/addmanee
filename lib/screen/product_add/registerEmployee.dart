@@ -11,7 +11,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:untitled1/dialog_edit/dialog_and_snackbar.dart';
 import 'package:untitled1/screen/menu.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewEmployee.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import '../../model/Employee_Model.dart';
 
 class EmployeeTapbar extends StatefulWidget {
@@ -351,8 +350,8 @@ class _RegisterState extends State<Register> {
               padding: const EdgeInsets.symmetric(vertical: 16),
             ),
             onPressed: () async {
-              setState(()async {
-               await check();
+              setState(() async {
+                await check();
               });
             },
             child: const Text(

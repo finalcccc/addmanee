@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/api/Getrepoert/get_report_Expanese.dart';
 import 'package:untitled1/celement/elements.dart';
+import 'package:untitled1/report/reportEmployeeData.dart';
 import 'package:untitled1/report/reportExpense.dart';
 import 'package:untitled1/report/reportIncome.dart';
 
@@ -19,7 +20,7 @@ class ReportData extends StatefulWidget {
 class _ReportDataState extends State<ReportData> {
   @override
   Widget build(BuildContext context) {
-    report_incomeNotifire income =Provider.of<report_incomeNotifire>(context);
+    report_incomeNotifire income = Provider.of<report_incomeNotifire>(context);
     return Scaffold(
         appBar: AppBar(
           title: const Text('ລາຍງານຂໍ້ມູນ'),
@@ -69,7 +70,83 @@ class _ReportDataState extends State<ReportData> {
                     style: TextStyle(fontSize: 17),
                   ),
                 ),
-              )
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                height: 50,
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: element.main),
+                  onPressed: () {
+                    // Get_reportl_Expanese(income);
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ReportEmployeeData()));
+                  },
+                  child: const Text(
+                    'ລາຍງານຂໍ້ມູນພະນັກງານ',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                height: 50,
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: element.main),
+                  onPressed: () {
+                    // Get_reportl_Expanese(income);
+                    // Navigator.pushReplacement(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => const ReportExpense()));
+                  },
+                  child: const Text(
+                    'ລາຍງານຂໍ້ມູນສິນຄ້າ',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                height: 50,
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: element.main),
+                  onPressed: () {
+                    Get_reportl_Expanese(income);
+                    // Navigator.pushReplacement(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => const ReportExpense()));
+                  },
+                  child: const Text(
+                    'ລາຍງານການສັ່ງຊື້',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                height: 50,
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: element.main),
+                  onPressed: () {
+                    // Get_reportl_Expanese(income);
+                    // Navigator.pushReplacement(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => const ReportExpense()));
+                  },
+                  child: const Text(
+                    'ລາຍງານໃບສັ່ງຊື້ສິນຄ້າເຂົ້າຮ້ານ',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ),
+              ),
             ],
           ),
         )));
