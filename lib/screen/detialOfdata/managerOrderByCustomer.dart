@@ -42,11 +42,9 @@ class _ManagerOrderByCustomerState extends State<ManagerOrderByCustomer> {
                 child: InkWell(
                   onTap: () async {
                     order.Curren_Order = order.Order[index];
-                   await Get_Order_Detlill(order);
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>  view_order()));
+                    await Get_Order_Detlill(order);
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => view_order()));
                   },
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,7 +67,7 @@ class _ManagerOrderByCustomerState extends State<ManagerOrderByCustomer> {
                         ),
                       ),
                       Text(
-                        'ຊື່ລູກຄ້າ: ${order.Order[index].nameCutommer} ແກັດ',
+                        'ຊື່ລູກຄ້າ: ${order.Order[index].nameCutommer}',
                         style: const TextStyle(fontSize: 16),
                       ),
                       Text(
@@ -84,16 +82,16 @@ class _ManagerOrderByCustomerState extends State<ManagerOrderByCustomer> {
                         'ຈຳນວນທັງໝົດ: ${order.Order[index].amouttotal} ແກັດ',
                         style: const TextStyle(fontSize: 16),
                       ),
-                 Row(
-                   children: [
-                     Text(
-                       'ລາຄາລວມ: ${NumberFormat.decimalPattern().format(order.Order[index].sumtotal)} ກີບ',
-                       style: const TextStyle(fontSize: 16),
-                     ),
-                     const SizedBox(width: 120),
-                     Staustus(order, index),
-                   ],
-                 )
+                      Row(
+                        children: [
+                          Text(
+                            'ລາຄາລວມ: ${NumberFormat.decimalPattern().format(order.Order[index].sumtotal)} ກີບ',
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                          const SizedBox(width: 120),
+                          Staustus(order, index),
+                        ],
+                      )
                     ],
                   ),
                 ),
