@@ -207,7 +207,7 @@ class _View_orderState extends State<view_order> {
                         ),
                       ):Container();
                     },
-                    itemCount: order.Order_detill.length??1),
+                    itemCount: order.Order_detill.length),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),
