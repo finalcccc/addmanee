@@ -24,6 +24,7 @@ class ProductDialogState {
 
   final GlobalKey<FormState> _key_import = GlobalKey<FormState>();
   double area = 55;
+  double h =0;
   Dialog(
       {required context,
       required ProductNotifire product,
@@ -244,6 +245,7 @@ class ProductDialogState {
                                     prefixIcon: Icon(Icons.details_sharp),
                                   ),
                                   onChanged: (value) {
+                                    h=70;
                                     product.CurrentProduct!.description = value;
                                   },
                                   onSaved: (value) {
@@ -258,7 +260,8 @@ class ProductDialogState {
                                     return null;
                                   },
                                 ),
-                                const SizedBox(height: 30),
+                                 SizedBox(height: h),
+                                Container(height: h,),
                                 SizedBox(
                                   width: 300,
                                   height: 55,
