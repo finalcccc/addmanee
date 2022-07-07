@@ -303,9 +303,9 @@ class _RegisterState extends State<Register> {
               validator: (String? tel) {
                 if (tel!.isEmpty) {
                   return "ກະລຸນາປ້ອນຂໍ້ມູນ";
-                } else if (tel.length < 12 ) {
+                } else if (tel.length < 12) {
                   return "ໃສ່ຫມາຍໂທລະສັບໃຫ້ຖຶກຕ້ອງ";
-                }else if(tel.length < 8 ){
+                } else if (tel.length < 8) {
                   return "ໃສ່ໝາຍໂທລະສັບໃຫ້ຖຶກຕ້ອງ";
                 }
                 return null;
@@ -322,7 +322,7 @@ class _RegisterState extends State<Register> {
                 borderSide: BorderSide.none,
               ),
             ),
-            keyboardType: TextInputType.number,
+            keyboardType: TextInputType.text,
             onChanged: (value) => birthday = value.trim(),
             validator:
                 RequiredValidator(errorText: "ກະລຸນາປ້ອນ ວັນ ເດືອນ ປີ ເກີດ"),
