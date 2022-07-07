@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/report/reportData.dart';
-import 'package:untitled1/report/reportEmployeeDataToPDF.dart';
+import 'package:untitled1/report/reportImportProductToPDF.dart';
 import '../celement/elements.dart';
 
-class ReportEmployeeData extends StatefulWidget {
-  const ReportEmployeeData({Key? key}) : super(key: key);
+class ReportImportProduct extends StatefulWidget {
+  const ReportImportProduct({Key? key}) : super(key: key);
 
   @override
-  State<ReportEmployeeData> createState() => _ReportEmployeeDataState();
+  State<ReportImportProduct> createState() => _ReportImportProductState();
 }
 
-class _ReportEmployeeDataState extends State<ReportEmployeeData> {
+class _ReportImportProductState extends State<ReportImportProduct> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('ລາຍງານຂໍ້ມູນພະນັກງານ'),
+          title: const Text('ລາຍງານໃບນຳສົ່ງສິນຄ້າ'),
           centerTitle: true,
           backgroundColor: element.main,
           leading: element().RoutePageBack(context, const ReportData()),
@@ -23,7 +23,7 @@ class _ReportEmployeeDataState extends State<ReportEmployeeData> {
         body: Column(
           children: [
             const SizedBox(height: 10),
-            const Text('ພະນັກງານທັງໝົດມີ ຄົນ',
+            const Text('ໃບນຳສົ່ງສິນຄ້າ',
                 style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
             Expanded(
               child: ListView.builder(
@@ -38,7 +38,7 @@ class _ReportEmployeeDataState extends State<ReportEmployeeData> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            '${"$index"} user',
+                            '${"$index"} Name',
                             style: const TextStyle(
                               fontSize: 16.0,
                               color: Colors.black,
@@ -46,7 +46,7 @@ class _ReportEmployeeDataState extends State<ReportEmployeeData> {
                           ),
                           const SizedBox(height: 5.0),
                           const Text(
-                            'email',
+                            'type',
                             style: TextStyle(
                               fontSize: 14.0,
                               color: Colors.grey,
@@ -62,8 +62,8 @@ class _ReportEmployeeDataState extends State<ReportEmployeeData> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: const [
-                Text('ແອັດມິນມີ 2 ຄົນ', style: TextStyle(fontSize: 17)),
-                Text('ພະນັກງານຂາຍມີ 15 ຄົນ', style: TextStyle(fontSize: 17)),
+                Text('type:', style: TextStyle(fontSize: 17)),
+                Text('amount:', style: TextStyle(fontSize: 17)),
               ],
             ),
             const SizedBox(height: 10),
@@ -77,7 +77,7 @@ class _ReportEmployeeDataState extends State<ReportEmployeeData> {
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                const ReportEmployeeDataToPDF()));
+                                const ReportImportProductToPDF()));
                   },
                   child: const Text(
                     'ບັນທຶກເປັນພີດີເອັຟ',

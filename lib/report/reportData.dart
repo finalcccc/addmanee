@@ -4,7 +4,9 @@ import 'package:untitled1/api/Getrepoert/get_report_Expanese.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/report/reportEmployeeData.dart';
 import 'package:untitled1/report/reportExpense.dart';
+import 'package:untitled1/report/reportImportProduct.dart';
 import 'package:untitled1/report/reportIncome.dart';
+import 'package:untitled1/report/reportProductData.dart';
 
 import '../api/Getrepoert/get_reportl_income.dart';
 import '../notifire/Repport_Notifire.dart';
@@ -97,14 +99,14 @@ class _ReportDataState extends State<ReportData> {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(primary: element.main),
                   onPressed: () {
-                    // Get_reportl_Expanese(income);
-                    // Navigator.pushReplacement(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => const ReportExpense()));
+                    Get_reportl_Expanese(income);
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ReportImportProduct()));
                   },
                   child: const Text(
-                    'ລາຍງານຂໍ້ມູນສິນຄ້າ',
+                    'ລາຍງານໃບນຳສົ່ງສິນຄ້າ',
                     style: TextStyle(fontSize: 17),
                   ),
                 ),
@@ -117,32 +119,13 @@ class _ReportDataState extends State<ReportData> {
                   style: ElevatedButton.styleFrom(primary: element.main),
                   onPressed: () {
                     Get_reportl_Expanese(income);
-                    // Navigator.pushReplacement(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => const ReportExpense()));
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ReportProductData()));
                   },
                   child: const Text(
-                    'ລາຍງານການສັ່ງຊື້',
-                    style: TextStyle(fontSize: 17),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10),
-              SizedBox(
-                height: 50,
-                width: double.infinity,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: element.main),
-                  onPressed: () {
-                    // Get_reportl_Expanese(income);
-                    // Navigator.pushReplacement(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => const ReportExpense()));
-                  },
-                  child: const Text(
-                    'ລາຍງານໃບສັ່ງຊື້ສິນຄ້າເຂົ້າຮ້ານ',
+                    'ລາຍງານຂໍ້ມູນສິນຄ້າ',
                     style: TextStyle(fontSize: 17),
                   ),
                 ),
