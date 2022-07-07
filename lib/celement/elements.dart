@@ -64,7 +64,7 @@ class element {
     }
   }
 
-  elevatedButton(GlobalKey<FormState> key, String? typ, {var product}) {
+  elevatedButton(GlobalKey<FormState> key, String? typ, {var product,required BuildContext context}) {
     return Container(
       margin: const EdgeInsets.only(right: 15, left: 15),
       width: 390,
@@ -78,13 +78,16 @@ class element {
           switch (typ) {
             case "addproduct":
               {
-                await checks(key, product);
-                // GetProduct(product);
+                Dialog_Cire(context);
+              await checks(key, product);
+              Navigator.pop(context);
               }
               break;
             case "addproduct_type":
               {
-                checkformcategory(key);
+                 Dialog_Cire(context);
+                await checkformcategory(key);
+                Navigator.pop(context);
               }
               break;
           }

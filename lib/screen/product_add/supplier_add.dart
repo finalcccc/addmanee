@@ -13,6 +13,8 @@ import 'package:untitled1/notifire/supplierNotifire.dart';
 import 'package:untitled1/screen/menu.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewSupplier.dart';
 
+import '../../dialog_edit/dialog_and_snackbar.dart';
+
 class SupplierTapbar extends StatefulWidget {
   const SupplierTapbar({Key? key}) : super(key: key);
 
@@ -242,15 +244,17 @@ class _SupplierState extends State<Supplier> {
           onPressed: () async {
             if (formKey.currentState!.validate()) {
               formKey.currentState!.save();
+              Dialog_Cire( context);
               await AddSupplier(Supp,
                   address: address,
                   email: emails,
                   name: names,
                   tel: tels,
                   supplyProduct: supplyProducts);
+              Navigator.pop(context);
               formKey.currentState!.reset();
               Fluttertoast.showToast(
-                msg: "ໄດ້ເພີ່ມຂໍ້ມູນຜູ້ສະໜອງແລ້ວ",
+                msg: "ເພີ່ມຂໍ້ມູນສຳເລັດ",
                 fontSize: 20,
                 gravity: ToastGravity.CENTER,
                 backgroundColor: Colors.white,

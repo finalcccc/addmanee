@@ -82,7 +82,18 @@ Dialog_D(context,
         );
       });
 }
-
+Dialog_Cire(BuildContext context) {
+  return showDialog(
+    context: context,
+    builder: (context) => SingleChildScrollView(
+      child: Center(
+        child: CircularProgressIndicator(
+          color: Colors.indigo,
+        ),
+      ),
+    ),
+  );
+}
 ShowMessage({
   String? text,
   required bool type,

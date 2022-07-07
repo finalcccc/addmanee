@@ -8,6 +8,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:untitled1/dialog_edit/dialog_and_snackbar.dart';
 import 'package:untitled1/screen/menu.dart';
 import 'package:untitled1/screen/showDataFromFirebase/viewEmployee.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -61,6 +62,7 @@ class _RegisterState extends State<Register> {
     //up to database
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
+      Dialog_Cire(context);
       if (position != null) {
         try {
           await FirebaseAuth.instance
@@ -94,15 +96,13 @@ class _RegisterState extends State<Register> {
                 .set(data!)
                 .then(
               (value) {
+                Navigator.pop(context);
                 print('Insert value in to fireStore success');
                 setState(() {
                   position = null;
                 });
               },
             );
-          }).then((value) {
-            FirebaseAuth.instance
-                .sendPasswordResetEmail(email: 'tonking5624@gmail.com');
           });
         } on FirebaseAuthException catch (e) {
           // print(e.message);
@@ -351,9 +351,8 @@ class _RegisterState extends State<Register> {
               padding: const EdgeInsets.symmetric(vertical: 16),
             ),
             onPressed: () async {
-              setState(() {
-                check();
-                // Navigator.push(context, MaterialPageRoute(builder: (context) => Viewproduct(),));
+              setState(()async {
+               await check();
               });
             },
             child: const Text(

@@ -8,6 +8,7 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/api/getEmployeeData.dart';
 import 'package:untitled1/celement/elements.dart';
+import 'package:untitled1/dialog_edit/dialog_and_snackbar.dart';
 import 'package:untitled1/model/Employee_Model.dart';
 import 'package:untitled1/notifire/employeeNotifire.dart';
 import 'package:untitled1/screen/menu.dart';
@@ -131,6 +132,7 @@ class _Login extends State<Login> {
                               );
                               if (formKey.currentState!.validate()) {
                                 formKey.currentState!.save();
+                                Dialog_Cire(context);
                                 try {
                                   FirebaseAuth.instance.signInWithEmailAndPassword( ////////////////////////////////////////////////
                                     email: employeeData.email!,
@@ -138,7 +140,7 @@ class _Login extends State<Login> {
                                   ).then((value)async {
 
                                     await GetEmployeeData_only(em,employeeData.email!,context);
-
+                                    Navigator.pop(context);
                                   });
                                 } on FirebaseAuthException catch (e) {
                                   // print(e.message);

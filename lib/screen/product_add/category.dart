@@ -74,7 +74,7 @@ class _CategoryState extends State<Category> {
                         trye: 'Products_type',
                         context: context),
                     const SizedBox(height: 20),
-                    element().elevatedButton(Key, 'addproduct_type'),
+                    element().elevatedButton(Key, 'addproduct_type',context: context),
                   ],
                 ),
               )

@@ -167,7 +167,7 @@ class _AddProductState extends State<AddProduct> {
               const SizedBox(height: 10),
               comboboxcontainer(context, cate),
               const SizedBox(height: 20),
-              elements.elevatedButton(Key, 'addproduct', product: product),
+              elements.elevatedButton(Key, 'addproduct', product: product,context: context),
               const SizedBox(height: 20),
             ],
           ),
