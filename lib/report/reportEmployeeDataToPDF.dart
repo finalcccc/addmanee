@@ -1,4 +1,3 @@
-// ignore_for_file: non_constant_identifier_names, await_only_futures, avoid_print, unnecessary_string_interpolations, unnecessary_brace_in_string_interps, camel_case_types, depend_on_referenced_packages
 
 import 'dart:math';
 import 'package:flutter/services.dart';

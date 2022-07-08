@@ -3,8 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/api/Getrepoert/get_report_Expanese.dart';
+import 'package:untitled1/api/getProduct.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/notifire/employeeNotifire.dart';
+import 'package:untitled1/notifire/productNotifire.dart';
 import 'package:untitled1/report/reportEmployeeData.dart';
 import 'package:untitled1/report/reportExpense.dart';
 import 'package:untitled1/report/reportImportProduct.dart';
@@ -126,8 +128,10 @@ class _ReportDataState extends State<ReportData> {
                 width: double.infinity,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(primary: element.main),
-                  onPressed: () {
-                    Get_reportl_Expanese(income);
+                  onPressed: ()async {
+                    ProductNotifire product =
+                    Provider.of<ProductNotifire>(context, listen: false);
+                   await GetProduct(product);
                     Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(

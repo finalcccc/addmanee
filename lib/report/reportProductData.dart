@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:untitled1/notifire/productNotifire.dart';
 import 'package:untitled1/report/buttonReportData.dart';
 import 'package:untitled1/report/reportProductDataToPDF.dart';
 import '../celement/elements.dart';
@@ -13,6 +15,7 @@ class ReportProductData extends StatefulWidget {
 class _ReportProductDataState extends State<ReportProductData> {
   @override
   Widget build(BuildContext context) {
+    ProductNotifire pro = Provider.of<ProductNotifire>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('ລາຍງານຂໍ້ມູນສິນຄ້າ'),
@@ -28,7 +31,7 @@ class _ReportProductDataState extends State<ReportProductData> {
           Expanded(
             child: ListView.builder(
               padding: const EdgeInsets.all(10.0),
-              itemCount: 10,
+              itemCount: pro.Products.length,
               itemBuilder: (BuildContext context, int index) {
                 return Card(
                   child: Padding(
@@ -38,15 +41,31 @@ class _ReportProductDataState extends State<ReportProductData> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          '${"$index"} Name',
+                          '${pro.Products[index].nameProduct}',
                           style: const TextStyle(
                             fontSize: 16.0,
                             color: Colors.black,
                           ),
                         ),
                         const SizedBox(height: 5.0),
-                        const Text(
-                          'type',
+                        Text(
+                          '${pro.Products[index].amount}',
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        const SizedBox(height: 5.0),
+                        Text(
+                          '${pro.cate[index].category}',
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        const SizedBox(height: 5.0),
+                        Text(
+                          '${pro.Products[index].price}',
                           style: TextStyle(
                             fontSize: 14.0,
                             color: Colors.grey,
@@ -61,9 +80,8 @@ class _ReportProductDataState extends State<ReportProductData> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: const [
-              Text('type:', style: TextStyle(fontSize: 17)),
-              Text('amount:', style: TextStyle(fontSize: 17)),
+            children:  [
+              Text('ມີທັ້ງໝົດ: ${pro.Products.length} ລາຍການ', style: TextStyle(fontSize: 17)),
             ],
           ),
           const SizedBox(height: 10),
