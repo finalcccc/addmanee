@@ -27,9 +27,6 @@ class _ReportProductDataState extends State<ReportProductData> {
       body: Column(
         children: [
           const SizedBox(height: 10),
-          const Text('ຂໍ້ມູນສິນຄ້າ',
-              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
-
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Card(
@@ -116,61 +113,63 @@ class _ReportProductDataState extends State<ReportProductData> {
 
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        SizedBox(
-                          width:34,
-                          child: Text(
-                            '${index+1}',
-                            style: const TextStyle(
-                              fontSize: 16.0,
-                              color: Colors.black,
+                    child: Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          SizedBox(
+                            width:34,
+                            child: Text(
+                              '${index+1}',
+                              style: const TextStyle(
+                                fontSize: 16.0,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          width:80,
-                          child: Text(
+                          SizedBox(
+                            width:80,
+                            child: Text(
 
-                            '${pro.Products[index].nameProduct}',
-                            style: const TextStyle(
-                              fontSize: 16.0,
-                              color: Colors.black,
+                              '${pro.Products[index].nameProduct}',
+                              style: const TextStyle(
+                                fontSize: 16.0,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
-                        ),
-                        const SizedBox(height: 5.0),
-                        SizedBox(
-                          child: Text(
-                            '${pro.Products[index].amount}',
-                            style: const TextStyle(
-                              fontSize: 14.0,
-                              color: Colors.grey,
+                          const SizedBox(height: 5.0),
+                          SizedBox(
+                            child: Text(
+                              '${pro.Products[index].amount}',
+                              style: const TextStyle(
+                                fontSize: 14.0,
+                                color: Colors.grey,
+                              ),
                             ),
                           ),
-                        ),
-                        const SizedBox(height: 5.0),
-                        SizedBox(
-                          child: Text(
-                            '${pro.Products[index].category_id}',
-                            style: const TextStyle(
-                              fontSize: 14.0,
-                              color: Colors.grey,
+                          const SizedBox(height: 5.0),
+                          SizedBox(
+                            child: Text(
+                              '${pro.Products[index].category_id}',
+                              style: const TextStyle(
+                                fontSize: 14.0,
+                                color: Colors.grey,
+                              ),
                             ),
                           ),
-                        ),
-                        const SizedBox(height: 5.0),
-                        SizedBox(
-                          child: Text(
-                            '${ NumberFormat.decimalPattern().format(pro.Products[index].price)}',
-                            style: const TextStyle(
-                              fontSize: 14.0,
-                              color: Colors.grey,
+                          const SizedBox(height: 5.0),
+                          SizedBox(
+                            child: Text(
+                              '${ NumberFormat.decimalPattern().format(pro.Products[index].price)}',
+                              style: const TextStyle(
+                                fontSize: 14.0,
+                                color: Colors.grey,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 );
