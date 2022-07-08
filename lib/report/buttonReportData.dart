@@ -131,7 +131,7 @@ class _ReportDataState extends State<ReportData> {
                   onPressed: ()async {
                     ProductNotifire product =
                     Provider.of<ProductNotifire>(context, listen: false);
-                   await GetProduct(product);
+                   await GetProduct(product,false);
                     Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(

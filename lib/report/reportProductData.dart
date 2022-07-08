@@ -4,6 +4,7 @@ import 'package:untitled1/notifire/productNotifire.dart';
 import 'package:untitled1/report/buttonReportData.dart';
 import 'package:untitled1/report/reportProductDataToPDF.dart';
 import '../celement/elements.dart';
+import 'package:intl/intl.dart';
 
 class ReportProductData extends StatefulWidget {
   const ReportProductData({Key? key}) : super(key: key);
@@ -28,47 +29,145 @@ class _ReportProductDataState extends State<ReportProductData> {
           const SizedBox(height: 10),
           const Text('ຂໍ້ມູນສິນຄ້າ',
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Card(
+                elevation: 2,
+                shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(10),
+                        topRight: Radius.circular(10)),
+                    side: BorderSide(width: 3, color: Colors.teal)),
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const <Widget>[
+                    SizedBox(
+                      width:34,
+                      child: Text(
+                        'ລຳດັບ',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width:60,
+                      child: Text(
+
+                        'ຊື່ສິນຄ້າ',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 5.0),
+                    SizedBox(
+                      child: Text(
+                        'ຈຳນວນ',
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 5.0),
+                    SizedBox(
+                      child: Text(
+                        'ປະເພດ',
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 5.0),
+                    SizedBox(
+                      child: Text(
+                        'ລາຄາ',
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              ),
+            ),
+
           Expanded(
             child: ListView.builder(
               padding: const EdgeInsets.all(10.0),
               itemCount: pro.Products.length,
               itemBuilder: (BuildContext context, int index) {
                 return Card(
+                      elevation: 2,
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                              bottomRight: Radius.circular(10),
+                              topRight: Radius.circular(10)),
+                          side: BorderSide(width: 1, color: Colors.indigo)),
+
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Text(
-                          '${pro.Products[index].nameProduct}',
-                          style: const TextStyle(
-                            fontSize: 16.0,
-                            color: Colors.black,
+                        SizedBox(
+                          width:34,
+                          child: Text(
+                            '${index+1}',
+                            style: const TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width:80,
+                          child: Text(
+
+                            '${pro.Products[index].nameProduct}',
+                            style: const TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.black,
+                            ),
                           ),
                         ),
                         const SizedBox(height: 5.0),
-                        Text(
-                          '${pro.Products[index].amount}',
-                          style: TextStyle(
-                            fontSize: 14.0,
-                            color: Colors.grey,
+                        SizedBox(
+                          child: Text(
+                            '${pro.Products[index].amount}',
+                            style: const TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                            ),
                           ),
                         ),
                         const SizedBox(height: 5.0),
-                        Text(
-                          '${pro.Products[index].category_id}',
-                          style: TextStyle(
-                            fontSize: 14.0,
-                            color: Colors.grey,
+                        SizedBox(
+                          child: Text(
+                            '${pro.Products[index].category_id}',
+                            style: const TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                            ),
                           ),
                         ),
                         const SizedBox(height: 5.0),
-                        Text(
-                          '${pro.Products[index].price}',
-                          style: TextStyle(
-                            fontSize: 14.0,
-                            color: Colors.grey,
+                        SizedBox(
+                          child: Text(
+                            '${ NumberFormat.decimalPattern().format(pro.Products[index].price)}',
+                            style: const TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                            ),
                           ),
                         ),
                       ],

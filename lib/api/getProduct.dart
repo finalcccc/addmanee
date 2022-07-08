@@ -7,7 +7,7 @@ import 'package:untitled1/api/aip.dart';
 import 'package:untitled1/model/category_Model.dart';
 import 'package:untitled1/model/product_Model.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
-GetProduct(ProductNotifire product) async {
+GetProduct(ProductNotifire product,[bool type = true]) async {
   List<product_Model> _Product = [];
   QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
       .collection('products')
@@ -24,11 +24,16 @@ GetProduct(ProductNotifire product) async {
           .get();
       rfn.docs.forEach(
             (e)async {
-               CategoryData c = await CategoryData.frommap(e.data());
-               f.category_id = c.category;
-               _Product.add(f);
-               product.Product = _Product;
-               product.RefreshProduct();
+          CategoryData c = await CategoryData.frommap(e.data());
+          if(type){
+            f.category_id = c.id;
+          }else{
+            f.category_id = c.category;
+          }
+
+          _Product.add(f);
+          product.Product = _Product;
+          product.RefreshProduct();
         },
       );
     },
