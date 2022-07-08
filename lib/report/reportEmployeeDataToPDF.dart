@@ -1,3 +1,4 @@
+// ignore_for_file: non_constant_identifier_names, await_only_futures, avoid_print, unnecessary_string_interpolations, unnecessary_brace_in_string_interps, camel_case_types, depend_on_referenced_packages
 
 import 'dart:math';
 import 'package:flutter/services.dart';
@@ -7,10 +8,9 @@ import 'package:untitled1/notifire/OrderNotifire.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'dart:io';
 import 'package:intl/intl.dart';
-import 'package:untitled1/notifire/employeeNotifire.dart';
 
 class EmployeePDF {
-  static SaveEmployeePDF(var order, context) async {
+  static SaveEmployeePDF(Order_Notifire order, context) async {
     final font = await rootBundle.load('lib/assets/Phetsarath-Regular.ttf');
     final pw.Font ttf = pw.Font.ttf(font);
     final pdf = pw.Document();

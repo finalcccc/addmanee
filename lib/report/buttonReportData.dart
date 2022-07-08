@@ -8,6 +8,7 @@ import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/dialog_edit/dialog_and_snackbar.dart';
 import 'package:untitled1/notifire/employeeNotifire.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
+import 'package:untitled1/notifire/supplierNotifire.dart';
 import 'package:untitled1/report/reportEmployeeData.dart';
 import 'package:untitled1/report/reportExpense.dart';
 import 'package:untitled1/report/reportImportProduct.dart';
@@ -16,6 +17,7 @@ import 'package:untitled1/report/reportProductData.dart';
 
 import '../api/Getrepoert/get_reportl_income.dart';
 import '../api/getEmployeeData.dart';
+import '../api/getImportProduct.dart';
 import '../notifire/Repport_Notifire.dart';
 import '../screen/menu.dart';
 
@@ -90,8 +92,8 @@ class _ReportDataState extends State<ReportData> {
                     EmployeeNotifire emp =
                         Provider.of<EmployeeNotifire>(context, listen: false);
                     await GetEmployeeData(emp);
-                     emp.employeeList.toList().forEach((element)async {
-                        await emp.CheckPosition(element.position.toString(), emp);
+                    emp.employeeList.toList().forEach((element) async {
+                      await emp.CheckPosition(element.position.toString(), emp);
                     });
                     Navigator.pushReplacement(
                         context,
@@ -111,7 +113,9 @@ class _ReportDataState extends State<ReportData> {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(primary: element.main),
                   onPressed: () {
-                    Get_reportl_Expanese(income);
+                    SupplierNotifire supp =
+                        Provider.of<SupplierNotifire>(context, listen: false);
+                    getImPortProduct(supp);
                     Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
@@ -129,10 +133,10 @@ class _ReportDataState extends State<ReportData> {
                 width: double.infinity,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(primary: element.main),
-                  onPressed: ()async {
+                  onPressed: () async {
                     ProductNotifire product =
-                    Provider.of<ProductNotifire>(context, listen: false);
-                    GetProduct(product,false);
+                        Provider.of<ProductNotifire>(context, listen: false);
+                    GetProduct(product, false);
                     Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:untitled1/notifire/supplierNotifire.dart';
 import 'package:untitled1/report/buttonReportData.dart';
 import 'package:untitled1/report/reportImportProductToPDF.dart';
 import '../celement/elements.dart';
@@ -13,6 +15,7 @@ class ReportImportProduct extends StatefulWidget {
 class _ReportImportProductState extends State<ReportImportProduct> {
   @override
   Widget build(BuildContext context) {
+    SupplierNotifire supp = Provider.of<SupplierNotifire>(context);
     return Scaffold(
         appBar: AppBar(
           title: const Text('ລາຍງານໃບນຳສົ່ງສິນຄ້າ'),
@@ -28,7 +31,7 @@ class _ReportImportProductState extends State<ReportImportProduct> {
             Expanded(
               child: ListView.builder(
                 padding: const EdgeInsets.all(10.0),
-                itemCount: 10,
+                itemCount: supp.Supplier.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Card(
                     child: Padding(
@@ -38,16 +41,51 @@ class _ReportImportProductState extends State<ReportImportProduct> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            '${"$index"} Name',
+                            '${index + 1} ',
                             style: const TextStyle(
                               fontSize: 16.0,
                               color: Colors.black,
                             ),
                           ),
                           const SizedBox(height: 5.0),
-                          const Text(
-                            'type',
+                          Text(
+                            '${supp.ImportProduct[index].id}',
                             style: TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          Text(
+                            '${supp.Supplier[index].name}',
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          Text(
+                            '${supp.ImportProduct[index].date!.toDate()}',
+                            style: const TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          Text(
+                            '${supp.SuplierList[index].tel}',
+                            style: const TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          Text(
+                            '${supp.SuplierList[index].email}',
+                            style: const TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          Text(
+                            '${supp.ImportProduct[index].amouttotal}',
+                            style: const TextStyle(
                               fontSize: 14.0,
                               color: Colors.grey,
                             ),

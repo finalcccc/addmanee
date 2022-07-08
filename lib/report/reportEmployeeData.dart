@@ -5,8 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:untitled1/notifire/employeeNotifire.dart';
 import 'package:untitled1/report/buttonReportData.dart';
 import 'package:untitled1/report/reportEmployeeDataToPDF.dart';
-import 'package:untitled1/screen/login.dart';
 import '../celement/elements.dart';
+import '../notifire/OrderNotifire.dart';
 
 class ReportEmployeeData extends StatefulWidget {
   const ReportEmployeeData({Key? key}) : super(key: key);
@@ -19,7 +19,6 @@ class _ReportEmployeeDataState extends State<ReportEmployeeData> {
   @override
   Widget build(BuildContext context) {
     EmployeeNotifire emp = Provider.of<EmployeeNotifire>(context);
-
     return Scaffold(
         appBar: AppBar(
           title: const Text('ລາຍງານຂໍ້ມູນພະນັກງານ'),
@@ -38,7 +37,7 @@ class _ReportEmployeeDataState extends State<ReportEmployeeData> {
                 padding: const EdgeInsets.all(10.0),
                 itemCount: emp.employeeList.length,
                 itemBuilder: (BuildContext context, int index) {
-              //   emp.CheckPosition(emp.employeeList[index].position.toString(),emp);
+                  //   emp.CheckPosition(emp.employeeList[index].position.toString(),emp);
                   return Card(
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
@@ -71,7 +70,7 @@ class _ReportEmployeeDataState extends State<ReportEmployeeData> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text('Addmin ມີ ${ emp.addminCount} ຄົນ',
+                Text('Addmin ມີ ${emp.addminCount} ຄົນ',
                     style: const TextStyle(fontSize: 17)),
                 Text('Sale ມີ ${emp.saleCount} ຄົນ',
                     style: const TextStyle(fontSize: 17)),
