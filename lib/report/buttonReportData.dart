@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:untitled1/api/Getrepoert/get_report_Expanese.dart';
 import 'package:untitled1/api/getProduct.dart';
 import 'package:untitled1/celement/elements.dart';
+import 'package:untitled1/dialog_edit/dialog_and_snackbar.dart';
 import 'package:untitled1/notifire/employeeNotifire.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
 import 'package:untitled1/report/reportEmployeeData.dart';
@@ -131,7 +132,7 @@ class _ReportDataState extends State<ReportData> {
                   onPressed: ()async {
                     ProductNotifire product =
                     Provider.of<ProductNotifire>(context, listen: false);
-                   await GetProduct(product,false);
+                    GetProduct(product,false);
                     Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
