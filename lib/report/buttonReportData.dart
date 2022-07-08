@@ -87,6 +87,9 @@ class _ReportDataState extends State<ReportData> {
                     EmployeeNotifire emp =
                         Provider.of<EmployeeNotifire>(context, listen: false);
                     await GetEmployeeData(emp);
+                     emp.employeeList.toList().forEach((element)async {
+                        await emp.CheckPosition(element.position.toString(), emp);
+                    });
                     Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(

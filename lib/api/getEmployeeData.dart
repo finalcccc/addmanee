@@ -36,7 +36,7 @@ GetEmployeeData_only(
     (e) async {
       EmployeeData em = await EmployeeData.frommap(e.data());
       emp.CurrentEmployee_loco = em;
-      if (emp.CurrentEmployee_loco!.position == 'Admin') {
+      if (emp.CurrentEmployee_loco!.position == 'Addmin') {
         formKey.currentState!.reset();
         Navigator.pushReplacement(
           context,

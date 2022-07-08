@@ -27,20 +27,21 @@ class EmployeeNotifire with ChangeNotifier {
     notifyListeners();
   }
 
-  CheckPosition(String position, EmployeeNotifire emp, index) {
+  CheckPosition(String position, EmployeeNotifire emp) {
     if (emp.employeeList.length != saleCount + addminCount) {
       if (position == 'Addmin') {
         addminCount++;
         notifyListeners();
-        return 'ຕຳແໜ່ງ: Addmin';
       } else {
         saleCount++;
         notifyListeners();
-        return 'ຕຳແໜ່ງ: Sale';
       }
-    } else {
-      notifyListeners();
-      return "ຕຳແໜ່ງ: ${emp.employeeList[index].position}";
     }
+  }
+  ceck(){
+    addminCount++;
+    notifyListeners();
+    saleCount++;
+    notifyListeners();
   }
 }

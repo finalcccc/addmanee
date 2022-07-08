@@ -24,7 +24,7 @@ class EmployeeData {
     this.tel,
     this.birthday
   });
-  static List<String> positoin = ['Admin', 'Sale'];
+  static List<String> positoin = ['Addmin', 'Sale'];
   EmployeeData.frommap(Map<String, dynamic> value) {
     id = value['id'];
     name = value['name'];

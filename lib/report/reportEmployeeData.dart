@@ -19,6 +19,7 @@ class _ReportEmployeeDataState extends State<ReportEmployeeData> {
   @override
   Widget build(BuildContext context) {
     EmployeeNotifire emp = Provider.of<EmployeeNotifire>(context);
+
     return Scaffold(
         appBar: AppBar(
           title: const Text('ລາຍງານຂໍ້ມູນພະນັກງານ'),
@@ -37,6 +38,7 @@ class _ReportEmployeeDataState extends State<ReportEmployeeData> {
                 padding: const EdgeInsets.all(10.0),
                 itemCount: emp.employeeList.length,
                 itemBuilder: (BuildContext context, int index) {
+              //   emp.CheckPosition(emp.employeeList[index].position.toString(),emp);
                   return Card(
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
@@ -53,7 +55,7 @@ class _ReportEmployeeDataState extends State<ReportEmployeeData> {
                           ),
                           const SizedBox(height: 5.0),
                           Text(
-                            '${emp.employeeList[index].position == 'Sale' ? emp.CheckPosition('Sale', emp, index) : emp.CheckPosition('Addmin', emp, index)}',
+                            '${emp.employeeList[index].position}',
                             style: const TextStyle(
                               fontSize: 14.0,
                               color: Colors.grey,
@@ -69,9 +71,9 @@ class _ReportEmployeeDataState extends State<ReportEmployeeData> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text('ແອັດມິນມີ ${emp.addminCount} ຄົນ',
+                Text('Addmin ມີ ${ emp.addminCount} ຄົນ',
                     style: const TextStyle(fontSize: 17)),
-                Text('ພະນັກງານຂາຍມີ ${emp.saleCount} ຄົນ',
+                Text('Sale ມີ ${emp.saleCount} ຄົນ',
                     style: const TextStyle(fontSize: 17)),
               ],
             ),
