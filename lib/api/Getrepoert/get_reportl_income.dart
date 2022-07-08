@@ -1,3 +1,4 @@
+// ignore_for_file: non_constant_identifier_names
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:untitled1/model/Report_Income_Modle.dart';
@@ -29,14 +30,15 @@ Get_reportl_income(report_incomeNotifire imcome) async {
     Timestamp g = element['date'];
     String m = g.toDate().toString().substring(6, 7);
     if (element['Staustus'] == 'ສຳເລັດ') {
-      Report_Month(m: m, Month: Month, sumtotal: sumtotal, g: g, element: element);
+      Report_Month(
+          m: m, Month: Month, sumtotal: sumtotal, g: g, element: element);
     }
   });
   int i = 0;
   for (var shan in Month) {
     if (Month[i] != Timestamp(1, 1)) {
-      Report m5 = Report(
-          sumtatall: int.parse(sumtotal[i].toString()), date: Month[i]);
+      Report m5 =
+          Report(sumtatall: int.parse(sumtotal[i].toString()), date: Month[i]);
       m1.add(m5);
       imcome.icome = m1;
       imcome.Refresh();
@@ -45,7 +47,12 @@ Get_reportl_income(report_incomeNotifire imcome) async {
   }
 }
 
-Report_Month({required String? m,required List<Timestamp>?Month,required List<num>?sumtotal, required Timestamp? g,required element}){
+Report_Month(
+    {required String? m,
+    required List<Timestamp>? Month,
+    required List<num>? sumtotal,
+    required Timestamp? g,
+    required element}) {
   switch (m) {
     case '12':
       Month![11] = g!;
@@ -105,7 +112,6 @@ Report_Month({required String? m,required List<Timestamp>?Month,required List<nu
         sumtotal![0] += element['sumtotal'];
       }
   }
-  ;
 }
 
 Get_reportl_income_Month(report_incomeNotifire imcome) async {
@@ -196,14 +202,14 @@ Get_reportl_income_Month(report_incomeNotifire imcome) async {
 
     if (element['Staustus'] == 'ສຳເລັດ') {
       print('${m}');
-    Report_Day(m: m, Day: Day, sumtotal: sumtotal, g: g, element: element);
+      Report_Day(m: m, Day: Day, sumtotal: sumtotal, g: g, element: element);
     }
   });
   int i = 0;
   for (var shan in Day) {
     if (Day[i] != Timestamp(1, 1)) {
-      Report m5 = Report(
-          sumtatall: int.parse(sumtotal[i].toString()), date: Day[i]);
+      Report m5 =
+          Report(sumtatall: int.parse(sumtotal[i].toString()), date: Day[i]);
       m1.add(m5);
       imcome.icome_day = m1;
       imcome.Refresh();
@@ -212,7 +218,12 @@ Get_reportl_income_Month(report_incomeNotifire imcome) async {
   }
 }
 
-Report_Day({required String? m,required List<Timestamp>?Day,required List<num>?sumtotal, required Timestamp? g,required element})async{
+Report_Day(
+    {required String? m,
+    required List<Timestamp>? Day,
+    required List<num>? sumtotal,
+    required Timestamp? g,
+    required element}) async {
   switch (m) {
     case '31':
       Day![30] = g!;
@@ -348,5 +359,6 @@ Report_Day({required String? m,required List<Timestamp>?Day,required List<num>?s
         sumtotal![0] += element['sumtotal'];
       }
       break;
-  };
+  }
+  ;
 }

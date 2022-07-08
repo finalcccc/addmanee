@@ -1,6 +1,11 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:untitled1/notifire/employeeNotifire.dart';
 import 'package:untitled1/report/reportData.dart';
 import 'package:untitled1/report/reportEmployeeDataToPDF.dart';
+import 'package:untitled1/screen/login.dart';
 import '../celement/elements.dart';
 
 class ReportEmployeeData extends StatefulWidget {
@@ -13,6 +18,7 @@ class ReportEmployeeData extends StatefulWidget {
 class _ReportEmployeeDataState extends State<ReportEmployeeData> {
   @override
   Widget build(BuildContext context) {
+    EmployeeNotifire emp = Provider.of<EmployeeNotifire>(context);
     return Scaffold(
         appBar: AppBar(
           title: const Text('ລາຍງານຂໍ້ມູນພະນັກງານ'),
@@ -23,12 +29,13 @@ class _ReportEmployeeDataState extends State<ReportEmployeeData> {
         body: Column(
           children: [
             const SizedBox(height: 10),
-            const Text('ພະນັກງານທັງໝົດມີ ຄົນ',
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+            Text('ພະນັກງານທັງໝົດມີ ${emp.employeeList.length} ຄົນ',
+                style:
+                    const TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
             Expanded(
               child: ListView.builder(
                 padding: const EdgeInsets.all(10.0),
-                itemCount: 10,
+                itemCount: emp.employeeList.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Card(
                     child: Padding(
@@ -38,16 +45,16 @@ class _ReportEmployeeDataState extends State<ReportEmployeeData> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            '${"$index"} user',
+                            'ຊື່ພະນັກງານ: ${emp.employeeList[index].name}',
                             style: const TextStyle(
                               fontSize: 16.0,
                               color: Colors.black,
                             ),
                           ),
                           const SizedBox(height: 5.0),
-                          const Text(
-                            'email',
-                            style: TextStyle(
+                          Text(
+                            '${emp.employeeList[index].position == 'Sale' ? emp.CheckPosition('Sale', emp, index) : emp.CheckPosition('Addmin', emp, index)}',
+                            style: const TextStyle(
                               fontSize: 14.0,
                               color: Colors.grey,
                             ),
@@ -61,9 +68,11 @@ class _ReportEmployeeDataState extends State<ReportEmployeeData> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const [
-                Text('ແອັດມິນມີ 2 ຄົນ', style: TextStyle(fontSize: 17)),
-                Text('ພະນັກງານຂາຍມີ 15 ຄົນ', style: TextStyle(fontSize: 17)),
+              children: [
+                Text('ແອັດມິນມີ ${emp.addminCount} ຄົນ',
+                    style: const TextStyle(fontSize: 17)),
+                Text('ພະນັກງານຂາຍມີ ${emp.saleCount} ຄົນ',
+                    style: const TextStyle(fontSize: 17)),
               ],
             ),
             const SizedBox(height: 10),
@@ -72,12 +81,8 @@ class _ReportEmployeeDataState extends State<ReportEmployeeData> {
               width: double.maxFinite,
               height: 55,
               child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                const ReportEmployeeDataToPDF()));
+                  onPressed: () async {
+                    // EmployeePDF.SaveEmployeePDF(emp, context);
                   },
                   child: const Text(
                     'ບັນທຶກເປັນພີດີເອັຟ',

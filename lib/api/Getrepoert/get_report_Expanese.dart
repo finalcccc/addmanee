@@ -1,6 +1,7 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:untitled1/notifire/Repport_Notifire.dart';
-
 import '../../model/Report_Income_Modle.dart';
 import 'get_reportl_income.dart';
 
@@ -37,8 +38,8 @@ Get_reportl_Expanese(report_incomeNotifire Expanese) async {
   int i = 0;
   for (var shan in Month) {
     if (Month[i] != Timestamp(1, 1)) {
-      Report m5 = Report(
-          sumtatall: int.parse(sumtotal[i].toString()), date: Month[i]);
+      Report m5 =
+          Report(sumtatall: int.parse(sumtotal[i].toString()), date: Month[i]);
       m1.add(m5);
       Expanese.expanese = m1;
       Expanese.Refresh();
@@ -116,7 +117,7 @@ Get_reportl_Expanese_day(report_incomeNotifire expanese) async {
     Timestamp(1, 1),
   ];
   List<String> year_M_D =
-  expanese.curren_expanese!.date!.toDate().toString().split('-');
+      expanese.curren_expanese!.date!.toDate().toString().split('-');
   DateTime stars = DateTime(
     int.parse(year_M_D[0]),
     int.parse(year_M_D[1]),
@@ -132,14 +133,16 @@ Get_reportl_Expanese_day(report_incomeNotifire expanese) async {
   m1.clear();
   rfn.docs.forEach((element) async {
     Timestamp g = element['date'];
-     //print('${g.toDate()}');
+    //print('${g.toDate()}');
     String m = g.toDate().toString().substring(8, 10);
-   await Report_Day(m: m, Day: Day, sumtotal: sumtotal, g: g, element: element);
+    await Report_Day(
+        m: m, Day: Day, sumtotal: sumtotal, g: g, element: element);
   });
   int i = 0;
   for (var shan in Day) {
-     if (Day[i] != Timestamp(1,1)) {
-      Report m5 = Report(sumtatall: int.parse(sumtotal[i].toString()), date: Day[i]);
+    if (Day[i] != Timestamp(1, 1)) {
+      Report m5 =
+          Report(sumtatall: int.parse(sumtotal[i].toString()), date: Day[i]);
       m1.add(m5);
       expanese.expanese_day = m1;
       expanese.Refresh();

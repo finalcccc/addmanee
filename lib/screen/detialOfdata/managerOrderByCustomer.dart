@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_string_interpolations, non_constant_identifier_names, depend_on_referenced_packages
+// ignore_for_file: unnecessary_string_interpolations, non_constant_identifier_names, depend_on_referenced_packages, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -43,8 +43,10 @@ class _ManagerOrderByCustomerState extends State<ManagerOrderByCustomer> {
                   onTap: () async {
                     order.Curren_Order = order.Order[index];
                     await Get_Order_Detlill(order);
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => view_order()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const view_order()));
                   },
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,7 +108,7 @@ class _ManagerOrderByCustomerState extends State<ManagerOrderByCustomer> {
   Widget Staustus(Order_Notifire order, int index) {
     return order.Order[index].Staustus == 'ລໍຖ້າ'
         ? ElevatedButton(
-            onPressed: () async{
+            onPressed: () async {
               order.Curren_Order = order.Order[index];
               await update_Status(order);
               await Get_Order(order);

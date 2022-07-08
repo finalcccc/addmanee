@@ -5,28 +5,27 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:untitled1/api/getEmployeeData.dart';
 import 'package:untitled1/notifire/employeeNotifire.dart';
 
-import '../../notifire/categoryNotifire.dart';
-
 Delete_emp(EmployeeNotifire emp) {
   FirebaseAuth.instance
       .signInWithEmailAndPassword(
     email: emp.CurrentEmployee!.email!.trim(),
     password: emp.CurrentEmployee!.password!.trim(),
-  ).then((value)async{
+  )
+      .then((value) async {
     await value.user!.delete();
     FirebaseFirestore.instance
         .collection('employees')
         .doc(emp.CurrentEmployee!.id)
-        .delete().then((value) {
+        .delete()
+        .then((value) {
       emp.RefreshEmp();
     }).then((c) {
       FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emp.CurrentEmployee_loco!.email!.trim(),
-        password:emp.CurrentEmployee_loco!.password!.trim(),
+        password: emp.CurrentEmployee_loco!.password!.trim(),
       );
       GetEmployeeData(emp);
       emp.RefreshEmp();
     });
   });
-
 }
