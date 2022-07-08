@@ -57,7 +57,7 @@ class _ReportProductDataState extends State<ReportProductData> {
                         ),
                         const SizedBox(height: 5.0),
                         Text(
-                          '${pro.cate[index].category}',
+                          '${pro.Products[index].category_id}',
                           style: TextStyle(
                             fontSize: 14.0,
                             color: Colors.grey,

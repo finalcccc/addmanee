@@ -11,12 +11,11 @@ import '../model/category_Model.dart';
 class ProductNotifire with ChangeNotifier {
   List<product_Model> Product = [];
   product_Model? CurrentProduct;
-  List<CategoryData> cate =[];
   XFile? ChangeImage, images;
   UnmodifiableListView<product_Model> get Products =>
       UnmodifiableListView(Product);
   RefreshProduct() {
-    cate;
+
     ChangeImage;
     Product;
     images;
