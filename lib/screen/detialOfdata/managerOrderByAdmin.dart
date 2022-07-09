@@ -138,7 +138,7 @@ class _Show_order_addminState extends State<Show_order_addmin> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text('ລະຫັດ: '
                                     ' ${orderadmin.Order_addminlist[index].id}            '),
