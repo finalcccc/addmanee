@@ -8,15 +8,34 @@ import 'package:untitled1/model/product_Model.dart';
 import 'package:untitled1/notifire/OrderNotifire.dart';
 import 'package:untitled1/model/Orde_Modelr.dart';
 
-Get_Order(Order_Notifire Order)async{
+Get_Order({required Order_Notifire Order , String type =''})async{
+   Order.Order.clear();
     List<Order_Model_upload>order_model=[];
-    QuerySnapshot<Map<String , dynamic>> rfn =await FirebaseFirestore.instance.collection('order').orderBy('date',descending: true).get();
-    rfn.docs.forEach((element) {
-      order_model.add(Order_Model_upload.formMap(element.data()));
+      if(type == 'Dunt'){
+        QuerySnapshot<Map<String , dynamic>> rfn =await FirebaseFirestore.instance.collection('order').where('Staustus',isEqualTo:'ສຳເລັດ' ).get();
+        rfn.docs.forEach((element) {order_model.add(Order_Model_upload.formMap(element.data()));
+        Order.Order =order_model;
+        Order.Referenc();
+        });
 
-    });
-    Order.Order =order_model;
-    Order.Referenc();
+      }else if( type == 'Wait'){
+        QuerySnapshot<Map<String , dynamic>> rfn =await FirebaseFirestore.instance.collection('order').where('Staustus',isEqualTo:'ລໍຖ້າ' ).get();
+        rfn.docs.forEach((element) {order_model.add(Order_Model_upload.formMap(element.data()));
+        Order.Order =order_model;
+        Order.Referenc();
+        });
+
+      }else{
+        QuerySnapshot<Map<String , dynamic>> rfn =await FirebaseFirestore.instance.collection('order').orderBy('date',descending: true).get();
+        rfn.docs.forEach((element) {order_model.add(Order_Model_upload.formMap(element.data()));
+        Order.Order =order_model;
+        Order.Referenc();
+        });
+
+      };
+
+
+
   }
   Get_Order_Detlill(Order_Notifire Order)async{
 

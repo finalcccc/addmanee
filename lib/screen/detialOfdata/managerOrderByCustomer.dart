@@ -10,14 +10,19 @@ import 'package:untitled1/screen/manageOrder.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:intl/intl.dart';
 
+import '../../report/buttonReportData.dart';
+
 class ManagerOrderByCustomer extends StatefulWidget {
-  const ManagerOrderByCustomer({Key? key}) : super(key: key);
+  bool tpye;
+   ManagerOrderByCustomer(this.tpye);
 
   @override
-  State<ManagerOrderByCustomer> createState() => _ManagerOrderByCustomerState();
+  State<ManagerOrderByCustomer> createState() => _ManagerOrderByCustomerState(this.tpye);
 }
 
 class _ManagerOrderByCustomerState extends State<ManagerOrderByCustomer> {
+  bool tpye;
+  _ManagerOrderByCustomerState(this.tpye);
   @override
   Widget build(BuildContext context) {
     Order_Notifire order = Provider.of<Order_Notifire>(context);
@@ -26,7 +31,7 @@ class _ManagerOrderByCustomerState extends State<ManagerOrderByCustomer> {
         title: const Text('ລູກຄ້າສັ່ງຊື້ສິນຄ້າ'),
         centerTitle: true,
         backgroundColor: element.main,
-        leading: element().RoutePageBack(context, const ManageOrder()),
+        leading: element().RoutePageBack(context,tpye ?ManageOrder():ReportData()),
       ),
       body: ListView.builder(
         itemCount: order.Order.length,
@@ -111,7 +116,7 @@ class _ManagerOrderByCustomerState extends State<ManagerOrderByCustomer> {
             onPressed: () async {
               order.Curren_Order = order.Order[index];
               await update_Status(order);
-              await Get_Order(order);
+              await Get_Order(Order: order);
             },
             style: ElevatedButton.styleFrom(
               primary: Colors.red,

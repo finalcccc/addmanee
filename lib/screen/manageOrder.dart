@@ -82,12 +82,12 @@ class _ManageOrderState extends State<ManageOrder> {
                         style: ElevatedButton.styleFrom(
                             primary: element.main),
                         onPressed: () {
-                          Get_Order(Order);
+                          Get_Order(Order: Order);
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      const ManagerOrderByCustomer()));
+                                      ManagerOrderByCustomer(true)));
                         },
                         child: const Text(
                           'ລູກຄ້າສັ່ງຊື້ສິນຄ້າ',

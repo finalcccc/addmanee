@@ -1,25 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
+import 'package:untitled1/notifire/supplierNotifire.dart';
 import 'package:untitled1/report/buttonReportData.dart';
-import 'package:untitled1/report/reportProductDataToPDF.dart';
-import '../celement/elements.dart';
+import 'package:untitled1/report/import_and_Products/reportProductDataToPDF.dart';
+import '../../celement/elements.dart';
 import 'package:intl/intl.dart';
 
-class ReportProductData extends StatefulWidget {
-  const ReportProductData({Key? key}) : super(key: key);
+class Detaiy_import_product extends StatefulWidget {
+  const Detaiy_import_product({Key? key}) : super(key: key);
 
   @override
-  State<ReportProductData> createState() => _ReportProductDataState();
+  State<Detaiy_import_product> createState() => _Detaiy_import_productState();
 }
 
-class _ReportProductDataState extends State<ReportProductData> {
+class _Detaiy_import_productState extends State<Detaiy_import_product> {
+
+
+
   @override
   Widget build(BuildContext context) {
-    ProductNotifire pro = Provider.of<ProductNotifire>(context);
+
+    SupplierNotifire pro = Provider.of<SupplierNotifire>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ລາຍງານຂໍ້ມູນສິນຄ້າ'),
+        title: const Text('ລາຍງານຂໍ້ມູນນໍາເຂົ້າສິນຄ້າ'),
         centerTitle: true,
         backgroundColor: element.main,
         leading: element().RoutePageBack(context, const ReportData()),
@@ -99,7 +104,7 @@ class _ReportProductDataState extends State<ReportProductData> {
           Expanded(
             child: ListView.builder(
               padding: const EdgeInsets.all(10.0),
-              itemCount: pro.Products.length,
+              itemCount: pro.Product.length,
               itemBuilder: (BuildContext context, int index) {
                 return Card(
                   elevation: 2,
@@ -126,7 +131,7 @@ class _ReportProductDataState extends State<ReportProductData> {
                         SizedBox(
                           width: 80,
                           child: Text(
-                            '${pro.Products[index].nameProduct}',
+                            '${pro.Product[index].nameProduct}',
                             style: const TextStyle(
                               fontSize: 16.0,
                               color: Colors.black,
@@ -136,7 +141,7 @@ class _ReportProductDataState extends State<ReportProductData> {
                         const SizedBox(height: 5.0),
                         SizedBox(
                           child: Text(
-                            '${pro.Products[index].amount}',
+                            '${pro.Product[index].amount}',
                             style: const TextStyle(
                               fontSize: 14.0,
                               color: Colors.grey,
@@ -146,7 +151,7 @@ class _ReportProductDataState extends State<ReportProductData> {
                         const SizedBox(height: 5.0),
                         SizedBox(
                           child: Text(
-                            '${pro.Products[index].category_id}',
+                            '${pro.Product[index].category_id}',
                             style: const TextStyle(
                               fontSize: 14.0,
                               color: Colors.grey,
@@ -156,7 +161,7 @@ class _ReportProductDataState extends State<ReportProductData> {
                         const SizedBox(height: 5.0),
                         SizedBox(
                           child: Text(
-                            '${NumberFormat.decimalPattern().format(pro.Products[index].price)}',
+                            '${NumberFormat.decimalPattern().format(pro.Product[index].price)}',
                             style: const TextStyle(
                               fontSize: 14.0,
                               color: Colors.grey,
@@ -173,8 +178,17 @@ class _ReportProductDataState extends State<ReportProductData> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Text('ທັ້ງໝົດ: ${pro.Products.length} ລາຍການ',
-                  style: TextStyle(fontSize: 17)),
+              Expanded(child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                Text('ທັ້ງໝົດ: ${pro.Product.length} ລາຍການ',
+                    style: TextStyle(fontSize: 17)),
+                Text(' ${pro.countket} ເເກັດ',
+                    style: TextStyle(fontSize: 17)),
+                Text('ລາຄາລວມ: ${NumberFormat.decimalPattern().format(pro.sumtotal)} ກີບ',
+                    style: TextStyle(fontSize: 17)),
+              ],)),
+
             ],
           ),
           const SizedBox(height: 10),

@@ -1,27 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
-import 'package:untitled1/notifire/supplierNotifire.dart';
 import 'package:untitled1/report/buttonReportData.dart';
-import 'package:untitled1/report/reportProductDataToPDF.dart';
-import '../celement/elements.dart';
+import 'package:untitled1/report/import_and_Products/reportProductDataToPDF.dart';
+import '../../celement/elements.dart';
 import 'package:intl/intl.dart';
 
-class Detaiy_import_product extends StatefulWidget {
-  const Detaiy_import_product({Key? key}) : super(key: key);
+class ReportProductData extends StatefulWidget {
+  const ReportProductData({Key? key}) : super(key: key);
 
   @override
-  State<Detaiy_import_product> createState() => _Detaiy_import_productState();
+  State<ReportProductData> createState() => _ReportProductDataState();
 }
 
-class _Detaiy_import_productState extends State<Detaiy_import_product> {
-
-
-
+class _ReportProductDataState extends State<ReportProductData> {
   @override
   Widget build(BuildContext context) {
-
-    SupplierNotifire pro = Provider.of<SupplierNotifire>(context);
+    ProductNotifire pro = Provider.of<ProductNotifire>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('ລາຍງານຂໍ້ມູນສິນຄ້າ'),
@@ -104,7 +99,7 @@ class _Detaiy_import_productState extends State<Detaiy_import_product> {
           Expanded(
             child: ListView.builder(
               padding: const EdgeInsets.all(10.0),
-              itemCount: pro.Product.length,
+              itemCount: pro.Products.length,
               itemBuilder: (BuildContext context, int index) {
                 return Card(
                   elevation: 2,
@@ -131,7 +126,7 @@ class _Detaiy_import_productState extends State<Detaiy_import_product> {
                         SizedBox(
                           width: 80,
                           child: Text(
-                            '${pro.Product[index].nameProduct}',
+                            '${pro.Products[index].nameProduct}',
                             style: const TextStyle(
                               fontSize: 16.0,
                               color: Colors.black,
@@ -141,7 +136,7 @@ class _Detaiy_import_productState extends State<Detaiy_import_product> {
                         const SizedBox(height: 5.0),
                         SizedBox(
                           child: Text(
-                            '${pro.Product[index].amount}',
+                            '${pro.Products[index].amount}',
                             style: const TextStyle(
                               fontSize: 14.0,
                               color: Colors.grey,
@@ -151,7 +146,7 @@ class _Detaiy_import_productState extends State<Detaiy_import_product> {
                         const SizedBox(height: 5.0),
                         SizedBox(
                           child: Text(
-                            '${pro.Product[index].category_id}',
+                            '${pro.Products[index].category_id}',
                             style: const TextStyle(
                               fontSize: 14.0,
                               color: Colors.grey,
@@ -161,7 +156,7 @@ class _Detaiy_import_productState extends State<Detaiy_import_product> {
                         const SizedBox(height: 5.0),
                         SizedBox(
                           child: Text(
-                            '${NumberFormat.decimalPattern().format(pro.Product[index].price)}',
+                            '${NumberFormat.decimalPattern().format(pro.Products[index].price)}',
                             style: const TextStyle(
                               fontSize: 14.0,
                               color: Colors.grey,
@@ -178,17 +173,8 @@ class _Detaiy_import_productState extends State<Detaiy_import_product> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Expanded(child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                Text('ທັ້ງໝົດ: ${pro.Product.length} ລາຍການ',
-                    style: TextStyle(fontSize: 17)),
-                Text(' ${pro.countket} ເເກັດ',
-                    style: TextStyle(fontSize: 17)),
-                Text('ລາຄາລວມ: ${NumberFormat.decimalPattern().format(pro.sumtotal)} ກີບ',
-                    style: TextStyle(fontSize: 17)),
-              ],)),
-
+              Text('ທັ້ງໝົດ: ${pro.Products.length} ລາຍການ',
+                  style: TextStyle(fontSize: 17)),
             ],
           ),
           const SizedBox(height: 10),

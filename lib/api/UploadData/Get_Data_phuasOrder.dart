@@ -46,58 +46,108 @@ GetPureChaseNoly({required purchase_order_Notifire? order_admin,required Supplie
   order_admin.Refreshorderaddmin();
 }
 
-Future GetDetill({required purchase_order_Notifire order_admin})async{
+
+Future GetDetill({required purchase_order_Notifire order_admin , bool type = true})async{
   int i = 0;
   order_admin.Productditill.clear();
   order_admin.Dettil.clear();
   List<CartModel> _Detilmo =[];
   List<CategoryData> cate= [];
   List<product_Model> prodetill =[];
-  QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
-      .collection('purchase_order')
-      .where('date', isEqualTo: order_admin.Currenorderaddmin!.date)
-      .get();
-  rfn.docs.forEach((element) async{
-    List f = await element['Ditell'];
-    f.forEach((element) async{
-      CartModel m = await CartModel.formMAp(element);
-      _Detilmo.add(m);
+  if(type = true){
+    QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
+        .collection('purchase_order')
+        .where('date', isEqualTo: order_admin.Currenorderaddmin!.date)
+        .get();
+    rfn.docs.forEach((element) async{
+      List f = await element['Ditell'];
+      f.forEach((element) async{
+        CartModel m = await CartModel.formMAp(element);
+        _Detilmo.add(m);
 
-      QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
-          .collection('products')
-          .where('id', isEqualTo: m.Product_ID)
-          .get();
-      rfn.docs.forEach((element)async{
-        product_Model f = await  product_Model.formMap(element.data());
         QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
-            .collection('categorys')
-            .where('id', isEqualTo: f.category_id)
+            .collection('products')
+            .where('id', isEqualTo: m.Product_ID)
             .get();
-        rfn.docs.forEach((element) async{
-          CategoryData c = await CategoryData.frommap(element.data());
+        rfn.docs.forEach((element)async{
+          product_Model f = await  product_Model.formMap(element.data());
+          QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
+              .collection('categorys')
+              .where('id', isEqualTo: f.category_id)
+              .get();
+          rfn.docs.forEach((element) async{
+            CategoryData c = await CategoryData.frommap(element.data());
 
-          for(var h in _Detilmo){
-            if(f.id == h.Product_ID){
-                   f.amount = h.amout;
-                   prodetill.add(f);
-                   cate.add(c);
+            for(var h in _Detilmo){
+              if(f.id == h.Product_ID){
+                f.amount = h.amout;
+                prodetill.add(f);
+                cate.add(c);
+              }
             }
-          }
 
+          });
+        });
+
+
+
+      }
+      );
+      Future.delayed(Duration(seconds: 1),(){
+        order_admin.Productditill = prodetill;
+        order_admin.Dettil =_Detilmo;
+        order_admin.Product_categoryname = cate;
+        order_admin.Refresh();
       });
-      });
 
-
-
-    }
-    );
-    Future.delayed(Duration(seconds: 1),(){
-      order_admin.Productditill = prodetill;
-      order_admin.Dettil =_Detilmo;
-      order_admin.Product_categoryname = cate;
-      order_admin.Refresh();
     });
+  }else{
+    QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
+        .collection('purchase_order')
+        .get();
+    rfn.docs.forEach((element) async{
+      List f = await element['Ditell'];
+      f.forEach((element) async{
+        CartModel m = await CartModel.formMAp(element);
+        _Detilmo.add(m);
 
-  });
+        QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
+            .collection('products')
+            .where('id', isEqualTo: m.Product_ID)
+            .get();
+        rfn.docs.forEach((element)async{
+          product_Model f = await  product_Model.formMap(element.data());
+          QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
+              .collection('categorys')
+              .where('id', isEqualTo: f.category_id)
+              .get();
+          rfn.docs.forEach((element) async{
+            CategoryData c = await CategoryData.frommap(element.data());
+
+            for(var h in _Detilmo){
+              if(f.id == h.Product_ID){
+                f.amount = h.amout;
+                prodetill.add(f);
+                cate.add(c);
+              }
+            }
+
+          });
+        });
+
+
+
+      }
+      );
+      Future.delayed(Duration(seconds: 1),(){
+        order_admin.Productditill = prodetill;
+        order_admin.Dettil =_Detilmo;
+        order_admin.Product_categoryname = cate;
+        order_admin.Refresh();
+      });
+
+    });
+  }
+
 
 }

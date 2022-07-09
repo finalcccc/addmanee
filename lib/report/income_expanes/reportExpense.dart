@@ -1,40 +1,42 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled1/api/Getrepoert/get_reportl_income.dart';
+import 'package:untitled1/api/Getrepoert/get_report_Expanese.dart';
+
 import 'package:untitled1/notifire/Repport_Notifire.dart';
 import 'package:untitled1/report/buttonReportData.dart';
-import 'package:untitled1/report/reportIncomeMonth.dart';
-import '../WidgetSearch/widgetSearch.dart';
-import '../celement/elements.dart';
+import 'package:untitled1/report/income_expanes/reportExpenseMonth.dart';
+import '../../WidgetSearch/widgetSearch.dart';
+import '../../celement/elements.dart';
 import 'package:intl/intl.dart';
 
-class ReportIncome extends StatefulWidget {
-  const ReportIncome({Key? key}) : super(key: key);
+class ReportExpense extends StatefulWidget {
+  const ReportExpense({Key? key}) : super(key: key);
 
   @override
-  State<ReportIncome> createState() => _ReportIncomeState();
+  State<ReportExpense> createState() => _ReportExpenseState();
 }
 
 final List items = List.generate(3, (i) => "Item $i");
 
-class _ReportIncomeState extends State<ReportIncome> {
+class _ReportExpenseState extends State<ReportExpense> {
   @override
   Widget build(BuildContext context) {
-    report_incomeNotifire income = Provider.of<report_incomeNotifire>(context);
+    report_incomeNotifire Expanese =
+        Provider.of<report_incomeNotifire>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ລາຍງານລາຍຮັບ'),
+        title: const Text('ລາຍງານລາຍຈ່າຍ'),
         centerTitle: true,
         backgroundColor: element.main,
         leading: element().RoutePageBack(context, const ReportData()),
         bottom: WidgetSearch(
-            label: 'ປີ - ເດືອນ /2000-01', type: 'income', notifire: income),
+            label: 'ປີ - ເດືອນ/2000-01', type: 'exp', notifire: Expanese),
       ),
       body: ListView.separated(
         physics: BouncingScrollPhysics(),
-        itemCount: income.icome.length,
+        itemCount: Expanese.expanese.length,
         itemBuilder: (context, index) {
           return Container(
               margin: EdgeInsets.only(right: 10, left: 10),
@@ -47,7 +49,7 @@ class _ReportIncomeState extends State<ReportIncome> {
                         children: [
                           ListTile(
                             title: Text(
-                                'ວັນທີ: ${income.icome[income.icome.length - index - 1].date!.toDate().toString().substring(0, 7)}'),
+                                'ວັນທີ: ${Expanese.expanese[Expanese.expanese.length - index - 1].date!.toDate().toString().substring(0, 7)}'),
                             subtitle: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -58,16 +60,16 @@ class _ReportIncomeState extends State<ReportIncome> {
                                     Row(
                                       children: [
                                         Text(
-                                          'ລາຍຮັບທັງໝົດ:',
+                                          'ລາຍຈ່າຍທັງໝົດ:',
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontSize: 16),
                                         ),
                                         Text(
-                                          ' ${NumberFormat.decimalPattern().format(income.icome[income.icome.length - index - 1].sumtatall)}',
+                                          ' - ${NumberFormat.decimalPattern().format(Expanese.expanese[Expanese.expanese.length - index - 1].sumtatall)}',
                                           style: TextStyle(
                                               fontSize: 16,
-                                              color: element.main,
+                                              color: Colors.red,
                                               fontWeight: FontWeight.bold),
                                         ),
                                         Text(
@@ -93,13 +95,13 @@ class _ReportIncomeState extends State<ReportIncome> {
                   ],
                 ),
                 onTap: () {
-                  income.curren_income =
-                      income.icome[income.icome.length - index - 1];
-                  Get_reportl_income_Month(income);
+                  Expanese.curren_expanese =
+                      Expanese.expanese[Expanese.expanese.length - index - 1];
+                  Get_reportl_Expanese_day(Expanese);
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const ReportIncomeMonth()));
+                          builder: (context) => const ReportExpenseMonth()));
                 },
               ));
         },

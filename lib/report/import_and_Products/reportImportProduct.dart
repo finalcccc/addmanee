@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/api/getImportProduct.dart';
 import 'package:untitled1/notifire/supplierNotifire.dart';
-import 'package:untitled1/report/Detail_import_Product.dart';
+import 'package:untitled1/report/import_and_Products/Detail_import_Product.dart';
 import 'package:untitled1/report/buttonReportData.dart';
-import 'package:untitled1/report/reportImportProductToPDF.dart';
-import '../celement/elements.dart';
+import 'package:untitled1/report/import_and_Products/reportImportProductToPDF.dart';
+import '../../celement/elements.dart';
 import 'package:untitled1/celement/elements.dart';
 
 class ReportImportProduct extends StatefulWidget {

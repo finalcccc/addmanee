@@ -16,7 +16,9 @@ class Bill_Order {
     final pdf = pw.Document();
     pdf.addPage(
       pw.Page(
+
         pageFormat: PdfPageFormat.a4,
+
         build: (pw.Context context) {
           return pw.Container(
             margin: const pw.EdgeInsets.all(10),

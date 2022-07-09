@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/api/Getrepoert/get_report_Expanese.dart';
+import 'package:untitled1/api/UploadData/Get_Data_phuasOrder.dart';
 import 'package:untitled1/api/getProduct.dart';
 import 'package:untitled1/celement/elements.dart';
 import 'package:untitled1/dialog_edit/dialog_and_snackbar.dart';
@@ -10,15 +11,20 @@ import 'package:untitled1/notifire/employeeNotifire.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
 import 'package:untitled1/notifire/supplierNotifire.dart';
 import 'package:untitled1/report/reportEmployeeData.dart';
-import 'package:untitled1/report/reportExpense.dart';
-import 'package:untitled1/report/reportImportProduct.dart';
-import 'package:untitled1/report/reportIncome.dart';
-import 'package:untitled1/report/reportProductData.dart';
+import 'package:untitled1/report/income_expanes/reportExpense.dart';
+import 'package:untitled1/report/import_and_Products/reportImportProduct.dart';
+import 'package:untitled1/report/income_expanes/reportIncome.dart';
+import 'package:untitled1/report/import_and_Products/reportProductData.dart';
 
 import '../api/Getrepoert/get_reportl_income.dart';
 import '../api/getEmployeeData.dart';
 import '../api/getImportProduct.dart';
+import '../api/get_Order.dart';
+import '../notifire/OrderNotifire.dart';
 import '../notifire/Repport_Notifire.dart';
+import '../notifire/purchase_order_Notifire.dart';
+import '../screen/detialOfdata/managerOrderByAdmin.dart';
+import '../screen/detialOfdata/managerOrderByCustomer.dart';
 import '../screen/menu.dart';
 
 class ReportData extends StatefulWidget {
@@ -190,17 +196,16 @@ class _ReportDataState extends State<ReportData> {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(primary: element.main),
                   onPressed: () async {
-                    ProductNotifire product =
-                        Provider.of<ProductNotifire>(context, listen: false);
-                    GetProduct(product, false);
-                    Navigator.pushReplacement(
+                    Order_Notifire Order = Provider.of<Order_Notifire>(context, listen: false);
+                     Get_Order(Order: Order,type: 'Wait');
+                    Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const ReportProductData()));
+                            builder: (context) =>  ManagerOrderByCustomer(false)));
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                    children: const[
                       Icon(Icons.exit_to_app_outlined),
                       SizedBox(width: 10),
                       Text(
@@ -219,13 +224,13 @@ class _ReportDataState extends State<ReportData> {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(primary: element.main),
                   onPressed: () async {
-                    ProductNotifire product =
-                        Provider.of<ProductNotifire>(context, listen: false);
-                    GetProduct(product, false);
+                    purchase_order_Notifire order_admin=
+                        Provider.of<purchase_order_Notifire>(context, listen: false);
+                    GetDetill(order_admin: order_admin,type: false);
                     Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const ReportProductData()));
+                            builder: (context) => const Detellorder_addmid()));
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -247,13 +252,13 @@ class _ReportDataState extends State<ReportData> {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(primary: element.main),
                   onPressed: () async {
-                    ProductNotifire product =
-                        Provider.of<ProductNotifire>(context, listen: false);
-                    GetProduct(product, false);
+                    Order_Notifire Order =
+                        Provider.of<Order_Notifire>(context, listen: false);
+                    Get_Order(Order: Order,type: 'Dunt');
                     Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const ReportProductData()));
+                            builder: (context) =>  ManagerOrderByCustomer(false)));
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
