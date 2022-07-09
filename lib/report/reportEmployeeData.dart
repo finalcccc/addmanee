@@ -104,14 +104,14 @@ class _ReportEmployeeDataState extends State<ReportEmployeeData> {
               height: 55,
               child: ElevatedButton(
                   onPressed: () async {
-                    // EmployeePDF.SaveEmployeePDF(emp, context);
+                    EmployeePDF.SaveEmployeePDF(emp, context);
                   },
                   child: const Text(
                     'ບັນທຶກເປັນພີດີເອັຟ',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
                   )),
             ),
-            const SizedBox(height: 60)
+            const SizedBox(height: 50)
           ],
         ));
   }

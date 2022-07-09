@@ -4,13 +4,12 @@ import 'dart:math';
 import 'package:flutter/services.dart';
 import 'package:pdf/pdf.dart';
 import 'package:open_file/open_file.dart';
-import 'package:untitled1/notifire/OrderNotifire.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'dart:io';
-import 'package:intl/intl.dart';
+import 'package:untitled1/notifire/employeeNotifire.dart';
 
 class EmployeePDF {
-  static SaveEmployeePDF(Order_Notifire order, context) async {
+  static SaveEmployeePDF(EmployeeNotifire emp, context) async {
     final font = await rootBundle.load('lib/assets/Phetsarath-Regular.ttf');
     final pw.Font ttf = pw.Font.ttf(font);
     final pdf = pw.Document();
@@ -28,56 +27,96 @@ class EmployeePDF {
                       fontSize: 25, fontWeight: pw.FontWeight.bold, font: ttf),
                 ),
                 pw.Text(
-                  'ໃບບິນ',
+                  'ລາຍງານຂໍ້ມູນພະນັກງານ',
                   style: pw.TextStyle(
                       fontSize: 20, fontWeight: pw.FontWeight.bold, font: ttf),
                 ),
-                pw.SizedBox(height: 40),
-                Subheader_Purchase_OrderDetial(ttf, order),
-                pw.SizedBox(height: 40),
-                pw.Divider(),
-                Subtitle_Purchase_Order_Detail(ttf),
-                pw.Divider(),
-                Detail_Purchase_Order(ttf, order),
-                pw.Divider(),
-                pw.Padding(
-                  padding: const pw.EdgeInsets.only(right: 30),
-                  child: pw.Row(
-                    mainAxisAlignment: pw.MainAxisAlignment.end,
-                    children: [
-                      pw.Text('ຈຳນວນລວມ: ',
-                          style: pw.TextStyle(
-                              font: ttf,
-                              fontWeight: pw.FontWeight.bold,
-                              fontSize: 15)),
-                      pw.Text('${order.Curren_Order.amouttotal}',
-                          style: const pw.TextStyle(
-                            fontSize: 15,
-                          )),
-                      pw.Text(' ແກັດ ',
-                          style: pw.TextStyle(
-                              font: ttf,
-                              fontWeight: pw.FontWeight.bold,
-                              fontSize: 15)),
-                      pw.Text('ລາຄາລວມທັ້ງໝົດ: ',
-                          style: pw.TextStyle(
-                              font: ttf,
-                              fontWeight: pw.FontWeight.bold,
-                              fontSize: 15)),
-                      pw.Text(
-                          '${NumberFormat.decimalPattern().format(order.Curren_Order.sumtotal).toString()}',
-                          style: const pw.TextStyle(
-                            fontSize: 15,
-                          )),
-                      pw.Text(' ແກັດ ',
-                          style: pw.TextStyle(
-                              font: ttf,
-                              fontWeight: pw.FontWeight.bold,
-                              fontSize: 15)),
-                    ],
+                pw.Text(
+                  '${emp.employeeList.length}',
+                  style: pw.TextStyle(
+                      fontSize: 14, fontWeight: pw.FontWeight.bold, font: ttf),
+                ),
+                pw.Text(
+                  '${emp.addminCount}',
+                  style: pw.TextStyle(
+                      fontSize: 14, fontWeight: pw.FontWeight.bold, font: ttf),
+                ),
+                pw.Text(
+                  '${emp.saleCount}',
+                  style: pw.TextStyle(
+                      fontSize: 14, fontWeight: pw.FontWeight.bold, font: ttf),
+                ),
+                pw.SizedBox(height: 50),
+                pw.Center(
+                  child: pw.Text(
+                    'ລາຍລະອຽດຂອງພະນັກງານ',
+                    style: pw.TextStyle(
+                        fontSize: 20,
+                        fontWeight: pw.FontWeight.bold,
+                        font: ttf),
                   ),
                 ),
                 pw.Divider(),
+                Subtitle_Purchase_Order_Detail(ttf),
+                pw.Divider(),
+                pw.ListView.builder(
+                  itemCount: emp.employeeList.length,
+                  itemBuilder: (context, index) {
+                    return pw.Column(children: [
+                      pw.Row(children: [
+                        pw.Text(
+                          '${index + 1}',
+                          style: pw.TextStyle(
+                              fontSize: 14,
+                              fontWeight: pw.FontWeight.bold,
+                              font: ttf),
+                        ),
+                        pw.Text(
+                          '${emp.employeeList[index].name}',
+                          style: pw.TextStyle(
+                              fontSize: 14,
+                              fontWeight: pw.FontWeight.bold,
+                              font: ttf),
+                        ),
+                        pw.Text(
+                          '${emp.employeeList[index].id}',
+                          style: pw.TextStyle(
+                            fontSize: 14,
+                            fontWeight: pw.FontWeight.bold,
+                          ),
+                        ),
+                        pw.Text(
+                          '${emp.employeeList[index].position}',
+                          style: pw.TextStyle(
+                            fontSize: 14,
+                            fontWeight: pw.FontWeight.bold,
+                          ),
+                        ),
+                        pw.Text(
+                          '${emp.employeeList[index].tel}',
+                          style: pw.TextStyle(
+                              fontSize: 14,
+                              fontWeight: pw.FontWeight.bold,
+                              font: ttf),
+                        ),
+                        pw.Text(
+                          '${emp.employeeList[index].email}',
+                          style: pw.TextStyle(
+                            fontSize: 14,
+                            fontWeight: pw.FontWeight.bold,
+                          ),
+                        ),
+                        pw.Text(
+                          '${emp.employeeList[index].address}',
+                          style: pw.TextStyle(
+                              fontSize: 14,
+                              fontWeight: pw.FontWeight.bold,
+                              font: ttf),
+                        ),
+                      ])
+                    ]);
+                  },
+                ),
                 pw.Padding(
                     padding: const pw.EdgeInsets.only(right: 0, top: 20),
                     child: pw.Row(
@@ -104,11 +143,11 @@ class EmployeePDF {
     );
 
     int randomNumber = Random().nextInt(90) + 10;
-    String date = await order.Curren_Order.date!.toDate().toString();
+    String date = await emp.CurrentEmployee_loco!.date!.toDate().toString();
     String result = date.substring(2, 11);
     print(result);
-    final File file = await File(
-        '/storage/emulated/0/Download/$randomNumber${order.Curren_Order.nameCutommer}$result.pdf');
+    final File file =
+        await File('/storage/emulated/0/Download/$randomNumber$result.pdf');
     print(file);
     await file.writeAsBytes(await pdf.save()).then((value) {
       OpenFile.open('${file.path}');
@@ -116,7 +155,7 @@ class EmployeePDF {
   }
 
   static pw.Row Subheader_Purchase_OrderDetial(
-      pw.Font ttf, Order_Notifire order) {
+      pw.Font ttf, EmployeeNotifire emp) {
     return pw.Row(
       crossAxisAlignment: pw.CrossAxisAlignment.start,
       children: [
@@ -129,11 +168,11 @@ class EmployeePDF {
                   'ລະຫັດໃບບິນ:',
                   style: pw.TextStyle(font: ttf),
                 ),
-                pw.Text('${order.Curren_Order.id}'),
+                pw.Text('${emp.CurrentEmployee_loco!.id}'),
               ]),
               pw.Row(children: [
                 pw.Text('ຊື່ຜູ້ຮັບ: ', style: pw.TextStyle(font: ttf)),
-                pw.Text('${order.Curren_Order.nameCutommer}',
+                pw.Text('${emp.CurrentEmployee_loco!.name}',
                     style: pw.TextStyle(font: ttf)),
               ]),
               pw.Row(
@@ -142,7 +181,7 @@ class EmployeePDF {
                     'ເບີໂທ: ',
                     style: pw.TextStyle(font: ttf),
                   ),
-                  pw.Text('${order.Curren_Order.tel}'),
+                  pw.Text('${emp.CurrentEmployee!.tel}'),
                 ],
               ),
               pw.Row(
@@ -151,54 +190,12 @@ class EmployeePDF {
                     'ທີ່ຢູ່: ',
                     style: pw.TextStyle(font: ttf),
                   ),
-                  pw.Text('${order.Curren_Order.address}',
+                  pw.Text('${emp.CurrentEmployee!.address}',
                       style: pw.TextStyle(font: ttf)),
                 ],
               ),
-              pw.Row(
-                children: [
-                  pw.Text(
-                    'ລະຫັດພະນັກງານ: ',
-                    style: pw.TextStyle(font: ttf),
-                  ),
-                  pw.Text('${order.emp_Ooder.id}'),
-                ],
-              ),
-              pw.Row(
-                children: [
-                  pw.Text(
-                    'ຊື່ພະນັກງານ: ',
-                    style: pw.TextStyle(font: ttf),
-                  ),
-                  pw.Text('${order.emp_Ooder.name}',
-                      style: pw.TextStyle(font: ttf)),
-                ],
-              ),
-              pw.Row(
-                children: [
-                  pw.Text(
-                    'ເບີໂທ: ',
-                    style: pw.TextStyle(font: ttf),
-                  ),
-                  pw.Text('${order.emp_Ooder.tel}',
-                      style: pw.TextStyle(font: ttf)),
-                ],
-              ),
-              pw.Row(
-                children: [
-                  pw.Text(
-                    'ອີເມວ: ',
-                    style: pw.TextStyle(font: ttf),
-                  ),
-                  pw.Text('${order.emp_Ooder.email}'),
-                ],
-              )
             ],
           ),
-        ),
-        pw.Text(
-          'ວັນທີ ເດືອນ ປີ: ${order.Curren_Order.date!.toDate()}',
-          style: pw.TextStyle(font: ttf),
         ),
       ],
     );
@@ -215,33 +212,33 @@ class EmployeePDF {
         ),
         pw.Container(
           width: 70,
-          child: pw.Text('ຊື່ສິນຄ້າ', style: pw.TextStyle(font: ttf)),
+          child: pw.Text('ຊີ່', style: pw.TextStyle(font: ttf)),
         ),
         pw.Container(
           width: 70,
-          child: pw.Text('ປະເພດສິນຄ້າ', style: pw.TextStyle(font: ttf)),
+          child: pw.Text('ລະຫັດພະນັກງານ', style: pw.TextStyle(font: ttf)),
         ),
         pw.Container(
           width: 70,
-          child: pw.Text('ລາຄາ', style: pw.TextStyle(font: ttf)),
+          child: pw.Text('ຕຳແຫນ່ງ', style: pw.TextStyle(font: ttf)),
         ),
         pw.Container(
           width: 70,
-          child: pw.Text('ຈຳນວນ', style: pw.TextStyle(font: ttf)),
+          child: pw.Text('ເບີໂທ', style: pw.TextStyle(font: ttf)),
         ),
         pw.Container(
           width: 70,
-          child: pw.Text('ຫົວໜ່ວຍ', style: pw.TextStyle(font: ttf)),
+          child: pw.Text('ອີເມວ', style: pw.TextStyle(font: ttf)),
         ),
         pw.Container(
           width: 70,
-          child: pw.Text('ລາຄາລວມ', style: pw.TextStyle(font: ttf)),
+          child: pw.Text('ທີ່ຢູ່', style: pw.TextStyle(font: ttf)),
         ),
       ],
     );
   }
 
-  static pw.ListView Detail_Purchase_Order(pw.Font ttf, Order_Notifire order) {
+  static pw.ListView Detail_Purchase_Order(pw.Font ttf, EmployeeNotifire emp) {
     return pw.ListView.builder(
         itemBuilder: (
           context,
@@ -258,41 +255,21 @@ class EmployeePDF {
               ),
               pw.Container(
                 width: 70,
-                child: pw.Text(
-                    '${order.Order_detill[index].Product!.nameProduct}',
+                child: pw.Text('${emp.employeeList[index].name}',
                     style: pw.TextStyle(font: ttf)),
               ),
               pw.Container(
                 width: 70,
-                child: pw.Text(
-                    '${order.Order_detill[index].Product!.category_id}',
+                child: pw.Text('${emp.employeeList[index].id}',
                     style: pw.TextStyle(font: ttf)),
               ),
-              pw.Container(
-                  width: 70,
-                  child: pw.Text(
-                    '${NumberFormat.decimalPattern().format(order.Order_detill[index].Product!.price)}',
-                    style: pw.TextStyle(font: ttf),
-                  )),
-              pw.Container(
-                  width: 70,
-                  child: pw.Text(
-                    '${NumberFormat.decimalPattern().format(order.Order_detill[index].amout)}',
-                    style: pw.TextStyle(font: ttf),
-                  )),
               pw.Container(
                 width: 70,
                 child: pw.Text('ເເກັດ', style: pw.TextStyle(font: ttf)),
               ),
-              pw.Container(
-                  width: 70,
-                  child: pw.Text(
-                    '${NumberFormat.decimalPattern().format(order.Order_detill[index].sum)}',
-                    style: pw.TextStyle(font: ttf),
-                  )),
             ],
           );
         },
-        itemCount: order.Order_detill.length);
+        itemCount: emp.employeeList.length);
   }
 }
