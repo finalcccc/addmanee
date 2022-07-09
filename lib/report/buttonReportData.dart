@@ -216,35 +216,6 @@ class _ReportDataState extends State<ReportData> {
                   )
                 ),
               ),
-
-              const SizedBox(height: 10),
-              SizedBox(
-                height: 50,
-                width: double.infinity,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: element.main),
-                  onPressed: () async {
-                    purchase_order_Notifire order_admin=
-                        Provider.of<purchase_order_Notifire>(context, listen: false);
-                    GetDetill(order_admin: order_admin,type: false);
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const Detellorder_addmid()));
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.import_export),
-                      SizedBox(width: 10),
-                      Text(
-                          'ລາຍງານການ ສັ່ງຊື້ເຂົ້າຮ້ານ',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ],
-                  )
-                ),
-              ),
               const SizedBox(height: 10),
               SizedBox(
                 height: 50,
@@ -262,7 +233,7 @@ class _ReportDataState extends State<ReportData> {
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                    children: const [
                       Icon(Icons.book_outlined),
                       SizedBox(width: 10),
                       Text(
@@ -271,6 +242,34 @@ class _ReportDataState extends State<ReportData> {
                       ),
                     ],
                   )
+                ),
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                height: 50,
+                width: double.infinity,
+                child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(primary: element.main),
+                    onPressed: () async {
+                      purchase_order_Notifire order_admin=
+                      Provider.of<purchase_order_Notifire>(context, listen: false);
+                      GetDetill(order_admin: order_admin,type: false);
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Detellorder_addmid()));
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Icon(Icons.import_export),
+                        SizedBox(width: 10),
+                        Text(
+                          'ລາຍງານການ ສັ່ງຊື້ເຂົ້າຮ້ານ',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ],
+                    )
                 ),
               ),
             ],

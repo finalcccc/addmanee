@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'dart:async';
+import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -89,9 +90,11 @@ class _RegisterState extends State<Register> {
                 position: position!,
                 birthday: birthday);
             final Map<String, dynamic>? data = employeeData.toMap();
+            int id = await Random().nextInt(90)+1000;
+
             await FirebaseFirestore.instance
                 .collection("employees")
-                .doc(uid)
+                .doc(id.toString())
                 .set(data!)
                 .then(
               (value) {
