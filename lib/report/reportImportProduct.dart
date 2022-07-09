@@ -38,7 +38,7 @@ class _ReportImportProductState extends State<ReportImportProduct> {
                 padding: const EdgeInsets.all(10.0),
                 itemCount: supp.Supplier.length,
                 itemBuilder: (BuildContext context, int index) {
-                  MaterialColor c = Colors.primaries[Random().nextInt(Colors.primaries.length)];
+                  MaterialColor c = Colors.primaries[Random().nextInt(10)];
                   return InkWell(
                     onTap: () {
                       supp.CurrenimportP_id = supp.ImportProduct[index];
@@ -63,9 +63,16 @@ class _ReportImportProductState extends State<ReportImportProduct> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Container(
-                                  color: c,
+                                // color: c,
                                   width: 115,
-                                  height: 22,
+                                  height: 30,
+                                  decoration: BoxDecoration(
+                                    color: c,
+                                    borderRadius: BorderRadius.only(
+                                      bottomRight: Radius.circular(18),
+                                    ),
+
+                                  ),
                                   child: Text(
                                     '  ລະຫັດ: ${supp.ImportProduct[index].id}',
                                     style: TextStyle(
@@ -98,7 +105,7 @@ class _ReportImportProductState extends State<ReportImportProduct> {
                                 children: <Widget>[
                                   const SizedBox(height: 5.0),
                                   Text(
-                                    'ຊື່ຜູ້ສະໜອງ: ${supp.Supplier[index].name}',
+                                    'ຜູ້ສະໜອງ: ${supp.Supplier[index].name}',
                                     style: const TextStyle(
                                       fontSize: 14.0,
                                       color: Colors.grey,
