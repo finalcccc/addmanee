@@ -79,9 +79,9 @@ class _RegisterState extends State<Register> {
             );
             String uid = value.user!.uid;
             print("uid = $uid");
-
+            int id = await Random().nextInt(90)+1000;
             EmployeeData employeeData = EmployeeData(
-                id: uid,
+                id: id.toString(),
                 name: name!,
                 email: email!,
                 password: password!,
@@ -90,7 +90,7 @@ class _RegisterState extends State<Register> {
                 position: position!,
                 birthday: birthday);
             final Map<String, dynamic>? data = employeeData.toMap();
-            int id = await Random().nextInt(90)+1000;
+
 
             await FirebaseFirestore.instance
                 .collection("employees")
