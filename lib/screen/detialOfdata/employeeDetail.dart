@@ -8,7 +8,6 @@ import 'package:untitled1/screen/showDataFromFirebase/viewEmployee.dart';
 
 import '../../dialog_edit/dialog_employee.dart';
 
-
 class EmployeeDetail extends StatefulWidget {
   const EmployeeDetail({Key? key}) : super(key: key);
 
@@ -62,7 +61,7 @@ class _EmployeeDetailState extends State<EmployeeDetail> {
                         style: const TextStyle(fontSize: 16),
                       ),
                       Text(
-                        'ອີແມວ: ' + ' ${employee.CurrentEmployee!.email}',
+                        'ອີເມວ: ' + ' ${employee.CurrentEmployee!.email}',
                         style: const TextStyle(fontSize: 16),
                       ),
                       Text(
@@ -74,7 +73,8 @@ class _EmployeeDetailState extends State<EmployeeDetail> {
                         style: const TextStyle(fontSize: 16),
                       ),
                       Text(
-                        'ຕຳແໜ່ງ: ' + '${employee.CurrentEmployee!.birthday}',
+                        'ວັນເດືອນປີເກີດ: ' +
+                            '${employee.CurrentEmployee!.birthday}',
                         style: const TextStyle(fontSize: 16),
                       ),
                       Text(

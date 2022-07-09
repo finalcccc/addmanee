@@ -15,7 +15,7 @@ class EmployeePDF {
     final pdf = pw.Document();
     pdf.addPage(
       pw.Page(
-        pageFormat: PdfPageFormat.a4,
+        pageFormat: PdfPageFormat.a3,
         build: (pw.Context context) {
           return pw.Container(
             margin: const pw.EdgeInsets.all(10),
@@ -31,21 +31,32 @@ class EmployeePDF {
                   style: pw.TextStyle(
                       fontSize: 20, fontWeight: pw.FontWeight.bold, font: ttf),
                 ),
-                pw.Text(
-                  '${emp.employeeList.length}',
-                  style: pw.TextStyle(
-                      fontSize: 14, fontWeight: pw.FontWeight.bold, font: ttf),
-                ),
-                pw.Text(
-                  '${emp.addminCount}',
-                  style: pw.TextStyle(
-                      fontSize: 14, fontWeight: pw.FontWeight.bold, font: ttf),
-                ),
-                pw.Text(
-                  '${emp.saleCount}',
-                  style: pw.TextStyle(
-                      fontSize: 14, fontWeight: pw.FontWeight.bold, font: ttf),
-                ),
+                pw.Column(
+                    mainAxisAlignment: pw.MainAxisAlignment.start,
+                    crossAxisAlignment: pw.CrossAxisAlignment.start,
+                    children: [
+                      pw.Text(
+                        'ພະນັກງານທັງໝົດມີ: ${emp.employeeList.length} ຄົນ',
+                        style: pw.TextStyle(
+                            fontSize: 14,
+                            fontWeight: pw.FontWeight.bold,
+                            font: ttf),
+                      ),
+                      pw.Text(
+                        'ແອັດມິນມີ: ${emp.addminCount} ຄົນ',
+                        style: pw.TextStyle(
+                            fontSize: 14,
+                            fontWeight: pw.FontWeight.bold,
+                            font: ttf),
+                      ),
+                      pw.Text(
+                        'ພະນັກງານຂາຍມີ: ${emp.saleCount} ຄົນ',
+                        style: pw.TextStyle(
+                            fontSize: 14,
+                            fontWeight: pw.FontWeight.bold,
+                            font: ttf),
+                      ),
+                    ]),
                 pw.SizedBox(height: 50),
                 pw.Center(
                   child: pw.Text(
@@ -216,7 +227,7 @@ class EmployeePDF {
         ),
         pw.Container(
           width: 70,
-          child: pw.Text('ລະຫັດພະນັກງານ', style: pw.TextStyle(font: ttf)),
+          child: pw.Text('ລະຫັດ', style: pw.TextStyle(font: ttf)),
         ),
         pw.Container(
           width: 70,
