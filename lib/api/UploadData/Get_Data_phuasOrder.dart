@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -13,17 +14,19 @@ import '../../notifire/purchase_order_Notifire.dart';
 //  phuas
 Upload_Data_phuashOrder(Cartnotifire Cart)async{
   CartModelupload Cartm = CartModelupload();
+
   Cart.Cartlist.forEach((element)async {
     CartModel m = await CartModel(element.Product!.id,element.amout);
     Cartm.Ditell.add(m.toMap());
 
   });
-  Cartm.amouttotal = Cart.amoultoal;
-  Cartm.Supplier_ID = Cart.Cartsupp;
-  CollectionReference reference = await FirebaseFirestore.instance.collection('purchase_order');
-  DocumentReference docid = await reference.add(Cartm.toMap());
-  Cartm.id =docid.id;
-  docid.set(Cartm.toMap());
+
+
+  int randomNumber =await Random().nextInt(90) + 1000000;
+  Cartm.amouttotal = await Cart.amoultoal;
+  Cartm.Supplier_ID = await Cart.Cartsupp;
+  Cartm.id = randomNumber.toString();
+await FirebaseFirestore.instance.collection('purchase_order').doc(randomNumber.toString()).set(Cartm.toMap());
 }
 
 GetPureChaseNoly({required purchase_order_Notifire? order_admin,required SupplierNotifire? supp})async{
