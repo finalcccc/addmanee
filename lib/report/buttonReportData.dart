@@ -58,9 +58,16 @@ class _ReportDataState extends State<ReportData> {
                           MaterialPageRoute(
                               builder: (context) => const ReportIncome()));
                     },
-                    child: const Text(
-                      'ລາຍງານລາຍຮັບ',
-                      style: TextStyle(fontSize: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.pending_actions),
+                        SizedBox(width: 10),
+                        Text(
+                          'ລາຍງານລາຍ ຮັບ',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ],
                     )),
               ),
               const SizedBox(height: 10),
@@ -76,10 +83,17 @@ class _ReportDataState extends State<ReportData> {
                         MaterialPageRoute(
                             builder: (context) => const ReportExpense()));
                   },
-                  child: const Text(
-                    'ລາຍງານລາຍຈ່າຍ',
-                    style: TextStyle(fontSize: 20),
-                  ),
+                  child:Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.perm_device_information_sharp),
+                      SizedBox(width: 10),
+                      Text(
+                        'ລາຍງານລາຍ ຈ່າຍ',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ],
+                  )
                 ),
               ),
               const SizedBox(height: 10),
@@ -100,10 +114,17 @@ class _ReportDataState extends State<ReportData> {
                         MaterialPageRoute(
                             builder: (context) => const ReportEmployeeData()));
                   },
-                  child: const Text(
-                    'ລາຍງານຂໍ້ມູນພະນັກງານ',
-                    style: TextStyle(fontSize: 20),
-                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.people_outline),
+                      SizedBox(width: 10),
+                      Text(
+                        'ລາຍງານລາຍ ພະນັກງານ',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ],
+                  )
                 ),
               ),
               const SizedBox(height: 10),
@@ -121,10 +142,17 @@ class _ReportDataState extends State<ReportData> {
                         MaterialPageRoute(
                             builder: (context) => const ReportImportProduct()));
                   },
-                  child: const Text(
-                    'ລາຍງານໃບນຳສົ່ງສິນຄ້າ',
-                    style: TextStyle(fontSize: 20),
-                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.label_important_outline_rounded),
+                      SizedBox(width: 10),
+                      Text(
+                        'ລາຍງານລາຍການ ນຳເຂົ້າສິນຄ້າ',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ],
+                  )
                 ),
               ),
               const SizedBox(height: 10),
@@ -142,10 +170,17 @@ class _ReportDataState extends State<ReportData> {
                         MaterialPageRoute(
                             builder: (context) => const ReportProductData()));
                   },
-                  child: const Text(
-                    'ລາຍງານຂໍ້ມູນສິນຄ້າ',
-                    style: TextStyle(fontSize: 20),
-                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.shopping_cart_outlined),
+                      SizedBox(width: 10),
+                      Text(
+                        'ລາຍງານຂໍ້ມູນ ສິນຄ້າ',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ],
+                  )
                 ),
               ),
               const SizedBox(height: 10),
@@ -163,10 +198,46 @@ class _ReportDataState extends State<ReportData> {
                         MaterialPageRoute(
                             builder: (context) => const ReportProductData()));
                   },
-                  child: const Text(
-                    'ລາຍງານການສັ່ງຊື້ສິນຄ້າ',
-                    style: TextStyle(fontSize: 20),
-                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.exit_to_app_outlined),
+                      SizedBox(width: 10),
+                      Text(
+                        'ລາຍງານການ ສັ່ງຊື້ສິນຄ້າ',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ],
+                  )
+                ),
+              ),
+
+              const SizedBox(height: 10),
+              SizedBox(
+                height: 50,
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: element.main),
+                  onPressed: () async {
+                    ProductNotifire product =
+                        Provider.of<ProductNotifire>(context, listen: false);
+                    GetProduct(product, false);
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ReportProductData()));
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.import_export),
+                      SizedBox(width: 10),
+                      Text(
+                          'ລາຍງານການ ສັ່ງຊື້ເຂົ້າຮ້ານ',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ],
+                  )
                 ),
               ),
               const SizedBox(height: 10),
@@ -184,34 +255,21 @@ class _ReportDataState extends State<ReportData> {
                         MaterialPageRoute(
                             builder: (context) => const ReportProductData()));
                   },
-                  child: const Text(
-                    'ລາຍງານການສັ່ງຊື້ເຂົ້າຮ້ານ',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10),
-              SizedBox(
-                height: 50,
-                width: double.infinity,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: element.main),
-                  onPressed: () async {
-                    ProductNotifire product =
-                        Provider.of<ProductNotifire>(context, listen: false);
-                    GetProduct(product, false);
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ReportProductData()));
-                  },
-                  child: const Text(
-                    'ລາຍງານອໍເດີ້ທີ່ສຳເລັດ',
-                    style: TextStyle(fontSize: 20),
-                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.book_outlined),
+                      SizedBox(width: 10),
+                      Text(
+                        'ລາຍງານ ອໍເດີ້ທີ່ສຳເລັດ',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ],
+                  )
                 ),
               ),
             ],
+
           ),
         )));
   }
