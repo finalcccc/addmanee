@@ -131,19 +131,13 @@ class _View_orderState extends State<view_order> {
                                         fontSize: 17))),
                             SizedBox(
                                 width: 80,
-                                child: Text('ລາຄາຂາຍ',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 17))),
-                            SizedBox(
-                                width: 60,
                                 child: Text('ຈຳນວນ',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 17))),
                             SizedBox(
-                                width: 80,
-                                child: Text('ລາຄາ',
+                                width: 70,
+                                child: Text('ລາຄາລວມ',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 17))),
@@ -187,11 +181,6 @@ class _View_orderState extends State<view_order> {
                                                             width: 80,
                                                             child: Text(
                                                                 '${order.Order_detill[index].Product!.category_id}')),
-                                                        SizedBox(
-                                                            height: 50,
-                                                            width: 80,
-                                                            child: Text(
-                                                                '${NumberFormat.decimalPattern().format(order.Order_detill[index].Product!.price).toString()}')),
                                                         SizedBox(
                                                             height: 50,
                                                             width: 60,
@@ -241,7 +230,7 @@ class _View_orderState extends State<view_order> {
                               Row(
                                 children: [
                                   const Text(
-                                    ' ລາຄາລວມ :',
+                                    ' ລາຄາທັ້ງໝົດ :',
                                     style: TextStyle(
                                         fontSize: 17,
                                         fontWeight: FontWeight.bold),

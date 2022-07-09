@@ -34,12 +34,11 @@ importProduct.countket = 0;
 importProduct.Product.clear();
 
 FirebaseFirestore rfn = FirebaseFirestore.instance;
-QuerySnapshot<Map<String,dynamic>> imp = await  rfn.collection('importproducts').get();
+QuerySnapshot<Map<String,dynamic>> imp = await  rfn.collection('importproducts').where('id_purchase',isEqualTo: importProduct.CurrenimportP_id!.id).get();
   imp.docs.forEach((element) async{
     import_products imp = await import_products.formMap(element.data());
     print(imp.id_purchase.toString() +' di_p' );
     print(importProduct.CurrenimportP_id!.id.toString() + ' hhhh');
-     if(importProduct.CurrenimportP_id!.id == imp.id_purchase){
        importProduct.sumtotal+=imp.sumtotal!.toInt();
        importProduct.countket+=imp.amout!.toInt();
        QuerySnapshot<Map<String,dynamic>> productimport  =  await rfn.collection('products').where('id',isEqualTo: imp.id_products).get();
@@ -57,6 +56,5 @@ QuerySnapshot<Map<String,dynamic>> imp = await  rfn.collection('importproducts')
                   print(p.nameProduct.toString() + p.category_id.toString());
          });
        });
-     }
   });
 }
