@@ -60,7 +60,7 @@ class _ReportDataState extends State<ReportData> {
                     },
                     child: const Text(
                       'ລາຍງານລາຍຮັບ',
-                      style: TextStyle(fontSize: 17),
+                      style: TextStyle(fontSize: 20),
                     )),
               ),
               const SizedBox(height: 10),
@@ -78,7 +78,7 @@ class _ReportDataState extends State<ReportData> {
                   },
                   child: const Text(
                     'ລາຍງານລາຍຈ່າຍ',
-                    style: TextStyle(fontSize: 17),
+                    style: TextStyle(fontSize: 20),
                   ),
                 ),
               ),
@@ -102,7 +102,7 @@ class _ReportDataState extends State<ReportData> {
                   },
                   child: const Text(
                     'ລາຍງານຂໍ້ມູນພະນັກງານ',
-                    style: TextStyle(fontSize: 17),
+                    style: TextStyle(fontSize: 20),
                   ),
                 ),
               ),
@@ -123,7 +123,7 @@ class _ReportDataState extends State<ReportData> {
                   },
                   child: const Text(
                     'ລາຍງານໃບນຳສົ່ງສິນຄ້າ',
-                    style: TextStyle(fontSize: 17),
+                    style: TextStyle(fontSize: 20),
                   ),
                 ),
               ),
@@ -144,7 +144,70 @@ class _ReportDataState extends State<ReportData> {
                   },
                   child: const Text(
                     'ລາຍງານຂໍ້ມູນສິນຄ້າ',
-                    style: TextStyle(fontSize: 17),
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                height: 50,
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: element.main),
+                  onPressed: () async {
+                    ProductNotifire product =
+                        Provider.of<ProductNotifire>(context, listen: false);
+                    GetProduct(product, false);
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ReportProductData()));
+                  },
+                  child: const Text(
+                    'ລາຍງານການສັ່ງຊື້ສິນຄ້າ',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                height: 50,
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: element.main),
+                  onPressed: () async {
+                    ProductNotifire product =
+                        Provider.of<ProductNotifire>(context, listen: false);
+                    GetProduct(product, false);
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ReportProductData()));
+                  },
+                  child: const Text(
+                    'ລາຍງານການສັ່ງຊື້ເຂົ້າຮ້ານ',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                height: 50,
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: element.main),
+                  onPressed: () async {
+                    ProductNotifire product =
+                        Provider.of<ProductNotifire>(context, listen: false);
+                    GetProduct(product, false);
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ReportProductData()));
+                  },
+                  child: const Text(
+                    'ລາຍງານອໍເດີ້ທີ່ສຳເລັດ',
+                    style: TextStyle(fontSize: 20),
                   ),
                 ),
               ),

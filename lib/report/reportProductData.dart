@@ -173,7 +173,7 @@ class _ReportProductDataState extends State<ReportProductData> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Text('ມີທັ້ງໝົດ: ${pro.Products.length} ລາຍການ',
+              Text('ທັ້ງໝົດ: ${pro.Products.length} ລາຍການ',
                   style: TextStyle(fontSize: 17)),
             ],
           ),

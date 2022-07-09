@@ -54,7 +54,28 @@ class _ReportEmployeeDataState extends State<ReportEmployeeData> {
                           ),
                           const SizedBox(height: 5.0),
                           Text(
-                            '${emp.employeeList[index].position}',
+                            'ຕຳແຫນ່ງ: ${emp.employeeList[index].position}',
+                            style: const TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          Text(
+                            'ເບີໂທ: ${emp.employeeList[index].tel}',
+                            style: const TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          Text(
+                            'ອີເມວ: ${emp.employeeList[index].email}',
+                            style: const TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          Text(
+                            'ທີ່ຢູ່: ${emp.employeeList[index].address}',
                             style: const TextStyle(
                               fontSize: 14.0,
                               color: Colors.grey,
