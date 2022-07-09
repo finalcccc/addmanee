@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
       ),
       home: const SplashScreen(),
       routes: <String, WidgetBuilder>{
-        route.prodc: (BuildContext context) => const ReceiveOrder(),
+        route.prodc: (BuildContext context) => const ViweProducts_Addmin(),
         route.register: (BuildContext context) => const EmployeeTapbar(),
         route.product: (BuildContext context) => const ProductAddTapbar(),
         route.m_orders: (BuildContext context) => const ManageOrder(),

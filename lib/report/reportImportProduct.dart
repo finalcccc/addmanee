@@ -38,7 +38,7 @@ class _ReportImportProductState extends State<ReportImportProduct> {
                 padding: const EdgeInsets.all(10.0),
                 itemCount: supp.Supplier.length,
                 itemBuilder: (BuildContext context, int index) {
-                  int random = Random().nextInt(1000);
+                  MaterialColor c = Colors.primaries[Random().nextInt(Colors.primaries.length)];
                   return InkWell(
                     onTap: () {
                       supp.CurrenimportP_id = supp.ImportProduct[index];
@@ -52,25 +52,25 @@ class _ReportImportProductState extends State<ReportImportProduct> {
                     },
                     child: Card(
                         elevation: 2,
-                        shape: const RoundedRectangleBorder(
+                        shape:  RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
                                 bottomRight: Radius.circular(10),
                                 topRight: Radius.circular(10)),
-                            side: BorderSide(width: 1, color: Colors.grey)),
+                            side: BorderSide(width: 1, color: c)),
                         child: Column(
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Container(
-                                  color: Color(random),
+                                  color: c,
                                   width: 115,
                                   height: 22,
                                   child: Text(
                                     '  ລະຫັດ: ${supp.ImportProduct[index].id}',
                                     style: TextStyle(
                                       fontSize: 14.0,
-                                      color: element.main,
+                                      color: element.wht,
                                     ),
                                   ),
                                 ),

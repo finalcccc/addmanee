@@ -17,14 +17,14 @@ import '../api/getCategoryData.dart';
 import '../api/getProduct.dart';
 
 
-class ReceiveOrder extends StatefulWidget {
-  const ReceiveOrder({Key? key}) : super(key: key);
+class ViweProducts_Addmin extends StatefulWidget {
+  const ViweProducts_Addmin({Key? key}) : super(key: key);
 
   @override
-  State<ReceiveOrder> createState() => _ReceiveOrderState();
+  State<ViweProducts_Addmin> createState() => _ViweProducts_AddminState();
 }
 
-class _ReceiveOrderState extends State<ReceiveOrder> {
+class _ViweProducts_AddminState extends State<ViweProducts_Addmin> {
   bool colortype = false;
   void colortypes() {
     setState(() {
