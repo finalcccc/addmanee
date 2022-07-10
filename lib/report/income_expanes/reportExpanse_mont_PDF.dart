@@ -158,7 +158,6 @@ class report_expane_mont_PDF {
   }
 }
 
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class reportexpane_Day_PDF {
   static Save_expanes_Day_PDF(report_incomeNotifire Day, contex) async {
@@ -175,7 +174,7 @@ class reportexpane_Day_PDF {
               mainAxisAlignment: pw.MainAxisAlignment.start,
               children: [
                 pw.Text(
-                  'ລາຍງານລາຍຈ່າຍປະຈຳເດືອນ: ${Day.expanese_day[0].date!.toDate().toString().substring(0,7)}',
+                  'ລາຍງານລາຍຈ່າຍປະຈຳເດືອນ: ${Day.expanese_day[0].date!.toDate().toString().substring(0, 7)}',
                   style: pw.TextStyle(
                       fontSize: 20, fontWeight: pw.FontWeight.bold, font: ttf),
                 ),
@@ -234,7 +233,7 @@ class reportexpane_Day_PDF {
 
     int randomNumber = Random().nextInt(90) + 10000;
     final File file =
-    await File('/storage/emulated/0/Download/$randomNumber.pdf');
+        await File('/storage/emulated/0/Download/$randomNumber.pdf');
     print(file);
     await file.writeAsBytes(await pdf.save()).then((value) {
       OpenFile.open('${file.path}');
@@ -243,7 +242,7 @@ class reportexpane_Day_PDF {
 
   static pw.ListView listView(report_incomeNotifire Day, pw.Font ttf) {
     return pw.ListView.builder(
-      itemCount: Day.icome_day.length,
+      itemCount: Day.expanese_day.length,
       itemBuilder: (context, index) {
         return pw.Column(children: [
           pw.Row(
@@ -261,9 +260,9 @@ class reportexpane_Day_PDF {
                   ),
                 ),
                 pw.SizedBox(
-                  width: 60,
+                  width: 80,
                   child: pw.Text(
-                    '${Day.icome_day[index].date!.toDate().toString().substring(0, 10)}',
+                    '${Day.expanese_day[index].date!.toDate().toString().substring(0, 10)}',
                     style: pw.TextStyle(
                         fontSize: 12,
                         fontWeight: pw.FontWeight.bold,
@@ -273,7 +272,7 @@ class reportexpane_Day_PDF {
                 pw.SizedBox(
                   width: 60,
                   child: pw.Text(
-                    '${NumberFormat.decimalPattern().format(Day.icome_day[index].sumtatall)}',
+                    '${NumberFormat.decimalPattern().format(Day.expanese_day[index].sumtatall)}',
                     style: pw.TextStyle(
                         fontSize: 12,
                         fontWeight: pw.FontWeight.bold,
@@ -296,7 +295,7 @@ class reportexpane_Day_PDF {
           child: pw.Text('ລຳດັບ', style: pw.TextStyle(font: ttf)),
         ),
         pw.Container(
-          width: 60,
+          width: 80,
           child: pw.Text('ວັນທີ', style: pw.TextStyle(font: ttf)),
         ),
         pw.Container(

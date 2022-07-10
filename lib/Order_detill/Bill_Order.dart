@@ -16,27 +16,31 @@ class Bill_Order {
     final pdf = pw.Document();
     pdf.addPage(
       pw.Page(
-
         pageFormat: PdfPageFormat.a4,
-
         build: (pw.Context context) {
           return pw.Container(
             margin: const pw.EdgeInsets.all(10),
             child: pw.Column(
               children: [
                 pw.Text(
-                  'ຮ້ານແອັດມະນີ',
+                  'ໃບບິນ',
                   style: pw.TextStyle(
                       fontSize: 25, fontWeight: pw.FontWeight.bold, font: ttf),
                 ),
                 pw.Text(
-                  'ໃບບິນ',
+                  'ຮ້ານແອັດມະນີ',
                   style: pw.TextStyle(
                       fontSize: 20, fontWeight: pw.FontWeight.bold, font: ttf),
                 ),
                 pw.SizedBox(height: 40),
                 Subheader_Purchase_OrderDetial(ttf, order),
-                pw.SizedBox(height: 40),
+                pw.SizedBox(height: 20),
+                pw.Text(
+                  'ລາຍລະອຽດຂອງໃບບິນ',
+                  style: pw.TextStyle(
+                      fontSize: 20, fontWeight: pw.FontWeight.bold, font: ttf),
+                ),
+                pw.SizedBox(height: 20),
                 pw.Divider(),
                 Subtitle_Purchase_Order_Detail(ttf),
                 pw.Divider(),
@@ -71,7 +75,7 @@ class Bill_Order {
                           style: const pw.TextStyle(
                             fontSize: 15,
                           )),
-                      pw.Text(' ແກັດ ',
+                      pw.Text(' ກີບ ',
                           style: pw.TextStyle(
                               font: ttf,
                               fontWeight: pw.FontWeight.bold,

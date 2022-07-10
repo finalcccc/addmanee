@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_string_interpolations, non_constant_identifier_names, depend_on_referenced_packages, use_build_context_synchronously
+// ignore_for_file: unnecessary_string_interpolations, non_constant_identifier_names, depend_on_referenced_packages, use_build_context_synchronously, no_logic_in_create_state
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,10 +14,11 @@ import '../../report/buttonReportData.dart';
 
 class ManagerOrderByCustomer extends StatefulWidget {
   bool tpye;
-   ManagerOrderByCustomer(this.tpye);
+  ManagerOrderByCustomer(this.tpye, {Key? key}) : super(key: key);
 
   @override
-  State<ManagerOrderByCustomer> createState() => _ManagerOrderByCustomerState(this.tpye);
+  State<ManagerOrderByCustomer> createState() =>
+      _ManagerOrderByCustomerState(this.tpye);
 }
 
 class _ManagerOrderByCustomerState extends State<ManagerOrderByCustomer> {
@@ -31,7 +32,8 @@ class _ManagerOrderByCustomerState extends State<ManagerOrderByCustomer> {
         title: const Text('ລູກຄ້າສັ່ງຊື້ສິນຄ້າ'),
         centerTitle: true,
         backgroundColor: element.main,
-        leading: element().RoutePageBack(context,tpye ?ManageOrder():ReportData()),
+        leading: element().RoutePageBack(
+            context, tpye ? const ManageOrder() : const ReportData()),
       ),
       body: ListView.builder(
         itemCount: order.Order.length,
@@ -89,15 +91,18 @@ class _ManagerOrderByCustomerState extends State<ManagerOrderByCustomer> {
                         'ຈຳນວນທັງໝົດ: ${order.Order[index].amouttotal} ແກັດ',
                         style: const TextStyle(fontSize: 16),
                       ),
-                      Row(
-                        children: [
-                          Text(
-                            'ລາຄາລວມ: ${NumberFormat.decimalPattern().format(order.Order[index].sumtotal)} ກີບ',
-                            style: const TextStyle(fontSize: 16),
-                          ),
-                          const SizedBox(width: 120),
-                          Staustus(order, index),
-                        ],
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            Text(
+                              'ລາຄາລວມ: ${NumberFormat.decimalPattern().format(order.Order[index].sumtotal)} ກີບ',
+                              style: const TextStyle(fontSize: 16),
+                            ),
+                            const SizedBox(width: 120),
+                            Staustus(order, index),
+                          ],
+                        ),
                       )
                     ],
                   ),

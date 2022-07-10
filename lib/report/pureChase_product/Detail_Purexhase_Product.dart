@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/notifire/supplierNotifire.dart';
 import 'package:untitled1/report/buttonReportData.dart';
+import 'package:untitled1/report/pureChase_product/purechase_Product.dart';
 import 'package:untitled1/report/pureChase_product/reportPurchaseProductToPDF.dart';
 import '../../celement/elements.dart';
 import 'package:intl/intl.dart';
@@ -23,7 +24,7 @@ class _Detaiy_purcChase_productState extends State<Detaiy_purcChase_product> {
         title: const Text('ລາຍງານຂໍ້ມູນ ສັ່ງສິນຄ້າເຂົ້າຮ້ານ'),
         centerTitle: true,
         backgroundColor: element.main,
-        leading: element().RoutePageBack(context, const ReportData()),
+        leading: element().RoutePageBack(context, const purChase_Product()),
       ),
       body: Column(
         children: [

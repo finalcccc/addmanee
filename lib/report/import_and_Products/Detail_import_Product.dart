@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
 import 'package:untitled1/notifire/supplierNotifire.dart';
 import 'package:untitled1/report/buttonReportData.dart';
+import 'package:untitled1/report/import_and_Products/reportImportProduct.dart';
 import 'package:untitled1/report/import_and_Products/reportImportProductToPDF.dart';
 import 'package:untitled1/report/import_and_Products/reportProductDataToPDF.dart';
 import '../../celement/elements.dart';
@@ -26,7 +27,7 @@ class _Detaiy_import_productState extends State<Detaiy_import_product> {
         title: const Text('ລາຍງານຂໍ້ມູນນໍາເຂົ້າສິນຄ້າ'),
         centerTitle: true,
         backgroundColor: element.main,
-        leading: element().RoutePageBack(context, const ReportData()),
+        leading: element().RoutePageBack(context, const ReportImportProduct()),
       ),
       body: Column(
         children: [
