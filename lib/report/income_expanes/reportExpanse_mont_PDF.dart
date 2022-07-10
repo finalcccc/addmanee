@@ -17,7 +17,7 @@ class report_expane_mont_PDF {
     final pdf = pw.Document();
     pdf.addPage(
       pw.Page(
-        pageFormat: PdfPageFormat.a3,
+        pageFormat: PdfPageFormat.a4,
         build: (pw.Context context) {
           return pw.Container(
             margin: const pw.EdgeInsets.all(10),
@@ -166,7 +166,7 @@ class reportexpane_Day_PDF {
     final pdf = pw.Document();
     pdf.addPage(
       pw.Page(
-        pageFormat: PdfPageFormat.a3,
+        pageFormat: PdfPageFormat.a4,
         build: (pw.Context context) {
           return pw.Container(
             margin: const pw.EdgeInsets.all(10),

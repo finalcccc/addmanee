@@ -17,7 +17,7 @@ class report_mont_PDF {
     final pdf = pw.Document();
     pdf.addPage(
       pw.Page(
-        pageFormat: PdfPageFormat.a3,
+        pageFormat: PdfPageFormat.a4,
         build: (pw.Context context) {
           return pw.Container(
             margin: const pw.EdgeInsets.all(10),
@@ -157,6 +157,7 @@ class report_mont_PDF {
     );
   }
 }
+
 class report_Day_PDF {
   static Save_income_Day_PDF(report_incomeNotifire Day, contex) async {
     final font = await rootBundle.load('lib/assets/Phetsarath-Regular.ttf');
@@ -164,7 +165,7 @@ class report_Day_PDF {
     final pdf = pw.Document();
     pdf.addPage(
       pw.Page(
-        pageFormat: PdfPageFormat.a3,
+        pageFormat: PdfPageFormat.a4,
         build: (pw.Context context) {
           return pw.Container(
             margin: const pw.EdgeInsets.all(10),
@@ -172,7 +173,7 @@ class report_Day_PDF {
               mainAxisAlignment: pw.MainAxisAlignment.start,
               children: [
                 pw.Text(
-                  'ລາຍງານລາຍຮັບປະຈຳເດືອນ: ${Day.icome_day[0].date!.toDate().toString().substring(0,7)}',
+                  'ລາຍງານລາຍຮັບປະຈຳເດືອນ: ${Day.icome_day[0].date!.toDate().toString().substring(0, 7)}',
                   style: pw.TextStyle(
                       fontSize: 20, fontWeight: pw.FontWeight.bold, font: ttf),
                 ),
@@ -231,7 +232,7 @@ class report_Day_PDF {
 
     int randomNumber = Random().nextInt(90) + 10000;
     final File file =
-    await File('/storage/emulated/0/Download/$randomNumber.pdf');
+        await File('/storage/emulated/0/Download/$randomNumber.pdf');
     print(file);
     await file.writeAsBytes(await pdf.save()).then((value) {
       OpenFile.open('${file.path}');
