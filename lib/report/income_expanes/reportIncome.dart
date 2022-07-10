@@ -24,7 +24,6 @@ class _ReportIncomeState extends State<ReportIncome> {
   @override
   Widget build(BuildContext context) {
     report_incomeNotifire income = Provider.of<report_incomeNotifire>(context);
-    int sum = 0;
     return Scaffold(
       appBar: AppBar(
         title: const Text('ລາຍງານລາຍຮັບປະຈຳເດືອນ'),
@@ -70,7 +69,7 @@ class _ReportIncomeState extends State<ReportIncome> {
                                                     fontSize: 16),
                                               ),
                                               Text(
-                                                ' ${NumberFormat.decimalPattern().format(sum += income.icome[income.icome.length - index - 1].sumtatall!.toInt())}',
+                                                ' ${NumberFormat.decimalPattern().format(income.icome[income.icome.length - index - 1].sumtatall!.toInt())}',
                                                 style: TextStyle(
                                                     fontSize: 16,
                                                     color: element.main,

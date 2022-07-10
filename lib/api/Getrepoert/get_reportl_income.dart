@@ -30,6 +30,8 @@ Get_reportl_income(report_incomeNotifire imcome) async {
   rfn.docs.forEach((element) async {
     Timestamp g = element['date'];
     String m = g.toDate().toString().substring(6, 7);
+    print(element.data().length);
+    print(m);
     if (element['Staustus'] == 'ສຳເລັດ') {
       Report_Month(
           m: m, Month: Month, sumtotal: sumtotal, g: g, element: element);
@@ -105,6 +107,7 @@ Report_Month(
       {
         Month![1] = g!;
         sumtotal![1] += element['sumtotal'];
+        print(sumtotal[1]);
       }
       break;
     case '1':
