@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
@@ -15,12 +17,8 @@ class Detaiy_import_product extends StatefulWidget {
 }
 
 class _Detaiy_import_productState extends State<Detaiy_import_product> {
-
-
-
   @override
   Widget build(BuildContext context) {
-
     SupplierNotifire pro = Provider.of<SupplierNotifire>(context);
     return Scaffold(
       appBar: AppBar(
@@ -161,7 +159,8 @@ class _Detaiy_import_productState extends State<Detaiy_import_product> {
                         const SizedBox(height: 5.0),
                         SizedBox(
                           child: Text(
-                            '${NumberFormat.decimalPattern().format(pro.Product[index].price)}',
+                            NumberFormat.decimalPattern()
+                                .format(pro.Product[index].price),
                             style: const TextStyle(
                               fontSize: 14.0,
                               color: Colors.grey,
@@ -178,17 +177,19 @@ class _Detaiy_import_productState extends State<Detaiy_import_product> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Expanded(child: Row(
+              Expanded(
+                  child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                Text('ທັ້ງໝົດ: ${pro.Product.length} ລາຍການ',
-                    style: TextStyle(fontSize: 17)),
-                Text(' ${pro.countket} ເເກັດ',
-                    style: TextStyle(fontSize: 17)),
-                Text('ລາຄາລວມ: ${NumberFormat.decimalPattern().format(pro.sumtotal)} ກີບ',
-                    style: TextStyle(fontSize: 17)),
-              ],)),
-
+                  Text('ທັ້ງໝົດ: ${pro.Product.length} ລາຍການ',
+                      style: const TextStyle(fontSize: 17)),
+                  Text(' ${pro.countket} ເເກັດ',
+                      style: const TextStyle(fontSize: 17)),
+                  Text(
+                      'ລາຄາລວມ: ${NumberFormat.decimalPattern().format(pro.sumtotal)} ກີບ',
+                      style: const TextStyle(fontSize: 17)),
+                ],
+              )),
             ],
           ),
           const SizedBox(height: 10),
@@ -198,11 +199,11 @@ class _Detaiy_import_productState extends State<Detaiy_import_product> {
             height: 55,
             child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              const ReportProductDataToPDF()));
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (context) =>
+                  //             const ReportProductDataToPDF()));
                 },
                 child: const Text(
                   'ບັນທຶກເປັນພີດີເອັຟ',

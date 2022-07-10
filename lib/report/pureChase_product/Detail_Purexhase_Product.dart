@@ -11,16 +11,13 @@ class Detaiy_purcChase_product extends StatefulWidget {
   const Detaiy_purcChase_product({Key? key}) : super(key: key);
 
   @override
-  State<Detaiy_purcChase_product> createState() => _Detaiy_purcChase_productState();
+  State<Detaiy_purcChase_product> createState() =>
+      _Detaiy_purcChase_productState();
 }
 
 class _Detaiy_purcChase_productState extends State<Detaiy_purcChase_product> {
-
-
-
   @override
   Widget build(BuildContext context) {
-
     SupplierNotifire pro = Provider.of<SupplierNotifire>(context);
     return Scaffold(
       appBar: AppBar(
@@ -86,9 +83,6 @@ class _Detaiy_purcChase_productState extends State<Detaiy_purcChase_product> {
                         ),
                       ),
                     ),
-
-
-
                   ],
                 ),
               ),
@@ -161,15 +155,16 @@ class _Detaiy_purcChase_productState extends State<Detaiy_purcChase_product> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Expanded(child: Row(
+              Expanded(
+                  child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                Text('ທັ້ງໝົດ: ${pro.Product.length} ລາຍການ',
-                    style: TextStyle(fontSize: 17)),
-                Text(' ${pro.countket} ເເກັດ',
-                    style: TextStyle(fontSize: 17)),
-              ],)),
-
+                  Text('ທັ້ງໝົດ: ${pro.Product.length} ລາຍການ',
+                      style: TextStyle(fontSize: 17)),
+                  Text(' ${pro.countket} ເເກັດ',
+                      style: TextStyle(fontSize: 17)),
+                ],
+              )),
             ],
           ),
           const SizedBox(height: 10),
@@ -179,11 +174,11 @@ class _Detaiy_purcChase_productState extends State<Detaiy_purcChase_product> {
             height: 55,
             child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              const ReportProductDataToPDF()));
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (context) =>
+                  //             const ReportProductDataToPDF()));
                 },
                 child: const Text(
                   'ບັນທຶກເປັນພີດີເອັຟ',

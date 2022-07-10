@@ -156,7 +156,8 @@ class _ReportProductDataState extends State<ReportProductData> {
                         const SizedBox(height: 5.0),
                         SizedBox(
                           child: Text(
-                            '${NumberFormat.decimalPattern().format(pro.Products[index].price)}',
+                            NumberFormat.decimalPattern()
+                                .format(pro.Products[index].price),
                             style: const TextStyle(
                               fontSize: 14.0,
                               color: Colors.grey,
@@ -174,7 +175,7 @@ class _ReportProductDataState extends State<ReportProductData> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Text('ທັ້ງໝົດ: ${pro.Products.length} ລາຍການ',
-                  style: TextStyle(fontSize: 17)),
+                  style: const TextStyle(fontSize: 17)),
             ],
           ),
           const SizedBox(height: 10),
@@ -184,11 +185,7 @@ class _ReportProductDataState extends State<ReportProductData> {
             height: 55,
             child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              const ReportProductDataToPDF()));
+                  ProductPDF.SaveProductPDF(pro, context);
                 },
                 child: const Text(
                   'ບັນທຶກເປັນພີດີເອັຟ',
