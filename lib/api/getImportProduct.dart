@@ -49,6 +49,9 @@ QuerySnapshot<Map<String,dynamic>> imp = await  rfn.collection('importproducts')
          product_Model p = product_Model.formMap(element.data());
                        p.amount = imp.amout!.toInt();
                        p.price =imp.cost!.toInt();
+                       p.date = imp.date;
+
+
          QuerySnapshot<Map<String,dynamic>> cate = await rfn.collection('categorys').where('id',isEqualTo:  p.category_id).get();
          cate.docs.forEach((element) {
                   print( element['category']);

@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class product_Model {
   String? id;
   String? nameProduct;
@@ -5,6 +7,7 @@ class product_Model {
   String? description;
   int? price, amount;
   String? category_id;
+  Timestamp? date;
 
   product_Model();
 
@@ -16,6 +19,8 @@ class product_Model {
     price = value['price'];
     amount = value['amount'];
     category_id = value['category_id'];
+    date = value['date'];
+
   }
 
   Map<String, dynamic> toMap() {
