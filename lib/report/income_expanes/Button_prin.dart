@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled1/report/income_expanes/reportExpanse_mont_PDF.dart';
 import 'package:untitled1/report/income_expanes/report_mont_PDF.dart';
 import '../../notifire/Repport_Notifire.dart';
 Button_prin({required String type,required report_incomeNotifire mont,required BuildContext context}){
@@ -20,11 +21,11 @@ Button_prin({required String type,required report_incomeNotifire mont,required B
             }
             break;
             case'expanesMont':{
-
+              report_expane_mont_PDF.Save_expanes_Mont_PDF(mont, context);
             }
             break;
             case'expanesDay':{
-
+               reportexpane_Day_PDF.Save_expanes_Day_PDF(mont, context);
             }
             break;
 

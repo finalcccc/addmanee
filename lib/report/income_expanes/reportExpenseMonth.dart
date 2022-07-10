@@ -10,6 +10,9 @@ import '../../celement/elements.dart';
 import '../../notifire/Repport_Notifire.dart';
 import 'package:intl/intl.dart';
 
+import 'Button_prin.dart';
+import 'package:untitled1/report/buttonReportData.dart';
+
 class ReportExpenseMonth extends StatefulWidget {
   const ReportExpenseMonth({Key? key}) : super(key: key);
 
@@ -35,6 +38,7 @@ class _ReportExpenseMonthState extends State<ReportExpenseMonth> {
         ),
         body: Column(
           children: [
+
             Padding(
               padding: EdgeInsets.all(10),
               child: Row(
@@ -106,7 +110,9 @@ class _ReportExpenseMonthState extends State<ReportExpenseMonth> {
                   return SizedBox();
                 },
               ),
-            )
+            ),
+            Button_prin(type: 'expanesDay', mont: expanese, context: context),
+            SizedBox(height: 10,)
           ],
         ));
   }

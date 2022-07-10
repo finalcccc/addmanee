@@ -108,6 +108,7 @@ class _ReportIncomeMonthState extends State<ReportIncomeMonth> {
                 },
               ),
             ),
+            SizedBox(height: 10),
             Button_prin(type: 'incomeDay',context: context,mont: income,),
             SizedBox(height: 10,)
           ],
