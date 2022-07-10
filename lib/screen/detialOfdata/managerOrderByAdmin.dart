@@ -363,7 +363,12 @@ class _Detellorder_addmidState extends State<Detellorder_addmid> {
                                   'ຊື່ສິນຄ້າ:  ${orderaddmin.Productaddmin!.nameProduct}',
                                   style: const TextStyle(fontSize: 15),
                                 ),
-                                const SizedBox(height: 25),
+                                const SizedBox(height: 2),
+                                Text(
+                                  'ຈຳນວນ:  ${orderaddmin.Productaddmin!.amount} ລາຍການ',
+                                  style: const TextStyle(fontSize: 15),
+                                ),
+                                const SizedBox(height: 2),
                                 ////////////////////////////////////////////////
                                 TextFormField(
                                   decoration: InputDecoration(
