@@ -81,7 +81,7 @@ class _ReportExpenseMonthState extends State<ReportExpenseMonth> {
                                                   fontSize: 16),
                                             ),
                                             Text(
-                                              ' - ${NumberFormat.decimalPattern().format(expanese.expanese_day[expanese.expanese_day.length - index - 1].sumtatall)}',
+                                              ' - ${NumberFormat.decimalPattern().format(expanese.expanese_day[index].sumtatall)}',
                                               style: TextStyle(
                                                   fontSize: 16,
                                                   color: Colors.red,
