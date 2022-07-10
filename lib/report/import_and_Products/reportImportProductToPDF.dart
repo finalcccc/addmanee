@@ -199,7 +199,7 @@ class ImportProductPDF {
         ),
         pw.Container(
           width: 100,
-          child: pw.Text('ຊີ່', style: pw.TextStyle(font: ttf, fontSize: 14)),
+          child: pw.Text('ຊື່', style: pw.TextStyle(font: ttf, fontSize: 14)),
         ),
         pw.Container(
           width: 100,
