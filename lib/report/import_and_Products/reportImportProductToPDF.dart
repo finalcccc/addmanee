@@ -73,7 +73,7 @@ class ImportProductPDF {
                                     fontWeight: pw.FontWeight.bold,
                                     font: ttf)),
                             pw.Text(
-                                'ລາຄາລວມທັງໝົດ: ${importProduct.sumtotal} ກີບ',
+                                'ລາຄາລວມທັງໝົດ: ${NumberFormat.decimalPattern().format(importProduct.sumtotal)} ກີບ',
                                 style: pw.TextStyle(
                                     fontSize: 12,
                                     fontWeight: pw.FontWeight.bold,
