@@ -29,7 +29,7 @@ class _ReportExpenseMonthState extends State<ReportExpenseMonth> {
         Provider.of<report_incomeNotifire>(context);
     return Scaffold(
         appBar: AppBar(
-          title: const Text('ລາຍງານລາຍຈ່າຍປະຈຳເດືອນ'),
+          title: const Text('ລາຍງານລາຍຈ່າຍປະຈຳວັນ'),
           centerTitle: true,
           backgroundColor: element.main,
           leading: element().RoutePageBack(context, const ReportExpense()),
@@ -38,7 +38,6 @@ class _ReportExpenseMonthState extends State<ReportExpenseMonth> {
         ),
         body: Column(
           children: [
-
             Padding(
               padding: EdgeInsets.all(10),
               child: Row(
@@ -112,7 +111,9 @@ class _ReportExpenseMonthState extends State<ReportExpenseMonth> {
               ),
             ),
             Button_prin(type: 'expanesDay', mont: expanese, context: context),
-            SizedBox(height: 10,)
+            SizedBox(
+              height: 10,
+            )
           ],
         ));
   }

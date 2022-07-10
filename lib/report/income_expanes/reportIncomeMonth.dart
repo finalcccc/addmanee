@@ -27,7 +27,7 @@ class _ReportIncomeMonthState extends State<ReportIncomeMonth> {
     report_incomeNotifire income = Provider.of<report_incomeNotifire>(context);
     return Scaffold(
         appBar: AppBar(
-          title: const Text('ລາຍງານລາຍຮັບປະຈຳເດືອນ'),
+          title: const Text('ລາຍງານລາຍຮັບປະຈຳວັນ'),
           centerTitle: true,
           backgroundColor: element.main,
           leading: element().RoutePageBack(context, const ReportIncome()),
@@ -109,8 +109,14 @@ class _ReportIncomeMonthState extends State<ReportIncomeMonth> {
               ),
             ),
             SizedBox(height: 10),
-            Button_prin(type: 'incomeDay',context: context,mont: income,),
-            SizedBox(height: 10,)
+            Button_prin(
+              type: 'incomeDay',
+              context: context,
+              mont: income,
+            ),
+            SizedBox(
+              height: 10,
+            )
           ],
         ));
   }

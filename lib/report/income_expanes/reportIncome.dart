@@ -27,7 +27,7 @@ class _ReportIncomeState extends State<ReportIncome> {
     int sum = 0;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ລາຍງານລາຍຮັບ'),
+        title: const Text('ລາຍງານລາຍຮັບປະຈຳເດືອນ'),
         centerTitle: true,
         backgroundColor: element.main,
         leading: element().RoutePageBack(context, const ReportData()),
@@ -54,7 +54,8 @@ class _ReportIncomeState extends State<ReportIncome> {
                                   title: Text(
                                       'ວັນທີ: ${income.icome[income.icome.length - index - 1].date!.toDate().toString().substring(0, 7)}'),
                                   subtitle: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Row(
                                         mainAxisAlignment:
@@ -69,22 +70,25 @@ class _ReportIncomeState extends State<ReportIncome> {
                                                     fontSize: 16),
                                               ),
                                               Text(
-                                                ' ${NumberFormat.decimalPattern().format(sum+=income.icome[income.icome.length - index - 1].sumtatall!.toInt())}',
+                                                ' ${NumberFormat.decimalPattern().format(sum += income.icome[income.icome.length - index - 1].sumtatall!.toInt())}',
                                                 style: TextStyle(
                                                     fontSize: 16,
                                                     color: element.main,
-                                                    fontWeight: FontWeight.bold),
+                                                    fontWeight:
+                                                        FontWeight.bold),
                                               ),
                                               Text(
                                                 ' ກີບ',
                                                 style: TextStyle(
                                                     fontSize: 16,
-                                                    fontWeight: FontWeight.bold),
+                                                    fontWeight:
+                                                        FontWeight.bold),
                                               ),
                                             ],
                                           ),
                                           SizedBox(
-                                            child: Icon(Icons.arrow_forward_ios_sharp,
+                                            child: Icon(
+                                                Icons.arrow_forward_ios_sharp,
                                                 size: 14),
                                           )
                                         ],
@@ -104,7 +108,8 @@ class _ReportIncomeState extends State<ReportIncome> {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const ReportIncomeMonth()));
+                                builder: (context) =>
+                                    const ReportIncomeMonth()));
                       },
                     ));
               },
@@ -113,8 +118,14 @@ class _ReportIncomeState extends State<ReportIncome> {
               },
             ),
           ),
-          Button_prin(type: 'incomeMont',context: context,mont: income,),
-          SizedBox(height: 10,)
+          Button_prin(
+            type: 'incomeMont',
+            context: context,
+            mont: income,
+          ),
+          SizedBox(
+            height: 10,
+          )
         ],
       ),
     );

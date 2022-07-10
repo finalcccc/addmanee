@@ -28,7 +28,7 @@ class _ReportExpenseState extends State<ReportExpense> {
         Provider.of<report_incomeNotifire>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ລາຍງານລາຍຈ່າຍ'),
+        title: const Text('ລາຍງານລາຍຈ່າຍປະຈຳເດືອນ'),
         centerTitle: true,
         backgroundColor: element.main,
         leading: element().RoutePageBack(context, const ReportData()),
@@ -55,7 +55,8 @@ class _ReportExpenseState extends State<ReportExpense> {
                                   title: Text(
                                       'ວັນທີ: ${Expanese.expanese[Expanese.expanese.length - index - 1].date!.toDate().toString().substring(0, 7)}'),
                                   subtitle: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Row(
                                         mainAxisAlignment:
@@ -74,18 +75,21 @@ class _ReportExpenseState extends State<ReportExpense> {
                                                 style: TextStyle(
                                                     fontSize: 16,
                                                     color: Colors.red,
-                                                    fontWeight: FontWeight.bold),
+                                                    fontWeight:
+                                                        FontWeight.bold),
                                               ),
                                               Text(
                                                 ' ກີບ',
                                                 style: TextStyle(
                                                     fontSize: 16,
-                                                    fontWeight: FontWeight.bold),
+                                                    fontWeight:
+                                                        FontWeight.bold),
                                               ),
                                             ],
                                           ),
                                           SizedBox(
-                                            child: Icon(Icons.arrow_forward_ios_sharp,
+                                            child: Icon(
+                                                Icons.arrow_forward_ios_sharp,
                                                 size: 14),
                                           )
                                         ],
@@ -96,17 +100,17 @@ class _ReportExpenseState extends State<ReportExpense> {
                               ],
                             ),
                           ),
-
                         ],
                       ),
                       onTap: () {
-                        Expanese.curren_expanese =
-                            Expanese.expanese[Expanese.expanese.length - index - 1];
+                        Expanese.curren_expanese = Expanese
+                            .expanese[Expanese.expanese.length - index - 1];
                         Get_reportl_Expanese_day(Expanese);
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const ReportExpenseMonth()));
+                                builder: (context) =>
+                                    const ReportExpenseMonth()));
                       },
                     ));
               },
@@ -116,7 +120,9 @@ class _ReportExpenseState extends State<ReportExpense> {
             ),
           ),
           Button_prin(type: 'expanesMont', mont: Expanese, context: context),
-          SizedBox(height: 10,)
+          SizedBox(
+            height: 10,
+          )
         ],
       ),
     );
