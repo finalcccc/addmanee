@@ -48,17 +48,17 @@ Future<void> UploadProducts(
 
     await ref.putFile(io.File(image!.path), metadata);
     String url = await ref.getDownloadURL();
+    int id = await Random().nextInt(90)+1000;
+    String uid = await '${id.toString()}$nameProduct';
+    product.id = await uid;
     product.image = await url;
-    product.nameProduct = nameProduct;
-    product.category_id = categorys_id;
-    product.price = prices;
-    product.amount = amount;
-    product.description = Description;
-    DocumentReference docid = await reference.add(product.toMap());
-    product.id = docid.id;
-    print(product.id);
-    print(product.image);
-    docid.set(product.toMap()).then((value) async {
+    product.nameProduct = await nameProduct;
+    product.category_id = await categorys_id;
+    product.price = await prices;
+    product.amount =await  amount;
+    product.description =await Description;
+   await reference.doc(uid).set(product.toMap())
+  .then((value) async {
       image = null;
       await GetProduct(pro!);
       pro.RefreshProduct();
@@ -66,6 +66,7 @@ Future<void> UploadProducts(
   } catch (e) {
     return print(e.toString());
   }
+  print(product.id);
 }
 
 String? categorys;
