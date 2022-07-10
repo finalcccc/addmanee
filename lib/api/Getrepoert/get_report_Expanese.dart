@@ -44,7 +44,6 @@ Get_reportl_Expanese(report_incomeNotifire Expanese) async {
       m1.add(m5);
       Expanese.Sumtotal +=m5.sumtatall!.toInt();
       Expanese.expanese = m1;
-
       Expanese.Refresh();
     }
     i++;
@@ -148,8 +147,8 @@ Get_reportl_Expanese_day(report_incomeNotifire expanese) async {
       Report m5 =
           Report(sumtatall: int.parse(sumtotal[i].toString()), date: Day[i]);
       m1.add(m5);
-      expanese.Sumtotal +=m5.sumtatall!.toInt();
       expanese.expanese_day = m1;
+      expanese.Sumtotal +=m5.sumtatall!.toInt();
       expanese.Refresh();
     }
     i++;
