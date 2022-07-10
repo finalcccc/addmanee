@@ -49,7 +49,7 @@ Future<void> UploadProducts(
     await ref.putFile(io.File(image!.path), metadata);
     String url = await ref.getDownloadURL();
     int id = await Random().nextInt(90)+1000;
-    String uid = await '${id.toString()}$nameProduct';
+    String uid = await '${id.toString()}';
     product.id = await uid;
     product.image = await url;
     product.nameProduct = await nameProduct;
