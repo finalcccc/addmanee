@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
 import 'package:untitled1/notifire/supplierNotifire.dart';
 import 'package:untitled1/report/buttonReportData.dart';
+import 'package:untitled1/report/import_and_Products/reportImportProductToPDF.dart';
 import 'package:untitled1/report/import_and_Products/reportProductDataToPDF.dart';
 import '../../celement/elements.dart';
 import 'package:intl/intl.dart';
@@ -199,11 +200,7 @@ class _Detaiy_import_productState extends State<Detaiy_import_product> {
             height: 55,
             child: ElevatedButton(
                 onPressed: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) =>
-                  //             const ReportProductDataToPDF()));
+                  ImportProductPDF.SaveImportProductPDF(pro, context);
                 },
                 child: const Text(
                   'ບັນທຶກເປັນພີດີເອັຟ',
