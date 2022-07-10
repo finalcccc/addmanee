@@ -10,20 +10,22 @@ import 'package:untitled1/report/import_and_Products/reportImportProductToPDF.da
 import '../../celement/elements.dart';
 import 'package:untitled1/celement/elements.dart';
 
-class ReportImportProduct extends StatefulWidget {
-  const ReportImportProduct({Key? key}) : super(key: key);
+import 'Detail_Purexhase_Product.dart';
+
+class purChase_Product extends StatefulWidget {
+  const purChase_Product({Key? key}) : super(key: key);
 
   @override
-  State<ReportImportProduct> createState() => _ReportImportProductState();
+  State<purChase_Product> createState() => _purChase_ProductState();
 }
 
-class _ReportImportProductState extends State<ReportImportProduct> {
+class _purChase_ProductState extends State<purChase_Product> {
   @override
   Widget build(BuildContext context) {
     SupplierNotifire supp = Provider.of<SupplierNotifire>(context);
     return Scaffold(
         appBar: AppBar(
-          title: const Text('ລາຍງານໃບນຳສົ່ງສິນຄ້າ'),
+          title: const Text('ລາຍງານ ສັ່ງສິນຄ້າเຂົ້າຮ້ານ'),
           centerTitle: true,
           backgroundColor: element.main,
           leading: element().RoutePageBack(context, const ReportData()),
@@ -31,8 +33,6 @@ class _ReportImportProductState extends State<ReportImportProduct> {
         body: Column(
           children: [
             const SizedBox(height: 10),
-            const Text('ໃບນຳສົ່ງສິນຄ້າ',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             Expanded(
               child: ListView.builder(
                 padding: const EdgeInsets.all(10.0),
@@ -44,11 +44,11 @@ class _ReportImportProductState extends State<ReportImportProduct> {
                       supp.CurrenimportP_id = supp.ImportProduct[index];
                       supp.CurrentSupplier = supp.Supplier[index];
                       get_Detail_ImPortProduct(supp);
-                      Navigator.pushReplacement(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  const Detaiy_import_product()));
+                              const Detaiy_purcChase_product()));
                     },
                     child: Card(
                         elevation: 2,
@@ -63,7 +63,7 @@ class _ReportImportProductState extends State<ReportImportProduct> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Container(
-                                // color: c,
+                                  // color: c,
                                   width: 115,
                                   height: 30,
                                   decoration: BoxDecoration(
@@ -113,7 +113,7 @@ class _ReportImportProductState extends State<ReportImportProduct> {
                                   ),
                                   Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         'ເບີໂທ: ${supp.SuplierList[index].tel}',
@@ -135,7 +135,7 @@ class _ReportImportProductState extends State<ReportImportProduct> {
                                   ),
                                   Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         'ຈຳນວນສັ່ງຊື້ທັງໝົດ: ${supp.ImportProduct[index].amouttotal} ແກັດ',
@@ -144,6 +144,7 @@ class _ReportImportProductState extends State<ReportImportProduct> {
                                           color: Colors.grey,
                                         ),
                                       ),
+
                                       Text(
                                         '${index + 1} ',
                                         style: const TextStyle(

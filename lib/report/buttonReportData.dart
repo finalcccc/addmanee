@@ -10,6 +10,7 @@ import 'package:untitled1/dialog_edit/dialog_and_snackbar.dart';
 import 'package:untitled1/notifire/employeeNotifire.dart';
 import 'package:untitled1/notifire/productNotifire.dart';
 import 'package:untitled1/notifire/supplierNotifire.dart';
+import 'package:untitled1/report/pureChase_product/purechase_Product.dart';
 import 'package:untitled1/report/reportEmployeeData.dart';
 import 'package:untitled1/report/income_expanes/reportExpense.dart';
 import 'package:untitled1/report/import_and_Products/reportImportProduct.dart';
@@ -253,11 +254,14 @@ class _ReportDataState extends State<ReportData> {
                     onPressed: () async {
                       purchase_order_Notifire order_admin=
                       Provider.of<purchase_order_Notifire>(context, listen: false);
-                      GetDetill(order_admin: order_admin,type: false);
+                      SupplierNotifire supp =
+                      Provider.of<SupplierNotifire>(context, listen: false);
+                      getImPortProduct(supp);
+                   //   GetDetill(order_admin: order_admin,type: false);
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const Detellorder_addmid()));
+                              builder: (context) => const purChase_Product()));
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
