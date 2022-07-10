@@ -10,6 +10,8 @@ import '../../celement/elements.dart';
 import '../../notifire/Repport_Notifire.dart';
 import 'package:intl/intl.dart';
 
+import 'Button_prin.dart';
+
 class ReportIncomeMonth extends StatefulWidget {
   const ReportIncomeMonth({Key? key}) : super(key: key);
 
@@ -105,7 +107,9 @@ class _ReportIncomeMonthState extends State<ReportIncomeMonth> {
                   return SizedBox();
                 },
               ),
-            )
+            ),
+            Button_prin(type: 'incomeDay',context: context,mont: income,),
+            SizedBox(height: 10,)
           ],
         ));
   }

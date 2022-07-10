@@ -6,6 +6,7 @@ import '../../model/Report_Income_Modle.dart';
 import 'get_reportl_income.dart';
 
 Get_reportl_Expanese(report_incomeNotifire Expanese) async {
+  Expanese.Sumtotal =0;
   List<Report> m1 = [];
   List<num> sumtotal = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   List<Timestamp> Month = [
@@ -41,7 +42,9 @@ Get_reportl_Expanese(report_incomeNotifire Expanese) async {
       Report m5 =
           Report(sumtatall: int.parse(sumtotal[i].toString()), date: Month[i]);
       m1.add(m5);
+      Expanese.Sumtotal +=m5.sumtatall!.toInt();
       Expanese.expanese = m1;
+
       Expanese.Refresh();
     }
     i++;
@@ -49,6 +52,7 @@ Get_reportl_Expanese(report_incomeNotifire Expanese) async {
 }
 
 Get_reportl_Expanese_day(report_incomeNotifire expanese) async {
+  expanese.Sumtotal = 0;
   List<Report> m1 = [];
   List<num> sumtotal = [
     0,
@@ -144,6 +148,7 @@ Get_reportl_Expanese_day(report_incomeNotifire expanese) async {
       Report m5 =
           Report(sumtatall: int.parse(sumtotal[i].toString()), date: Day[i]);
       m1.add(m5);
+      expanese.Sumtotal +=m5.sumtatall!.toInt();
       expanese.expanese_day = m1;
       expanese.Refresh();
     }

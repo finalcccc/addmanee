@@ -5,6 +5,7 @@ import 'package:untitled1/model/Report_Income_Modle.dart';
 import 'package:untitled1/notifire/Repport_Notifire.dart';
 
 Get_reportl_income(report_incomeNotifire imcome) async {
+  imcome.Sumtotal =0;
   List<Report> m1 = [];
   List<num> sumtotal = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   List<Timestamp> Month = [
@@ -37,8 +38,8 @@ Get_reportl_income(report_incomeNotifire imcome) async {
   int i = 0;
   for (var shan in Month) {
     if (Month[i] != Timestamp(1, 1)) {
-      Report m5 =
-          Report(sumtatall: int.parse(sumtotal[i].toString()), date: Month[i]);
+      Report m5 = Report(sumtatall: int.parse(sumtotal[i].toString()), date: Month[i]);
+      imcome.Sumtotal+=m5.sumtatall!.toInt();
       m1.add(m5);
       imcome.icome = m1;
       imcome.Refresh();
@@ -115,6 +116,7 @@ Report_Month(
 }
 
 Get_reportl_income_Month(report_incomeNotifire imcome) async {
+  imcome.Sumtotal=0;
   List<Report> m1 = [];
   List<num> sumtotal = [
     0,
@@ -211,6 +213,7 @@ Get_reportl_income_Month(report_incomeNotifire imcome) async {
       Report m5 =
           Report(sumtatall: int.parse(sumtotal[i].toString()), date: Day[i]);
       m1.add(m5);
+      imcome.Sumtotal+=m5.sumtatall!.toInt();
       imcome.icome_day = m1;
       imcome.Refresh();
     }

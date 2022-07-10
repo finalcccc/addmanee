@@ -7,12 +7,14 @@ class report_incomeNotifire with ChangeNotifier{
   List<Report>icome = [];
   List<Report>icome_day = [];
   Report? curren_income;
+  int Sumtotal = 0 ;
 
   List<Report>expanese = [];
   List<Report>expanese_day = [];
   Report? curren_expanese;
 
   Refresh(){
+    Sumtotal;
     expanese;
     expanese_day;
     curren_expanese;
