@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:untitled1/api/UploadData/Get_Data_phuasOrder.dart';
 import 'package:untitled1/api/getImportProduct.dart';
 import 'package:untitled1/notifire/supplierNotifire.dart';
 import 'package:untitled1/report/import_and_Products/Detail_import_Product.dart';
@@ -42,7 +43,7 @@ class _purChase_ProductState extends State<purChase_Product> {
                     onTap: () {
                       supp.CurrenimportP_id = supp.ImportProduct[index];
                       supp.CurrentSupplier = supp.Supplier[index];
-                      get_Detail_ImPortProduct(supp);
+                      get_product_purc(supp);
                       Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -51,7 +52,7 @@ class _purChase_ProductState extends State<purChase_Product> {
                     },
                     child: Card(
                         elevation: 2,
-                        shape:  RoundedRectangleBorder(
+                        shape:  const RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
                                 bottomRight: Radius.circular(10),
                                 topRight: Radius.circular(10)),
@@ -65,7 +66,7 @@ class _purChase_ProductState extends State<purChase_Product> {
                                   // color: c,
                                   width: 115,
                                   height: 30,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: Colors.blueAccent,
                                     borderRadius: BorderRadius.only(
                                       bottomRight: Radius.circular(18),

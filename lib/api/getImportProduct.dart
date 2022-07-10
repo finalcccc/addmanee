@@ -7,6 +7,9 @@ import '../model/purchase_order_Model.dart';
 import '../model/supplier_data.dart';
 
 getImPortProduct(SupplierNotifire importProduct) async {
+  importProduct.Product.clear();
+  importProduct.sumtotal = 0;
+  importProduct.countket =0;
   importProduct.Supplier.clear();
   importProduct.ImportProduct.clear();
   QuerySnapshot<Map<String, dynamic>> rfn =
