@@ -38,7 +38,6 @@ class _ReportImportProductState extends State<ReportImportProduct> {
                 padding: const EdgeInsets.all(10.0),
                 itemCount: supp.Supplier.length,
                 itemBuilder: (BuildContext context, int index) {
-                  MaterialColor c = Colors.primaries[Random().nextInt(25)];
                   return InkWell(
                     onTap: () {
                       supp.CurrenimportP_id = supp.ImportProduct[index];
@@ -52,11 +51,11 @@ class _ReportImportProductState extends State<ReportImportProduct> {
                     },
                     child: Card(
                         elevation: 2,
-                        shape:  RoundedRectangleBorder(
+                        shape:  const RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
                                 bottomRight: Radius.circular(10),
                                 topRight: Radius.circular(10)),
-                            side: BorderSide(width: 1, color: c)),
+                            side: BorderSide(width: 1, color: Colors.green)),
                         child: Column(
                           children: [
                             Row(
@@ -66,8 +65,8 @@ class _ReportImportProductState extends State<ReportImportProduct> {
                                 // color: c,
                                   width: 115,
                                   height: 30,
-                                  decoration: BoxDecoration(
-                                    color: c,
+                                  decoration: const BoxDecoration(
+                                    color: Colors.green,
                                     borderRadius: BorderRadius.only(
                                       bottomRight: Radius.circular(18),
                                     ),

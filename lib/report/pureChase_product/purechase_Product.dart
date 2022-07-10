@@ -38,7 +38,6 @@ class _purChase_ProductState extends State<purChase_Product> {
                 padding: const EdgeInsets.all(10.0),
                 itemCount: supp.Supplier.length,
                 itemBuilder: (BuildContext context, int index) {
-                  MaterialColor c = Colors.primaries[Random().nextInt(25)];
                   return InkWell(
                     onTap: () {
                       supp.CurrenimportP_id = supp.ImportProduct[index];
@@ -56,7 +55,7 @@ class _purChase_ProductState extends State<purChase_Product> {
                             borderRadius: BorderRadius.only(
                                 bottomRight: Radius.circular(10),
                                 topRight: Radius.circular(10)),
-                            side: BorderSide(width: 1, color: c)),
+                            side: BorderSide(width: 1, color: Colors.blueAccent)),
                         child: Column(
                           children: [
                             Row(
@@ -67,7 +66,7 @@ class _purChase_ProductState extends State<purChase_Product> {
                                   width: 115,
                                   height: 30,
                                   decoration: BoxDecoration(
-                                    color: c,
+                                    color: Colors.blueAccent,
                                     borderRadius: BorderRadius.only(
                                       bottomRight: Radius.circular(18),
                                     ),
@@ -138,7 +137,14 @@ class _purChase_ProductState extends State<purChase_Product> {
                                     MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                        'ຈຳນວນສັ່ງຊື້ທັງໝົດ: ${supp.ImportProduct[index].amouttotal} ແກັດ',
+                                        'ຈຳນວນ: ${supp.ImportProduct[index].Ditell.length} ລາຍການ',
+                                        style: const TextStyle(
+                                          fontSize: 14.0,
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                      Text(
+                                        ' ${supp.ImportProduct[index].amouttotal} ແກັດ',
                                         style: const TextStyle(
                                           fontSize: 14.0,
                                           color: Colors.grey,
