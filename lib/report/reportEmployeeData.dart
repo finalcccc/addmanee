@@ -107,7 +107,7 @@ class _ReportEmployeeDataState extends State<ReportEmployeeData> {
                     EmployeePDF.SaveEmployeePDF(emp, context);
                   },
                   child: const Text(
-                    'ບັນທຶກເປັນພີດີເອັຟ',
+                    'ພິມລາຍງານ',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
                   )),
             ),

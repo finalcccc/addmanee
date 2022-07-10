@@ -203,7 +203,7 @@ class _Detaiy_import_productState extends State<Detaiy_import_product> {
                   ImportProductPDF.SaveImportProductPDF(pro, context);
                 },
                 child: const Text(
-                  'ບັນທຶກເປັນພີດີເອັຟ',
+                  'ພິມລາຍງານ',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
                 )),
           ),

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled1/notifire/productNotifire.dart';
 import 'package:untitled1/notifire/supplierNotifire.dart';
 import 'package:untitled1/report/buttonReportData.dart';
-import 'package:untitled1/report/import_and_Products/reportProductDataToPDF.dart';
+import 'package:untitled1/report/pureChase_product/reportPurchaseProductToPDF.dart';
 import '../../celement/elements.dart';
 import 'package:intl/intl.dart';
 
@@ -174,14 +173,10 @@ class _Detaiy_purcChase_productState extends State<Detaiy_purcChase_product> {
             height: 55,
             child: ElevatedButton(
                 onPressed: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) =>
-                  //             const ReportProductDataToPDF()));
+                  PurchaseProductPDF.SavePurchaseProductPDF(pro, context);
                 },
                 child: const Text(
-                  'ບັນທຶກເປັນພີດີເອັຟ',
+                  'ພິມລາຍງານ',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
                 )),
           ),

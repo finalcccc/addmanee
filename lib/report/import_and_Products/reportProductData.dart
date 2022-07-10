@@ -188,7 +188,7 @@ class _ReportProductDataState extends State<ReportProductData> {
                   ProductPDF.SaveProductPDF(pro, context);
                 },
                 child: const Text(
-                  'ບັນທຶກເປັນພີດີເອັຟ',
+                  'ພິມລາຍງານ',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
                 )),
           ),
